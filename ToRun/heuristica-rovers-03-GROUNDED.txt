@@ -1,0 +1,43 @@
+initial: <0:0, 1:1, 2:0, 3:0, 4:0, 5:0, 6:1, 7:0, 8:1, 9:1, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0, 16:0, 17:0, 18:0, 19:0, 20:0, 21:0, 22:0, 23:0, 24:0, 25:0, 26:0, 27:0, 28:0, 29:0, 30:0, 31:0, 32:0, 33:0, 34:0, 35:0, 36:0, 37:1, 38:1, 39:1, 40:1, 41:1, 42:1, 43:1>
+goal: <27:1, 28:1, 31:1>
+Heuristic computation
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+END
+Progressive search
+0
+>> Elapsed Time: 168
+1
+>> Elapsed Time: 175
+2
+>> Elapsed Time: 176
+3
+>> Elapsed Time: 178
+4
+>> Elapsed Time: 179
+5
+>> Elapsed Time: 180
+6
+>> Elapsed Time: 181
+7
+>> Elapsed Time: 183
+8
+>> Elapsed Time: 184
+9
+>> Elapsed Time: 185
+10
+>> Elapsed Time: 187
+11
+The problem is solvable.
+Tempo gasto: 188
+Used memory is bytes: 1365158440

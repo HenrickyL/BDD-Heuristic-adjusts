@@ -1,0 +1,54 @@
+_Busca_Heuristica_Simbolica
+javabdd_repackaged-1.0b2.jar
+
+
+# Eclipse specific files
+/.classpath
+/.project
+/.settings/
+
+# Mac OS X specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+Desktop.ini
+
+# Java specific files
+*.class
+*.jar
+*.war
+*.ear
+
+# Log files
+*.log
+
+# Maven specific files
+target/
+
+# Gradle specific files
+.gradle/
+build/
+
+# IDE specific files
+.idea/
+*.iml
+
+# Eclipse configuration
+/.metadata/
+/bin/
+/tmp/
+
+# Ignore Maven wrapper files
+.mvn/wrapper/maven-wrapper.jar
+
+# Exclude all build output directories
+*/target/
+*/out/
+
+# Node specific files (if you have a frontend)
+node_modules/
+
+# Ignore test reports
+/test-output/
+/test-output/*/
