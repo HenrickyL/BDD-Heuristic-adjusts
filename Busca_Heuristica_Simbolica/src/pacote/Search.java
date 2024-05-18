@@ -4,6 +4,7 @@ import java.util.Vector;
 import net.sf.javabdd.BDD;
 import net.sf.javabdd.BDDFactory;
 
+
 public class Search{
 
 	Vector<Action> actionSet;		
@@ -22,14 +23,19 @@ public class Search{
 		this.numProp = model.getPropNum();
 	}
 	
-	public void heuristcSearch(ModelReader model) throws IOException {
-		if(heuristicPlanBackward() == true) {
-			heuristicPlanForward();
+	public void heuristcSearch(ModelReader model, VerifyTime verify) throws IOException {
+		System.out.println("Start Backward...");
+		if(heuristicPlanBackward(verify) == true) {
+			System.out.println("End Backward.");
+			verify.resetStartTime();
+			verify.setMaxTime(10800000);//3h - 10800000
+			System.out.println("Start Forward...");
+			heuristicPlanForward(null);
 		}
 	}
 	
 	/* Forward search from the initial state, towards a goal state. */
-	public boolean heuristicPlanForward(){
+	public boolean heuristicPlanForward(VerifyTime verify){
 	//	System.out.println("initial: " + initialState);
 	//	System.out.println("goal: " + goal);
 		BDD reached = initialState.id(); //accumulates the reached set of states.
@@ -53,7 +59,7 @@ public class Search{
 
 			/*chamar a progressão só para o BDD retornado pela função minHValue*/
 			teste = minHvalue(BDDHValues, Z);
-			Z = progression(teste); //Z = progression(teste);
+			Z = progression(teste!=null ? teste : Z); //Z = progression(teste);
 						
 			Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
 			reached = reached.or(Z); //Union with the new reachable states
@@ -61,6 +67,10 @@ public class Search{
 //			if(i < 4){
 //				System.out.println(i + "\n" + reached);
 //			}
+			if(verify != null && verify.onTime()) {
+				return true;
+			}
+			
 			i++; //g(n)
 		}
 		
@@ -77,6 +87,7 @@ public class Search{
 	public BDD minHvalue(Vector<BDD> H, BDD X) {
 		BDD result;
 		int i = 0;
+		int s = H.size();
 		while(i < H.size()) {
 			result = X.and(H.get(i)); 
 			if(result.isZero() == false) {
@@ -87,7 +98,7 @@ public class Search{
 		return null;
 	}
 	
-	public boolean planForward(){
+	public boolean planForward(VerifyTime verify){
 		System.out.println("initial: " + initialState);
 		System.out.println("goal: " + goal);
 		BDD reached = initialState.id(); //accumulates the reached set of states.
@@ -113,6 +124,10 @@ public class Search{
 //			if(i < 4){
 //				System.out.println(i + "\n" + reached);
 //			}
+			if(verify.onTime()) {
+				break;
+			}
+			
 			i++;
 		}
 		
@@ -190,7 +205,7 @@ public class Search{
 	
 	/*Busca regressiva no problema relaxado (sem efeitos negativos)*/
 	/*Ao computar os estados regredidos, colocar os novos estados alcançados em um vetor de BDDs*/
-	public boolean heuristicPlanBackward() throws IOException{
+	public boolean heuristicPlanBackward(VerifyTime verify) throws IOException{
 		//System.out.println("Performing heuristic search in a relaxed problem");
 		System.out.println("initial: " + initialState);
 		System.out.println("goal: " + goal);
@@ -199,7 +214,7 @@ public class Search{
 		BDD reached = goal.id(); //accumulates the reached set of states.
 		BDDHValues.add(j, goal);
 		
-		BDD Z = reached.id(); // Only new states reached	
+		BDD Z = reached.id(); // Only new states reached
 		BDD aux;	
 		int i = 1;
 		System.out.println("Heuristic computation");
@@ -232,6 +247,11 @@ public class Search{
 //			if(i < 4){
 //				System.out.println(reached);
 //			}
+			
+			if(verify.onTime()) {
+				//return true - com uma heuristica podada
+				return true;
+			}
 			i++;
 			
 		}

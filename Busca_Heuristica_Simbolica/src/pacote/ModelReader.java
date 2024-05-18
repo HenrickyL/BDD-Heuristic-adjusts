@@ -15,7 +15,7 @@ public class ModelReader{
 	private String type;
 	
 	//read the lines of the fileName. pType: model-checking or planner
-	public void fileReader(String fileName, String pType, int nodenum, int cachesize){
+	public void fileReader(String fileName, String pType, int nodenum, int cachesize) throws Exception{
 		
 		type = pType;
 		cre = new BDDCreator(nodenum, cachesize);
@@ -96,8 +96,9 @@ public class ModelReader{
 			in.close();
 			
 		} catch (Exception e) {
-			System.out.println("catch");
-			e.getMessage();
+//			System.out.println("catch");
+//			e.getMessage();
+			throw e;
 		}		
 	}
 	
@@ -145,3 +146,5 @@ public class ModelReader{
 //	} 
 	
 }
+
+

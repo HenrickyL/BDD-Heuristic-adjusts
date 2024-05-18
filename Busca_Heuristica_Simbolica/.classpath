@@ -11,6 +11,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/marisa/Documentos/RegressionComparable/RegressionComparable/javabdd-1.0b2.jar"/>
+	<classpathentry kind="lib" path="D:/Workspace/ws-HeuristicSearch/javabdd_repackaged-1.0b2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
