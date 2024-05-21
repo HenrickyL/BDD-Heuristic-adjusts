@@ -28,13 +28,19 @@ class VerifyTime {
 	void setMaxTime(int value) {
 		maxTime = value;
 	}
+	
+	void PrintElapsedTime() {
+		long current = System.currentTimeMillis();
+		long elapsed = current - startTime;
+		System.out.println(">> Elapsed Time: "+ elapsed);
+	}
     boolean onTime() {
     	long current = System.currentTimeMillis();
 		long elapsed = current - startTime;
-		System.out.println(">> Elapsed Time: "+ elapsed);
+//		System.out.println(">> Elapsed Time: "+ elapsed);
 //		long memory = runtime.totalMemory() - runtime.freeMemory();
 //		System.out.println(">> memory: " + (memory - initmemory));
-		if( elapsed >= maxTime || (last > 0 && elapsed+(current-last) >= maxTime)){
+		if(maxTime > 0 && (elapsed >= maxTime || (last > 0 && elapsed+(current-last) >= maxTime))){
 			System.out.println("<< fim do proceso - excedeu "+maxTime+" ms");
 			return true;
 		};

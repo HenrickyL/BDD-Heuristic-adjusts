@@ -28,9 +28,9 @@ public class Search{
 		if(heuristicPlanBackward(verify) == true) {
 			System.out.println("End Backward.");
 			verify.resetStartTime();
-			verify.setMaxTime(10800000);//3h - 10800000
+			verify.setMaxTime(-1);//3h - 10800000
 			System.out.println("Start Forward...");
-			heuristicPlanForward(null);
+			heuristicPlanForward(verify);
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class Search{
 
 			/*chamar a progressão só para o BDD retornado pela função minHValue*/
 			teste = minHvalue(BDDHValues, Z);
-			Z = progression(teste!=null ? teste : Z); //Z = progression(teste);
+			Z = progression(teste!=null ? teste : Z, verify); //Z = progression(teste);
 						
 			Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
 			reached = reached.or(Z); //Union with the new reachable states
@@ -67,6 +67,7 @@ public class Search{
 //			if(i < 4){
 //				System.out.println(i + "\n" + reached);
 //			}
+			verify.PrintElapsedTime();
 			if(verify != null && verify.onTime()) {
 				return true;
 			}
@@ -117,15 +118,16 @@ public class Search{
 			
 			aux.free();
 
-			Z = progression(Z); 
+			Z = progression(Z, verify); 
 			Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
 			reached = reached.or(Z); //Union with the new reachable states
 			reached = reached.and(constraints);
 //			if(i < 4){
 //				System.out.println(i + "\n" + reached);
 //			}
-			if(verify.onTime()) {
-				break;
+			verify.PrintElapsedTime();
+			if(verify != null && verify.onTime()) {
+				return true;
 			}
 			
 			i++;
@@ -141,7 +143,7 @@ public class Search{
 
 		
 	/* Deterministic Progression of a formula by a set of actions */
-	public BDD progression(BDD formula){
+	public BDD progression(BDD formula, VerifyTime verify){
 		BDD reg = null;	
 		BDD teste = null;
 		for (Action a : actionSet) {
@@ -151,7 +153,11 @@ public class Search{
 				reg = teste;
 			}else{
 				reg.orWith(teste);
-			}	
+			}
+			
+			if(verify != null && verify.onTime()) {
+				return reg;
+			}
 		}
 		return reg;
 	}
@@ -173,7 +179,7 @@ public class Search{
 	
 	
 	/* Backward search from the goal state, towards initial state. */
-	public boolean planBackward() throws IOException{
+	public boolean planBackward(VerifyTime verify) throws IOException{
 		BDD reached = goal.id(); //accumulates the reached set of states.
 		BDD Z = reached.id(); // Only new states reached	
 		BDD aux;	
@@ -192,7 +198,7 @@ public class Search{
 			
 			aux.free();
 			
-			Z = regression(Z);
+			Z = regression(Z, verify);
 			Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
 			reached = reached.or(Z); //Union with the new reachable states
 			reached = reached.and(constraints);
@@ -234,7 +240,7 @@ public class Search{
 			
 			aux.free();
 			//System.out.println("Z [antes da regression]" + Z);
-			Z = heuristicRegression(Z);
+			Z = heuristicRegression(Z, verify);
 			//System.out.println("Z-->" + Z);
 		    //System.out.println("Z [depois da regression]" + Z);
 			Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
@@ -248,8 +254,8 @@ public class Search{
 //				System.out.println(reached);
 //			}
 			
-			if(verify.onTime()) {
-				//return true - com uma heuristica podada
+			verify.PrintElapsedTime();
+			if(verify != null && verify.onTime()) {
 				return true;
 			}
 			i++;
@@ -266,7 +272,7 @@ public class Search{
 	
 	
 	/* Deterministic Regression of a formula by a set of actions */
-	public BDD regression(BDD formula){
+	public BDD regression(BDD formula, VerifyTime verify){
 		BDD reg = null;	
 		BDD teste = null;
 		for (Action a : actionSet) {
@@ -276,12 +282,15 @@ public class Search{
 				reg = teste;
 			}else{
 				reg.orWith(teste);
-			}	
+			}
+			if(verify != null &&verify.onTime()) {
+				return reg;
+			}
 		}
 		return reg;
 	}
 	
-	public BDD heuristicRegression(BDD formula){
+	public BDD heuristicRegression(BDD formula, VerifyTime verify){
 		BDD reg = null;	
 		BDD teste = null;
 		for (Action a : actionSet) {
@@ -292,7 +301,10 @@ public class Search{
 				reg = teste;
 			}else{
 				reg.orWith(teste);
-			}	
+			}
+			if(verify != null &&verify.onTime()) {
+				return reg;
+			}
 		}
 		return reg;
 	}
