@@ -13,7 +13,7 @@ class VerifyTime {
 	private long startTime;
 	private long initmemory;
 	private Runtime runtime;
-	private static long last = 0;
+	private long last = 0;
 	private static long maxTime = 1800000;//30min - 1800000
 	VerifyTime(long _startTime, long _initmemory, Runtime _runtime){
 		startTime = _startTime;
@@ -23,10 +23,12 @@ class VerifyTime {
 	
 	void resetStartTime() {
 		startTime = System.currentTimeMillis();
+		last =0;
 	}
 	
 	void setMaxTime(int value) {
 		maxTime = value;
+		last =0;
 	}
 	
 	void PrintElapsedTime() {
@@ -80,7 +82,7 @@ public class GUI {
             System.err.println("Usage: java GUI <type> <problem> <test>");
             System.exit(1);
         }
-		
+	
 		E_Types type = E_Types.heuristic;
         E_Problem problem = E_Problem.rovers;
         int test = 6;

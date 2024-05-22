@@ -13,6 +13,7 @@ public class Search{
 	BDD constraints;
 	int numProp;
 	Vector<BDD> BDDHValues = new Vector<BDD>();
+	private boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
 
 	/* Constructor */
 	public Search(ModelReader model) {
@@ -29,8 +30,8 @@ public class Search{
 			System.out.println("End Backward.");
 			verify.resetStartTime();
 			verify.setMaxTime(-1);//3h - 10800000
-			System.out.println("Start Forward...");
-			heuristicPlanForward(verify);
+//			System.out.println("Start Forward...");
+//			heuristicPlanForward(verify);
 		}
 	}
 	
@@ -247,17 +248,22 @@ public class Search{
 			//adicionar o Z na posição i do vetor.
 			//System.out.println("Z-->" + Z);
 			BDDHValues.add(j,Z);
-			
 			reached = reached.or(Z); //Union with the new reachable states
 			reached = reached.and(constraints);
-//			if(i < 4){
-//				System.out.println(reached);
-//			}
-			
-			verify.PrintElapsedTime();
-			if(verify != null && verify.onTime()) {
+			// add variavel global - tratar heuristicRegression retorna incompleto
+			 // -> se n deu certo: BDDHValues.add(j+1, reached.not())
+			if(onHeuristicPlanBackwardHasIncomplateRegression) {
+				BDDHValues.add(j+1, reached.not());
+				onHeuristicPlanBackwardHasIncomplateRegression = false;
 				return true;
 			}
+	
+			
+			verify.PrintElapsedTime();
+			verify.resetStartTime();
+//			if(verify != null && verify.onTime()) {
+//				return true;
+//			}
 			i++;
 			
 		}
@@ -303,6 +309,7 @@ public class Search{
 				reg.orWith(teste);
 			}
 			if(verify != null &&verify.onTime()) {
+				onHeuristicPlanBackwardHasIncomplateRegression = true;
 				return reg;
 			}
 		}

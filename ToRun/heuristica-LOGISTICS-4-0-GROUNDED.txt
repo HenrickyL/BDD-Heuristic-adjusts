@@ -1,73 +1,51 @@
+Start Backward...
 initial: <0:0, 1:1, 2:0, 3:1, 4:0, 5:1, 6:0, 7:1, 8:0, 9:0, 10:0, 11:1, 12:0, 13:0, 14:0, 15:1, 16:0, 17:0, 18:0, 19:0, 20:0, 21:1, 22:0, 23:0, 24:0, 25:1, 26:0, 27:0, 28:0, 29:1, 30:0, 31:0, 32:0, 33:0, 34:0, 35:0, 36:0, 37:0, 38:0, 39:0, 40:0, 41:0, 42:0, 43:0, 44:0, 45:0, 46:0, 47:0>
 goal: <0:1, 3:1, 5:1, 9:1, 17:1, 20:1, 28:1>
 Heuristic computation
 1
+>> Elapsed Time: 8
 2
+>> Elapsed Time: 14
 3
+>> Elapsed Time: 20
 4
+>> Elapsed Time: 31
 5
+>> Elapsed Time: 36
 6
+>> Elapsed Time: 41
 7
+>> Elapsed Time: 63
 8
+>> Elapsed Time: 64
 9
+>> Elapsed Time: 77
 10
+>> Elapsed Time: 87
 11
+>> Elapsed Time: 96
 12
+>> Elapsed Time: 111
 13
+>> Elapsed Time: 110
 14
+>> Elapsed Time: 114
 15
+>> Elapsed Time: 109
 16
+>> Elapsed Time: 108
 17
+>> Elapsed Time: 102
 18
+>> Elapsed Time: 95
 19
+>> Elapsed Time: 84
 20
+>> Elapsed Time: 67
 21
+>> Elapsed Time: 61
 22
 END
-Progressive search
-0
->> Elapsed Time: 1455
-1
->> Elapsed Time: 1460
-2
->> Elapsed Time: 1462
-3
->> Elapsed Time: 1465
-4
->> Elapsed Time: 1467
-5
->> Elapsed Time: 1470
-6
->> Elapsed Time: 1474
-7
->> Elapsed Time: 1478
-8
->> Elapsed Time: 1482
-9
->> Elapsed Time: 1485
-10
->> Elapsed Time: 1489
-11
->> Elapsed Time: 1493
-12
->> Elapsed Time: 1495
-13
->> Elapsed Time: 1498
-14
->> Elapsed Time: 1501
-15
->> Elapsed Time: 1503
-16
->> Elapsed Time: 1505
-17
->> Elapsed Time: 1506
-18
->> Elapsed Time: 1507
-19
->> Elapsed Time: 1508
-20
->> Elapsed Time: 1509
-21
-The problem is solvable.
-Tempo gasto: 1510
-Used memory is bytes: 1360990800
+End Backward.
+Tempo gasto: 1515
+Used memory is bytes: 1365184072
