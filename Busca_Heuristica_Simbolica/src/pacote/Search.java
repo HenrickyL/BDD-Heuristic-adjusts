@@ -84,12 +84,71 @@ public class Search{
 		return false;
 	}
 	
+	//*********************************
+	/* Forward search from the initial state, towards a goal state. */
+	public boolean heuristicPlanForward2(VerifyTime verify){	
+		BDD reached = initialState.id(); //accumulates the reached set of states.
+		BDD Z = reached.id(); // Only new states reached	
+		BDD aux;
+		BDD teste;
+		int i = 0; // pode funcionar como g - henricky
+		//fila de prioridade de bdds com valor f = g + h
+		//falta descobrir o valor de h para cada bdd na camada z
+		
+		
+		System.out.println("Progressive search");
+				
+		while(Z.isZero() == false){
+			System.out.println(i);
+			aux = Z.and(goal.id());	
+	
+
+			 if (aux.toString().equals("") == false) {
+			 	System.out.println("The problem is solvable.");	
+			 	return true;
+			 }			
+			aux.free();
+			/*1. descobrir o valor de z
+			 *2.
+			 * */
+			/*chamar a progressão só para o BDD retornado pela função minHValue*/
+			
+			// Colocar minHvalue 
+			teste = minHvalue(BDDHValues, Z);
+			Z = progression(teste, verify); //Z = progression(teste);
+						
+			Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
+			reached = reached.or(Z); //Union with the new reachable states
+			reached = reached.and(constraints);
+//			if(i < 4){
+//				System.out.println(i + "\n" + reached);
+//			}
+			verify.PrintElapsedTime();
+			if(verify != null && verify.onTime()) {
+				return true;
+			}
+			
+			i++; //g(n)
+		}
+		
+		
+		
+		
+		System.out.println("The problem is unsolvable.");
+		
+		return false;
+	}
+	//*********************************
+	
+	
+	
+	
 	/*Consult a tabela de valores heurísticos e 
 	 * retorna o subconjunto de estados (BDD result) com menos valor heurístico*/	
 	public BDD minHvalue(Vector<BDD> H, BDD X) {
 		BDD result;
 		int i = 0;
-		int s = H.size();
+		
 		while(i < H.size()) {
 			result = X.and(H.get(i)); 
 			if(result.isZero() == false) {
@@ -213,6 +272,7 @@ public class Search{
 	/*Busca regressiva no problema relaxado (sem efeitos negativos)*/
 	/*Ao computar os estados regredidos, colocar os novos estados alcançados em um vetor de BDDs*/
 	public boolean heuristicPlanBackward(VerifyTime verify) throws IOException{
+		onHeuristicPlanBackwardHasIncomplateRegression = false;
 		//System.out.println("Performing heuristic search in a relaxed problem");
 		System.out.println("initial: " + initialState);
 		System.out.println("goal: " + goal);
@@ -253,8 +313,7 @@ public class Search{
 			// add variavel global - tratar heuristicRegression retorna incompleto
 			 // -> se n deu certo: BDDHValues.add(j+1, reached.not())
 			if(onHeuristicPlanBackwardHasIncomplateRegression) {
-				BDDHValues.add(j+1, reached.not());
-				onHeuristicPlanBackwardHasIncomplateRegression = false;
+				BDDHValues.add(j+1, reached.not());//todos os estados nao alcancados receberao o mesmo valor heuristico - henricky
 				return true;
 			}
 	
@@ -301,13 +360,15 @@ public class Search{
 		BDD teste = null;
 		for (Action a : actionSet) {
 			//System.out.println(a.getName());
-			teste = heuristicRegressionQbf(formula,a);
+			teste = regressionQbf(formula,a);//heuristicRegressionQbf(formula,a) - henricky;
 			teste = teste.and(constraints);
 			if(reg == null){
 				reg = teste;
 			}else{
 				reg.orWith(teste);
 			}
+			/*cada camada tem 30 min para rodar, cada açao contribui com esse tempo,
+			   se uma açao usa 5 min as outras tem apenas 25min para rodar*/
 			if(verify != null &&verify.onTime()) {
 				onHeuristicPlanBackwardHasIncomplateRegression = true;
 				return reg;
@@ -330,7 +391,7 @@ public class Search{
 		return  reg;
  	}
 	
-	
+	/* Calculo regressivo desconsiderando os efeitos negativos das acoes - relaxado (henricky)*/
 	public BDD heuristicRegressionQbf(BDD Y, Action a) {
 		BDD reg;
 		reg = Y.and(a.getRelaxEffect()); //(Y ^ effect(a))
