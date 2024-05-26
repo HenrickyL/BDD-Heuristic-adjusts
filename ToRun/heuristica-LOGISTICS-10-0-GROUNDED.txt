@@ -3,17 +3,17 @@ initial: <0:0, 1:0, 2:0, 3:1, 4:0, 5:1, 6:0, 7:1, 8:0, 9:1, 10:0, 11:1, 12:0, 13
 goal: <21:1, 30:1, 38:1, 51:1, 55:1, 61:1, 72:1, 77:1, 98:1, 103:1>
 Heuristic computation
 1
->> Elapsed Time: 64
+>> Elapsed Time: 78
 2
->> Elapsed Time: 672
+>> Elapsed Time: 778
 3
->> Elapsed Time: 2166
+>> Elapsed Time: 2602
 4
->> Elapsed Time: 5941
+>> Elapsed Time: 7840
 5
->> Elapsed Time: 16816
+>> Elapsed Time: 19684
 6
->> Elapsed Time: 44192
+>> Elapsed Time: 48236
 7
 Resizing node table from 50000017 to 50050003
 Resizing node table from 50050003 to 50099993
@@ -261,8 +261,8 @@ Resizing node table from 62096491 to 62146477
 Resizing node table from 62146477 to 62196451
 Resizing node table from 62196451 to 62246447
 Resizing node table from 62246447 to 62296427
-Resizing node table from 62296427 to 62346419
 << fim do proceso - excedeu 1800000 ms
+Resizing node table from 62296427 to 62346419
 Resizing node table from 62346419 to 62396407
 Resizing node table from 62396407 to 62446393
 Resizing node table from 62446393 to 62496389
@@ -316,7 +316,6 @@ Resizing node table from 64795667 to 64845637
 Resizing node table from 64845637 to 64895629
 Resizing node table from 64895629 to 64945603
 Resizing node table from 64945603 to 64995587
-Resizing node table from 64995587 to 65045551
 End Backward.
-Tempo gasto: 2403891
-Used memory is bytes: 1667295344
+Tempo gasto: 2436399
+Used memory is bytes: 1659161112

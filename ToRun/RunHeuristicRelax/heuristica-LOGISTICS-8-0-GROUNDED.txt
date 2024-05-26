@@ -7,33 +7,33 @@ Heuristic computation
 2
 >> Elapsed Time: 7
 3
->> Elapsed Time: 33
+>> Elapsed Time: 31
 4
->> Elapsed Time: 85
+>> Elapsed Time: 80
 5
->> Elapsed Time: 124
+>> Elapsed Time: 118
 6
->> Elapsed Time: 296
+>> Elapsed Time: 270
 7
->> Elapsed Time: 548
+>> Elapsed Time: 531
 8
->> Elapsed Time: 1144
+>> Elapsed Time: 995
 9
->> Elapsed Time: 2155
+>> Elapsed Time: 1907
 10
->> Elapsed Time: 4024
+>> Elapsed Time: 3724
 11
->> Elapsed Time: 7557
+>> Elapsed Time: 6733
 12
->> Elapsed Time: 12390
+>> Elapsed Time: 11421
 13
->> Elapsed Time: 18019
+>> Elapsed Time: 17865
 14
->> Elapsed Time: 28181
+>> Elapsed Time: 27712
 15
->> Elapsed Time: 42942
+>> Elapsed Time: 41927
 16
->> Elapsed Time: 63026
+>> Elapsed Time: 61387
 17
 Resizing node table from 50000017 to 50050003
 Resizing node table from 50050003 to 50099993
@@ -115,7 +115,7 @@ Resizing node table from 53798893 to 53848859
 Resizing node table from 53848859 to 53898851
 Resizing node table from 53898851 to 53948831
 Resizing node table from 53948831 to 53998823
->> Elapsed Time: 673207
+>> Elapsed Time: 669859
 18
 Resizing node table from 53998823 to 54048791
 Resizing node table from 54048791 to 54098791
@@ -430,5 +430,5 @@ Resizing node table from 69394261 to 69444253
 Resizing node table from 69444253 to 69494239
 Resizing node table from 69494239 to 69544231
 End Backward.
-Tempo gasto: 3656524
-Used memory is bytes: 1751075432
+Tempo gasto: 3694690
+Used memory is bytes: 1751070536

@@ -5,57 +5,55 @@ Heuristic computation
 1
 >> Elapsed Time: 9
 2
->> Elapsed Time: 20
+>> Elapsed Time: 7
 3
->> Elapsed Time: 27
+>> Elapsed Time: 22
 4
->> Elapsed Time: 51
-5
->> Elapsed Time: 108
-6
->> Elapsed Time: 128
-7
->> Elapsed Time: 225
-8
->> Elapsed Time: 302
-9
->> Elapsed Time: 462
-10
->> Elapsed Time: 534
-11
->> Elapsed Time: 647
-12
->> Elapsed Time: 718
-13
->> Elapsed Time: 775
-14
->> Elapsed Time: 844
-15
->> Elapsed Time: 804
-16
->> Elapsed Time: 827
-17
->> Elapsed Time: 1402
-18
->> Elapsed Time: 753
-19
->> Elapsed Time: 712
-20
->> Elapsed Time: 559
-21
->> Elapsed Time: 486
-22
->> Elapsed Time: 397
-23
->> Elapsed Time: 259
-24
->> Elapsed Time: 158
-25
->> Elapsed Time: 85
-26
 >> Elapsed Time: 39
-27
+5
+>> Elapsed Time: 83
+6
+>> Elapsed Time: 133
+7
+>> Elapsed Time: 226
+8
+>> Elapsed Time: 345
+9
+>> Elapsed Time: 483
+10
+>> Elapsed Time: 656
+11
+>> Elapsed Time: 746
+12
+>> Elapsed Time: 842
+13
+>> Elapsed Time: 933
+14
+>> Elapsed Time: 917
+15
+>> Elapsed Time: 954
+16
+>> Elapsed Time: 916
+17
+>> Elapsed Time: 887
+18
+>> Elapsed Time: 836
+19
+>> Elapsed Time: 762
+20
+>> Elapsed Time: 688
+21
+>> Elapsed Time: 539
+22
+>> Elapsed Time: 357
+23
+>> Elapsed Time: 199
+24
+>> Elapsed Time: 88
+25
+>> Elapsed Time: 33
+26
 END
 End Backward.
-Tempo gasto: 11359
-Used memory is bytes: 1365221264
+Tempo gasto: 11723
+Used memory is bytes: 1365221240

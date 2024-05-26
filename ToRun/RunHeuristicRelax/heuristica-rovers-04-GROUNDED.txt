@@ -3,23 +3,23 @@ initial: <0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13
 goal: <26:1, 28:1, 36:1>
 Heuristic computation
 1
->> Elapsed Time: 17
+>> Elapsed Time: 10
 2
->> Elapsed Time: 55
+>> Elapsed Time: 48
 3
->> Elapsed Time: 68
+>> Elapsed Time: 56
 4
->> Elapsed Time: 82
+>> Elapsed Time: 53
 5
->> Elapsed Time: 72
+>> Elapsed Time: 44
 6
->> Elapsed Time: 45
+>> Elapsed Time: 52
 7
->> Elapsed Time: 30
+>> Elapsed Time: 29
 8
->> Elapsed Time: 20
+>> Elapsed Time: 21
 9
 END
 End Backward.
-Tempo gasto: 402
-Used memory is bytes: 1365166832
+Tempo gasto: 319
+Used memory is bytes: 1357331384

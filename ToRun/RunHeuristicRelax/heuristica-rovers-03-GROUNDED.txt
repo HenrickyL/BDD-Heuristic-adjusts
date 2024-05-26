@@ -5,27 +5,27 @@ Heuristic computation
 1
 >> Elapsed Time: 8
 2
->> Elapsed Time: 9
+>> Elapsed Time: 8
 3
 >> Elapsed Time: 16
 4
 >> Elapsed Time: 23
 5
->> Elapsed Time: 29
+>> Elapsed Time: 37
 6
->> Elapsed Time: 29
+>> Elapsed Time: 20
 7
->> Elapsed Time: 19
+>> Elapsed Time: 25
 8
->> Elapsed Time: 11
+>> Elapsed Time: 22
 9
->> Elapsed Time: 8
+>> Elapsed Time: 11
 10
->> Elapsed Time: 4
+>> Elapsed Time: 5
 11
 >> Elapsed Time: 2
 12
 END
 End Backward.
-Tempo gasto: 169
+Tempo gasto: 191
 Used memory is bytes: 1365158024

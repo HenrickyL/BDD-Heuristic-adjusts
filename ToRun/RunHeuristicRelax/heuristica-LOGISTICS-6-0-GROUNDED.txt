@@ -7,57 +7,51 @@ Heuristic computation
 2
 >> Elapsed Time: 3
 3
->> Elapsed Time: 5
+>> Elapsed Time: 6
 4
 >> Elapsed Time: 10
 5
->> Elapsed Time: 14
+>> Elapsed Time: 13
 6
->> Elapsed Time: 18
+>> Elapsed Time: 31
 7
->> Elapsed Time: 22
+>> Elapsed Time: 30
 8
->> Elapsed Time: 43
+>> Elapsed Time: 36
 9
->> Elapsed Time: 51
+>> Elapsed Time: 59
 10
->> Elapsed Time: 63
+>> Elapsed Time: 74
 11
->> Elapsed Time: 67
-12
->> Elapsed Time: 74
-13
->> Elapsed Time: 86
-14
 >> Elapsed Time: 89
+12
+>> Elapsed Time: 95
+13
+>> Elapsed Time: 97
+14
+>> Elapsed Time: 114
 15
->> Elapsed Time: 86
+>> Elapsed Time: 105
 16
->> Elapsed Time: 83
+>> Elapsed Time: 103
 17
->> Elapsed Time: 82
+>> Elapsed Time: 104
 18
->> Elapsed Time: 74
+>> Elapsed Time: 89
 19
->> Elapsed Time: 67
+>> Elapsed Time: 88
 20
->> Elapsed Time: 61
+>> Elapsed Time: 76
 21
 >> Elapsed Time: 59
 22
->> Elapsed Time: 49
+>> Elapsed Time: 51
 23
->> Elapsed Time: 43
+>> Elapsed Time: 39
 24
->> Elapsed Time: 40
+>> Elapsed Time: 31
 25
->> Elapsed Time: 36
-26
->> Elapsed Time: 26
-27
->> Elapsed Time: 21
-28
 END
 End Backward.
-Tempo gasto: 1297
-Used memory is bytes: 1365168896
+Tempo gasto: 1431
+Used memory is bytes: 1365167392

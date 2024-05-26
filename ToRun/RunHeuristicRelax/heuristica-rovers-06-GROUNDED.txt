@@ -1,50 +1,74 @@
 Start Backward...
-initial: <0:0, 1:0, 2:1, 3:0, 4:1, 5:0, 6:1, 7:0, 8:1, 9:0, 10:1, 11:0, 12:0, 13:0, 14:0, 15:0, 16:1, 17:0, 18:0, 19:0, 20:0, 21:0, 22:1, 23:0, 24:0, 25:0, 26:0, 27:0, 28:0, 29:0, 30:1, 31:0, 32:0, 33:0, 34:0, 35:0, 36:1, 37:0, 38:0, 39:0, 40:0, 41:0, 42:1, 43:0, 44:0, 45:0, 46:0, 47:0, 48:0, 49:0, 50:1, 51:0, 52:0, 53:0, 54:0, 55:0, 56:1, 57:0, 58:0, 59:0, 60:0, 61:0, 62:1, 63:0, 64:0, 65:0, 66:0, 67:0, 68:0, 69:0, 70:0, 71:0, 72:0, 73:0, 74:0, 75:0, 76:0, 77:0, 78:0, 79:0, 80:0, 81:0, 82:0, 83:0, 84:0, 85:0, 86:0, 87:0, 88:0, 89:0, 90:0, 91:0, 92:0, 93:0, 94:0, 95:0, 96:0, 97:0, 98:0>
-goal: <0:0, 1:0, 2:1, 3:0, 4:1, 5:0, 6:1, 7:0, 8:1, 9:0, 10:1, 11:0, 12:0, 13:0, 14:0, 15:0, 16:0, 17:0, 18:0, 19:1, 20:0, 21:1, 22:0, 23:0, 24:0, 25:0, 26:0, 27:0, 28:0, 29:1, 30:0, 31:0, 32:0, 33:0, 34:1, 35:0, 36:0, 37:0, 38:0, 39:0, 40:0, 41:0, 42:1, 43:0, 44:0, 45:0, 46:0, 47:1, 48:0, 49:0, 50:0, 51:0, 52:0, 53:0, 54:0, 55:0, 56:1, 57:0, 58:1, 59:0, 60:0, 61:0, 62:0, 63:0, 64:0, 65:0, 66:0, 67:0, 68:0, 69:0, 70:0, 71:0, 72:0, 73:0, 74:0, 75:0, 76:0, 77:0, 78:0, 79:0, 80:0, 81:0, 82:0, 83:0, 84:0, 85:0, 86:0, 87:0, 88:0, 89:0, 90:0, 91:0, 92:0, 93:0, 94:0, 95:0, 96:0, 97:0, 98:0>
+initial: <0:0, 1:0, 2:0, 3:0, 4:0, 5:1, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0, 16:0, 17:0, 18:0, 19:0, 20:0, 21:0, 22:0, 23:0, 24:0, 25:0, 26:0, 27:0, 28:0, 29:0, 30:0, 31:0, 32:0, 33:0, 34:0, 35:0, 36:0, 37:0, 38:0, 39:0, 40:0, 41:0, 42:0, 43:0, 44:0, 45:0, 46:0, 47:0, 48:1, 49:1, 50:1, 51:1, 52:1, 53:1, 54:1, 55:1, 56:1, 57:1, 58:1, 59:1, 60:1, 61:1, 62:1>
+goal: <0:0, 1:0, 2:0, 3:0, 4:0, 5:1, 6:1, 7:0, 8:0, 9:0, 10:1, 11:1, 12:0, 13:1, 14:1, 15:1, 16:1, 17:1, 18:0, 19:0, 20:0, 21:0, 22:0, 23:1, 24:0, 25:0, 26:0, 27:1, 28:1, 29:1, 30:1, 31:0, 32:1, 33:1, 34:1, 35:1, 36:1, 37:1, 38:0, 39:1, 40:0, 41:0, 42:0, 43:0, 44:1, 45:0, 46:1, 47:0, 48:1, 49:1, 50:0, 51:1, 52:0, 53:1, 54:0, 55:0, 56:1, 57:0, 58:0, 59:1, 60:0, 61:0, 62:0>
 Heuristic computation
 1
->> Elapsed Time: 8
+>> Elapsed Time: 9
 2
->> Elapsed Time: 7
+>> Elapsed Time: 9
 3
->> Elapsed Time: 33
+>> Elapsed Time: 11
 4
->> Elapsed Time: 85
+>> Elapsed Time: 26
 5
->> Elapsed Time: 124
+>> Elapsed Time: 62
 6
->> Elapsed Time: 296
+>> Elapsed Time: 107
 7
->> Elapsed Time: 548
+>> Elapsed Time: 159
 8
->> Elapsed Time: 1144
+>> Elapsed Time: 293
 9
->> Elapsed Time: 2155
+>> Elapsed Time: 498
 10
->> Elapsed Time: 4024
+>> Elapsed Time: 783
 11
->> Elapsed Time: 7557
+>> Elapsed Time: 1230
 12
->> Elapsed Time: 12390
+>> Elapsed Time: 1873
 13
->> Elapsed Time: 18019
+>> Elapsed Time: 2798
 14
->> Elapsed Time: 28181
+>> Elapsed Time: 4144
 15
->> Elapsed Time: 42942
+>> Elapsed Time: 5957
 16
->> Elapsed Time: 63026
+>> Elapsed Time: 7997
 17
+>> Elapsed Time: 10334
+18
+>> Elapsed Time: 12775
+19
+>> Elapsed Time: 15196
+20
+>> Elapsed Time: 17877
+21
+>> Elapsed Time: 20358
+22
+>> Elapsed Time: 26120
+23
+>> Elapsed Time: 24811
+24
+>> Elapsed Time: 30900
+25
 Resizing node table from 50000017 to 50050003
+>> Elapsed Time: 39616
+26
 Resizing node table from 50050003 to 50099993
+>> Elapsed Time: 36140
+27
 Resizing node table from 50099993 to 50149993
 Resizing node table from 50149993 to 50199991
 Resizing node table from 50199991 to 50249987
+>> Elapsed Time: 51398
+28
 Resizing node table from 50249987 to 50299987
 Resizing node table from 50299987 to 50349953
 Resizing node table from 50349953 to 50399953
 Resizing node table from 50399953 to 50449951
 Resizing node table from 50449951 to 50499923
+>> Elapsed Time: 71999
+29
 Resizing node table from 50499923 to 50549921
 Resizing node table from 50549921 to 50599921
 Resizing node table from 50599921 to 50649881
@@ -74,6 +98,8 @@ Resizing node table from 51749519 to 51799507
 Resizing node table from 51799507 to 51849503
 Resizing node table from 51849503 to 51899503
 Resizing node table from 51899503 to 51949453
+>> Elapsed Time: 260103
+30
 Resizing node table from 51949453 to 51999397
 Resizing node table from 51999397 to 52049369
 Resizing node table from 52049369 to 52099363
@@ -115,8 +141,6 @@ Resizing node table from 53798893 to 53848859
 Resizing node table from 53848859 to 53898851
 Resizing node table from 53898851 to 53948831
 Resizing node table from 53948831 to 53998823
->> Elapsed Time: 673207
-18
 Resizing node table from 53998823 to 54048791
 Resizing node table from 54048791 to 54098791
 Resizing node table from 54098791 to 54148769
@@ -129,6 +153,8 @@ Resizing node table from 54398737 to 54448733
 Resizing node table from 54448733 to 54498733
 Resizing node table from 54498733 to 54548731
 Resizing node table from 54548731 to 54598729
+>> Elapsed Time: 460687
+31
 Resizing node table from 54598729 to 54648719
 Resizing node table from 54648719 to 54698719
 Resizing node table from 54698719 to 54748711
@@ -178,6 +204,8 @@ Resizing node table from 56848061 to 56898053
 Resizing node table from 56898053 to 56948053
 Resizing node table from 56948053 to 56998049
 Resizing node table from 56998049 to 57048037
+>> Elapsed Time: 440409
+32
 Resizing node table from 57048037 to 57098011
 Resizing node table from 57098011 to 57147983
 Resizing node table from 57147983 to 57197981
@@ -224,6 +252,8 @@ Resizing node table from 59147371 to 59197363
 Resizing node table from 59197363 to 59247359
 Resizing node table from 59247359 to 59297351
 Resizing node table from 59297351 to 59347349
+>> Elapsed Time: 429600
+33
 Resizing node table from 59347349 to 59397277
 Resizing node table from 59397277 to 59447233
 Resizing node table from 59447233 to 59497223
@@ -262,6 +292,8 @@ Resizing node table from 61046701 to 61096699
 Resizing node table from 61096699 to 61146689
 Resizing node table from 61146689 to 61196689
 Resizing node table from 61196689 to 61246681
+>> Elapsed Time: 373095
+34
 Resizing node table from 61246681 to 61296671
 Resizing node table from 61296671 to 61346669
 Resizing node table from 61346669 to 61396669
@@ -291,6 +323,8 @@ Resizing node table from 62496389 to 62546389
 Resizing node table from 62546389 to 62596349
 Resizing node table from 62596349 to 62646349
 Resizing node table from 62646349 to 62696327
+>> Elapsed Time: 282683
+35
 Resizing node table from 62696327 to 62746319
 Resizing node table from 62746319 to 62796313
 Resizing node table from 62796313 to 62846299
@@ -310,6 +344,8 @@ Resizing node table from 63446093 to 63496073
 Resizing node table from 63496073 to 63546071
 Resizing node table from 63546071 to 63596063
 Resizing node table from 63596063 to 63646049
+>> Elapsed Time: 193368
+36
 Resizing node table from 63646049 to 63696007
 Resizing node table from 63696007 to 63745961
 Resizing node table from 63745961 to 63795913
@@ -320,115 +356,25 @@ Resizing node table from 63945907 to 63995881
 Resizing node table from 63995881 to 64045879
 Resizing node table from 64045879 to 64095869
 Resizing node table from 64095869 to 64145863
+>> Elapsed Time: 104954
+37
 Resizing node table from 64145863 to 64195847
 Resizing node table from 64195847 to 64245847
-<< fim do proceso - excedeu 1800000 ms
 Resizing node table from 64245847 to 64295801
 Resizing node table from 64295801 to 64345783
+>> Elapsed Time: 44874
+38
 Resizing node table from 64345783 to 64395761
 Resizing node table from 64395761 to 64445753
 Resizing node table from 64445753 to 64495751
+>> Elapsed Time: 32341
+39
 Resizing node table from 64495751 to 64545749
-Resizing node table from 64545749 to 64595743
-Resizing node table from 64595743 to 64645729
-Resizing node table from 64645729 to 64695713
-Resizing node table from 64695713 to 64745687
-Resizing node table from 64745687 to 64795667
-Resizing node table from 64795667 to 64845637
-Resizing node table from 64845637 to 64895629
-Resizing node table from 64895629 to 64945603
-Resizing node table from 64945603 to 64995587
-Resizing node table from 64995587 to 65045551
-Resizing node table from 65045551 to 65095523
-Resizing node table from 65095523 to 65145523
-Resizing node table from 65145523 to 65195521
-Resizing node table from 65195521 to 65245517
-Resizing node table from 65245517 to 65295481
-Resizing node table from 65295481 to 65345479
-Resizing node table from 65345479 to 65395459
-Resizing node table from 65395459 to 65445451
-Resizing node table from 65445451 to 65495447
-Resizing node table from 65495447 to 65545433
-Resizing node table from 65545433 to 65595371
-Resizing node table from 65595371 to 65645353
-Resizing node table from 65645353 to 65695339
-Resizing node table from 65695339 to 65745331
-Resizing node table from 65745331 to 65795329
-Resizing node table from 65795329 to 65845321
-Resizing node table from 65845321 to 65895317
-Resizing node table from 65895317 to 65945317
-Resizing node table from 65945317 to 65995313
-Resizing node table from 65995313 to 66045313
-Resizing node table from 66045313 to 66095297
-Resizing node table from 66095297 to 66145297
-Resizing node table from 66145297 to 66195289
-Resizing node table from 66195289 to 66245287
-Resizing node table from 66245287 to 66295283
-Resizing node table from 66295283 to 66345269
-Resizing node table from 66345269 to 66395257
-Resizing node table from 66395257 to 66445237
-Resizing node table from 66445237 to 66495229
-Resizing node table from 66495229 to 66545197
-Resizing node table from 66545197 to 66595181
-Resizing node table from 66595181 to 66645169
-Resizing node table from 66645169 to 66695141
-Resizing node table from 66695141 to 66745117
-Resizing node table from 66745117 to 66795107
-Resizing node table from 66795107 to 66845099
-Resizing node table from 66845099 to 66895061
-Resizing node table from 66895061 to 66945059
-Resizing node table from 66945059 to 66995057
-Resizing node table from 66995057 to 67045049
-Resizing node table from 67045049 to 67095047
-Resizing node table from 67095047 to 67144997
-Resizing node table from 67144997 to 67194979
-Resizing node table from 67194979 to 67244977
-Resizing node table from 67244977 to 67294973
-Resizing node table from 67294973 to 67344967
-Resizing node table from 67344967 to 67394947
-Resizing node table from 67394947 to 67444943
-Resizing node table from 67444943 to 67494901
-Resizing node table from 67494901 to 67544891
-Resizing node table from 67544891 to 67594871
-Resizing node table from 67594871 to 67644869
-Resizing node table from 67644869 to 67694843
-Resizing node table from 67694843 to 67744829
-Resizing node table from 67744829 to 67794829
-Resizing node table from 67794829 to 67844827
-Resizing node table from 67844827 to 67894751
-Resizing node table from 67894751 to 67944727
-Resizing node table from 67944727 to 67994723
-Resizing node table from 67994723 to 68044679
-Resizing node table from 68044679 to 68094667
-Resizing node table from 68094667 to 68144651
-Resizing node table from 68144651 to 68194649
-Resizing node table from 68194649 to 68244643
-Resizing node table from 68244643 to 68294617
-Resizing node table from 68294617 to 68344609
-Resizing node table from 68344609 to 68394593
-Resizing node table from 68394593 to 68444591
-Resizing node table from 68444591 to 68494589
-Resizing node table from 68494589 to 68544583
-Resizing node table from 68544583 to 68594567
-Resizing node table from 68594567 to 68644567
-Resizing node table from 68644567 to 68694553
-Resizing node table from 68694553 to 68744537
-Resizing node table from 68744537 to 68794493
-Resizing node table from 68794493 to 68844491
-Resizing node table from 68844491 to 68894491
-Resizing node table from 68894491 to 68944489
-Resizing node table from 68944489 to 68994487
-Resizing node table from 68994487 to 69044449
-Resizing node table from 69044449 to 69094447
-Resizing node table from 69094447 to 69144443
-Resizing node table from 69144443 to 69194381
-Resizing node table from 69194381 to 69244381
-Resizing node table from 69244381 to 69294361
-Resizing node table from 69294361 to 69344291
-Resizing node table from 69344291 to 69394261
-Resizing node table from 69394261 to 69444253
-Resizing node table from 69444253 to 69494239
-Resizing node table from 69494239 to 69544231
+>> Elapsed Time: 10440
+40
+>> Elapsed Time: 595
+41
+END
 End Backward.
-Tempo gasto: 3656524
-Used memory is bytes: 1751075432
+Tempo gasto: 3016665
+Used memory is bytes: 1646226440
