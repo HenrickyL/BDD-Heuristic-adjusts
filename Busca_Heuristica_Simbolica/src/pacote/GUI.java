@@ -78,24 +78,24 @@ public class GUI {
 		initmemory = runtime.totalMemory() - runtime.freeMemory();
 		int t;
 		
-		if (args.length != 3) {
-            System.err.println("Usage: java GUI <type> <problem> <test>");
-            System.exit(1);
-        }
+//		if (args.length != 3) {
+//            System.err.println("Usage: java GUI <type> <problem> <test>");
+//            System.exit(1);
+//        }
 	
 		E_Types type = E_Types.heuristic;
         E_Problem problem = E_Problem.rovers;
         int test = 6;
 
-        try {
-        	
-            type = E_Types.valueOf(args[0].toLowerCase());
-            problem = E_Problem.valueOf(args[1].toLowerCase());
-            test = Integer.parseInt(args[2]);
-        } catch (IllegalArgumentException e) {
-            System.err.println("Invalid arguments.");
-            System.exit(1);
-        }
+//        try {
+//        	
+//            type = E_Types.valueOf(args[0].toLowerCase());
+//            problem = E_Problem.valueOf(args[1].toLowerCase());
+//            test = Integer.parseInt(args[2]);
+//        } catch (IllegalArgumentException e) {
+//            System.err.println("Invalid arguments.");
+//            System.exit(1);
+//        }
 
       
         try {

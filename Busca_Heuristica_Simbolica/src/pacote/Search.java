@@ -3,6 +3,10 @@ import java.io.IOException;
 import java.util.Vector;
 import net.sf.javabdd.BDD;
 import net.sf.javabdd.BDDFactory;
+import java.util.PriorityQueue;
+import java.util.Comparator;
+import java.util.Iterator;
+
 
 
 public class Search{
@@ -25,6 +29,7 @@ public class Search{
 	}
 	
 	public void heuristcSearch(ModelReader model, VerifyTime verify) throws IOException {
+		verify.setMaxTime(1000);
 		System.out.println("Start Backward...");
 		if(heuristicPlanBackward(verify) == true) {
 			System.out.println("End Backward.");
@@ -32,6 +37,7 @@ public class Search{
 			verify.setMaxTime(-1);//3h - 10800000
 //			System.out.println("Start Forward...");
 //			heuristicPlanForward(verify);
+			heuristicPlanForward2(verify);
 		}
 	}
 	
@@ -91,15 +97,22 @@ public class Search{
 		BDD Z = reached.id(); // Only new states reached	
 		BDD aux;
 		BDD teste;
+		
+		
+		
 		int i = 0; // pode funcionar como g - henricky
 		//fila de prioridade de bdds com valor f = g + h
 		//falta descobrir o valor de h para cada bdd na camada z
 		
-		
+	    PriorityQueue<Node> frontier = new PriorityQueue<>(new NodeComparator());
+	    frontier.add(new Node(Z,null, BDDHValues.size())); // Inicializa a fila de prioridade com g = 0
+		//h(n) do estado inicial é obtido através do vetor BDDHValues, onde o ultimo elemento é o mais proximo do inicial
+		//g(n) do estado inicial é zero
 		System.out.println("Progressive search");
 				
 		while(Z.isZero() == false){
 			System.out.println(i);
+			
 			aux = Z.and(goal.id());	
 	
 
@@ -114,8 +127,10 @@ public class Search{
 			/*chamar a progressão só para o BDD retornado pela função minHValue*/
 			
 			// Colocar minHvalue 
-			teste = minHvalue(BDDHValues, Z);
-			Z = progression(teste, verify); //Z = progression(teste);
+			minHvalue2(BDDHValues, Z);
+			Node BddHeuristic = frontier.poll();
+			teste = BddHeuristic.bdd.id();
+			Z = progression(teste != null? teste : Z, verify); //Z = progression(teste);
 						
 			Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
 			reached = reached.or(Z); //Union with the new reachable states
@@ -130,16 +145,126 @@ public class Search{
 			
 			i++; //g(n)
 		}
-		
-		
-		
-		
 		System.out.println("The problem is unsolvable.");
 		
 		return false;
 	}
-	//*********************************
 	
+	private boolean IsThereInExplored(Vector<BDD> explored, BDD item) {
+		for(BDD bdd : explored) {
+			if(bdd == item) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private void UpdateFrontier(PriorityQueue<Node> frontier, BDD Z, int value) {
+        BDD matchingElements = Z;
+        PriorityQueue<Node> tempQueue = new PriorityQueue<>();
+        BDD aux;
+        BDD father= null;
+        while (!frontier.isEmpty()) {
+        	Node current = frontier.poll();
+        	int f = current.getFValue();
+        	aux = current.bdd;
+            if (f == value) {
+            	matchingElements = matchingElements.or(aux);
+            	father = current.father;
+            } else {
+                tempQueue.add(current);
+            }
+        }
+
+        frontier.addAll(tempQueue);
+        Node newBdd = new Node(matchingElements, father, value);
+        frontier.add(newBdd);
+    }
+	
+	private void ReplaceElementInFrontier(PriorityQueue<Node> frontier, Node element) {
+		boolean found = false;
+		Iterator<Node> iterator = frontier.iterator();
+		
+		while (iterator.hasNext()) {
+			Node current = iterator.next();
+			if (current.bdd == element.bdd) {
+				iterator.remove();
+				found = true;
+				break;
+			}
+		}
+		
+		if (found) {
+			frontier.add(element);
+		}
+	}
+
+	
+	//*********************************
+	public boolean heuristicPlanForwardAStar(VerifyTime verify){
+		BDD initial = initialState.id();;
+		
+		Node node = new Node(initial, null, 0+ BDDHValues.size());// 
+	    PriorityQueue<Node> frontier = new PriorityQueue<>(new NodeComparator());
+	    Vector<BDD> explored = new Vector<BDD>();
+
+		BDD aux;
+		BDD current;
+		BDD test;
+		
+		Node child;
+		int g=1;
+		int h=0;
+		
+		frontier.add(node);
+		while(!frontier.isEmpty()) {
+			// if(frontier.isEmpty()) { //while condition
+			// 	System.out.println("The problem is unsolvable.");
+			// 	return false;
+			// }
+			node = frontier.poll();
+			current = node.bdd;
+			aux = current.and(goal.id());	
+			if (aux.toString().equals("") == false) {
+			 	System.out.println("The problem is solvable.");	
+			 	return true;
+			}
+			aux.free();
+			explored.add(current);
+			
+			for (Action a : actionSet) {
+				test = progressionQbf(current,a);
+				test = test.and(constraints);
+				h = minHvalue2(BDDHValues, test); // if not -1
+				int f = g+h;
+				if( !IsThereInExplored(explored, test) ||
+					!frontier.contains(test)) 
+				{
+					child = new Node(test, current, f);
+					frontier.add(child);
+				}if(frontier.contains(test)) {
+					Node replaced = new Node(test, current, f);
+					ReplaceElementInFrontier(frontier, replaced);
+					//se encontrar um bdd com mesmo valor de f e g
+					//devo juntar eles
+						//UpdateFrontier(frontier, teste, f); //pensar melhor
+				}
+			}
+			g++;	
+		}
+		return false;
+	}
+
+	public int minHvalue2(Vector<BDD> H, BDD X) {
+		BDD result;	
+		for (int i = 0; i < H.size(); i++) {
+	        result = X.and(H.get(i));
+	        if (!result.isZero()) {
+	        	return i;
+	        }
+	    }
+		return -1;
+	}
 	
 	
 	
@@ -158,6 +283,8 @@ public class Search{
 		}
 		return null;
 	}
+	
+	
 	
 	public boolean planForward(VerifyTime verify){
 		System.out.println("initial: " + initialState);
@@ -408,4 +535,31 @@ public class Search{
 			}
 		return  reg;
  	}
+	
+	
+	
+	/***********************************/
+	public class Node {
+	    BDD bdd;
+	    BDD father;
+	    int fn; //f(n) = g(n) + h(n)
+
+	    public Node(BDD bdd, BDD father, int f) {
+	        this.bdd = bdd;
+	        this.fn = f; 
+	        this.father = father;
+	    }
+
+	    public int getFValue() {
+	        return this.fn;
+	    }
+	    
+	}
+
+	class NodeComparator implements Comparator<Node> {
+	    public int compare(Node b1, Node b2) {
+	        return Integer.compare(b1.getFValue(), b2.getFValue());
+	    }
+	}
 }
+
