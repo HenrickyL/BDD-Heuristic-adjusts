@@ -28,21 +28,22 @@ public class Search{
 		this.numProp = model.getPropNum();
 	}
 	
-	public void heuristcSearch(ModelReader model, VerifyTime verify) throws IOException {
-		verify.setMaxTime(1000);
+	public void heuristcSearch(ModelReader model, TimeManager verify) throws IOException {
+		verify.setMaxTime(1000*60*1);
 		System.out.println("Start Backward...");
 		if(heuristicPlanBackward(verify) == true) {
 			System.out.println("End Backward.");
 			verify.resetStartTime();
 			verify.setMaxTime(-1);//3h - 10800000
-//			System.out.println("Start Forward...");
+			System.out.println("Start Forward...");
 //			heuristicPlanForward(verify);
-			heuristicPlanForward2(verify);
+//			heuristicPlanForward2(verify);
+			heuristicPlanForwardAStar(verify);
 		}
 	}
 	
 	/* Forward search from the initial state, towards a goal state. */
-	public boolean heuristicPlanForward(VerifyTime verify){
+	public boolean heuristicPlanForward(TimeManager verify){
 	//	System.out.println("initial: " + initialState);
 	//	System.out.println("goal: " + goal);
 		BDD reached = initialState.id(); //accumulates the reached set of states.
@@ -92,7 +93,7 @@ public class Search{
 	
 	//*********************************
 	/* Forward search from the initial state, towards a goal state. */
-	public boolean heuristicPlanForward2(VerifyTime verify){	
+	public boolean heuristicPlanForward2(TimeManager verify){	
 		BDD reached = initialState.id(); //accumulates the reached set of states.
 		BDD Z = reached.id(); // Only new states reached	
 		BDD aux;
@@ -201,7 +202,8 @@ public class Search{
 
 	
 	//*********************************
-	public boolean heuristicPlanForwardAStar(VerifyTime verify){
+	public boolean heuristicPlanForwardAStar(TimeManager verify){
+		System.out.println("A* Forward...");
 		BDD initial = initialState.id();;
 		
 		Node node = new Node(initial, null, 0+ BDDHValues.size());// 
@@ -218,10 +220,6 @@ public class Search{
 		
 		frontier.add(node);
 		while(!frontier.isEmpty()) {
-			// if(frontier.isEmpty()) { //while condition
-			// 	System.out.println("The problem is unsolvable.");
-			// 	return false;
-			// }
 			node = frontier.poll();
 			current = node.bdd;
 			aux = current.and(goal.id());	
@@ -234,15 +232,21 @@ public class Search{
 			
 			for (Action a : actionSet) {
 				test = progressionQbf(current,a);
-				test = test.and(constraints);
+				if(test.toString().equals("")) {
+					continue; // acao a nao aplicavel ao estado current
+				}
+				//test = test.and(constraints);
 				h = minHvalue2(BDDHValues, test); // if not -1
+				System.out.println("h:"+ h+" | "+ a.getName());
+				
+			
 				int f = g+h;
 				if( !IsThereInExplored(explored, test) ||
 					!frontier.contains(test)) 
 				{
 					child = new Node(test, current, f);
 					frontier.add(child);
-				}if(frontier.contains(test)) {
+				}else if(frontier.contains(test)) {
 					Node replaced = new Node(test, current, f);
 					ReplaceElementInFrontier(frontier, replaced);
 					//se encontrar um bdd com mesmo valor de f e g
@@ -250,7 +254,11 @@ public class Search{
 						//UpdateFrontier(frontier, teste, f); //pensar melhor
 				}
 			}
-			g++;	
+			g++;
+			System.out.println("g="+g);
+			verify.PrintElapsedTime();
+			
+
 		}
 		return false;
 	}
@@ -259,6 +267,8 @@ public class Search{
 		BDD result;	
 		for (int i = 0; i < H.size(); i++) {
 	        result = X.and(H.get(i));
+	        //System.out.println("i: "+i);
+	        //H.get(i).printSet();
 	        if (!result.isZero()) {
 	        	return i;
 	        }
@@ -286,7 +296,7 @@ public class Search{
 	
 	
 	
-	public boolean planForward(VerifyTime verify){
+	public boolean planForward(TimeManager verify){
 		System.out.println("initial: " + initialState);
 		System.out.println("goal: " + goal);
 		BDD reached = initialState.id(); //accumulates the reached set of states.
@@ -330,7 +340,7 @@ public class Search{
 
 		
 	/* Deterministic Progression of a formula by a set of actions */
-	public BDD progression(BDD formula, VerifyTime verify){
+	public BDD progression(BDD formula, TimeManager verify){
 		BDD reg = null;	
 		BDD teste = null;
 		for (Action a : actionSet) {
@@ -358,7 +368,7 @@ public class Search{
 //			System.out.println("Ação aplicável: " + a.getName());
 			reg = reg.exist(a.getChange()); //qbf computation
 			reg = reg.and(a.getEffect()); //precondition(a) ^ E changes(a). test
-			reg = reg.and(constraints);
+			//reg = reg.and(constraints);
 		}
 		return  reg;
  	}
@@ -366,7 +376,7 @@ public class Search{
 	
 	
 	/* Backward search from the goal state, towards initial state. */
-	public boolean planBackward(VerifyTime verify) throws IOException{
+	public boolean planBackward(TimeManager verify) throws IOException{
 		BDD reached = goal.id(); //accumulates the reached set of states.
 		BDD Z = reached.id(); // Only new states reached	
 		BDD aux;	
@@ -398,7 +408,7 @@ public class Search{
 	
 	/*Busca regressiva no problema relaxado (sem efeitos negativos)*/
 	/*Ao computar os estados regredidos, colocar os novos estados alcançados em um vetor de BDDs*/
-	public boolean heuristicPlanBackward(VerifyTime verify) throws IOException{
+	public boolean heuristicPlanBackward(TimeManager verify) throws IOException{
 		onHeuristicPlanBackwardHasIncomplateRegression = false;
 		//System.out.println("Performing heuristic search in a relaxed problem");
 		System.out.println("initial: " + initialState);
@@ -464,7 +474,7 @@ public class Search{
 	
 	
 	/* Deterministic Regression of a formula by a set of actions */
-	public BDD regression(BDD formula, VerifyTime verify){
+	public BDD regression(BDD formula, TimeManager verify){
 		BDD reg = null;	
 		BDD teste = null;
 		for (Action a : actionSet) {
@@ -482,13 +492,13 @@ public class Search{
 		return reg;
 	}
 	
-	public BDD heuristicRegression(BDD formula, VerifyTime verify){
+	public BDD heuristicRegression(BDD formula, TimeManager verify){
 		BDD reg = null;	
 		BDD teste = null;
 		for (Action a : actionSet) {
 			//System.out.println(a.getName());
 			teste = regressionQbf(formula,a);//heuristicRegressionQbf(formula,a) - henricky;
-			teste = teste.and(constraints);
+			//teste = teste.and(constraints);
 			if(reg == null){
 				reg = teste;
 			}else{

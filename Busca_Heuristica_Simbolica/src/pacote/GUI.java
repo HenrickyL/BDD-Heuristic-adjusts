@@ -9,47 +9,7 @@ import java.util.Scanner;
 /* Implementation of the algorithms that performs backward planning, using regression.
  * The method proposed by [Fourmann, 2000] and the method proposed  by "[Ritanen, 2008]" */
 
-class VerifyTime {
-	private long startTime;
-	private long initmemory;
-	private Runtime runtime;
-	private long last = 0;
-	private static long maxTime = 1800000;//30min - 1800000
-	VerifyTime(long _startTime, long _initmemory, Runtime _runtime){
-		startTime = _startTime;
-		initmemory = _initmemory;
-		runtime = _runtime;
-	}
-	
-	void resetStartTime() {
-		startTime = System.currentTimeMillis();
-		last =0;
-	}
-	
-	void setMaxTime(int value) {
-		maxTime = value;
-		last =0;
-	}
-	
-	void PrintElapsedTime() {
-		long current = System.currentTimeMillis();
-		long elapsed = current - startTime;
-		System.out.println(">> Elapsed Time: "+ elapsed);
-	}
-    boolean onTime() {
-    	long current = System.currentTimeMillis();
-		long elapsed = current - startTime;
-//		System.out.println(">> Elapsed Time: "+ elapsed);
-//		long memory = runtime.totalMemory() - runtime.freeMemory();
-//		System.out.println(">> memory: " + (memory - initmemory));
-		if(maxTime > 0 && (elapsed >= maxTime || (last > 0 && elapsed+(current-last) >= maxTime))){
-			System.out.println("<< fim do proceso - excedeu "+maxTime+" ms");
-			return true;
-		};
-		last = current;
-		return false;
-    }
-}
+
 
 public class GUI {
 	
@@ -85,7 +45,7 @@ public class GUI {
 	
 		E_Types type = E_Types.heuristic;
         E_Problem problem = E_Problem.rovers;
-        int test = 6;
+        int test = 2;
 
 //        try {
 //        	
@@ -255,7 +215,7 @@ public class GUI {
 				System.setOut(out);
 //				System.setErr(out);
 				long start = System.currentTimeMillis();
-				VerifyTime verify = new VerifyTime(start, initmemory, runtime);
+				TimeManager verify = new TimeManager(start, initmemory, runtime);
 				verify.setMaxTime(10800000);
 			    s.planForward(verify);
 			    long end = System.currentTimeMillis();
@@ -275,7 +235,7 @@ public class GUI {
 				System.setOut(out2);
 //				System.setErr(out2);
 				long start = System.currentTimeMillis();
-			    r.heuristcSearch(model,new VerifyTime(start, initmemory, runtime));
+			    r.heuristcSearch(model,new TimeManager(start, initmemory, runtime));
 			    long end = System.currentTimeMillis();
 			    System.out.println("Tempo gasto: " + (end - start));
 				

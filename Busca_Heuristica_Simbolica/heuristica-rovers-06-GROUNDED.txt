@@ -3,35 +3,6997 @@ initial: <0:0, 1:0, 2:0, 3:0, 4:0, 5:1, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13
 goal: <0:0, 1:0, 2:0, 3:0, 4:0, 5:1, 6:1, 7:0, 8:0, 9:0, 10:1, 11:1, 12:0, 13:1, 14:1, 15:1, 16:1, 17:1, 18:0, 19:0, 20:0, 21:0, 22:0, 23:1, 24:0, 25:0, 26:0, 27:1, 28:1, 29:1, 30:1, 31:0, 32:1, 33:1, 34:1, 35:1, 36:1, 37:1, 38:0, 39:1, 40:0, 41:0, 42:0, 43:0, 44:1, 45:0, 46:1, 47:0, 48:1, 49:1, 50:0, 51:1, 52:0, 53:1, 54:0, 55:0, 56:1, 57:0, 58:0, 59:1, 60:0, 61:0, 62:0>
 Heuristic computation
 1
->> Elapsed Time: 7
+>> Elapsed Time: 6
 2
 >> Elapsed Time: 8
 3
->> Elapsed Time: 13
+>> Elapsed Time: 14
 4
->> Elapsed Time: 35
+>> Elapsed Time: 26
 5
->> Elapsed Time: 63
+>> Elapsed Time: 65
 6
->> Elapsed Time: 118
+>> Elapsed Time: 100
 7
->> Elapsed Time: 164
+>> Elapsed Time: 144
 8
->> Elapsed Time: 234
+>> Elapsed Time: 226
 9
->> Elapsed Time: 397
+>> Elapsed Time: 387
 10
->> Elapsed Time: 651
+>> Elapsed Time: 670
 11
->> Elapsed Time: 1039
+>> Elapsed Time: 1021
 12
-<< fim do proceso - excedeu 1000 ms
+>> Elapsed Time: 1540
+13
+>> Elapsed Time: 2339
+14
+>> Elapsed Time: 3503
+15
+>> Elapsed Time: 5070
+16
+>> Elapsed Time: 6900
+17
+>> Elapsed Time: 8981
+18
+>> Elapsed Time: 11203
+19
+>> Elapsed Time: 13622
+20
+>> Elapsed Time: 15978
+21
+>> Elapsed Time: 18453
+22
+Resizing node table from 50000017 to 50050003
+>> Elapsed Time: 25943
+23
+>> Elapsed Time: 23380
+24
+>> Elapsed Time: 25045
+25
+>> Elapsed Time: 30172
+26
+>> Elapsed Time: 31065
+27
+Resizing node table from 50050003 to 50099993
+Resizing node table from 50099993 to 50149993
+>> Elapsed Time: 41532
+28
+Resizing node table from 50149993 to 50199991
+Resizing node table from 50199991 to 50249987
+>> Elapsed Time: 41762
+29
+Resizing node table from 50249987 to 50299987
+Resizing node table from 50299987 to 50349953
+Resizing node table from 50349953 to 50399953
+>> Elapsed Time: 51076
+30
+Resizing node table from 50399953 to 50449951
+Resizing node table from 50449951 to 50499923
+Resizing node table from 50499923 to 50549921
+Resizing node table from 50549921 to 50599921
+Resizing node table from 50599921 to 50649881
+Resizing node table from 50649881 to 50699867
+<< fim do proceso - excedeu 60000 ms
+Resizing node table from 50699867 to 50749859
+Resizing node table from 50749859 to 50799857
+Resizing node table from 50799857 to 50849819
+Resizing node table from 50849819 to 50899813
+Resizing node table from 50899813 to 50949791
+Resizing node table from 50949791 to 50999791
+Resizing node table from 50999791 to 51049769
+Resizing node table from 51049769 to 51099733
+Resizing node table from 51099733 to 51149731
+Resizing node table from 51149731 to 51199717
 End Backward.
-Progressive search
-0
->> Elapsed Time: 54168
-1
->> Elapsed Time: 102495
-The problem is unsolvable.
-Tempo gasto: 106421
-Used memory is bytes: 1349452112
+Start Forward...
+A* Forward...
+g=2
+>> Elapsed Time: 5
+g=3
+>> Elapsed Time: 5
+g=4
+>> Elapsed Time: 6
+g=5
+>> Elapsed Time: 8
+g=6
+>> Elapsed Time: 9
+g=7
+>> Elapsed Time: 10
+g=8
+>> Elapsed Time: 12
+g=9
+>> Elapsed Time: 14
+g=10
+>> Elapsed Time: 16
+g=11
+>> Elapsed Time: 20
+g=12
+>> Elapsed Time: 21
+g=13
+>> Elapsed Time: 21
+g=14
+>> Elapsed Time: 22
+g=15
+>> Elapsed Time: 22
+g=16
+>> Elapsed Time: 23
+g=17
+>> Elapsed Time: 24
+g=18
+>> Elapsed Time: 24
+g=19
+>> Elapsed Time: 25
+g=20
+>> Elapsed Time: 26
+g=21
+>> Elapsed Time: 26
+g=22
+>> Elapsed Time: 27
+g=23
+>> Elapsed Time: 28
+g=24
+>> Elapsed Time: 29
+g=25
+>> Elapsed Time: 29
+g=26
+>> Elapsed Time: 30
+g=27
+>> Elapsed Time: 31
+g=28
+>> Elapsed Time: 32
+g=29
+>> Elapsed Time: 33
+g=30
+>> Elapsed Time: 34
+g=31
+>> Elapsed Time: 35
+g=32
+>> Elapsed Time: 36
+g=33
+>> Elapsed Time: 37
+g=34
+>> Elapsed Time: 38
+g=35
+>> Elapsed Time: 39
+g=36
+>> Elapsed Time: 40
+g=37
+>> Elapsed Time: 42
+g=38
+>> Elapsed Time: 43
+g=39
+>> Elapsed Time: 44
+g=40
+>> Elapsed Time: 45
+g=41
+>> Elapsed Time: 47
+g=42
+>> Elapsed Time: 48
+g=43
+>> Elapsed Time: 50
+g=44
+>> Elapsed Time: 52
+g=45
+>> Elapsed Time: 53
+g=46
+>> Elapsed Time: 55
+g=47
+>> Elapsed Time: 56
+g=48
+>> Elapsed Time: 58
+g=49
+>> Elapsed Time: 59
+g=50
+>> Elapsed Time: 61
+g=51
+>> Elapsed Time: 63
+g=52
+>> Elapsed Time: 64
+g=53
+>> Elapsed Time: 66
+g=54
+>> Elapsed Time: 68
+g=55
+>> Elapsed Time: 70
+g=56
+>> Elapsed Time: 72
+g=57
+>> Elapsed Time: 74
+g=58
+>> Elapsed Time: 76
+g=59
+>> Elapsed Time: 77
+g=60
+>> Elapsed Time: 79
+g=61
+>> Elapsed Time: 82
+g=62
+>> Elapsed Time: 84
+g=63
+>> Elapsed Time: 86
+g=64
+>> Elapsed Time: 88
+g=65
+>> Elapsed Time: 90
+g=66
+>> Elapsed Time: 92
+g=67
+>> Elapsed Time: 95
+g=68
+>> Elapsed Time: 97
+g=69
+>> Elapsed Time: 99
+g=70
+>> Elapsed Time: 101
+g=71
+>> Elapsed Time: 104
+g=72
+>> Elapsed Time: 106
+g=73
+>> Elapsed Time: 109
+g=74
+>> Elapsed Time: 111
+g=75
+>> Elapsed Time: 114
+g=76
+>> Elapsed Time: 116
+g=77
+>> Elapsed Time: 118
+g=78
+>> Elapsed Time: 122
+g=79
+>> Elapsed Time: 124
+g=80
+>> Elapsed Time: 127
+g=81
+>> Elapsed Time: 129
+g=82
+>> Elapsed Time: 132
+g=83
+>> Elapsed Time: 135
+g=84
+>> Elapsed Time: 138
+g=85
+>> Elapsed Time: 140
+g=86
+>> Elapsed Time: 143
+g=87
+>> Elapsed Time: 146
+g=88
+>> Elapsed Time: 149
+g=89
+>> Elapsed Time: 152
+g=90
+>> Elapsed Time: 154
+g=91
+>> Elapsed Time: 158
+g=92
+>> Elapsed Time: 161
+g=93
+>> Elapsed Time: 164
+g=94
+>> Elapsed Time: 167
+g=95
+>> Elapsed Time: 170
+g=96
+>> Elapsed Time: 173
+g=97
+>> Elapsed Time: 176
+g=98
+>> Elapsed Time: 180
+g=99
+>> Elapsed Time: 183
+g=100
+>> Elapsed Time: 186
+g=101
+>> Elapsed Time: 190
+g=102
+>> Elapsed Time: 193
+g=103
+>> Elapsed Time: 196
+g=104
+>> Elapsed Time: 200
+g=105
+>> Elapsed Time: 203
+g=106
+>> Elapsed Time: 206
+g=107
+>> Elapsed Time: 210
+g=108
+>> Elapsed Time: 213
+g=109
+>> Elapsed Time: 217
+g=110
+>> Elapsed Time: 220
+g=111
+>> Elapsed Time: 224
+g=112
+>> Elapsed Time: 227
+g=113
+>> Elapsed Time: 231
+g=114
+>> Elapsed Time: 235
+g=115
+>> Elapsed Time: 239
+g=116
+>> Elapsed Time: 242
+g=117
+>> Elapsed Time: 246
+g=118
+>> Elapsed Time: 250
+g=119
+>> Elapsed Time: 254
+g=120
+>> Elapsed Time: 258
+g=121
+>> Elapsed Time: 262
+g=122
+>> Elapsed Time: 266
+g=123
+>> Elapsed Time: 270
+g=124
+>> Elapsed Time: 274
+g=125
+>> Elapsed Time: 278
+g=126
+>> Elapsed Time: 282
+g=127
+>> Elapsed Time: 286
+g=128
+>> Elapsed Time: 291
+g=129
+>> Elapsed Time: 295
+g=130
+>> Elapsed Time: 299
+g=131
+>> Elapsed Time: 303
+g=132
+>> Elapsed Time: 307
+g=133
+>> Elapsed Time: 312
+g=134
+>> Elapsed Time: 317
+g=135
+>> Elapsed Time: 321
+g=136
+>> Elapsed Time: 326
+g=137
+>> Elapsed Time: 330
+g=138
+>> Elapsed Time: 335
+g=139
+>> Elapsed Time: 339
+g=140
+>> Elapsed Time: 344
+g=141
+>> Elapsed Time: 348
+g=142
+>> Elapsed Time: 353
+g=143
+>> Elapsed Time: 358
+g=144
+>> Elapsed Time: 362
+g=145
+>> Elapsed Time: 367
+g=146
+>> Elapsed Time: 372
+g=147
+>> Elapsed Time: 376
+g=148
+>> Elapsed Time: 381
+g=149
+>> Elapsed Time: 386
+g=150
+>> Elapsed Time: 391
+g=151
+>> Elapsed Time: 396
+g=152
+>> Elapsed Time: 400
+g=153
+>> Elapsed Time: 405
+g=154
+>> Elapsed Time: 410
+g=155
+>> Elapsed Time: 415
+g=156
+>> Elapsed Time: 420
+g=157
+>> Elapsed Time: 425
+g=158
+>> Elapsed Time: 430
+g=159
+>> Elapsed Time: 435
+g=160
+>> Elapsed Time: 440
+g=161
+>> Elapsed Time: 446
+g=162
+>> Elapsed Time: 451
+g=163
+>> Elapsed Time: 456
+g=164
+>> Elapsed Time: 462
+g=165
+>> Elapsed Time: 467
+g=166
+>> Elapsed Time: 472
+g=167
+>> Elapsed Time: 478
+g=168
+>> Elapsed Time: 483
+g=169
+>> Elapsed Time: 489
+g=170
+>> Elapsed Time: 494
+g=171
+>> Elapsed Time: 500
+g=172
+>> Elapsed Time: 505
+g=173
+>> Elapsed Time: 511
+g=174
+>> Elapsed Time: 517
+g=175
+>> Elapsed Time: 523
+g=176
+>> Elapsed Time: 528
+g=177
+>> Elapsed Time: 534
+g=178
+>> Elapsed Time: 540
+g=179
+>> Elapsed Time: 546
+g=180
+>> Elapsed Time: 552
+g=181
+>> Elapsed Time: 558
+g=182
+>> Elapsed Time: 564
+g=183
+>> Elapsed Time: 570
+g=184
+>> Elapsed Time: 576
+g=185
+>> Elapsed Time: 582
+g=186
+>> Elapsed Time: 589
+g=187
+>> Elapsed Time: 595
+g=188
+>> Elapsed Time: 602
+g=189
+>> Elapsed Time: 608
+g=190
+>> Elapsed Time: 615
+g=191
+>> Elapsed Time: 622
+g=192
+>> Elapsed Time: 629
+g=193
+>> Elapsed Time: 635
+g=194
+>> Elapsed Time: 642
+g=195
+>> Elapsed Time: 649
+g=196
+>> Elapsed Time: 655
+g=197
+>> Elapsed Time: 662
+g=198
+>> Elapsed Time: 669
+g=199
+>> Elapsed Time: 677
+g=200
+>> Elapsed Time: 683
+g=201
+>> Elapsed Time: 690
+g=202
+>> Elapsed Time: 700
+g=203
+>> Elapsed Time: 712
+g=204
+>> Elapsed Time: 719
+g=205
+>> Elapsed Time: 725
+g=206
+>> Elapsed Time: 733
+g=207
+>> Elapsed Time: 741
+g=208
+>> Elapsed Time: 748
+g=209
+>> Elapsed Time: 756
+g=210
+>> Elapsed Time: 763
+g=211
+>> Elapsed Time: 771
+g=212
+>> Elapsed Time: 779
+g=213
+>> Elapsed Time: 786
+g=214
+>> Elapsed Time: 794
+g=215
+>> Elapsed Time: 802
+g=216
+>> Elapsed Time: 810
+g=217
+>> Elapsed Time: 820
+g=218
+>> Elapsed Time: 828
+g=219
+>> Elapsed Time: 836
+g=220
+>> Elapsed Time: 845
+g=221
+>> Elapsed Time: 853
+g=222
+>> Elapsed Time: 862
+g=223
+>> Elapsed Time: 870
+g=224
+>> Elapsed Time: 879
+g=225
+>> Elapsed Time: 888
+g=226
+>> Elapsed Time: 897
+g=227
+>> Elapsed Time: 906
+g=228
+>> Elapsed Time: 916
+g=229
+>> Elapsed Time: 925
+g=230
+>> Elapsed Time: 935
+g=231
+>> Elapsed Time: 944
+g=232
+>> Elapsed Time: 954
+g=233
+>> Elapsed Time: 964
+g=234
+>> Elapsed Time: 975
+g=235
+>> Elapsed Time: 986
+g=236
+>> Elapsed Time: 997
+g=237
+>> Elapsed Time: 1008
+g=238
+>> Elapsed Time: 1018
+g=239
+>> Elapsed Time: 1030
+g=240
+>> Elapsed Time: 1041
+g=241
+>> Elapsed Time: 1053
+g=242
+>> Elapsed Time: 1064
+g=243
+>> Elapsed Time: 1076
+g=244
+>> Elapsed Time: 1087
+g=245
+>> Elapsed Time: 1099
+g=246
+>> Elapsed Time: 1111
+g=247
+>> Elapsed Time: 1124
+g=248
+>> Elapsed Time: 1136
+g=249
+>> Elapsed Time: 1149
+g=250
+>> Elapsed Time: 1162
+g=251
+>> Elapsed Time: 1175
+g=252
+>> Elapsed Time: 1189
+g=253
+>> Elapsed Time: 1203
+g=254
+>> Elapsed Time: 1219
+g=255
+>> Elapsed Time: 1233
+g=256
+>> Elapsed Time: 1249
+g=257
+>> Elapsed Time: 1265
+g=258
+>> Elapsed Time: 1281
+g=259
+>> Elapsed Time: 1298
+g=260
+>> Elapsed Time: 1314
+g=261
+>> Elapsed Time: 1332
+g=262
+>> Elapsed Time: 1350
+g=263
+>> Elapsed Time: 1368
+g=264
+>> Elapsed Time: 1386
+g=265
+>> Elapsed Time: 1404
+g=266
+>> Elapsed Time: 1422
+g=267
+>> Elapsed Time: 1442
+g=268
+>> Elapsed Time: 1461
+g=269
+>> Elapsed Time: 1480
+g=270
+>> Elapsed Time: 1501
+g=271
+>> Elapsed Time: 1528
+g=272
+>> Elapsed Time: 1549
+g=273
+>> Elapsed Time: 1572
+g=274
+>> Elapsed Time: 1596
+g=275
+>> Elapsed Time: 1621
+g=276
+>> Elapsed Time: 1646
+g=277
+>> Elapsed Time: 1671
+g=278
+>> Elapsed Time: 1695
+g=279
+>> Elapsed Time: 1720
+g=280
+>> Elapsed Time: 1745
+g=281
+>> Elapsed Time: 1771
+g=282
+>> Elapsed Time: 1797
+g=283
+>> Elapsed Time: 1824
+g=284
+>> Elapsed Time: 1852
+g=285
+>> Elapsed Time: 1880
+g=286
+>> Elapsed Time: 1907
+g=287
+>> Elapsed Time: 1935
+g=288
+>> Elapsed Time: 1963
+g=289
+>> Elapsed Time: 1992
+g=290
+>> Elapsed Time: 2020
+g=291
+>> Elapsed Time: 2050
+g=292
+>> Elapsed Time: 2080
+g=293
+>> Elapsed Time: 2111
+g=294
+>> Elapsed Time: 2142
+g=295
+>> Elapsed Time: 2173
+g=296
+>> Elapsed Time: 2203
+g=297
+>> Elapsed Time: 2234
+g=298
+>> Elapsed Time: 2266
+g=299
+>> Elapsed Time: 2298
+g=300
+>> Elapsed Time: 2331
+g=301
+>> Elapsed Time: 2364
+g=302
+>> Elapsed Time: 2397
+g=303
+>> Elapsed Time: 2431
+g=304
+>> Elapsed Time: 2465
+g=305
+>> Elapsed Time: 2499
+g=306
+>> Elapsed Time: 2534
+g=307
+>> Elapsed Time: 2569
+g=308
+>> Elapsed Time: 2603
+g=309
+>> Elapsed Time: 2639
+g=310
+>> Elapsed Time: 2675
+g=311
+>> Elapsed Time: 2711
+g=312
+>> Elapsed Time: 2748
+g=313
+>> Elapsed Time: 2785
+g=314
+>> Elapsed Time: 2822
+g=315
+>> Elapsed Time: 2858
+g=316
+>> Elapsed Time: 2898
+g=317
+>> Elapsed Time: 2937
+g=318
+>> Elapsed Time: 2976
+g=319
+>> Elapsed Time: 3014
+g=320
+>> Elapsed Time: 3053
+g=321
+>> Elapsed Time: 3093
+g=322
+>> Elapsed Time: 3132
+g=323
+>> Elapsed Time: 3173
+g=324
+>> Elapsed Time: 3214
+g=325
+>> Elapsed Time: 3256
+g=326
+>> Elapsed Time: 3297
+g=327
+>> Elapsed Time: 3340
+g=328
+>> Elapsed Time: 3382
+g=329
+>> Elapsed Time: 3424
+g=330
+>> Elapsed Time: 3466
+g=331
+>> Elapsed Time: 3509
+g=332
+>> Elapsed Time: 3552
+g=333
+>> Elapsed Time: 3596
+g=334
+>> Elapsed Time: 3640
+g=335
+>> Elapsed Time: 3683
+g=336
+>> Elapsed Time: 3740
+g=337
+>> Elapsed Time: 3785
+g=338
+>> Elapsed Time: 3831
+g=339
+>> Elapsed Time: 3877
+g=340
+>> Elapsed Time: 3923
+g=341
+>> Elapsed Time: 3967
+g=342
+>> Elapsed Time: 4011
+g=343
+>> Elapsed Time: 4054
+g=344
+>> Elapsed Time: 4099
+g=345
+>> Elapsed Time: 4145
+g=346
+>> Elapsed Time: 4191
+g=347
+>> Elapsed Time: 4237
+g=348
+>> Elapsed Time: 4282
+g=349
+>> Elapsed Time: 4328
+g=350
+>> Elapsed Time: 4373
+g=351
+>> Elapsed Time: 4423
+g=352
+>> Elapsed Time: 4472
+g=353
+>> Elapsed Time: 4521
+g=354
+>> Elapsed Time: 4571
+g=355
+>> Elapsed Time: 4621
+g=356
+>> Elapsed Time: 4670
+g=357
+>> Elapsed Time: 4721
+g=358
+>> Elapsed Time: 4773
+g=359
+>> Elapsed Time: 4824
+g=360
+>> Elapsed Time: 4876
+g=361
+>> Elapsed Time: 4929
+g=362
+>> Elapsed Time: 4981
+g=363
+>> Elapsed Time: 5034
+g=364
+>> Elapsed Time: 5087
+g=365
+>> Elapsed Time: 5141
+g=366
+>> Elapsed Time: 5194
+g=367
+>> Elapsed Time: 5248
+g=368
+>> Elapsed Time: 5303
+g=369
+>> Elapsed Time: 5357
+g=370
+>> Elapsed Time: 5411
+g=371
+>> Elapsed Time: 5467
+g=372
+>> Elapsed Time: 5522
+g=373
+>> Elapsed Time: 5577
+g=374
+>> Elapsed Time: 5633
+g=375
+>> Elapsed Time: 5689
+g=376
+>> Elapsed Time: 5745
+g=377
+>> Elapsed Time: 5801
+g=378
+>> Elapsed Time: 5858
+g=379
+>> Elapsed Time: 5915
+g=380
+>> Elapsed Time: 5972
+g=381
+>> Elapsed Time: 6029
+g=382
+>> Elapsed Time: 6086
+g=383
+>> Elapsed Time: 6143
+g=384
+>> Elapsed Time: 6201
+g=385
+>> Elapsed Time: 6260
+g=386
+>> Elapsed Time: 6320
+g=387
+>> Elapsed Time: 6379
+g=388
+>> Elapsed Time: 6439
+g=389
+>> Elapsed Time: 6498
+g=390
+>> Elapsed Time: 6558
+g=391
+>> Elapsed Time: 6618
+g=392
+>> Elapsed Time: 6678
+g=393
+>> Elapsed Time: 6739
+g=394
+>> Elapsed Time: 6800
+g=395
+>> Elapsed Time: 6863
+g=396
+>> Elapsed Time: 6925
+g=397
+>> Elapsed Time: 6986
+g=398
+>> Elapsed Time: 7048
+g=399
+>> Elapsed Time: 7110
+g=400
+>> Elapsed Time: 7174
+g=401
+>> Elapsed Time: 7238
+g=402
+>> Elapsed Time: 7302
+g=403
+>> Elapsed Time: 7366
+g=404
+>> Elapsed Time: 7429
+g=405
+>> Elapsed Time: 7494
+g=406
+>> Elapsed Time: 7557
+g=407
+>> Elapsed Time: 7620
+g=408
+>> Elapsed Time: 7686
+g=409
+>> Elapsed Time: 7750
+g=410
+>> Elapsed Time: 7814
+g=411
+>> Elapsed Time: 7880
+g=412
+>> Elapsed Time: 7945
+g=413
+>> Elapsed Time: 8010
+g=414
+>> Elapsed Time: 8076
+g=415
+>> Elapsed Time: 8142
+g=416
+>> Elapsed Time: 8208
+g=417
+>> Elapsed Time: 8272
+g=418
+>> Elapsed Time: 8341
+g=419
+>> Elapsed Time: 8416
+g=420
+>> Elapsed Time: 8482
+g=421
+>> Elapsed Time: 8550
+g=422
+>> Elapsed Time: 8626
+g=423
+>> Elapsed Time: 8709
+g=424
+>> Elapsed Time: 8776
+g=425
+>> Elapsed Time: 8844
+g=426
+>> Elapsed Time: 8913
+g=427
+>> Elapsed Time: 8982
+g=428
+>> Elapsed Time: 9050
+g=429
+>> Elapsed Time: 9119
+g=430
+>> Elapsed Time: 9188
+g=431
+>> Elapsed Time: 9257
+g=432
+>> Elapsed Time: 9327
+g=433
+>> Elapsed Time: 9397
+g=434
+>> Elapsed Time: 9470
+g=435
+>> Elapsed Time: 9540
+g=436
+>> Elapsed Time: 9613
+g=437
+>> Elapsed Time: 9686
+g=438
+>> Elapsed Time: 9757
+g=439
+>> Elapsed Time: 9828
+g=440
+>> Elapsed Time: 9900
+g=441
+>> Elapsed Time: 9972
+g=442
+>> Elapsed Time: 10044
+g=443
+>> Elapsed Time: 10117
+g=444
+>> Elapsed Time: 10188
+g=445
+>> Elapsed Time: 10262
+g=446
+>> Elapsed Time: 10335
+g=447
+>> Elapsed Time: 10409
+g=448
+>> Elapsed Time: 10484
+g=449
+>> Elapsed Time: 10558
+g=450
+>> Elapsed Time: 10631
+g=451
+>> Elapsed Time: 10713
+g=452
+>> Elapsed Time: 10820
+g=453
+>> Elapsed Time: 10893
+g=454
+>> Elapsed Time: 10969
+g=455
+>> Elapsed Time: 11043
+g=456
+>> Elapsed Time: 11118
+g=457
+>> Elapsed Time: 11193
+g=458
+>> Elapsed Time: 11271
+g=459
+>> Elapsed Time: 11346
+g=460
+>> Elapsed Time: 11423
+g=461
+>> Elapsed Time: 11499
+g=462
+>> Elapsed Time: 11575
+g=463
+>> Elapsed Time: 11652
+g=464
+>> Elapsed Time: 11729
+g=465
+>> Elapsed Time: 11806
+g=466
+>> Elapsed Time: 11883
+g=467
+>> Elapsed Time: 11961
+g=468
+>> Elapsed Time: 12038
+g=469
+>> Elapsed Time: 12116
+g=470
+>> Elapsed Time: 12194
+g=471
+>> Elapsed Time: 12272
+g=472
+>> Elapsed Time: 12350
+g=473
+>> Elapsed Time: 12427
+g=474
+>> Elapsed Time: 12505
+g=475
+>> Elapsed Time: 12582
+g=476
+>> Elapsed Time: 12659
+g=477
+>> Elapsed Time: 12738
+g=478
+>> Elapsed Time: 12815
+g=479
+>> Elapsed Time: 12894
+g=480
+>> Elapsed Time: 12973
+g=481
+>> Elapsed Time: 13051
+g=482
+>> Elapsed Time: 13130
+g=483
+>> Elapsed Time: 13209
+g=484
+>> Elapsed Time: 13288
+g=485
+>> Elapsed Time: 13369
+g=486
+>> Elapsed Time: 13449
+g=487
+>> Elapsed Time: 13529
+g=488
+>> Elapsed Time: 13609
+g=489
+>> Elapsed Time: 13689
+g=490
+>> Elapsed Time: 13770
+g=491
+>> Elapsed Time: 13855
+g=492
+>> Elapsed Time: 13938
+g=493
+>> Elapsed Time: 14022
+g=494
+>> Elapsed Time: 14106
+g=495
+>> Elapsed Time: 14189
+g=496
+>> Elapsed Time: 14273
+g=497
+>> Elapsed Time: 14357
+g=498
+>> Elapsed Time: 14441
+g=499
+>> Elapsed Time: 14523
+g=500
+>> Elapsed Time: 14607
+g=501
+>> Elapsed Time: 14690
+g=502
+>> Elapsed Time: 14774
+g=503
+>> Elapsed Time: 14859
+g=504
+>> Elapsed Time: 14944
+g=505
+>> Elapsed Time: 15031
+g=506
+>> Elapsed Time: 15116
+g=507
+>> Elapsed Time: 15200
+g=508
+>> Elapsed Time: 15286
+g=509
+>> Elapsed Time: 15371
+g=510
+>> Elapsed Time: 15457
+g=511
+>> Elapsed Time: 15542
+g=512
+>> Elapsed Time: 15629
+g=513
+>> Elapsed Time: 15714
+g=514
+>> Elapsed Time: 15801
+g=515
+>> Elapsed Time: 15888
+g=516
+>> Elapsed Time: 15974
+g=517
+>> Elapsed Time: 16061
+g=518
+>> Elapsed Time: 16149
+g=519
+>> Elapsed Time: 16237
+g=520
+>> Elapsed Time: 16325
+g=521
+>> Elapsed Time: 16413
+g=522
+>> Elapsed Time: 16500
+g=523
+>> Elapsed Time: 16588
+g=524
+>> Elapsed Time: 16676
+g=525
+>> Elapsed Time: 16765
+g=526
+>> Elapsed Time: 16854
+g=527
+>> Elapsed Time: 16943
+g=528
+>> Elapsed Time: 17032
+g=529
+>> Elapsed Time: 17121
+g=530
+>> Elapsed Time: 17210
+g=531
+>> Elapsed Time: 17301
+g=532
+>> Elapsed Time: 17391
+g=533
+>> Elapsed Time: 17483
+g=534
+>> Elapsed Time: 17575
+g=535
+>> Elapsed Time: 17667
+g=536
+>> Elapsed Time: 17814
+g=537
+>> Elapsed Time: 17910
+g=538
+>> Elapsed Time: 18004
+g=539
+>> Elapsed Time: 18098
+g=540
+>> Elapsed Time: 18191
+g=541
+>> Elapsed Time: 18284
+g=542
+>> Elapsed Time: 18376
+g=543
+>> Elapsed Time: 18471
+g=544
+>> Elapsed Time: 18566
+g=545
+>> Elapsed Time: 18659
+g=546
+>> Elapsed Time: 18754
+g=547
+>> Elapsed Time: 18849
+g=548
+>> Elapsed Time: 18944
+g=549
+>> Elapsed Time: 19039
+g=550
+>> Elapsed Time: 19133
+g=551
+>> Elapsed Time: 19229
+g=552
+>> Elapsed Time: 19325
+g=553
+>> Elapsed Time: 19420
+g=554
+>> Elapsed Time: 19517
+g=555
+>> Elapsed Time: 19613
+g=556
+>> Elapsed Time: 19709
+g=557
+>> Elapsed Time: 19805
+g=558
+>> Elapsed Time: 19902
+g=559
+>> Elapsed Time: 19996
+g=560
+>> Elapsed Time: 20093
+g=561
+>> Elapsed Time: 20191
+g=562
+>> Elapsed Time: 20289
+g=563
+>> Elapsed Time: 20386
+g=564
+>> Elapsed Time: 20486
+g=565
+>> Elapsed Time: 20586
+g=566
+>> Elapsed Time: 20683
+g=567
+>> Elapsed Time: 20781
+g=568
+>> Elapsed Time: 20887
+g=569
+>> Elapsed Time: 20998
+g=570
+>> Elapsed Time: 21094
+g=571
+>> Elapsed Time: 21193
+g=572
+>> Elapsed Time: 21290
+g=573
+>> Elapsed Time: 21388
+g=574
+>> Elapsed Time: 21488
+g=575
+>> Elapsed Time: 21593
+g=576
+>> Elapsed Time: 21710
+g=577
+>> Elapsed Time: 21827
+g=578
+>> Elapsed Time: 21948
+g=579
+>> Elapsed Time: 22047
+g=580
+>> Elapsed Time: 22146
+g=581
+>> Elapsed Time: 22246
+g=582
+>> Elapsed Time: 22345
+g=583
+>> Elapsed Time: 22446
+g=584
+>> Elapsed Time: 22547
+g=585
+>> Elapsed Time: 22649
+g=586
+>> Elapsed Time: 22749
+g=587
+>> Elapsed Time: 22850
+g=588
+>> Elapsed Time: 22953
+g=589
+>> Elapsed Time: 23054
+g=590
+>> Elapsed Time: 23156
+g=591
+>> Elapsed Time: 23257
+g=592
+>> Elapsed Time: 23361
+g=593
+>> Elapsed Time: 23469
+g=594
+>> Elapsed Time: 23572
+g=595
+>> Elapsed Time: 23679
+g=596
+>> Elapsed Time: 23784
+g=597
+>> Elapsed Time: 23888
+g=598
+>> Elapsed Time: 23992
+g=599
+>> Elapsed Time: 24096
+g=600
+>> Elapsed Time: 24201
+g=601
+>> Elapsed Time: 24305
+g=602
+>> Elapsed Time: 24410
+g=603
+>> Elapsed Time: 24514
+g=604
+>> Elapsed Time: 24619
+g=605
+>> Elapsed Time: 24736
+g=606
+>> Elapsed Time: 24841
+g=607
+>> Elapsed Time: 24949
+g=608
+>> Elapsed Time: 25057
+g=609
+>> Elapsed Time: 25163
+g=610
+>> Elapsed Time: 25270
+g=611
+>> Elapsed Time: 25378
+g=612
+>> Elapsed Time: 25486
+g=613
+>> Elapsed Time: 25596
+g=614
+>> Elapsed Time: 25703
+g=615
+>> Elapsed Time: 25812
+g=616
+>> Elapsed Time: 25921
+g=617
+>> Elapsed Time: 26029
+g=618
+>> Elapsed Time: 26138
+g=619
+>> Elapsed Time: 26246
+g=620
+>> Elapsed Time: 26357
+g=621
+>> Elapsed Time: 26467
+g=622
+>> Elapsed Time: 26576
+g=623
+>> Elapsed Time: 26684
+g=624
+>> Elapsed Time: 26798
+g=625
+>> Elapsed Time: 26907
+g=626
+>> Elapsed Time: 27017
+g=627
+>> Elapsed Time: 27127
+g=628
+>> Elapsed Time: 27236
+g=629
+>> Elapsed Time: 27348
+g=630
+>> Elapsed Time: 27461
+g=631
+>> Elapsed Time: 27571
+g=632
+>> Elapsed Time: 27681
+g=633
+>> Elapsed Time: 27792
+g=634
+>> Elapsed Time: 27902
+g=635
+>> Elapsed Time: 28013
+g=636
+>> Elapsed Time: 28123
+g=637
+>> Elapsed Time: 28233
+g=638
+>> Elapsed Time: 28345
+g=639
+>> Elapsed Time: 28461
+g=640
+>> Elapsed Time: 28577
+g=641
+>> Elapsed Time: 28691
+g=642
+>> Elapsed Time: 28822
+g=643
+>> Elapsed Time: 28937
+g=644
+>> Elapsed Time: 29052
+g=645
+>> Elapsed Time: 29168
+g=646
+>> Elapsed Time: 29282
+g=647
+>> Elapsed Time: 29398
+g=648
+>> Elapsed Time: 29513
+g=649
+>> Elapsed Time: 29628
+g=650
+>> Elapsed Time: 29748
+g=651
+>> Elapsed Time: 29864
+g=652
+>> Elapsed Time: 29981
+g=653
+>> Elapsed Time: 30098
+g=654
+>> Elapsed Time: 30213
+g=655
+>> Elapsed Time: 30328
+g=656
+>> Elapsed Time: 30443
+g=657
+>> Elapsed Time: 30557
+g=658
+>> Elapsed Time: 30671
+g=659
+>> Elapsed Time: 30786
+g=660
+>> Elapsed Time: 30901
+g=661
+>> Elapsed Time: 31015
+g=662
+>> Elapsed Time: 31129
+g=663
+>> Elapsed Time: 31246
+g=664
+>> Elapsed Time: 31363
+g=665
+>> Elapsed Time: 31482
+g=666
+>> Elapsed Time: 31601
+g=667
+>> Elapsed Time: 31718
+g=668
+>> Elapsed Time: 31838
+g=669
+>> Elapsed Time: 31956
+g=670
+>> Elapsed Time: 32073
+g=671
+>> Elapsed Time: 32191
+g=672
+>> Elapsed Time: 32310
+g=673
+>> Elapsed Time: 32427
+g=674
+>> Elapsed Time: 32545
+g=675
+>> Elapsed Time: 32664
+g=676
+>> Elapsed Time: 32782
+g=677
+>> Elapsed Time: 32902
+g=678
+>> Elapsed Time: 33021
+g=679
+>> Elapsed Time: 33139
+g=680
+>> Elapsed Time: 33258
+g=681
+>> Elapsed Time: 33377
+g=682
+>> Elapsed Time: 33496
+g=683
+>> Elapsed Time: 33616
+g=684
+>> Elapsed Time: 33735
+g=685
+>> Elapsed Time: 33855
+g=686
+>> Elapsed Time: 33974
+g=687
+>> Elapsed Time: 34094
+g=688
+>> Elapsed Time: 34214
+g=689
+>> Elapsed Time: 34334
+g=690
+>> Elapsed Time: 34454
+g=691
+>> Elapsed Time: 34574
+g=692
+>> Elapsed Time: 34694
+g=693
+>> Elapsed Time: 34814
+g=694
+>> Elapsed Time: 34933
+g=695
+>> Elapsed Time: 35052
+g=696
+>> Elapsed Time: 35170
+g=697
+>> Elapsed Time: 35290
+g=698
+>> Elapsed Time: 35409
+g=699
+>> Elapsed Time: 35530
+g=700
+>> Elapsed Time: 35650
+g=701
+>> Elapsed Time: 35777
+g=702
+>> Elapsed Time: 35899
+g=703
+>> Elapsed Time: 36022
+g=704
+>> Elapsed Time: 36144
+g=705
+>> Elapsed Time: 36267
+g=706
+>> Elapsed Time: 36391
+g=707
+>> Elapsed Time: 36515
+g=708
+>> Elapsed Time: 36640
+g=709
+>> Elapsed Time: 36765
+g=710
+>> Elapsed Time: 36888
+g=711
+>> Elapsed Time: 37011
+g=712
+>> Elapsed Time: 37134
+g=713
+>> Elapsed Time: 37258
+g=714
+>> Elapsed Time: 37383
+g=715
+>> Elapsed Time: 37506
+g=716
+>> Elapsed Time: 37631
+g=717
+>> Elapsed Time: 37755
+g=718
+>> Elapsed Time: 37880
+g=719
+>> Elapsed Time: 38005
+g=720
+>> Elapsed Time: 38129
+g=721
+>> Elapsed Time: 38254
+g=722
+>> Elapsed Time: 38379
+g=723
+>> Elapsed Time: 38512
+g=724
+>> Elapsed Time: 38638
+g=725
+>> Elapsed Time: 38771
+g=726
+>> Elapsed Time: 38904
+g=727
+>> Elapsed Time: 39030
+g=728
+>> Elapsed Time: 39156
+g=729
+>> Elapsed Time: 39281
+g=730
+>> Elapsed Time: 39408
+g=731
+>> Elapsed Time: 39532
+g=732
+>> Elapsed Time: 39658
+g=733
+>> Elapsed Time: 39782
+g=734
+>> Elapsed Time: 39908
+g=735
+>> Elapsed Time: 40037
+g=736
+>> Elapsed Time: 40165
+g=737
+>> Elapsed Time: 40290
+g=738
+>> Elapsed Time: 40416
+g=739
+>> Elapsed Time: 40541
+g=740
+>> Elapsed Time: 40667
+g=741
+>> Elapsed Time: 40793
+g=742
+>> Elapsed Time: 40920
+g=743
+>> Elapsed Time: 41046
+g=744
+>> Elapsed Time: 41172
+g=745
+>> Elapsed Time: 41298
+g=746
+>> Elapsed Time: 41425
+g=747
+>> Elapsed Time: 41553
+g=748
+>> Elapsed Time: 41682
+g=749
+>> Elapsed Time: 41809
+g=750
+>> Elapsed Time: 41937
+g=751
+>> Elapsed Time: 42068
+g=752
+>> Elapsed Time: 42195
+g=753
+>> Elapsed Time: 42322
+g=754
+>> Elapsed Time: 42450
+g=755
+>> Elapsed Time: 42578
+g=756
+>> Elapsed Time: 42707
+g=757
+>> Elapsed Time: 42882
+g=758
+>> Elapsed Time: 43011
+g=759
+>> Elapsed Time: 43138
+g=760
+>> Elapsed Time: 43267
+g=761
+>> Elapsed Time: 43396
+g=762
+>> Elapsed Time: 43526
+g=763
+>> Elapsed Time: 43656
+g=764
+>> Elapsed Time: 43787
+g=765
+>> Elapsed Time: 43919
+g=766
+>> Elapsed Time: 44050
+g=767
+>> Elapsed Time: 44182
+g=768
+>> Elapsed Time: 44314
+g=769
+>> Elapsed Time: 44444
+g=770
+>> Elapsed Time: 44577
+g=771
+>> Elapsed Time: 44708
+g=772
+>> Elapsed Time: 44845
+g=773
+>> Elapsed Time: 44988
+g=774
+>> Elapsed Time: 45130
+g=775
+>> Elapsed Time: 45282
+g=776
+>> Elapsed Time: 45425
+g=777
+>> Elapsed Time: 45560
+g=778
+>> Elapsed Time: 45700
+g=779
+>> Elapsed Time: 45867
+g=780
+>> Elapsed Time: 46037
+g=781
+>> Elapsed Time: 46202
+g=782
+>> Elapsed Time: 46385
+g=783
+>> Elapsed Time: 46546
+g=784
+>> Elapsed Time: 46704
+g=785
+>> Elapsed Time: 46863
+g=786
+>> Elapsed Time: 47021
+g=787
+>> Elapsed Time: 47181
+g=788
+>> Elapsed Time: 47342
+g=789
+>> Elapsed Time: 47492
+g=790
+>> Elapsed Time: 47655
+g=791
+>> Elapsed Time: 47806
+g=792
+>> Elapsed Time: 47957
+g=793
+>> Elapsed Time: 48108
+g=794
+>> Elapsed Time: 48260
+g=795
+>> Elapsed Time: 48411
+g=796
+>> Elapsed Time: 48564
+g=797
+>> Elapsed Time: 48715
+g=798
+>> Elapsed Time: 48866
+g=799
+>> Elapsed Time: 49017
+g=800
+>> Elapsed Time: 49171
+g=801
+>> Elapsed Time: 49319
+g=802
+>> Elapsed Time: 49465
+g=803
+>> Elapsed Time: 49616
+g=804
+>> Elapsed Time: 49775
+g=805
+>> Elapsed Time: 49925
+g=806
+>> Elapsed Time: 50080
+g=807
+>> Elapsed Time: 50221
+g=808
+>> Elapsed Time: 50359
+g=809
+>> Elapsed Time: 50507
+g=810
+>> Elapsed Time: 50662
+g=811
+>> Elapsed Time: 50812
+g=812
+>> Elapsed Time: 50958
+g=813
+>> Elapsed Time: 51114
+g=814
+>> Elapsed Time: 51268
+g=815
+>> Elapsed Time: 51424
+g=816
+>> Elapsed Time: 51579
+g=817
+>> Elapsed Time: 51735
+g=818
+>> Elapsed Time: 51887
+g=819
+>> Elapsed Time: 52028
+g=820
+>> Elapsed Time: 52184
+g=821
+>> Elapsed Time: 52335
+g=822
+>> Elapsed Time: 52472
+g=823
+>> Elapsed Time: 52609
+g=824
+>> Elapsed Time: 52748
+g=825
+>> Elapsed Time: 52889
+g=826
+>> Elapsed Time: 53031
+g=827
+>> Elapsed Time: 53168
+g=828
+>> Elapsed Time: 53307
+g=829
+>> Elapsed Time: 53457
+g=830
+>> Elapsed Time: 53616
+g=831
+>> Elapsed Time: 53772
+g=832
+>> Elapsed Time: 53913
+g=833
+>> Elapsed Time: 54054
+g=834
+>> Elapsed Time: 54196
+g=835
+>> Elapsed Time: 54340
+g=836
+>> Elapsed Time: 54485
+g=837
+>> Elapsed Time: 54639
+g=838
+>> Elapsed Time: 54800
+g=839
+>> Elapsed Time: 54947
+g=840
+>> Elapsed Time: 55090
+g=841
+>> Elapsed Time: 55243
+g=842
+>> Elapsed Time: 55401
+g=843
+>> Elapsed Time: 55559
+g=844
+>> Elapsed Time: 55721
+g=845
+>> Elapsed Time: 55882
+g=846
+>> Elapsed Time: 56041
+g=847
+>> Elapsed Time: 56193
+g=848
+>> Elapsed Time: 56349
+g=849
+>> Elapsed Time: 56509
+g=850
+>> Elapsed Time: 56660
+g=851
+>> Elapsed Time: 56816
+g=852
+>> Elapsed Time: 56974
+g=853
+>> Elapsed Time: 57126
+g=854
+>> Elapsed Time: 57280
+g=855
+>> Elapsed Time: 57438
+g=856
+>> Elapsed Time: 57590
+g=857
+>> Elapsed Time: 57749
+g=858
+>> Elapsed Time: 57908
+g=859
+>> Elapsed Time: 58068
+g=860
+>> Elapsed Time: 58228
+g=861
+>> Elapsed Time: 58386
+g=862
+>> Elapsed Time: 58565
+g=863
+>> Elapsed Time: 58727
+g=864
+>> Elapsed Time: 58888
+g=865
+>> Elapsed Time: 59048
+g=866
+>> Elapsed Time: 59210
+g=867
+>> Elapsed Time: 59372
+g=868
+>> Elapsed Time: 59533
+g=869
+>> Elapsed Time: 59699
+g=870
+>> Elapsed Time: 59859
+g=871
+>> Elapsed Time: 60021
+g=872
+>> Elapsed Time: 60182
+g=873
+>> Elapsed Time: 60356
+g=874
+>> Elapsed Time: 60515
+g=875
+>> Elapsed Time: 60674
+g=876
+>> Elapsed Time: 60827
+g=877
+>> Elapsed Time: 60977
+g=878
+>> Elapsed Time: 61136
+g=879
+>> Elapsed Time: 61290
+g=880
+>> Elapsed Time: 61454
+g=881
+>> Elapsed Time: 61639
+g=882
+>> Elapsed Time: 61822
+g=883
+>> Elapsed Time: 62003
+g=884
+>> Elapsed Time: 62181
+g=885
+>> Elapsed Time: 62353
+g=886
+>> Elapsed Time: 62516
+g=887
+>> Elapsed Time: 62682
+g=888
+>> Elapsed Time: 62852
+g=889
+>> Elapsed Time: 63022
+g=890
+>> Elapsed Time: 63189
+g=891
+>> Elapsed Time: 63343
+g=892
+>> Elapsed Time: 63491
+g=893
+>> Elapsed Time: 63640
+g=894
+>> Elapsed Time: 63804
+g=895
+>> Elapsed Time: 63964
+g=896
+>> Elapsed Time: 64124
+g=897
+>> Elapsed Time: 64278
+g=898
+>> Elapsed Time: 64428
+g=899
+>> Elapsed Time: 64577
+g=900
+>> Elapsed Time: 64727
+g=901
+>> Elapsed Time: 64878
+g=902
+>> Elapsed Time: 65034
+g=903
+>> Elapsed Time: 65185
+g=904
+>> Elapsed Time: 65340
+g=905
+>> Elapsed Time: 65488
+g=906
+>> Elapsed Time: 65641
+g=907
+>> Elapsed Time: 65800
+g=908
+>> Elapsed Time: 65953
+g=909
+>> Elapsed Time: 66106
+g=910
+>> Elapsed Time: 66257
+g=911
+>> Elapsed Time: 66410
+g=912
+>> Elapsed Time: 66572
+g=913
+>> Elapsed Time: 66737
+g=914
+>> Elapsed Time: 66904
+g=915
+>> Elapsed Time: 67058
+g=916
+>> Elapsed Time: 67215
+g=917
+>> Elapsed Time: 67377
+g=918
+>> Elapsed Time: 67532
+g=919
+>> Elapsed Time: 67685
+g=920
+>> Elapsed Time: 67842
+g=921
+>> Elapsed Time: 67996
+g=922
+>> Elapsed Time: 68148
+g=923
+>> Elapsed Time: 68300
+g=924
+>> Elapsed Time: 68455
+g=925
+>> Elapsed Time: 68612
+g=926
+>> Elapsed Time: 68764
+g=927
+>> Elapsed Time: 68936
+g=928
+>> Elapsed Time: 69090
+g=929
+>> Elapsed Time: 69244
+g=930
+>> Elapsed Time: 69406
+g=931
+>> Elapsed Time: 69572
+g=932
+>> Elapsed Time: 69730
+g=933
+>> Elapsed Time: 69885
+g=934
+>> Elapsed Time: 70050
+g=935
+>> Elapsed Time: 70210
+g=936
+>> Elapsed Time: 70371
+g=937
+>> Elapsed Time: 70533
+g=938
+>> Elapsed Time: 70690
+g=939
+>> Elapsed Time: 70905
+g=940
+>> Elapsed Time: 71108
+g=941
+>> Elapsed Time: 71273
+g=942
+>> Elapsed Time: 71430
+g=943
+>> Elapsed Time: 71587
+g=944
+>> Elapsed Time: 71742
+g=945
+>> Elapsed Time: 71911
+g=946
+>> Elapsed Time: 72088
+g=947
+>> Elapsed Time: 72299
+g=948
+>> Elapsed Time: 72494
+g=949
+>> Elapsed Time: 72680
+g=950
+>> Elapsed Time: 72864
+g=951
+>> Elapsed Time: 73041
+g=952
+>> Elapsed Time: 73231
+g=953
+>> Elapsed Time: 73407
+g=954
+>> Elapsed Time: 73587
+g=955
+>> Elapsed Time: 73751
+g=956
+>> Elapsed Time: 73934
+g=957
+>> Elapsed Time: 74122
+g=958
+>> Elapsed Time: 74296
+g=959
+>> Elapsed Time: 74463
+g=960
+>> Elapsed Time: 74625
+g=961
+>> Elapsed Time: 74797
+g=962
+>> Elapsed Time: 74997
+g=963
+>> Elapsed Time: 75165
+g=964
+>> Elapsed Time: 75325
+g=965
+>> Elapsed Time: 75494
+g=966
+>> Elapsed Time: 75700
+g=967
+>> Elapsed Time: 75897
+g=968
+>> Elapsed Time: 76088
+g=969
+>> Elapsed Time: 76283
+g=970
+>> Elapsed Time: 76473
+g=971
+>> Elapsed Time: 76637
+g=972
+>> Elapsed Time: 76796
+g=973
+>> Elapsed Time: 76964
+g=974
+>> Elapsed Time: 77132
+g=975
+>> Elapsed Time: 77293
+g=976
+>> Elapsed Time: 77455
+g=977
+>> Elapsed Time: 77614
+g=978
+>> Elapsed Time: 77779
+g=979
+>> Elapsed Time: 77939
+g=980
+>> Elapsed Time: 78099
+g=981
+>> Elapsed Time: 78258
+g=982
+>> Elapsed Time: 78418
+g=983
+>> Elapsed Time: 78577
+g=984
+>> Elapsed Time: 78736
+g=985
+>> Elapsed Time: 78896
+g=986
+>> Elapsed Time: 79058
+g=987
+>> Elapsed Time: 79221
+g=988
+>> Elapsed Time: 79383
+g=989
+>> Elapsed Time: 79549
+g=990
+>> Elapsed Time: 79718
+g=991
+>> Elapsed Time: 79880
+g=992
+>> Elapsed Time: 80043
+g=993
+>> Elapsed Time: 80212
+g=994
+>> Elapsed Time: 80377
+g=995
+>> Elapsed Time: 80542
+g=996
+>> Elapsed Time: 80713
+g=997
+>> Elapsed Time: 80885
+g=998
+>> Elapsed Time: 81050
+g=999
+>> Elapsed Time: 81218
+g=1000
+>> Elapsed Time: 81385
+g=1001
+>> Elapsed Time: 81584
+g=1002
+>> Elapsed Time: 81798
+g=1003
+>> Elapsed Time: 81984
+g=1004
+>> Elapsed Time: 82159
+g=1005
+>> Elapsed Time: 82328
+g=1006
+>> Elapsed Time: 82497
+g=1007
+>> Elapsed Time: 82660
+g=1008
+>> Elapsed Time: 82822
+g=1009
+>> Elapsed Time: 82990
+g=1010
+>> Elapsed Time: 83156
+g=1011
+>> Elapsed Time: 83318
+g=1012
+>> Elapsed Time: 83493
+g=1013
+>> Elapsed Time: 83693
+g=1014
+>> Elapsed Time: 83927
+g=1015
+>> Elapsed Time: 84129
+g=1016
+>> Elapsed Time: 84321
+g=1017
+>> Elapsed Time: 84511
+g=1018
+>> Elapsed Time: 84707
+g=1019
+>> Elapsed Time: 84909
+g=1020
+>> Elapsed Time: 85089
+g=1021
+>> Elapsed Time: 85285
+g=1022
+>> Elapsed Time: 85457
+g=1023
+>> Elapsed Time: 85630
+g=1024
+>> Elapsed Time: 85813
+g=1025
+>> Elapsed Time: 85989
+g=1026
+>> Elapsed Time: 86163
+g=1027
+>> Elapsed Time: 86337
+g=1028
+>> Elapsed Time: 86517
+g=1029
+>> Elapsed Time: 86696
+g=1030
+>> Elapsed Time: 86869
+g=1031
+>> Elapsed Time: 87042
+g=1032
+>> Elapsed Time: 87211
+g=1033
+>> Elapsed Time: 87382
+g=1034
+>> Elapsed Time: 87555
+g=1035
+>> Elapsed Time: 87757
+g=1036
+>> Elapsed Time: 87964
+g=1037
+>> Elapsed Time: 88172
+g=1038
+>> Elapsed Time: 88378
+g=1039
+>> Elapsed Time: 88584
+g=1040
+>> Elapsed Time: 88806
+g=1041
+>> Elapsed Time: 88984
+g=1042
+>> Elapsed Time: 89153
+g=1043
+>> Elapsed Time: 89325
+g=1044
+>> Elapsed Time: 89505
+g=1045
+>> Elapsed Time: 89684
+g=1046
+>> Elapsed Time: 89862
+g=1047
+>> Elapsed Time: 90035
+g=1048
+>> Elapsed Time: 90208
+g=1049
+>> Elapsed Time: 90384
+g=1050
+>> Elapsed Time: 90558
+g=1051
+>> Elapsed Time: 90729
+g=1052
+>> Elapsed Time: 90899
+g=1053
+>> Elapsed Time: 91068
+g=1054
+>> Elapsed Time: 91238
+g=1055
+>> Elapsed Time: 91415
+g=1056
+>> Elapsed Time: 91587
+g=1057
+>> Elapsed Time: 91762
+g=1058
+>> Elapsed Time: 91943
+g=1059
+>> Elapsed Time: 92127
+g=1060
+>> Elapsed Time: 92310
+g=1061
+>> Elapsed Time: 92485
+g=1062
+>> Elapsed Time: 92664
+g=1063
+>> Elapsed Time: 92835
+g=1064
+>> Elapsed Time: 93007
+g=1065
+>> Elapsed Time: 93191
+g=1066
+>> Elapsed Time: 93372
+g=1067
+>> Elapsed Time: 93553
+g=1068
+>> Elapsed Time: 93731
+g=1069
+>> Elapsed Time: 93908
+g=1070
+>> Elapsed Time: 94082
+g=1071
+>> Elapsed Time: 94254
+g=1072
+>> Elapsed Time: 94426
+g=1073
+>> Elapsed Time: 94600
+g=1074
+>> Elapsed Time: 94772
+g=1075
+>> Elapsed Time: 94953
+g=1076
+>> Elapsed Time: 95186
+g=1077
+>> Elapsed Time: 95400
+g=1078
+>> Elapsed Time: 95583
+g=1079
+>> Elapsed Time: 95778
+g=1080
+>> Elapsed Time: 95984
+g=1081
+>> Elapsed Time: 96200
+g=1082
+>> Elapsed Time: 96396
+g=1083
+>> Elapsed Time: 96588
+g=1084
+>> Elapsed Time: 96783
+g=1085
+>> Elapsed Time: 96983
+g=1086
+>> Elapsed Time: 97166
+g=1087
+>> Elapsed Time: 97358
+g=1088
+>> Elapsed Time: 97569
+g=1089
+>> Elapsed Time: 97766
+g=1090
+>> Elapsed Time: 97948
+g=1091
+>> Elapsed Time: 98127
+g=1092
+>> Elapsed Time: 98333
+g=1093
+>> Elapsed Time: 98560
+g=1094
+>> Elapsed Time: 98743
+g=1095
+>> Elapsed Time: 98925
+g=1096
+>> Elapsed Time: 99121
+g=1097
+>> Elapsed Time: 99298
+g=1098
+>> Elapsed Time: 99522
+g=1099
+>> Elapsed Time: 99793
+g=1100
+>> Elapsed Time: 99996
+g=1101
+>> Elapsed Time: 100229
+g=1102
+>> Elapsed Time: 100464
+g=1103
+>> Elapsed Time: 100692
+g=1104
+>> Elapsed Time: 100926
+g=1105
+>> Elapsed Time: 101137
+g=1106
+>> Elapsed Time: 101329
+g=1107
+>> Elapsed Time: 101520
+g=1108
+>> Elapsed Time: 101721
+g=1109
+>> Elapsed Time: 101945
+g=1110
+>> Elapsed Time: 102162
+g=1111
+>> Elapsed Time: 102370
+g=1112
+>> Elapsed Time: 102558
+g=1113
+>> Elapsed Time: 102783
+g=1114
+>> Elapsed Time: 102997
+g=1115
+>> Elapsed Time: 103187
+g=1116
+>> Elapsed Time: 103366
+g=1117
+>> Elapsed Time: 103559
+g=1118
+>> Elapsed Time: 103752
+g=1119
+>> Elapsed Time: 103967
+g=1120
+>> Elapsed Time: 104170
+g=1121
+>> Elapsed Time: 104375
+g=1122
+>> Elapsed Time: 104587
+g=1123
+>> Elapsed Time: 104790
+g=1124
+>> Elapsed Time: 104978
+g=1125
+>> Elapsed Time: 105167
+g=1126
+>> Elapsed Time: 105352
+g=1127
+>> Elapsed Time: 105537
+g=1128
+>> Elapsed Time: 105736
+g=1129
+>> Elapsed Time: 105935
+g=1130
+>> Elapsed Time: 106121
+g=1131
+>> Elapsed Time: 106305
+g=1132
+>> Elapsed Time: 106486
+g=1133
+>> Elapsed Time: 106677
+g=1134
+>> Elapsed Time: 106860
+g=1135
+>> Elapsed Time: 107047
+g=1136
+>> Elapsed Time: 107240
+g=1137
+>> Elapsed Time: 107427
+g=1138
+>> Elapsed Time: 107625
+g=1139
+>> Elapsed Time: 107826
+g=1140
+>> Elapsed Time: 108031
+g=1141
+>> Elapsed Time: 108226
+g=1142
+>> Elapsed Time: 108413
+g=1143
+>> Elapsed Time: 108602
+g=1144
+>> Elapsed Time: 108800
+g=1145
+>> Elapsed Time: 108995
+g=1146
+>> Elapsed Time: 109203
+g=1147
+>> Elapsed Time: 109391
+g=1148
+>> Elapsed Time: 109582
+g=1149
+>> Elapsed Time: 109850
+g=1150
+>> Elapsed Time: 110069
+g=1151
+>> Elapsed Time: 110275
+g=1152
+>> Elapsed Time: 110469
+g=1153
+>> Elapsed Time: 110667
+g=1154
+>> Elapsed Time: 110853
+g=1155
+>> Elapsed Time: 111044
+g=1156
+>> Elapsed Time: 111244
+g=1157
+>> Elapsed Time: 111441
+g=1158
+>> Elapsed Time: 111634
+g=1159
+>> Elapsed Time: 111834
+g=1160
+>> Elapsed Time: 112035
+g=1161
+>> Elapsed Time: 112226
+g=1162
+>> Elapsed Time: 112414
+g=1163
+>> Elapsed Time: 112611
+g=1164
+>> Elapsed Time: 112800
+g=1165
+>> Elapsed Time: 112989
+g=1166
+>> Elapsed Time: 113174
+g=1167
+>> Elapsed Time: 113360
+g=1168
+>> Elapsed Time: 113545
+g=1169
+>> Elapsed Time: 113740
+g=1170
+>> Elapsed Time: 113929
+g=1171
+>> Elapsed Time: 114117
+g=1172
+>> Elapsed Time: 114303
+g=1173
+>> Elapsed Time: 114492
+g=1174
+>> Elapsed Time: 114686
+g=1175
+>> Elapsed Time: 114879
+g=1176
+>> Elapsed Time: 115073
+g=1177
+>> Elapsed Time: 115268
+g=1178
+>> Elapsed Time: 115461
+g=1179
+>> Elapsed Time: 115660
+g=1180
+>> Elapsed Time: 115850
+g=1181
+>> Elapsed Time: 116059
+g=1182
+>> Elapsed Time: 116248
+g=1183
+>> Elapsed Time: 116438
+g=1184
+>> Elapsed Time: 116630
+g=1185
+>> Elapsed Time: 116857
+g=1186
+>> Elapsed Time: 117055
+g=1187
+>> Elapsed Time: 117245
+g=1188
+>> Elapsed Time: 117441
+g=1189
+>> Elapsed Time: 117642
+g=1190
+>> Elapsed Time: 117835
+g=1191
+>> Elapsed Time: 118031
+g=1192
+>> Elapsed Time: 118221
+g=1193
+>> Elapsed Time: 118421
+g=1194
+>> Elapsed Time: 118647
+g=1195
+>> Elapsed Time: 118855
+g=1196
+>> Elapsed Time: 119063
+g=1197
+>> Elapsed Time: 119265
+g=1198
+>> Elapsed Time: 119461
+g=1199
+>> Elapsed Time: 119657
+g=1200
+>> Elapsed Time: 119850
+g=1201
+>> Elapsed Time: 120043
+g=1202
+>> Elapsed Time: 120234
+g=1203
+>> Elapsed Time: 120427
+g=1204
+>> Elapsed Time: 120635
+g=1205
+>> Elapsed Time: 120843
+g=1206
+>> Elapsed Time: 121049
+g=1207
+>> Elapsed Time: 121243
+g=1208
+>> Elapsed Time: 121440
+g=1209
+>> Elapsed Time: 121652
+g=1210
+>> Elapsed Time: 121858
+g=1211
+>> Elapsed Time: 122060
+g=1212
+>> Elapsed Time: 122253
+g=1213
+>> Elapsed Time: 122461
+g=1214
+>> Elapsed Time: 122672
+g=1215
+>> Elapsed Time: 122878
+g=1216
+>> Elapsed Time: 123079
+g=1217
+>> Elapsed Time: 123275
+g=1218
+>> Elapsed Time: 123471
+g=1219
+>> Elapsed Time: 123672
+g=1220
+>> Elapsed Time: 123878
+g=1221
+>> Elapsed Time: 124075
+g=1222
+>> Elapsed Time: 124284
+g=1223
+>> Elapsed Time: 124499
+g=1224
+>> Elapsed Time: 124709
+g=1225
+>> Elapsed Time: 124926
+g=1226
+>> Elapsed Time: 125132
+g=1227
+>> Elapsed Time: 125338
+g=1228
+>> Elapsed Time: 125534
+g=1229
+>> Elapsed Time: 125738
+g=1230
+>> Elapsed Time: 125935
+g=1231
+>> Elapsed Time: 126135
+g=1232
+>> Elapsed Time: 126332
+g=1233
+>> Elapsed Time: 126528
+g=1234
+>> Elapsed Time: 126730
+g=1235
+>> Elapsed Time: 126927
+g=1236
+>> Elapsed Time: 127123
+g=1237
+>> Elapsed Time: 127328
+g=1238
+>> Elapsed Time: 127531
+g=1239
+>> Elapsed Time: 127735
+g=1240
+>> Elapsed Time: 127942
+g=1241
+>> Elapsed Time: 128144
+g=1242
+>> Elapsed Time: 128344
+g=1243
+>> Elapsed Time: 128542
+g=1244
+>> Elapsed Time: 128745
+g=1245
+>> Elapsed Time: 128957
+g=1246
+>> Elapsed Time: 129181
+g=1247
+>> Elapsed Time: 129396
+g=1248
+>> Elapsed Time: 129613
+g=1249
+>> Elapsed Time: 129825
+g=1250
+>> Elapsed Time: 130046
+g=1251
+>> Elapsed Time: 130262
+g=1252
+>> Elapsed Time: 130479
+g=1253
+>> Elapsed Time: 130704
+g=1254
+>> Elapsed Time: 130925
+g=1255
+>> Elapsed Time: 131127
+g=1256
+>> Elapsed Time: 131332
+g=1257
+>> Elapsed Time: 131544
+g=1258
+>> Elapsed Time: 131750
+g=1259
+>> Elapsed Time: 131965
+g=1260
+>> Elapsed Time: 132165
+g=1261
+>> Elapsed Time: 132366
+g=1262
+>> Elapsed Time: 132657
+g=1263
+>> Elapsed Time: 133309
+g=1264
+>> Elapsed Time: 133836
+g=1265
+>> Elapsed Time: 134227
+g=1266
+>> Elapsed Time: 134583
+g=1267
+>> Elapsed Time: 134918
+g=1268
+>> Elapsed Time: 135210
+g=1269
+>> Elapsed Time: 135476
+g=1270
+>> Elapsed Time: 135700
+g=1271
+>> Elapsed Time: 135924
+g=1272
+>> Elapsed Time: 136132
+g=1273
+>> Elapsed Time: 136338
+g=1274
+>> Elapsed Time: 136551
+g=1275
+>> Elapsed Time: 136767
+g=1276
+>> Elapsed Time: 136978
+g=1277
+>> Elapsed Time: 137188
+g=1278
+>> Elapsed Time: 137406
+g=1279
+>> Elapsed Time: 137633
+g=1280
+>> Elapsed Time: 137860
+g=1281
+>> Elapsed Time: 138090
+g=1282
+>> Elapsed Time: 138341
+g=1283
+>> Elapsed Time: 138565
+g=1284
+>> Elapsed Time: 138800
+g=1285
+>> Elapsed Time: 139029
+g=1286
+>> Elapsed Time: 139252
+g=1287
+>> Elapsed Time: 139475
+g=1288
+>> Elapsed Time: 139697
+g=1289
+>> Elapsed Time: 139914
+g=1290
+>> Elapsed Time: 140152
+g=1291
+>> Elapsed Time: 140402
+g=1292
+>> Elapsed Time: 140637
+g=1293
+>> Elapsed Time: 140862
+g=1294
+>> Elapsed Time: 141078
+g=1295
+>> Elapsed Time: 141294
+g=1296
+>> Elapsed Time: 141521
+g=1297
+>> Elapsed Time: 141796
+g=1298
+>> Elapsed Time: 142076
+g=1299
+>> Elapsed Time: 142329
+g=1300
+>> Elapsed Time: 142579
+g=1301
+>> Elapsed Time: 142840
+g=1302
+>> Elapsed Time: 143078
+g=1303
+>> Elapsed Time: 143317
+g=1304
+>> Elapsed Time: 143560
+g=1305
+>> Elapsed Time: 143813
+g=1306
+>> Elapsed Time: 144051
+g=1307
+>> Elapsed Time: 144272
+g=1308
+>> Elapsed Time: 144498
+g=1309
+>> Elapsed Time: 144728
+g=1310
+>> Elapsed Time: 144999
+g=1311
+>> Elapsed Time: 145274
+g=1312
+>> Elapsed Time: 145551
+g=1313
+>> Elapsed Time: 145821
+g=1314
+>> Elapsed Time: 146061
+g=1315
+>> Elapsed Time: 146283
+g=1316
+>> Elapsed Time: 146499
+g=1317
+>> Elapsed Time: 146729
+g=1318
+>> Elapsed Time: 146955
+g=1319
+>> Elapsed Time: 147180
+g=1320
+>> Elapsed Time: 147409
+g=1321
+>> Elapsed Time: 147641
+g=1322
+>> Elapsed Time: 147860
+g=1323
+>> Elapsed Time: 148092
+g=1324
+>> Elapsed Time: 148313
+g=1325
+>> Elapsed Time: 148533
+g=1326
+>> Elapsed Time: 148755
+g=1327
+>> Elapsed Time: 148970
+g=1328
+>> Elapsed Time: 149210
+g=1329
+>> Elapsed Time: 149429
+g=1330
+>> Elapsed Time: 149652
+g=1331
+>> Elapsed Time: 149869
+g=1332
+>> Elapsed Time: 150087
+g=1333
+>> Elapsed Time: 150318
+g=1334
+>> Elapsed Time: 150544
+g=1335
+>> Elapsed Time: 150771
+g=1336
+>> Elapsed Time: 150991
+g=1337
+>> Elapsed Time: 151210
+g=1338
+>> Elapsed Time: 151482
+g=1339
+>> Elapsed Time: 151760
+g=1340
+>> Elapsed Time: 151990
+g=1341
+>> Elapsed Time: 152227
+g=1342
+>> Elapsed Time: 152454
+g=1343
+>> Elapsed Time: 152690
+g=1344
+>> Elapsed Time: 152914
+g=1345
+>> Elapsed Time: 153165
+g=1346
+>> Elapsed Time: 153457
+g=1347
+>> Elapsed Time: 153741
+g=1348
+>> Elapsed Time: 154001
+g=1349
+>> Elapsed Time: 154256
+g=1350
+>> Elapsed Time: 154517
+g=1351
+>> Elapsed Time: 154781
+g=1352
+>> Elapsed Time: 155015
+g=1353
+>> Elapsed Time: 155251
+g=1354
+>> Elapsed Time: 155483
+g=1355
+>> Elapsed Time: 155729
+g=1356
+>> Elapsed Time: 155994
+g=1357
+>> Elapsed Time: 156266
+g=1358
+>> Elapsed Time: 156540
+g=1359
+>> Elapsed Time: 156805
+g=1360
+>> Elapsed Time: 157050
+g=1361
+>> Elapsed Time: 157297
+g=1362
+>> Elapsed Time: 157534
+g=1363
+>> Elapsed Time: 157780
+g=1364
+>> Elapsed Time: 158011
+g=1365
+>> Elapsed Time: 158243
+g=1366
+>> Elapsed Time: 158467
+g=1367
+>> Elapsed Time: 158698
+g=1368
+>> Elapsed Time: 158944
+g=1369
+>> Elapsed Time: 159173
+g=1370
+>> Elapsed Time: 159408
+g=1371
+>> Elapsed Time: 159648
+g=1372
+>> Elapsed Time: 159877
+g=1373
+>> Elapsed Time: 160113
+g=1374
+>> Elapsed Time: 160358
+g=1375
+>> Elapsed Time: 160677
+g=1376
+>> Elapsed Time: 160944
+g=1377
+>> Elapsed Time: 161194
+g=1378
+>> Elapsed Time: 161434
+g=1379
+>> Elapsed Time: 161665
+g=1380
+>> Elapsed Time: 161897
+g=1381
+>> Elapsed Time: 162132
+g=1382
+>> Elapsed Time: 162365
+g=1383
+>> Elapsed Time: 162633
+g=1384
+>> Elapsed Time: 162867
+g=1385
+>> Elapsed Time: 163094
+g=1386
+>> Elapsed Time: 163320
+g=1387
+>> Elapsed Time: 163545
+g=1388
+>> Elapsed Time: 163803
+g=1389
+>> Elapsed Time: 164045
+g=1390
+>> Elapsed Time: 164324
+g=1391
+>> Elapsed Time: 164560
+g=1392
+>> Elapsed Time: 164821
+g=1393
+>> Elapsed Time: 165054
+g=1394
+>> Elapsed Time: 165286
+g=1395
+>> Elapsed Time: 165520
+g=1396
+>> Elapsed Time: 165762
+g=1397
+>> Elapsed Time: 166006
+g=1398
+>> Elapsed Time: 166241
+g=1399
+>> Elapsed Time: 166485
+g=1400
+>> Elapsed Time: 166732
+g=1401
+>> Elapsed Time: 166967
+g=1402
+>> Elapsed Time: 167226
+g=1403
+>> Elapsed Time: 167530
+g=1404
+>> Elapsed Time: 167847
+g=1405
+>> Elapsed Time: 168127
+g=1406
+>> Elapsed Time: 168395
+g=1407
+>> Elapsed Time: 168673
+g=1408
+>> Elapsed Time: 168941
+g=1409
+>> Elapsed Time: 169192
+g=1410
+>> Elapsed Time: 169433
+g=1411
+>> Elapsed Time: 169685
+g=1412
+>> Elapsed Time: 169926
+g=1413
+>> Elapsed Time: 170164
+g=1414
+>> Elapsed Time: 170408
+g=1415
+>> Elapsed Time: 170698
+g=1416
+>> Elapsed Time: 170985
+g=1417
+>> Elapsed Time: 171257
+g=1418
+>> Elapsed Time: 171513
+g=1419
+>> Elapsed Time: 171755
+g=1420
+>> Elapsed Time: 171988
+g=1421
+>> Elapsed Time: 172229
+g=1422
+>> Elapsed Time: 172476
+g=1423
+>> Elapsed Time: 172738
+g=1424
+>> Elapsed Time: 172975
+g=1425
+>> Elapsed Time: 173222
+g=1426
+>> Elapsed Time: 173465
+g=1427
+>> Elapsed Time: 173716
+g=1428
+>> Elapsed Time: 174030
+g=1429
+>> Elapsed Time: 174307
+g=1430
+>> Elapsed Time: 174565
+g=1431
+>> Elapsed Time: 174827
+g=1432
+>> Elapsed Time: 175068
+g=1433
+>> Elapsed Time: 175303
+g=1434
+>> Elapsed Time: 175552
+g=1435
+>> Elapsed Time: 175808
+g=1436
+>> Elapsed Time: 176043
+g=1437
+>> Elapsed Time: 176290
+g=1438
+>> Elapsed Time: 176536
+g=1439
+>> Elapsed Time: 176780
+g=1440
+>> Elapsed Time: 177022
+g=1441
+>> Elapsed Time: 177270
+g=1442
+>> Elapsed Time: 177505
+g=1443
+>> Elapsed Time: 177759
+g=1444
+>> Elapsed Time: 178004
+g=1445
+>> Elapsed Time: 178249
+g=1446
+>> Elapsed Time: 178492
+g=1447
+>> Elapsed Time: 178737
+g=1448
+>> Elapsed Time: 178972
+g=1449
+>> Elapsed Time: 179206
+g=1450
+>> Elapsed Time: 179441
+g=1451
+>> Elapsed Time: 179693
+g=1452
+>> Elapsed Time: 179937
+g=1453
+>> Elapsed Time: 180184
+g=1454
+>> Elapsed Time: 180433
+g=1455
+>> Elapsed Time: 180675
+g=1456
+>> Elapsed Time: 180911
+g=1457
+>> Elapsed Time: 181150
+g=1458
+>> Elapsed Time: 181400
+g=1459
+>> Elapsed Time: 181660
+g=1460
+>> Elapsed Time: 181914
+g=1461
+>> Elapsed Time: 182162
+g=1462
+>> Elapsed Time: 182404
+g=1463
+>> Elapsed Time: 182660
+g=1464
+>> Elapsed Time: 182904
+g=1465
+>> Elapsed Time: 183139
+g=1466
+>> Elapsed Time: 183377
+g=1467
+>> Elapsed Time: 183617
+g=1468
+>> Elapsed Time: 183856
+g=1469
+>> Elapsed Time: 184092
+g=1470
+>> Elapsed Time: 184332
+g=1471
+>> Elapsed Time: 184567
+g=1472
+>> Elapsed Time: 184810
+g=1473
+>> Elapsed Time: 185048
+g=1474
+>> Elapsed Time: 185287
+g=1475
+>> Elapsed Time: 185522
+g=1476
+>> Elapsed Time: 185764
+g=1477
+>> Elapsed Time: 186001
+g=1478
+>> Elapsed Time: 186238
+g=1479
+>> Elapsed Time: 186476
+g=1480
+>> Elapsed Time: 186722
+g=1481
+>> Elapsed Time: 186969
+g=1482
+>> Elapsed Time: 187213
+g=1483
+>> Elapsed Time: 187451
+g=1484
+>> Elapsed Time: 187694
+g=1485
+>> Elapsed Time: 187932
+g=1486
+>> Elapsed Time: 188169
+g=1487
+>> Elapsed Time: 188406
+g=1488
+>> Elapsed Time: 188649
+g=1489
+>> Elapsed Time: 188888
+g=1490
+>> Elapsed Time: 189130
+g=1491
+>> Elapsed Time: 189368
+g=1492
+>> Elapsed Time: 189619
+g=1493
+>> Elapsed Time: 189864
+g=1494
+>> Elapsed Time: 190110
+g=1495
+>> Elapsed Time: 190354
+g=1496
+>> Elapsed Time: 190609
+g=1497
+>> Elapsed Time: 190857
+g=1498
+>> Elapsed Time: 191110
+g=1499
+>> Elapsed Time: 191354
+g=1500
+>> Elapsed Time: 191602
+g=1501
+>> Elapsed Time: 191854
+g=1502
+>> Elapsed Time: 192105
+g=1503
+>> Elapsed Time: 192354
+g=1504
+>> Elapsed Time: 192598
+g=1505
+>> Elapsed Time: 192843
+g=1506
+>> Elapsed Time: 193092
+g=1507
+>> Elapsed Time: 193338
+g=1508
+>> Elapsed Time: 193592
+g=1509
+>> Elapsed Time: 193857
+g=1510
+>> Elapsed Time: 194117
+g=1511
+>> Elapsed Time: 194361
+g=1512
+>> Elapsed Time: 194624
+g=1513
+>> Elapsed Time: 194871
+g=1514
+>> Elapsed Time: 195119
+g=1515
+>> Elapsed Time: 195374
+g=1516
+>> Elapsed Time: 195638
+g=1517
+>> Elapsed Time: 195897
+g=1518
+>> Elapsed Time: 196149
+g=1519
+>> Elapsed Time: 196396
+g=1520
+>> Elapsed Time: 196645
+g=1521
+>> Elapsed Time: 196908
+g=1522
+>> Elapsed Time: 197209
+g=1523
+>> Elapsed Time: 197525
+g=1524
+>> Elapsed Time: 197820
+g=1525
+>> Elapsed Time: 198113
+g=1526
+>> Elapsed Time: 198407
+g=1527
+>> Elapsed Time: 198692
+g=1528
+>> Elapsed Time: 198971
+g=1529
+>> Elapsed Time: 199235
+g=1530
+>> Elapsed Time: 199520
+g=1531
+>> Elapsed Time: 199784
+g=1532
+>> Elapsed Time: 200041
+g=1533
+>> Elapsed Time: 200292
+g=1534
+>> Elapsed Time: 200553
+g=1535
+>> Elapsed Time: 200840
+g=1536
+>> Elapsed Time: 201096
+g=1537
+>> Elapsed Time: 201357
+g=1538
+>> Elapsed Time: 201619
+g=1539
+>> Elapsed Time: 201872
+g=1540
+>> Elapsed Time: 202120
+g=1541
+>> Elapsed Time: 202373
+g=1542
+>> Elapsed Time: 202666
+g=1543
+>> Elapsed Time: 202967
+g=1544
+>> Elapsed Time: 203271
+g=1545
+>> Elapsed Time: 203558
+g=1546
+>> Elapsed Time: 203818
+g=1547
+>> Elapsed Time: 204083
+g=1548
+>> Elapsed Time: 204343
+g=1549
+>> Elapsed Time: 204609
+g=1550
+>> Elapsed Time: 204869
+g=1551
+>> Elapsed Time: 205124
+g=1552
+>> Elapsed Time: 205373
+g=1553
+>> Elapsed Time: 205626
+g=1554
+>> Elapsed Time: 205875
+g=1555
+>> Elapsed Time: 206123
+g=1556
+>> Elapsed Time: 206374
+g=1557
+>> Elapsed Time: 206627
+g=1558
+>> Elapsed Time: 206877
+g=1559
+>> Elapsed Time: 207128
+g=1560
+>> Elapsed Time: 207381
+g=1561
+>> Elapsed Time: 207645
+g=1562
+>> Elapsed Time: 207914
+g=1563
+>> Elapsed Time: 208179
+g=1564
+>> Elapsed Time: 208470
+g=1565
+>> Elapsed Time: 208782
+g=1566
+>> Elapsed Time: 209033
+g=1567
+>> Elapsed Time: 209284
+g=1568
+>> Elapsed Time: 209537
+g=1569
+>> Elapsed Time: 209795
+g=1570
+>> Elapsed Time: 210049
+g=1571
+>> Elapsed Time: 210298
+g=1572
+>> Elapsed Time: 210549
+g=1573
+>> Elapsed Time: 210805
+g=1574
+>> Elapsed Time: 211056
+g=1575
+>> Elapsed Time: 211307
+g=1576
+>> Elapsed Time: 211558
+g=1577
+>> Elapsed Time: 211815
+g=1578
+>> Elapsed Time: 212067
+g=1579
+>> Elapsed Time: 212320
+g=1580
+>> Elapsed Time: 212573
+g=1581
+>> Elapsed Time: 212830
+g=1582
+>> Elapsed Time: 213083
+g=1583
+>> Elapsed Time: 213335
+g=1584
+>> Elapsed Time: 213587
+g=1585
+>> Elapsed Time: 213844
+g=1586
+>> Elapsed Time: 214097
+g=1587
+>> Elapsed Time: 214349
+g=1588
+>> Elapsed Time: 214603
+g=1589
+>> Elapsed Time: 214859
+g=1590
+>> Elapsed Time: 215111
+g=1591
+>> Elapsed Time: 215368
+g=1592
+>> Elapsed Time: 215632
+g=1593
+>> Elapsed Time: 215899
+g=1594
+>> Elapsed Time: 216171
+g=1595
+>> Elapsed Time: 216443
+g=1596
+>> Elapsed Time: 216701
+g=1597
+>> Elapsed Time: 216955
+g=1598
+>> Elapsed Time: 217210
+g=1599
+>> Elapsed Time: 217475
+g=1600
+>> Elapsed Time: 217739
+g=1601
+>> Elapsed Time: 217994
+g=1602
+>> Elapsed Time: 218248
+g=1603
+>> Elapsed Time: 218503
+g=1604
+>> Elapsed Time: 218764
+g=1605
+>> Elapsed Time: 219020
+g=1606
+>> Elapsed Time: 219280
+g=1607
+>> Elapsed Time: 219535
+g=1608
+>> Elapsed Time: 219797
+g=1609
+>> Elapsed Time: 220057
+g=1610
+>> Elapsed Time: 220313
+g=1611
+>> Elapsed Time: 220569
+g=1612
+>> Elapsed Time: 220828
+g=1613
+>> Elapsed Time: 221083
+g=1614
+>> Elapsed Time: 221339
+g=1615
+>> Elapsed Time: 221596
+g=1616
+>> Elapsed Time: 221856
+g=1617
+>> Elapsed Time: 222113
+g=1618
+>> Elapsed Time: 222375
+g=1619
+>> Elapsed Time: 222644
+g=1620
+>> Elapsed Time: 222908
+g=1621
+>> Elapsed Time: 223174
+g=1622
+>> Elapsed Time: 223432
+g=1623
+>> Elapsed Time: 223699
+g=1624
+>> Elapsed Time: 223964
+g=1625
+>> Elapsed Time: 224226
+g=1626
+>> Elapsed Time: 224488
+g=1627
+>> Elapsed Time: 224758
+g=1628
+>> Elapsed Time: 225022
+g=1629
+>> Elapsed Time: 225284
+g=1630
+>> Elapsed Time: 225547
+g=1631
+>> Elapsed Time: 225816
+g=1632
+>> Elapsed Time: 226080
+g=1633
+>> Elapsed Time: 226342
+g=1634
+>> Elapsed Time: 226605
+g=1635
+>> Elapsed Time: 226866
+g=1636
+>> Elapsed Time: 227126
+g=1637
+>> Elapsed Time: 227385
+g=1638
+>> Elapsed Time: 227651
+g=1639
+>> Elapsed Time: 227912
+g=1640
+>> Elapsed Time: 228173
+g=1641
+>> Elapsed Time: 228433
+g=1642
+>> Elapsed Time: 228699
+g=1643
+>> Elapsed Time: 228961
+g=1644
+>> Elapsed Time: 229223
+g=1645
+>> Elapsed Time: 229484
+g=1646
+>> Elapsed Time: 229750
+g=1647
+>> Elapsed Time: 230012
+g=1648
+>> Elapsed Time: 230272
+g=1649
+>> Elapsed Time: 230536
+g=1650
+>> Elapsed Time: 230803
+g=1651
+>> Elapsed Time: 231065
+g=1652
+>> Elapsed Time: 231326
+g=1653
+>> Elapsed Time: 231592
+g=1654
+>> Elapsed Time: 231863
+g=1655
+>> Elapsed Time: 232129
+g=1656
+>> Elapsed Time: 232395
+g=1657
+>> Elapsed Time: 232666
+g=1658
+>> Elapsed Time: 232934
+g=1659
+>> Elapsed Time: 233200
+g=1660
+>> Elapsed Time: 233471
+g=1661
+>> Elapsed Time: 233745
+g=1662
+>> Elapsed Time: 234012
+g=1663
+>> Elapsed Time: 234278
+g=1664
+>> Elapsed Time: 234540
+g=1665
+>> Elapsed Time: 234808
+g=1666
+>> Elapsed Time: 235071
+g=1667
+>> Elapsed Time: 235333
+g=1668
+>> Elapsed Time: 235598
+g=1669
+>> Elapsed Time: 235864
+g=1670
+>> Elapsed Time: 236128
+g=1671
+>> Elapsed Time: 236390
+g=1672
+>> Elapsed Time: 236659
+g=1673
+>> Elapsed Time: 236923
+g=1674
+>> Elapsed Time: 237188
+g=1675
+>> Elapsed Time: 237452
+g=1676
+>> Elapsed Time: 237722
+g=1677
+>> Elapsed Time: 237986
+g=1678
+>> Elapsed Time: 238249
+g=1679
+>> Elapsed Time: 238512
+g=1680
+>> Elapsed Time: 238784
+g=1681
+>> Elapsed Time: 239052
+g=1682
+>> Elapsed Time: 239320
+g=1683
+>> Elapsed Time: 239589
+g=1684
+>> Elapsed Time: 239860
+g=1685
+>> Elapsed Time: 240125
+g=1686
+>> Elapsed Time: 240391
+g=1687
+>> Elapsed Time: 240664
+g=1688
+>> Elapsed Time: 240937
+g=1689
+>> Elapsed Time: 241206
+g=1690
+>> Elapsed Time: 241475
+g=1691
+>> Elapsed Time: 241752
+g=1692
+>> Elapsed Time: 242021
+g=1693
+>> Elapsed Time: 242288
+g=1694
+>> Elapsed Time: 242556
+g=1695
+>> Elapsed Time: 242833
+g=1696
+>> Elapsed Time: 243102
+g=1697
+>> Elapsed Time: 243372
+g=1698
+>> Elapsed Time: 243649
+g=1699
+>> Elapsed Time: 243922
+g=1700
+>> Elapsed Time: 244192
+g=1701
+>> Elapsed Time: 244465
+g=1702
+>> Elapsed Time: 244744
+g=1703
+>> Elapsed Time: 245018
+g=1704
+>> Elapsed Time: 245295
+g=1705
+>> Elapsed Time: 245570
+g=1706
+>> Elapsed Time: 245850
+g=1707
+>> Elapsed Time: 246124
+g=1708
+>> Elapsed Time: 246396
+g=1709
+>> Elapsed Time: 246682
+g=1710
+>> Elapsed Time: 246961
+g=1711
+>> Elapsed Time: 247243
+g=1712
+>> Elapsed Time: 247514
+g=1713
+>> Elapsed Time: 247795
+g=1714
+>> Elapsed Time: 248070
+g=1715
+>> Elapsed Time: 248344
+g=1716
+>> Elapsed Time: 248627
+g=1717
+>> Elapsed Time: 248902
+g=1718
+>> Elapsed Time: 249179
+g=1719
+>> Elapsed Time: 249453
+g=1720
+>> Elapsed Time: 249729
+g=1721
+>> Elapsed Time: 250001
+g=1722
+>> Elapsed Time: 250271
+g=1723
+>> Elapsed Time: 250542
+g=1724
+>> Elapsed Time: 250821
+g=1725
+>> Elapsed Time: 251098
+g=1726
+>> Elapsed Time: 251369
+g=1727
+>> Elapsed Time: 251645
+g=1728
+>> Elapsed Time: 251917
+g=1729
+>> Elapsed Time: 252192
+g=1730
+>> Elapsed Time: 252467
+g=1731
+>> Elapsed Time: 252751
+g=1732
+>> Elapsed Time: 253028
+g=1733
+>> Elapsed Time: 253305
+g=1734
+>> Elapsed Time: 253580
+g=1735
+>> Elapsed Time: 253863
+g=1736
+>> Elapsed Time: 254139
+g=1737
+>> Elapsed Time: 254412
+g=1738
+>> Elapsed Time: 254693
+g=1739
+>> Elapsed Time: 254977
+g=1740
+>> Elapsed Time: 255273
+g=1741
+>> Elapsed Time: 255548
+g=1742
+>> Elapsed Time: 255831
+g=1743
+>> Elapsed Time: 256175
+g=1744
+>> Elapsed Time: 256522
+g=1745
+>> Elapsed Time: 256865
+g=1746
+>> Elapsed Time: 257189
+g=1747
+>> Elapsed Time: 257512
+g=1748
+>> Elapsed Time: 257831
+g=1749
+>> Elapsed Time: 258127
+g=1750
+>> Elapsed Time: 258436
+g=1751
+>> Elapsed Time: 258738
+g=1752
+>> Elapsed Time: 259040
+g=1753
+>> Elapsed Time: 259334
+g=1754
+>> Elapsed Time: 259626
+g=1755
+>> Elapsed Time: 259915
+g=1756
+>> Elapsed Time: 260234
+g=1757
+>> Elapsed Time: 260536
+g=1758
+>> Elapsed Time: 260881
+g=1759
+>> Elapsed Time: 261228
+g=1760
+>> Elapsed Time: 261565
+g=1761
+>> Elapsed Time: 261878
+g=1762
+>> Elapsed Time: 262164
+g=1763
+>> Elapsed Time: 262462
+g=1764
+>> Elapsed Time: 262762
+g=1765
+>> Elapsed Time: 263051
+g=1766
+>> Elapsed Time: 263347
+g=1767
+>> Elapsed Time: 263657
+g=1768
+>> Elapsed Time: 263952
+g=1769
+>> Elapsed Time: 264278
+g=1770
+>> Elapsed Time: 264628
+g=1771
+>> Elapsed Time: 264966
+g=1772
+>> Elapsed Time: 265263
+g=1773
+>> Elapsed Time: 265553
+g=1774
+>> Elapsed Time: 265849
+g=1775
+>> Elapsed Time: 266139
+g=1776
+>> Elapsed Time: 266429
+g=1777
+>> Elapsed Time: 266741
+g=1778
+>> Elapsed Time: 267025
+g=1779
+>> Elapsed Time: 267313
+g=1780
+>> Elapsed Time: 267597
+g=1781
+>> Elapsed Time: 267886
+g=1782
+>> Elapsed Time: 268170
+g=1783
+>> Elapsed Time: 268455
+g=1784
+>> Elapsed Time: 268745
+g=1785
+>> Elapsed Time: 269035
+g=1786
+>> Elapsed Time: 269327
+g=1787
+>> Elapsed Time: 269617
+g=1788
+>> Elapsed Time: 269915
+g=1789
+>> Elapsed Time: 270197
+g=1790
+>> Elapsed Time: 270483
+g=1791
+>> Elapsed Time: 270774
+g=1792
+>> Elapsed Time: 271063
+g=1793
+>> Elapsed Time: 271355
+g=1794
+>> Elapsed Time: 271641
+g=1795
+>> Elapsed Time: 271930
+g=1796
+>> Elapsed Time: 272215
+g=1797
+>> Elapsed Time: 272505
+g=1798
+>> Elapsed Time: 272803
+g=1799
+>> Elapsed Time: 273096
+g=1800
+>> Elapsed Time: 273384
+g=1801
+>> Elapsed Time: 273678
+g=1802
+>> Elapsed Time: 273968
+g=1803
+>> Elapsed Time: 274262
+g=1804
+>> Elapsed Time: 274548
+g=1805
+>> Elapsed Time: 274839
+g=1806
+>> Elapsed Time: 275125
+g=1807
+>> Elapsed Time: 275418
+g=1808
+>> Elapsed Time: 275712
+g=1809
+>> Elapsed Time: 276000
+g=1810
+>> Elapsed Time: 276287
+g=1811
+>> Elapsed Time: 276576
+g=1812
+>> Elapsed Time: 276869
+g=1813
+>> Elapsed Time: 277161
+g=1814
+>> Elapsed Time: 277450
+g=1815
+>> Elapsed Time: 277744
+g=1816
+>> Elapsed Time: 278031
+g=1817
+>> Elapsed Time: 278319
+g=1818
+>> Elapsed Time: 278609
+g=1819
+>> Elapsed Time: 278902
+g=1820
+>> Elapsed Time: 279189
+g=1821
+>> Elapsed Time: 279484
+g=1822
+>> Elapsed Time: 279779
+g=1823
+>> Elapsed Time: 280067
+g=1824
+>> Elapsed Time: 280371
+g=1825
+>> Elapsed Time: 280681
+g=1826
+>> Elapsed Time: 280991
+g=1827
+>> Elapsed Time: 281280
+g=1828
+>> Elapsed Time: 281574
+g=1829
+>> Elapsed Time: 281893
+g=1830
+>> Elapsed Time: 282200
+g=1831
+>> Elapsed Time: 282503
+g=1832
+>> Elapsed Time: 282805
+g=1833
+>> Elapsed Time: 283108
+g=1834
+>> Elapsed Time: 283409
+g=1835
+>> Elapsed Time: 283715
+g=1836
+>> Elapsed Time: 284019
+g=1837
+>> Elapsed Time: 284341
+g=1838
+>> Elapsed Time: 284659
+g=1839
+>> Elapsed Time: 284966
+g=1840
+>> Elapsed Time: 285321
+g=1841
+>> Elapsed Time: 285707
+g=1842
+>> Elapsed Time: 286057
+g=1843
+>> Elapsed Time: 286395
+g=1844
+>> Elapsed Time: 286748
+g=1845
+>> Elapsed Time: 287094
+g=1846
+>> Elapsed Time: 287396
+g=1847
+>> Elapsed Time: 287720
+g=1848
+>> Elapsed Time: 288030
+g=1849
+>> Elapsed Time: 288338
+g=1850
+>> Elapsed Time: 288656
+g=1851
+>> Elapsed Time: 288969
+g=1852
+>> Elapsed Time: 289262
+g=1853
+>> Elapsed Time: 289560
+g=1854
+>> Elapsed Time: 289865
+g=1855
+>> Elapsed Time: 290177
+g=1856
+>> Elapsed Time: 290500
+g=1857
+>> Elapsed Time: 290809
+g=1858
+>> Elapsed Time: 291126
+g=1859
+>> Elapsed Time: 291495
+g=1860
+>> Elapsed Time: 291853
+g=1861
+>> Elapsed Time: 292180
+g=1862
+>> Elapsed Time: 292494
+g=1863
+>> Elapsed Time: 292799
+g=1864
+>> Elapsed Time: 293107
+g=1865
+>> Elapsed Time: 293408
+g=1866
+>> Elapsed Time: 293723
+g=1867
+>> Elapsed Time: 294016
+g=1868
+>> Elapsed Time: 294308
+g=1869
+>> Elapsed Time: 294605
+g=1870
+>> Elapsed Time: 294905
+g=1871
+>> Elapsed Time: 295197
+g=1872
+>> Elapsed Time: 295506
+g=1873
+>> Elapsed Time: 295829
+g=1874
+>> Elapsed Time: 296150
+g=1875
+>> Elapsed Time: 296456
+g=1876
+>> Elapsed Time: 296761
+g=1877
+>> Elapsed Time: 297093
+g=1878
+>> Elapsed Time: 297413
+g=1879
+>> Elapsed Time: 297749
+g=1880
+>> Elapsed Time: 298060
+g=1881
+>> Elapsed Time: 298355
+g=1882
+>> Elapsed Time: 298674
+g=1883
+>> Elapsed Time: 298980
+g=1884
+>> Elapsed Time: 299283
+g=1885
+>> Elapsed Time: 299584
+g=1886
+>> Elapsed Time: 299888
+g=1887
+>> Elapsed Time: 300198
+g=1888
+>> Elapsed Time: 300507
+g=1889
+>> Elapsed Time: 300826
+g=1890
+>> Elapsed Time: 301153
+g=1891
+>> Elapsed Time: 301463
+g=1892
+>> Elapsed Time: 301768
+g=1893
+>> Elapsed Time: 302064
+g=1894
+>> Elapsed Time: 302360
+g=1895
+>> Elapsed Time: 302663
+g=1896
+>> Elapsed Time: 302965
+g=1897
+>> Elapsed Time: 303263
+g=1898
+>> Elapsed Time: 303583
+g=1899
+>> Elapsed Time: 303926
+g=1900
+>> Elapsed Time: 304257
+g=1901
+>> Elapsed Time: 304559
+g=1902
+>> Elapsed Time: 304893
+g=1903
+>> Elapsed Time: 305201
+g=1904
+>> Elapsed Time: 305554
+g=1905
+>> Elapsed Time: 305920
+g=1906
+>> Elapsed Time: 306236
+g=1907
+>> Elapsed Time: 306552
+g=1908
+>> Elapsed Time: 306899
+g=1909
+>> Elapsed Time: 307231
+g=1910
+>> Elapsed Time: 307550
+g=1911
+>> Elapsed Time: 307859
+g=1912
+>> Elapsed Time: 308196
+g=1913
+>> Elapsed Time: 308519
+g=1914
+>> Elapsed Time: 308839
+g=1915
+>> Elapsed Time: 309145
+g=1916
+>> Elapsed Time: 309473
+g=1917
+>> Elapsed Time: 309786
+g=1918
+>> Elapsed Time: 310113
+g=1919
+>> Elapsed Time: 310464
+g=1920
+>> Elapsed Time: 310790
+g=1921
+>> Elapsed Time: 311111
+g=1922
+>> Elapsed Time: 311433
+g=1923
+>> Elapsed Time: 311747
+g=1924
+>> Elapsed Time: 312059
+g=1925
+>> Elapsed Time: 312360
+g=1926
+>> Elapsed Time: 312661
+g=1927
+>> Elapsed Time: 312966
+g=1928
+>> Elapsed Time: 313276
+g=1929
+>> Elapsed Time: 313578
+g=1930
+>> Elapsed Time: 313884
+g=1931
+>> Elapsed Time: 314191
+g=1932
+>> Elapsed Time: 314493
+g=1933
+>> Elapsed Time: 314795
+g=1934
+>> Elapsed Time: 315102
+g=1935
+>> Elapsed Time: 315416
+g=1936
+>> Elapsed Time: 315727
+g=1937
+>> Elapsed Time: 316040
+g=1938
+>> Elapsed Time: 316342
+g=1939
+>> Elapsed Time: 316647
+g=1940
+>> Elapsed Time: 316960
+g=1941
+>> Elapsed Time: 317274
+g=1942
+>> Elapsed Time: 317598
+g=1943
+>> Elapsed Time: 317921
+g=1944
+>> Elapsed Time: 318228
+g=1945
+>> Elapsed Time: 318535
+g=1946
+>> Elapsed Time: 318843
+g=1947
+>> Elapsed Time: 319150
+g=1948
+>> Elapsed Time: 319459
+g=1949
+>> Elapsed Time: 319766
+g=1950
+>> Elapsed Time: 320075
+g=1951
+>> Elapsed Time: 320383
+g=1952
+>> Elapsed Time: 320717
+g=1953
+>> Elapsed Time: 321038
+g=1954
+>> Elapsed Time: 321352
+g=1955
+>> Elapsed Time: 321679
+g=1956
+>> Elapsed Time: 321989
+g=1957
+>> Elapsed Time: 322299
+g=1958
+>> Elapsed Time: 322613
+g=1959
+>> Elapsed Time: 322923
+g=1960
+>> Elapsed Time: 323232
+g=1961
+>> Elapsed Time: 323540
+g=1962
+>> Elapsed Time: 323849
+g=1963
+>> Elapsed Time: 324156
+g=1964
+>> Elapsed Time: 324466
+g=1965
+>> Elapsed Time: 324772
+g=1966
+>> Elapsed Time: 325080
+g=1967
+>> Elapsed Time: 325386
+g=1968
+>> Elapsed Time: 325693
+g=1969
+>> Elapsed Time: 326000
+g=1970
+>> Elapsed Time: 326308
+g=1971
+>> Elapsed Time: 326618
+g=1972
+>> Elapsed Time: 326929
+g=1973
+>> Elapsed Time: 327240
+g=1974
+>> Elapsed Time: 327551
+g=1975
+>> Elapsed Time: 327864
+g=1976
+>> Elapsed Time: 328176
+g=1977
+>> Elapsed Time: 328486
+g=1978
+>> Elapsed Time: 328796
+g=1979
+>> Elapsed Time: 329108
+g=1980
+>> Elapsed Time: 329420
+g=1981
+>> Elapsed Time: 329731
+g=1982
+>> Elapsed Time: 330042
+g=1983
+>> Elapsed Time: 330354
+g=1984
+>> Elapsed Time: 330665
+g=1985
+>> Elapsed Time: 330978
+g=1986
+>> Elapsed Time: 331289
+g=1987
+>> Elapsed Time: 331602
+g=1988
+>> Elapsed Time: 331914
+g=1989
+>> Elapsed Time: 332226
+g=1990
+>> Elapsed Time: 332538
+g=1991
+>> Elapsed Time: 332847
+g=1992
+>> Elapsed Time: 333157
+g=1993
+>> Elapsed Time: 333468
+g=1994
+>> Elapsed Time: 333779
+g=1995
+>> Elapsed Time: 334090
+g=1996
+>> Elapsed Time: 334401
+g=1997
+>> Elapsed Time: 334712
+g=1998
+>> Elapsed Time: 335026
+g=1999
+>> Elapsed Time: 335337
+g=2000
+>> Elapsed Time: 335649
+g=2001
+>> Elapsed Time: 335962
+g=2002
+>> Elapsed Time: 336276
+g=2003
+>> Elapsed Time: 336586
+g=2004
+>> Elapsed Time: 336898
+g=2005
+>> Elapsed Time: 337210
+g=2006
+>> Elapsed Time: 337520
+g=2007
+>> Elapsed Time: 337832
+g=2008
+>> Elapsed Time: 338147
+g=2009
+>> Elapsed Time: 338463
+g=2010
+>> Elapsed Time: 338779
+g=2011
+>> Elapsed Time: 339097
+g=2012
+>> Elapsed Time: 339414
+g=2013
+>> Elapsed Time: 339738
+g=2014
+>> Elapsed Time: 340055
+g=2015
+>> Elapsed Time: 340373
+g=2016
+>> Elapsed Time: 340687
+g=2017
+>> Elapsed Time: 341002
+g=2018
+>> Elapsed Time: 341316
+g=2019
+>> Elapsed Time: 341630
+g=2020
+>> Elapsed Time: 341945
+g=2021
+>> Elapsed Time: 342259
+g=2022
+>> Elapsed Time: 342574
+g=2023
+>> Elapsed Time: 342888
+g=2024
+>> Elapsed Time: 343203
+g=2025
+>> Elapsed Time: 343518
+g=2026
+>> Elapsed Time: 343835
+g=2027
+>> Elapsed Time: 344159
+g=2028
+>> Elapsed Time: 344476
+g=2029
+>> Elapsed Time: 344790
+g=2030
+>> Elapsed Time: 345109
+g=2031
+>> Elapsed Time: 345425
+g=2032
+>> Elapsed Time: 345746
+g=2033
+>> Elapsed Time: 346066
+g=2034
+>> Elapsed Time: 346387
+g=2035
+>> Elapsed Time: 346707
+g=2036
+>> Elapsed Time: 347026
+g=2037
+>> Elapsed Time: 347341
+g=2038
+>> Elapsed Time: 347657
+g=2039
+>> Elapsed Time: 347974
+g=2040
+>> Elapsed Time: 348295
+g=2041
+>> Elapsed Time: 348611
+g=2042
+>> Elapsed Time: 348928
+g=2043
+>> Elapsed Time: 349246
+g=2044
+>> Elapsed Time: 349563
+g=2045
+>> Elapsed Time: 349879
+g=2046
+>> Elapsed Time: 350197
+g=2047
+>> Elapsed Time: 350517
+g=2048
+>> Elapsed Time: 350846
+g=2049
+>> Elapsed Time: 351177
+g=2050
+>> Elapsed Time: 351507
+g=2051
+>> Elapsed Time: 351832
+g=2052
+>> Elapsed Time: 352151
+g=2053
+>> Elapsed Time: 352473
+g=2054
+>> Elapsed Time: 352797
+g=2055
+>> Elapsed Time: 353121
+g=2056
+>> Elapsed Time: 353444
+g=2057
+>> Elapsed Time: 353764
+g=2058
+>> Elapsed Time: 354083
+g=2059
+>> Elapsed Time: 354404
+g=2060
+>> Elapsed Time: 354728
+g=2061
+>> Elapsed Time: 355050
+g=2062
+>> Elapsed Time: 355374
+g=2063
+>> Elapsed Time: 355695
+g=2064
+>> Elapsed Time: 356016
+g=2065
+>> Elapsed Time: 356337
+g=2066
+>> Elapsed Time: 356658
+g=2067
+>> Elapsed Time: 356986
+g=2068
+>> Elapsed Time: 357320
+g=2069
+>> Elapsed Time: 357653
+g=2070
+>> Elapsed Time: 357976
+g=2071
+>> Elapsed Time: 358298
+g=2072
+>> Elapsed Time: 358631
+g=2073
+>> Elapsed Time: 358966
+g=2074
+>> Elapsed Time: 359299
+g=2075
+>> Elapsed Time: 359620
+g=2076
+>> Elapsed Time: 359941
+g=2077
+>> Elapsed Time: 360262
+g=2078
+>> Elapsed Time: 360584
+g=2079
+>> Elapsed Time: 360905
+g=2080
+>> Elapsed Time: 361228
+g=2081
+>> Elapsed Time: 361550
+g=2082
+>> Elapsed Time: 361874
+g=2083
+>> Elapsed Time: 362197
+g=2084
+>> Elapsed Time: 362520
+g=2085
+>> Elapsed Time: 362845
+g=2086
+>> Elapsed Time: 363173
+g=2087
+>> Elapsed Time: 363501
+g=2088
+>> Elapsed Time: 363831
+g=2089
+>> Elapsed Time: 364160
+g=2090
+>> Elapsed Time: 364490
+g=2091
+>> Elapsed Time: 364817
+g=2092
+>> Elapsed Time: 365149
+g=2093
+>> Elapsed Time: 365477
+g=2094
+>> Elapsed Time: 365805
+g=2095
+>> Elapsed Time: 366135
+g=2096
+>> Elapsed Time: 366464
+g=2097
+>> Elapsed Time: 366791
+g=2098
+>> Elapsed Time: 367123
+g=2099
+>> Elapsed Time: 367456
+g=2100
+>> Elapsed Time: 367784
+g=2101
+>> Elapsed Time: 368113
+g=2102
+>> Elapsed Time: 368443
+g=2103
+>> Elapsed Time: 368773
+g=2104
+>> Elapsed Time: 369106
+g=2105
+>> Elapsed Time: 369437
+g=2106
+>> Elapsed Time: 369772
+g=2107
+>> Elapsed Time: 370103
+g=2108
+>> Elapsed Time: 370440
+g=2109
+>> Elapsed Time: 370771
+g=2110
+>> Elapsed Time: 371101
+g=2111
+>> Elapsed Time: 371441
+g=2112
+>> Elapsed Time: 371782
+g=2113
+>> Elapsed Time: 372121
+g=2114
+>> Elapsed Time: 372460
+g=2115
+>> Elapsed Time: 372797
+g=2116
+>> Elapsed Time: 373130
+g=2117
+>> Elapsed Time: 373463
+g=2118
+>> Elapsed Time: 373794
+g=2119
+>> Elapsed Time: 374125
+g=2120
+>> Elapsed Time: 374455
+g=2121
+>> Elapsed Time: 374787
+g=2122
+>> Elapsed Time: 375119
+g=2123
+>> Elapsed Time: 375452
+g=2124
+>> Elapsed Time: 375784
+g=2125
+>> Elapsed Time: 376116
+g=2126
+>> Elapsed Time: 376451
+g=2127
+>> Elapsed Time: 376784
+g=2128
+>> Elapsed Time: 377121
+g=2129
+>> Elapsed Time: 377455
+g=2130
+>> Elapsed Time: 377792
+g=2131
+>> Elapsed Time: 378121
+g=2132
+>> Elapsed Time: 378453
+g=2133
+>> Elapsed Time: 378789
+g=2134
+>> Elapsed Time: 379121
+g=2135
+>> Elapsed Time: 379455
+g=2136
+>> Elapsed Time: 379785
+g=2137
+>> Elapsed Time: 380115
+g=2138
+>> Elapsed Time: 380446
+g=2139
+>> Elapsed Time: 380776
+g=2140
+>> Elapsed Time: 381107
+g=2141
+>> Elapsed Time: 381437
+g=2142
+>> Elapsed Time: 381769
+g=2143
+>> Elapsed Time: 382100
+g=2144
+>> Elapsed Time: 382435
+g=2145
+>> Elapsed Time: 382767
+g=2146
+>> Elapsed Time: 383098
+g=2147
+>> Elapsed Time: 383428
+g=2148
+>> Elapsed Time: 383762
+g=2149
+>> Elapsed Time: 384094
+g=2150
+>> Elapsed Time: 384425
+g=2151
+>> Elapsed Time: 384761
+g=2152
+>> Elapsed Time: 385095
+g=2153
+>> Elapsed Time: 385425
+g=2154
+>> Elapsed Time: 385760
+g=2155
+>> Elapsed Time: 386094
+g=2156
+>> Elapsed Time: 386427
+g=2157
+>> Elapsed Time: 386762
+g=2158
+>> Elapsed Time: 387095
+g=2159
+>> Elapsed Time: 387428
+g=2160
+>> Elapsed Time: 387764
+g=2161
+>> Elapsed Time: 388099
+g=2162
+>> Elapsed Time: 388432
+g=2163
+>> Elapsed Time: 388770
+g=2164
+>> Elapsed Time: 389106
+g=2165
+>> Elapsed Time: 389440
+g=2166
+>> Elapsed Time: 389775
+g=2167
+>> Elapsed Time: 390110
+g=2168
+>> Elapsed Time: 390445
+g=2169
+>> Elapsed Time: 390781
+g=2170
+>> Elapsed Time: 391117
+g=2171
+>> Elapsed Time: 391453
+g=2172
+>> Elapsed Time: 391789
+g=2173
+>> Elapsed Time: 392126
+g=2174
+>> Elapsed Time: 392461
+g=2175
+>> Elapsed Time: 392797
+g=2176
+>> Elapsed Time: 393132
+g=2177
+>> Elapsed Time: 393468
+g=2178
+>> Elapsed Time: 393805
+g=2179
+>> Elapsed Time: 394140
+g=2180
+>> Elapsed Time: 394476
+g=2181
+>> Elapsed Time: 394818
+g=2182
+>> Elapsed Time: 395161
+g=2183
+>> Elapsed Time: 395503
+g=2184
+>> Elapsed Time: 395846
+g=2185
+>> Elapsed Time: 396190
+g=2186
+>> Elapsed Time: 396541
+g=2187
+>> Elapsed Time: 396894
+g=2188
+>> Elapsed Time: 397242
+g=2189
+>> Elapsed Time: 397579
+g=2190
+>> Elapsed Time: 397918
+g=2191
+>> Elapsed Time: 398256
+g=2192
+>> Elapsed Time: 398595
+g=2193
+>> Elapsed Time: 398935
+g=2194
+>> Elapsed Time: 399272
+g=2195
+>> Elapsed Time: 399610
+g=2196
+>> Elapsed Time: 399953
+g=2197
+>> Elapsed Time: 400292
+g=2198
+>> Elapsed Time: 400631
+g=2199
+>> Elapsed Time: 400969
+g=2200
+>> Elapsed Time: 401308
+g=2201
+>> Elapsed Time: 401647
+g=2202
+>> Elapsed Time: 401986
+g=2203
+>> Elapsed Time: 402326
+g=2204
+>> Elapsed Time: 402665
+g=2205
+>> Elapsed Time: 403006
+g=2206
+>> Elapsed Time: 403345
+g=2207
+>> Elapsed Time: 403684
+g=2208
+>> Elapsed Time: 404027
+g=2209
+>> Elapsed Time: 404368
+g=2210
+>> Elapsed Time: 404710
+g=2211
+>> Elapsed Time: 405055
+g=2212
+>> Elapsed Time: 405400
+g=2213
+>> Elapsed Time: 405747
+g=2214
+>> Elapsed Time: 406089
+g=2215
+>> Elapsed Time: 406433
+g=2216
+>> Elapsed Time: 406773
+g=2217
+>> Elapsed Time: 407114
+g=2218
+>> Elapsed Time: 407456
+g=2219
+>> Elapsed Time: 407799
+g=2220
+>> Elapsed Time: 408152
+g=2221
+>> Elapsed Time: 408504
+g=2222
+>> Elapsed Time: 408848
+g=2223
+>> Elapsed Time: 409190
+g=2224
+>> Elapsed Time: 409532
+g=2225
+>> Elapsed Time: 409875
+g=2226
+>> Elapsed Time: 410219
+g=2227
+>> Elapsed Time: 410566
+g=2228
+>> Elapsed Time: 410909
+g=2229
+>> Elapsed Time: 411253
+g=2230
+>> Elapsed Time: 411595
+g=2231
+>> Elapsed Time: 411939
+g=2232
+>> Elapsed Time: 412283
+g=2233
+>> Elapsed Time: 412626
+g=2234
+>> Elapsed Time: 412971
+g=2235
+>> Elapsed Time: 413315
+g=2236
+>> Elapsed Time: 413658
+g=2237
+>> Elapsed Time: 414002
+g=2238
+>> Elapsed Time: 414346
+g=2239
+>> Elapsed Time: 414692
+g=2240
+>> Elapsed Time: 415044
+g=2241
+>> Elapsed Time: 415388
+g=2242
+>> Elapsed Time: 415733
+g=2243
+>> Elapsed Time: 416078
+g=2244
+>> Elapsed Time: 416424
+g=2245
+>> Elapsed Time: 416769
+g=2246
+>> Elapsed Time: 417115
+g=2247
+>> Elapsed Time: 417463
+g=2248
+>> Elapsed Time: 417811
+g=2249
+>> Elapsed Time: 418158
+g=2250
+>> Elapsed Time: 418504
+g=2251
+>> Elapsed Time: 418851
+g=2252
+>> Elapsed Time: 419198
+g=2253
+>> Elapsed Time: 419546
+g=2254
+>> Elapsed Time: 419895
+g=2255
+>> Elapsed Time: 420241
+g=2256
+>> Elapsed Time: 420588
+g=2257
+>> Elapsed Time: 420939
+g=2258
+>> Elapsed Time: 421292
+g=2259
+>> Elapsed Time: 421651
+g=2260
+>> Elapsed Time: 422012
+g=2261
+>> Elapsed Time: 422371
+g=2262
+>> Elapsed Time: 422726
+g=2263
+>> Elapsed Time: 423087
+g=2264
+>> Elapsed Time: 423448
+g=2265
+>> Elapsed Time: 423810
+g=2266
+>> Elapsed Time: 424171
+g=2267
+>> Elapsed Time: 424529
+g=2268
+>> Elapsed Time: 424885
+g=2269
+>> Elapsed Time: 425240
+g=2270
+>> Elapsed Time: 425595
+g=2271
+>> Elapsed Time: 425949
+g=2272
+>> Elapsed Time: 426302
+g=2273
+>> Elapsed Time: 426658
+g=2274
+>> Elapsed Time: 427011
+g=2275
+>> Elapsed Time: 427373
+g=2276
+>> Elapsed Time: 427728
+g=2277
+>> Elapsed Time: 428085
+g=2278
+>> Elapsed Time: 428440
+g=2279
+>> Elapsed Time: 428795
+g=2280
+>> Elapsed Time: 429152
+g=2281
+>> Elapsed Time: 429508
+g=2282
+>> Elapsed Time: 429868
+g=2283
+>> Elapsed Time: 430225
+g=2284
+>> Elapsed Time: 430581
+g=2285
+>> Elapsed Time: 430939
+g=2286
+>> Elapsed Time: 431295
+g=2287
+>> Elapsed Time: 431652
+g=2288
+>> Elapsed Time: 432009
+g=2289
+>> Elapsed Time: 432366
+g=2290
+>> Elapsed Time: 432722
+g=2291
+>> Elapsed Time: 433080
+g=2292
+>> Elapsed Time: 433436
+g=2293
+>> Elapsed Time: 433794
+g=2294
+>> Elapsed Time: 434152
+g=2295
+>> Elapsed Time: 434509
+g=2296
+>> Elapsed Time: 434867
+g=2297
+>> Elapsed Time: 435229
+g=2298
+>> Elapsed Time: 435587
+g=2299
+>> Elapsed Time: 435950
+g=2300
+>> Elapsed Time: 436308
+g=2301
+>> Elapsed Time: 436667
+g=2302
+>> Elapsed Time: 437026
+g=2303
+>> Elapsed Time: 437385
+g=2304
+>> Elapsed Time: 437746
+g=2305
+>> Elapsed Time: 438107
+g=2306
+>> Elapsed Time: 438488
+g=2307
+>> Elapsed Time: 438857
+g=2308
+>> Elapsed Time: 439230
+g=2309
+>> Elapsed Time: 439602
+g=2310
+>> Elapsed Time: 439966
+g=2311
+>> Elapsed Time: 440329
+g=2312
+>> Elapsed Time: 440692
+g=2313
+>> Elapsed Time: 441055
+g=2314
+>> Elapsed Time: 441419
+g=2315
+>> Elapsed Time: 441782
+g=2316
+>> Elapsed Time: 442146
+g=2317
+>> Elapsed Time: 442510
+g=2318
+>> Elapsed Time: 442874
+g=2319
+>> Elapsed Time: 443236
+g=2320
+>> Elapsed Time: 443599
+g=2321
+>> Elapsed Time: 443961
+g=2322
+>> Elapsed Time: 444320
+g=2323
+>> Elapsed Time: 444678
+g=2324
+>> Elapsed Time: 445042
+g=2325
+>> Elapsed Time: 445400
+g=2326
+>> Elapsed Time: 445757
+g=2327
+>> Elapsed Time: 446116
+g=2328
+>> Elapsed Time: 446475
+g=2329
+>> Elapsed Time: 446836
+g=2330
+>> Elapsed Time: 447198
+g=2331
+>> Elapsed Time: 447557
+g=2332
+>> Elapsed Time: 447917
+g=2333
+>> Elapsed Time: 448278
+g=2334
+>> Elapsed Time: 448638
+g=2335
+>> Elapsed Time: 449000
+g=2336
+>> Elapsed Time: 449362
+g=2337
+>> Elapsed Time: 449723
+g=2338
+>> Elapsed Time: 450084
+g=2339
+>> Elapsed Time: 450446
+g=2340
+>> Elapsed Time: 450807
+g=2341
+>> Elapsed Time: 451170
+g=2342
+>> Elapsed Time: 451531
+g=2343
+>> Elapsed Time: 451896
+g=2344
+>> Elapsed Time: 452258
+g=2345
+>> Elapsed Time: 452620
+g=2346
+>> Elapsed Time: 452983
+g=2347
+>> Elapsed Time: 453346
+g=2348
+>> Elapsed Time: 453709
+g=2349
+>> Elapsed Time: 454070
+g=2350
+>> Elapsed Time: 454432
+g=2351
+>> Elapsed Time: 454798
+g=2352
+>> Elapsed Time: 455165
+g=2353
+>> Elapsed Time: 455534
+g=2354
+>> Elapsed Time: 455904
+g=2355
+>> Elapsed Time: 456273
+g=2356
+>> Elapsed Time: 456642
+g=2357
+>> Elapsed Time: 457008
+g=2358
+>> Elapsed Time: 457372
+g=2359
+>> Elapsed Time: 457736
+g=2360
+>> Elapsed Time: 458100
+g=2361
+>> Elapsed Time: 458464
+g=2362
+>> Elapsed Time: 458827
+g=2363
+>> Elapsed Time: 459191
+g=2364
+>> Elapsed Time: 459555
+g=2365
+>> Elapsed Time: 459923
+g=2366
+>> Elapsed Time: 460289
+g=2367
+>> Elapsed Time: 460653
+g=2368
+>> Elapsed Time: 461023
+g=2369
+>> Elapsed Time: 461389
+g=2370
+>> Elapsed Time: 461754
+g=2371
+>> Elapsed Time: 462124
+g=2372
+>> Elapsed Time: 462495
+g=2373
+>> Elapsed Time: 462867
+g=2374
+>> Elapsed Time: 463240
+g=2375
+>> Elapsed Time: 463609
+g=2376
+>> Elapsed Time: 463977
+g=2377
+>> Elapsed Time: 464344
+g=2378
+>> Elapsed Time: 464721
+g=2379
+>> Elapsed Time: 465094
+g=2380
+>> Elapsed Time: 465464
+g=2381
+>> Elapsed Time: 465831
+g=2382
+>> Elapsed Time: 466198
+g=2383
+>> Elapsed Time: 466569
+g=2384
+>> Elapsed Time: 466946
+g=2385
+>> Elapsed Time: 467326
+g=2386
+>> Elapsed Time: 467700
+g=2387
+>> Elapsed Time: 468075
+g=2388
+>> Elapsed Time: 468449
+g=2389
+>> Elapsed Time: 468824
+g=2390
+>> Elapsed Time: 469197
+g=2391
+>> Elapsed Time: 469572
+g=2392
+>> Elapsed Time: 469952
+g=2393
+>> Elapsed Time: 470333
+g=2394
+>> Elapsed Time: 470713
+g=2395
+>> Elapsed Time: 471107
+g=2396
+>> Elapsed Time: 471513
+g=2397
+>> Elapsed Time: 471917
+g=2398
+>> Elapsed Time: 472350
+g=2399
+>> Elapsed Time: 472864
+g=2400
+>> Elapsed Time: 473382
+g=2401
+>> Elapsed Time: 473819
+g=2402
+>> Elapsed Time: 474243
+g=2403
+>> Elapsed Time: 474635
+g=2404
+>> Elapsed Time: 475059
+g=2405
+>> Elapsed Time: 475478
+g=2406
+>> Elapsed Time: 475877
+g=2407
+>> Elapsed Time: 476274
+g=2408
+>> Elapsed Time: 476676
+g=2409
+>> Elapsed Time: 477096
+g=2410
+>> Elapsed Time: 477484
+g=2411
+>> Elapsed Time: 477871
+g=2412
+>> Elapsed Time: 478263
+g=2413
+>> Elapsed Time: 478636
+g=2414
+>> Elapsed Time: 479023
+g=2415
+>> Elapsed Time: 479414
+g=2416
+>> Elapsed Time: 479805
+g=2417
+>> Elapsed Time: 480208
+g=2418
+>> Elapsed Time: 480606
+g=2419
+>> Elapsed Time: 480989
+g=2420
+>> Elapsed Time: 481408
+g=2421
+>> Elapsed Time: 481804
+g=2422
+>> Elapsed Time: 482199
+g=2423
+>> Elapsed Time: 482596
+g=2424
+>> Elapsed Time: 482995
+g=2425
+>> Elapsed Time: 483408
+g=2426
+>> Elapsed Time: 483810
+g=2427
+>> Elapsed Time: 484205
+g=2428
+>> Elapsed Time: 484582
+g=2429
+>> Elapsed Time: 484961
+g=2430
+>> Elapsed Time: 485371
+g=2431
+>> Elapsed Time: 485795
+g=2432
+>> Elapsed Time: 486203
+g=2433
+>> Elapsed Time: 486608
+g=2434
+>> Elapsed Time: 486990
+g=2435
+>> Elapsed Time: 487371
+g=2436
+>> Elapsed Time: 487747
+g=2437
+>> Elapsed Time: 488139
+g=2438
+>> Elapsed Time: 488517
+g=2439
+>> Elapsed Time: 488894
+g=2440
+>> Elapsed Time: 489277
+g=2441
+>> Elapsed Time: 489659
+g=2442
+>> Elapsed Time: 490050
+g=2443
+>> Elapsed Time: 490429
+g=2444
+>> Elapsed Time: 490808
+g=2445
+>> Elapsed Time: 491194
+g=2446
+>> Elapsed Time: 491572
+g=2447
+>> Elapsed Time: 491950
+g=2448
+>> Elapsed Time: 492332
+g=2449
+>> Elapsed Time: 492710
+g=2450
+>> Elapsed Time: 493093
+g=2451
+>> Elapsed Time: 493474
+g=2452
+>> Elapsed Time: 493853
+g=2453
+>> Elapsed Time: 494237
+g=2454
+>> Elapsed Time: 494616
+g=2455
+>> Elapsed Time: 495001
+g=2456
+>> Elapsed Time: 495382
+g=2457
+>> Elapsed Time: 495760
+g=2458
+>> Elapsed Time: 496146
+g=2459
+>> Elapsed Time: 496527
+g=2460
+>> Elapsed Time: 496913
+g=2461
+>> Elapsed Time: 497306
+g=2462
+>> Elapsed Time: 497690
+g=2463
+>> Elapsed Time: 498086
+g=2464
+>> Elapsed Time: 498472
+g=2465
+>> Elapsed Time: 498857
+g=2466
+>> Elapsed Time: 499250
+g=2467
+>> Elapsed Time: 499630
+g=2468
+>> Elapsed Time: 500018
+g=2469
+>> Elapsed Time: 500404
+g=2470
+>> Elapsed Time: 500795
+g=2471
+>> Elapsed Time: 501205
+g=2472
+>> Elapsed Time: 501590
+g=2473
+>> Elapsed Time: 501976
+g=2474
+>> Elapsed Time: 502359
+g=2475
+>> Elapsed Time: 502742
+g=2476
+>> Elapsed Time: 503129
+g=2477
+>> Elapsed Time: 503512
+g=2478
+>> Elapsed Time: 503894
+g=2479
+>> Elapsed Time: 504282
+g=2480
+>> Elapsed Time: 504665
+g=2481
+>> Elapsed Time: 505061
+g=2482
+>> Elapsed Time: 505444
+g=2483
+>> Elapsed Time: 505829
+g=2484
+>> Elapsed Time: 506220
+g=2485
+>> Elapsed Time: 506604
+g=2486
+>> Elapsed Time: 506993
+g=2487
+>> Elapsed Time: 507379
+g=2488
+>> Elapsed Time: 507764
+g=2489
+>> Elapsed Time: 508155
+g=2490
+>> Elapsed Time: 508541
+g=2491
+>> Elapsed Time: 508927
+g=2492
+>> Elapsed Time: 509318
+g=2493
+>> Elapsed Time: 509703
+g=2494
+>> Elapsed Time: 510095
+g=2495
+>> Elapsed Time: 510479
+g=2496
+>> Elapsed Time: 510864
+g=2497
+>> Elapsed Time: 511260
+g=2498
+>> Elapsed Time: 511663
+g=2499
+>> Elapsed Time: 512072
+g=2500
+>> Elapsed Time: 512474
+g=2501
+>> Elapsed Time: 512880
+g=2502
+>> Elapsed Time: 513287
+g=2503
+>> Elapsed Time: 513714
+g=2504
+>> Elapsed Time: 514127
+g=2505
+>> Elapsed Time: 514529
+g=2506
+>> Elapsed Time: 514917
+g=2507
+>> Elapsed Time: 515374
+g=2508
+>> Elapsed Time: 515850
+g=2509
+>> Elapsed Time: 516295
+g=2510
+>> Elapsed Time: 516742
+g=2511
+>> Elapsed Time: 517188
+g=2512
+>> Elapsed Time: 517613
+g=2513
+>> Elapsed Time: 518038
+g=2514
+>> Elapsed Time: 518454
+g=2515
+>> Elapsed Time: 518884
+g=2516
+>> Elapsed Time: 519288
+g=2517
+>> Elapsed Time: 519718
+g=2518
+>> Elapsed Time: 520162
+g=2519
+>> Elapsed Time: 520559
+g=2520
+>> Elapsed Time: 521020
+g=2521
+>> Elapsed Time: 521508
+g=2522
+>> Elapsed Time: 521898
+g=2523
+>> Elapsed Time: 522313
+g=2524
+>> Elapsed Time: 522720
+g=2525
+>> Elapsed Time: 523121
+g=2526
+>> Elapsed Time: 523515
+g=2527
+>> Elapsed Time: 523907
+g=2528
+>> Elapsed Time: 524297
+g=2529
+>> Elapsed Time: 524687
+g=2530
+>> Elapsed Time: 525079
+g=2531
+>> Elapsed Time: 525480
+g=2532
+>> Elapsed Time: 525875
+g=2533
+>> Elapsed Time: 526274
+g=2534
+>> Elapsed Time: 526681
+g=2535
+>> Elapsed Time: 527091
+g=2536
+>> Elapsed Time: 527486
+g=2537
+>> Elapsed Time: 527878
+g=2538
+>> Elapsed Time: 528269
+g=2539
+>> Elapsed Time: 528665
+g=2540
+>> Elapsed Time: 529058
+g=2541
+>> Elapsed Time: 529451
+g=2542
+>> Elapsed Time: 529843
+g=2543
+>> Elapsed Time: 530237
+g=2544
+>> Elapsed Time: 530629
+g=2545
+>> Elapsed Time: 531022
+g=2546
+>> Elapsed Time: 531417
+g=2547
+>> Elapsed Time: 531817
+g=2548
+>> Elapsed Time: 532218
+g=2549
+>> Elapsed Time: 532616
+g=2550
+>> Elapsed Time: 533015
+g=2551
+>> Elapsed Time: 533413
+g=2552
+>> Elapsed Time: 533812
+g=2553
+>> Elapsed Time: 534210
+g=2554
+>> Elapsed Time: 534609
+g=2555
+>> Elapsed Time: 535009
+g=2556
+>> Elapsed Time: 535414
+g=2557
+>> Elapsed Time: 535822
+g=2558
+>> Elapsed Time: 536218
+g=2559
+>> Elapsed Time: 536611
+g=2560
+>> Elapsed Time: 537004
+g=2561
+>> Elapsed Time: 537398
+g=2562
+>> Elapsed Time: 537796
+g=2563
+>> Elapsed Time: 538199
+g=2564
+>> Elapsed Time: 538597
+g=2565
+>> Elapsed Time: 538997
+g=2566
+>> Elapsed Time: 539405
+g=2567
+>> Elapsed Time: 539810
+g=2568
+>> Elapsed Time: 540206
+g=2569
+>> Elapsed Time: 540601
+g=2570
+>> Elapsed Time: 540995
+g=2571
+>> Elapsed Time: 541391
+g=2572
+>> Elapsed Time: 541786
+g=2573
+>> Elapsed Time: 542181
+g=2574
+>> Elapsed Time: 542577
+g=2575
+>> Elapsed Time: 542974
+g=2576
+>> Elapsed Time: 543372
+g=2577
+>> Elapsed Time: 543770
+g=2578
+>> Elapsed Time: 544167
+g=2579
+>> Elapsed Time: 544568
+g=2580
+>> Elapsed Time: 544967
+g=2581
+>> Elapsed Time: 545365
+g=2582
+>> Elapsed Time: 545764
+g=2583
+>> Elapsed Time: 546163
+g=2584
+>> Elapsed Time: 546560
+g=2585
+>> Elapsed Time: 546958
+g=2586
+>> Elapsed Time: 547358
+g=2587
+>> Elapsed Time: 547758
+g=2588
+>> Elapsed Time: 548158
+g=2589
+>> Elapsed Time: 548558
+g=2590
+>> Elapsed Time: 548958
+g=2591
+>> Elapsed Time: 549355
+g=2592
+>> Elapsed Time: 549754
+g=2593
+>> Elapsed Time: 550154
+g=2594
+>> Elapsed Time: 550561
+g=2595
+>> Elapsed Time: 550968
+g=2596
+>> Elapsed Time: 551375
+g=2597
+>> Elapsed Time: 551782
+g=2598
+>> Elapsed Time: 552189
+g=2599
+>> Elapsed Time: 552591
+g=2600
+>> Elapsed Time: 552992
+g=2601
+>> Elapsed Time: 553394
+g=2602
+>> Elapsed Time: 553796
+g=2603
+>> Elapsed Time: 554198
+g=2604
+>> Elapsed Time: 554601
+g=2605
+>> Elapsed Time: 555009
+g=2606
+>> Elapsed Time: 555416
+g=2607
+>> Elapsed Time: 555819
+g=2608
+>> Elapsed Time: 556224
+g=2609
+>> Elapsed Time: 556634
+g=2610
+>> Elapsed Time: 557047
+g=2611
+>> Elapsed Time: 557455
+g=2612
+>> Elapsed Time: 557858
+g=2613
+>> Elapsed Time: 558270
+g=2614
+>> Elapsed Time: 558674
+g=2615
+>> Elapsed Time: 559079
+g=2616
+>> Elapsed Time: 559484
+g=2617
+>> Elapsed Time: 559888
+g=2618
+>> Elapsed Time: 560293
+g=2619
+>> Elapsed Time: 560699
+g=2620
+>> Elapsed Time: 561103
+g=2621
+>> Elapsed Time: 561508
+g=2622
+>> Elapsed Time: 561916
+g=2623
+>> Elapsed Time: 562323
+g=2624
+>> Elapsed Time: 562739
+g=2625
+>> Elapsed Time: 563156
+g=2626
+>> Elapsed Time: 563561
+g=2627
+>> Elapsed Time: 563968
+g=2628
+>> Elapsed Time: 564376
+g=2629
+>> Elapsed Time: 564781
+g=2630
+>> Elapsed Time: 565190
+g=2631
+>> Elapsed Time: 565603
+g=2632
+>> Elapsed Time: 566008
+g=2633
+>> Elapsed Time: 566413
+g=2634
+>> Elapsed Time: 566819
+g=2635
+>> Elapsed Time: 567226
+g=2636
+>> Elapsed Time: 567633
+g=2637
+>> Elapsed Time: 568039
+g=2638
+>> Elapsed Time: 568446
+g=2639
+>> Elapsed Time: 568852
+g=2640
+>> Elapsed Time: 569259
+g=2641
+>> Elapsed Time: 569665
+g=2642
+>> Elapsed Time: 570077
+g=2643
+>> Elapsed Time: 570486
+g=2644
+>> Elapsed Time: 570893
+g=2645
+>> Elapsed Time: 571300
+g=2646
+>> Elapsed Time: 571706
+g=2647
+>> Elapsed Time: 572113
+g=2648
+>> Elapsed Time: 572524
+g=2649
+>> Elapsed Time: 572937
+g=2650
+>> Elapsed Time: 573347
+g=2651
+>> Elapsed Time: 573757
+g=2652
+>> Elapsed Time: 574166
+g=2653
+>> Elapsed Time: 574574
+g=2654
+>> Elapsed Time: 574986
+g=2655
+>> Elapsed Time: 575397
+g=2656
+>> Elapsed Time: 575809
+g=2657
+>> Elapsed Time: 576224
+g=2658
+>> Elapsed Time: 576638
+g=2659
+>> Elapsed Time: 577051
+g=2660
+>> Elapsed Time: 577466
+g=2661
+>> Elapsed Time: 577881
+g=2662
+>> Elapsed Time: 578295
+g=2663
+>> Elapsed Time: 578710
+g=2664
+>> Elapsed Time: 579125
+g=2665
+>> Elapsed Time: 579540
+g=2666
+>> Elapsed Time: 579957
+g=2667
+>> Elapsed Time: 580384
+g=2668
+>> Elapsed Time: 580799
+g=2669
+>> Elapsed Time: 581217
+g=2670
+>> Elapsed Time: 581635
+g=2671
+>> Elapsed Time: 582046
+g=2672
+>> Elapsed Time: 582461
+g=2673
+>> Elapsed Time: 582876
+g=2674
+>> Elapsed Time: 583289
+g=2675
+>> Elapsed Time: 583701
+g=2676
+>> Elapsed Time: 584114
+g=2677
+>> Elapsed Time: 584528
+g=2678
+>> Elapsed Time: 584942
+g=2679
+>> Elapsed Time: 585354
+g=2680
+>> Elapsed Time: 585766
+g=2681
+>> Elapsed Time: 586205
+g=2682
+>> Elapsed Time: 586641
+g=2683
+>> Elapsed Time: 587055
+g=2684
+>> Elapsed Time: 587480
+g=2685
+>> Elapsed Time: 587915
+g=2686
+>> Elapsed Time: 588341
+g=2687
+>> Elapsed Time: 588772
+g=2688
+>> Elapsed Time: 589200
+g=2689
+>> Elapsed Time: 589722
+g=2690
+>> Elapsed Time: 590178
+g=2691
+>> Elapsed Time: 590694
+g=2692
+>> Elapsed Time: 591196
+g=2693
+>> Elapsed Time: 591677
+g=2694
+>> Elapsed Time: 592142
+g=2695
+>> Elapsed Time: 592593
+g=2696
+>> Elapsed Time: 593063
+g=2697
+>> Elapsed Time: 593497
+g=2698
+>> Elapsed Time: 593980
+g=2699
+>> Elapsed Time: 594499
+g=2700
+>> Elapsed Time: 594954
+g=2701
+>> Elapsed Time: 595399
+g=2702
+>> Elapsed Time: 595825
+g=2703
+>> Elapsed Time: 596247
+g=2704
+>> Elapsed Time: 596681
+g=2705
+>> Elapsed Time: 597103
+g=2706
+>> Elapsed Time: 597550
+g=2707
+>> Elapsed Time: 597989
+g=2708
+>> Elapsed Time: 598427
+g=2709
+>> Elapsed Time: 598866
+g=2710
+>> Elapsed Time: 599312
+g=2711
+>> Elapsed Time: 599750
+g=2712
+>> Elapsed Time: 600184
+g=2713
+>> Elapsed Time: 600614
+g=2714
+>> Elapsed Time: 601041
+g=2715
+>> Elapsed Time: 601550
+g=2716
+>> Elapsed Time: 602340
+g=2717
+>> Elapsed Time: 602947
+g=2718
+>> Elapsed Time: 603457
+g=2719
+>> Elapsed Time: 603905
+g=2720
+>> Elapsed Time: 604327
+g=2721
+>> Elapsed Time: 604754
+g=2722
+>> Elapsed Time: 605191
+g=2723
+>> Elapsed Time: 605630
+g=2724
+>> Elapsed Time: 606066
+g=2725
+>> Elapsed Time: 606500
+g=2726
+>> Elapsed Time: 606928
+g=2727
+>> Elapsed Time: 607362
+g=2728
+>> Elapsed Time: 607800
+g=2729
+>> Elapsed Time: 608239
+g=2730
+>> Elapsed Time: 608685
+g=2731
+>> Elapsed Time: 609118
+g=2732
+>> Elapsed Time: 609576
+g=2733
+>> Elapsed Time: 610034
+g=2734
+>> Elapsed Time: 610520
+g=2735
+>> Elapsed Time: 610989
+g=2736
+>> Elapsed Time: 611438
+g=2737
+>> Elapsed Time: 611952
+g=2738
+>> Elapsed Time: 612410
+g=2739
+>> Elapsed Time: 612843
+g=2740
+>> Elapsed Time: 613278
+g=2741
+>> Elapsed Time: 613710
+g=2742
+>> Elapsed Time: 614143
+g=2743
+>> Elapsed Time: 614578
+g=2744
+>> Elapsed Time: 615115
+g=2745
+>> Elapsed Time: 615645
+g=2746
+>> Elapsed Time: 616102
+g=2747
+>> Elapsed Time: 616554
+g=2748
+>> Elapsed Time: 616988
+g=2749
+>> Elapsed Time: 617418
+g=2750
+>> Elapsed Time: 617850
+g=2751
+>> Elapsed Time: 618296
+g=2752
+>> Elapsed Time: 618730
+g=2753
+>> Elapsed Time: 619160
+g=2754
+>> Elapsed Time: 619588
+g=2755
+>> Elapsed Time: 620016
+g=2756
+>> Elapsed Time: 620448
+g=2757
+>> Elapsed Time: 620934
+g=2758
+>> Elapsed Time: 621385
+g=2759
+>> Elapsed Time: 621842
+g=2760
+>> Elapsed Time: 622304
+g=2761
+>> Elapsed Time: 622766
+g=2762
+>> Elapsed Time: 623209
+g=2763
+>> Elapsed Time: 623639
+g=2764
+>> Elapsed Time: 624068
+g=2765
+>> Elapsed Time: 624512
+g=2766
+>> Elapsed Time: 624969
+g=2767
+>> Elapsed Time: 625419
+g=2768
+>> Elapsed Time: 625858
+g=2769
+>> Elapsed Time: 626301
+g=2770
+>> Elapsed Time: 626737
+g=2771
+>> Elapsed Time: 627175
+g=2772
+>> Elapsed Time: 627611
+g=2773
+>> Elapsed Time: 628047
+g=2774
+>> Elapsed Time: 628482
+g=2775
+>> Elapsed Time: 628918
+g=2776
+>> Elapsed Time: 629353
+g=2777
+>> Elapsed Time: 629789
+g=2778
+>> Elapsed Time: 630226
+g=2779
+>> Elapsed Time: 630663
+g=2780
+>> Elapsed Time: 631096
+g=2781
+>> Elapsed Time: 631527
+g=2782
+>> Elapsed Time: 631958
+g=2783
+>> Elapsed Time: 632391
+g=2784
+>> Elapsed Time: 632893
+g=2785
+>> Elapsed Time: 633332
+g=2786
+>> Elapsed Time: 633772
+g=2787
+>> Elapsed Time: 634209
+g=2788
+>> Elapsed Time: 634645
+g=2789
+>> Elapsed Time: 635101
+g=2790
+>> Elapsed Time: 635537
+g=2791
+>> Elapsed Time: 635970
+g=2792
+>> Elapsed Time: 636404
+g=2793
+>> Elapsed Time: 636838
+g=2794
+>> Elapsed Time: 637275
+g=2795
+>> Elapsed Time: 637709
+g=2796
+>> Elapsed Time: 638144
+g=2797
+>> Elapsed Time: 638576
+g=2798
+>> Elapsed Time: 639010
+g=2799
+>> Elapsed Time: 639446
+g=2800
+>> Elapsed Time: 639882
+g=2801
+>> Elapsed Time: 640319
+g=2802
+>> Elapsed Time: 640765
+g=2803
+>> Elapsed Time: 641203
+g=2804
+>> Elapsed Time: 641644
+g=2805
+>> Elapsed Time: 642086
+g=2806
+>> Elapsed Time: 642527
+g=2807
+>> Elapsed Time: 642967
+g=2808
+>> Elapsed Time: 643402
+g=2809
+>> Elapsed Time: 643838
+g=2810
+>> Elapsed Time: 644274
+g=2811
+>> Elapsed Time: 644711
+g=2812
+>> Elapsed Time: 645150
+g=2813
+>> Elapsed Time: 645586
+g=2814
+>> Elapsed Time: 646024
+g=2815
+>> Elapsed Time: 646463
+g=2816
+>> Elapsed Time: 646899
+g=2817
+>> Elapsed Time: 647335
+g=2818
+>> Elapsed Time: 647773
+g=2819
+>> Elapsed Time: 648218
+g=2820
+>> Elapsed Time: 648657
+g=2821
+>> Elapsed Time: 649096
+g=2822
+>> Elapsed Time: 649535
+g=2823
+>> Elapsed Time: 649975
+g=2824
+>> Elapsed Time: 650414
+g=2825
+>> Elapsed Time: 650854
+g=2826
+>> Elapsed Time: 651293
+g=2827
+>> Elapsed Time: 651732
+g=2828
+>> Elapsed Time: 652172
+g=2829
+>> Elapsed Time: 652611
+g=2830
+>> Elapsed Time: 653050
+g=2831
+>> Elapsed Time: 653491
+g=2832
+>> Elapsed Time: 653936
+g=2833
+>> Elapsed Time: 654381
+g=2834
+>> Elapsed Time: 654833
+g=2835
+>> Elapsed Time: 655286
+g=2836
+>> Elapsed Time: 655743
+g=2837
+>> Elapsed Time: 656204
+g=2838
+>> Elapsed Time: 656655
+g=2839
+>> Elapsed Time: 657098
+g=2840
+>> Elapsed Time: 657549
+g=2841
+>> Elapsed Time: 657994
+g=2842
+>> Elapsed Time: 658440
+g=2843
+>> Elapsed Time: 658890
+g=2844
+>> Elapsed Time: 659350
+g=2845
+>> Elapsed Time: 659809
+g=2846
+>> Elapsed Time: 660257
+g=2847
+>> Elapsed Time: 660701
+g=2848
+>> Elapsed Time: 661143
+g=2849
+>> Elapsed Time: 661584
+g=2850
+>> Elapsed Time: 662026
+g=2851
+>> Elapsed Time: 662474
+g=2852
+>> Elapsed Time: 662919
+g=2853
+>> Elapsed Time: 663361
+g=2854
+>> Elapsed Time: 663811
+g=2855
+>> Elapsed Time: 664256
+g=2856
+>> Elapsed Time: 664701
+g=2857
+>> Elapsed Time: 665149
+g=2858
+>> Elapsed Time: 665598
+g=2859
+>> Elapsed Time: 666047
+g=2860
+>> Elapsed Time: 666497
+g=2861
+>> Elapsed Time: 666940
+g=2862
+>> Elapsed Time: 667387
+g=2863
+>> Elapsed Time: 667829
+g=2864
+>> Elapsed Time: 668273
+g=2865
+>> Elapsed Time: 668717
+g=2866
+>> Elapsed Time: 669159
+g=2867
+>> Elapsed Time: 669601
+g=2868
+>> Elapsed Time: 670046
+g=2869
+>> Elapsed Time: 670493
+g=2870
+>> Elapsed Time: 670941
+g=2871
+>> Elapsed Time: 671384
+g=2872
+>> Elapsed Time: 671829
+g=2873
+>> Elapsed Time: 672276
+g=2874
+>> Elapsed Time: 672721
+g=2875
+>> Elapsed Time: 673167
+g=2876
+>> Elapsed Time: 673612
+g=2877
+>> Elapsed Time: 674056
+g=2878
+>> Elapsed Time: 674503
+g=2879
+>> Elapsed Time: 674948
+g=2880
+>> Elapsed Time: 675403
+g=2881
+>> Elapsed Time: 675858
+g=2882
+>> Elapsed Time: 676307
+g=2883
+>> Elapsed Time: 676753
+g=2884
+>> Elapsed Time: 677198
+g=2885
+>> Elapsed Time: 677645
+g=2886
+>> Elapsed Time: 678091
+g=2887
+>> Elapsed Time: 678538
+g=2888
+>> Elapsed Time: 678982
+g=2889
+>> Elapsed Time: 679440
+g=2890
+>> Elapsed Time: 679907
+g=2891
+>> Elapsed Time: 680373
+g=2892
+>> Elapsed Time: 680838
+g=2893
+>> Elapsed Time: 681306
+g=2894
+>> Elapsed Time: 681773
+g=2895
+>> Elapsed Time: 682239
+g=2896
+>> Elapsed Time: 682706
+g=2897
+>> Elapsed Time: 683174
+g=2898
+>> Elapsed Time: 683642
+g=2899
+>> Elapsed Time: 684118
+g=2900
+>> Elapsed Time: 684585
+g=2901
+>> Elapsed Time: 685046
+g=2902
+>> Elapsed Time: 685504
+g=2903
+>> Elapsed Time: 685965
+g=2904
+>> Elapsed Time: 686422
+g=2905
+>> Elapsed Time: 686890
+g=2906
+>> Elapsed Time: 687354
+g=2907
+>> Elapsed Time: 687811
+g=2908
+>> Elapsed Time: 688268
+g=2909
+>> Elapsed Time: 688725
+g=2910
+>> Elapsed Time: 689182
+g=2911
+>> Elapsed Time: 689637
+g=2912
+>> Elapsed Time: 690088
+g=2913
+>> Elapsed Time: 690540
+g=2914
+>> Elapsed Time: 690994
+g=2915
+>> Elapsed Time: 691450
+g=2916
+>> Elapsed Time: 691901
+g=2917
+>> Elapsed Time: 692351
+g=2918
+>> Elapsed Time: 692804
+g=2919
+>> Elapsed Time: 693255
+g=2920
+>> Elapsed Time: 693712
+g=2921
+>> Elapsed Time: 694169
+g=2922
+>> Elapsed Time: 694633
+g=2923
+>> Elapsed Time: 695104
+g=2924
+>> Elapsed Time: 695565
+g=2925
+>> Elapsed Time: 696023
+g=2926
+>> Elapsed Time: 696485
+g=2927
+>> Elapsed Time: 696945
+g=2928
+>> Elapsed Time: 697406
+g=2929
+>> Elapsed Time: 697865
+g=2930
+>> Elapsed Time: 698325
+g=2931
+>> Elapsed Time: 698785
+g=2932
+>> Elapsed Time: 699243
+g=2933
+>> Elapsed Time: 699703
+g=2934
+>> Elapsed Time: 700161
+g=2935
+>> Elapsed Time: 700618
+g=2936
+>> Elapsed Time: 701084
+g=2937
+>> Elapsed Time: 701545
+g=2938
+>> Elapsed Time: 702006
+g=2939
+>> Elapsed Time: 702467
+g=2940
+>> Elapsed Time: 702928
+g=2941
+>> Elapsed Time: 703389
+g=2942
+>> Elapsed Time: 703859
+g=2943
+>> Elapsed Time: 704321
+g=2944
+>> Elapsed Time: 704784
+g=2945
+>> Elapsed Time: 705245
+g=2946
+>> Elapsed Time: 705703
+g=2947
+>> Elapsed Time: 706164
+g=2948
+>> Elapsed Time: 706627
+g=2949
+>> Elapsed Time: 707088
+g=2950
+>> Elapsed Time: 707549
+g=2951
+>> Elapsed Time: 708014
+g=2952
+>> Elapsed Time: 708486
+g=2953
+>> Elapsed Time: 708945
+g=2954
+>> Elapsed Time: 709406
+g=2955
+>> Elapsed Time: 709866
+g=2956
+>> Elapsed Time: 710324
+g=2957
+>> Elapsed Time: 710784
+g=2958
+>> Elapsed Time: 711241
+g=2959
+>> Elapsed Time: 711699
+g=2960
+>> Elapsed Time: 712157
+g=2961
+>> Elapsed Time: 712616
+g=2962
+>> Elapsed Time: 713078
+g=2963
+>> Elapsed Time: 713537
+g=2964
+>> Elapsed Time: 713997
+g=2965
+>> Elapsed Time: 714461
+g=2966
+>> Elapsed Time: 714938
+g=2967
+>> Elapsed Time: 715418
+g=2968
+>> Elapsed Time: 715889
+g=2969
+>> Elapsed Time: 716349
+g=2970
+>> Elapsed Time: 716810
+g=2971
+>> Elapsed Time: 717272
+g=2972
+>> Elapsed Time: 717737
+g=2973
+>> Elapsed Time: 718204
+g=2974
+>> Elapsed Time: 718662
+g=2975
+>> Elapsed Time: 719122
+g=2976
+>> Elapsed Time: 719582
+g=2977
+>> Elapsed Time: 720043
+g=2978
+>> Elapsed Time: 720507
+g=2979
+>> Elapsed Time: 720968
+g=2980
+>> Elapsed Time: 721429
+g=2981
+>> Elapsed Time: 721891
+g=2982
+>> Elapsed Time: 722365
+g=2983
+>> Elapsed Time: 722837
+g=2984
+>> Elapsed Time: 723299
+g=2985
+>> Elapsed Time: 723760
+g=2986
+>> Elapsed Time: 724221
+g=2987
+>> Elapsed Time: 724683
+g=2988
+>> Elapsed Time: 725145
+g=2989
+>> Elapsed Time: 725608
+g=2990
+>> Elapsed Time: 726071
+g=2991
+>> Elapsed Time: 726534
+g=2992
+>> Elapsed Time: 726997
+g=2993
+>> Elapsed Time: 727463
+g=2994
+>> Elapsed Time: 727932
+g=2995
+>> Elapsed Time: 728402
+g=2996
+>> Elapsed Time: 728871
+g=2997
+>> Elapsed Time: 729342
+g=2998
+>> Elapsed Time: 729812
+g=2999
+>> Elapsed Time: 730281
+g=3000
+>> Elapsed Time: 730744
+g=3001
+>> Elapsed Time: 731214
+g=3002
+>> Elapsed Time: 731679
+g=3003
+>> Elapsed Time: 732149
+g=3004
+>> Elapsed Time: 732620
+g=3005
+>> Elapsed Time: 733087
+g=3006
+>> Elapsed Time: 733555
+g=3007
+>> Elapsed Time: 734024
+g=3008
+>> Elapsed Time: 734490
+g=3009
+>> Elapsed Time: 734958
+g=3010
+>> Elapsed Time: 735426
+g=3011
+>> Elapsed Time: 735893
+g=3012
+>> Elapsed Time: 736365
+g=3013
+>> Elapsed Time: 736837
+g=3014
+>> Elapsed Time: 737309
+g=3015
+>> Elapsed Time: 737782
+g=3016
+>> Elapsed Time: 738262
+g=3017
+>> Elapsed Time: 738744
+g=3018
+>> Elapsed Time: 739221
+g=3019
+>> Elapsed Time: 739693
+g=3020
+>> Elapsed Time: 740164
+g=3021
+>> Elapsed Time: 740631
+g=3022
+>> Elapsed Time: 741099
+g=3023
+>> Elapsed Time: 741568
+g=3024
+>> Elapsed Time: 742036
+g=3025
+>> Elapsed Time: 742509
+g=3026
+>> Elapsed Time: 742983
+g=3027
+>> Elapsed Time: 743453
+g=3028
+>> Elapsed Time: 743922
+g=3029
+>> Elapsed Time: 744391
+g=3030
+>> Elapsed Time: 744860
+g=3031
+>> Elapsed Time: 745332
+g=3032
+>> Elapsed Time: 745803
+g=3033
+>> Elapsed Time: 746280
+g=3034
+>> Elapsed Time: 746754
+g=3035
+>> Elapsed Time: 747228
+g=3036
+>> Elapsed Time: 747699
+g=3037
+>> Elapsed Time: 748171
+g=3038
+>> Elapsed Time: 748650
+g=3039
+>> Elapsed Time: 749129
+g=3040
+>> Elapsed Time: 749604
+g=3041
+>> Elapsed Time: 750078
+g=3042
+>> Elapsed Time: 750550
+g=3043
+>> Elapsed Time: 751021
+g=3044
+>> Elapsed Time: 751491
+g=3045
+>> Elapsed Time: 751962
+g=3046
+>> Elapsed Time: 752437
+g=3047
+>> Elapsed Time: 752920
+g=3048
+>> Elapsed Time: 753401
+g=3049
+>> Elapsed Time: 753880
+g=3050
+>> Elapsed Time: 754360
+g=3051
+>> Elapsed Time: 754839
+g=3052
+>> Elapsed Time: 755319
+g=3053
+>> Elapsed Time: 755794
+g=3054
+>> Elapsed Time: 756267
+g=3055
+>> Elapsed Time: 756744
+g=3056
+>> Elapsed Time: 757221
+g=3057
+>> Elapsed Time: 757699
+g=3058
+>> Elapsed Time: 758173
+g=3059
+>> Elapsed Time: 758646
+g=3060
+>> Elapsed Time: 759119
+g=3061
+>> Elapsed Time: 759593
+g=3062
+>> Elapsed Time: 760067
+g=3063
+>> Elapsed Time: 760557
+g=3064
+>> Elapsed Time: 761058
+g=3065
+>> Elapsed Time: 761542
+g=3066
+>> Elapsed Time: 762017
+g=3067
+>> Elapsed Time: 762492
+g=3068
+>> Elapsed Time: 762968
+g=3069
+>> Elapsed Time: 763442
+g=3070
+>> Elapsed Time: 763917
+g=3071
+>> Elapsed Time: 764390
+g=3072
+>> Elapsed Time: 764866
+g=3073
+>> Elapsed Time: 765363
+g=3074
+>> Elapsed Time: 765847
+g=3075
+>> Elapsed Time: 766326
+g=3076
+>> Elapsed Time: 766807
+g=3077
+>> Elapsed Time: 767290
+g=3078
+>> Elapsed Time: 767773
+g=3079
+>> Elapsed Time: 768257
+g=3080
+>> Elapsed Time: 768739
+g=3081
+>> Elapsed Time: 769216
+g=3082
+>> Elapsed Time: 769693
+g=3083
+>> Elapsed Time: 770170
+g=3084
+>> Elapsed Time: 770646
+g=3085
+>> Elapsed Time: 771122
+g=3086
+>> Elapsed Time: 771598
+g=3087
+>> Elapsed Time: 772075
+g=3088
+>> Elapsed Time: 772556
+g=3089
+>> Elapsed Time: 773036
+g=3090
+>> Elapsed Time: 773514
+g=3091
+>> Elapsed Time: 773993
+g=3092
+>> Elapsed Time: 774473
+g=3093
+>> Elapsed Time: 774951
+g=3094
+>> Elapsed Time: 775428
+g=3095
+>> Elapsed Time: 775904
+g=3096
+>> Elapsed Time: 776401
+g=3097
+>> Elapsed Time: 776881
+g=3098
+>> Elapsed Time: 777365
+g=3099
+>> Elapsed Time: 777851
+g=3100
+>> Elapsed Time: 778339
+g=3101
+>> Elapsed Time: 778833
+g=3102
+>> Elapsed Time: 779328
+g=3103
+>> Elapsed Time: 779827
+g=3104
+>> Elapsed Time: 780319
+g=3105
+>> Elapsed Time: 780809
+g=3106
+>> Elapsed Time: 781295
+g=3107
+>> Elapsed Time: 781776
+g=3108
+>> Elapsed Time: 782261
+g=3109
+>> Elapsed Time: 782743
+g=3110
+>> Elapsed Time: 783224
+g=3111
+>> Elapsed Time: 783706
+g=3112
+>> Elapsed Time: 784189
+g=3113
+>> Elapsed Time: 784670
+g=3114
+>> Elapsed Time: 785151
+g=3115
+>> Elapsed Time: 785632
+g=3116
+>> Elapsed Time: 786114
+g=3117
+>> Elapsed Time: 786596
+g=3118
+>> Elapsed Time: 787079
+g=3119
+>> Elapsed Time: 787565
+g=3120
+>> Elapsed Time: 788055
+g=3121
+>> Elapsed Time: 788545
+g=3122
+>> Elapsed Time: 789031
+g=3123
+>> Elapsed Time: 789513
+g=3124
+>> Elapsed Time: 789997
+g=3125
+>> Elapsed Time: 790480
+g=3126
+>> Elapsed Time: 790965
+g=3127
+>> Elapsed Time: 791451
+g=3128
+>> Elapsed Time: 791935
+g=3129
+>> Elapsed Time: 792418
+g=3130
+>> Elapsed Time: 792901
+g=3131
+>> Elapsed Time: 793385
+g=3132
+>> Elapsed Time: 793869
+g=3133
+>> Elapsed Time: 794352
+g=3134
+>> Elapsed Time: 794841
+g=3135
+>> Elapsed Time: 795329
+g=3136
+>> Elapsed Time: 795813
+g=3137
+>> Elapsed Time: 796298
+g=3138
+>> Elapsed Time: 796783
+g=3139
+>> Elapsed Time: 797267
+g=3140
+>> Elapsed Time: 797757
+g=3141
+>> Elapsed Time: 798259
+g=3142
+>> Elapsed Time: 798751
+g=3143
+>> Elapsed Time: 799242
+g=3144
+>> Elapsed Time: 799734
+g=3145
+>> Elapsed Time: 800226
+g=3146
+>> Elapsed Time: 800718
+g=3147
+>> Elapsed Time: 801210
+g=3148
+>> Elapsed Time: 801717
+g=3149
+>> Elapsed Time: 802226
+g=3150
+>> Elapsed Time: 802735
+g=3151
+>> Elapsed Time: 803233
+g=3152
+>> Elapsed Time: 803728
+g=3153
+>> Elapsed Time: 804223
+g=3154
+>> Elapsed Time: 804718
+g=3155
+>> Elapsed Time: 805214
+g=3156
+>> Elapsed Time: 805704
+g=3157
+>> Elapsed Time: 806198
+g=3158
+>> Elapsed Time: 806702
+g=3159
+>> Elapsed Time: 807207
+g=3160
+>> Elapsed Time: 807702
+g=3161
+>> Elapsed Time: 808194
+g=3162
+>> Elapsed Time: 808700
+g=3163
+>> Elapsed Time: 809210
+g=3164
+>> Elapsed Time: 809707
+g=3165
+>> Elapsed Time: 810205
+g=3166
+>> Elapsed Time: 810704
+g=3167
+>> Elapsed Time: 811199
+g=3168
+>> Elapsed Time: 811690
+g=3169
+>> Elapsed Time: 812184
+g=3170
+>> Elapsed Time: 812678
+g=3171
+>> Elapsed Time: 813170
+g=3172
+>> Elapsed Time: 813660
+g=3173
+>> Elapsed Time: 814151
+g=3174
+>> Elapsed Time: 814640
+g=3175
+>> Elapsed Time: 815132
+g=3176
+>> Elapsed Time: 815624
+g=3177
+>> Elapsed Time: 816117
+g=3178
+>> Elapsed Time: 816612
+g=3179
+>> Elapsed Time: 817111
+g=3180
+>> Elapsed Time: 817605
+g=3181
+>> Elapsed Time: 818099
+g=3182
+>> Elapsed Time: 818598
+g=3183
+>> Elapsed Time: 819105
+g=3184
+>> Elapsed Time: 819605
+g=3185
+>> Elapsed Time: 820100
+g=3186
+>> Elapsed Time: 820594
+g=3187
+>> Elapsed Time: 821094
+g=3188
+>> Elapsed Time: 821588
+g=3189
+>> Elapsed Time: 822082
+g=3190
+>> Elapsed Time: 822575
+g=3191
+>> Elapsed Time: 823075
+g=3192
+>> Elapsed Time: 823569
+g=3193
+>> Elapsed Time: 824064
+g=3194
+>> Elapsed Time: 824559
+g=3195
+>> Elapsed Time: 825053
+g=3196
+>> Elapsed Time: 825547
+g=3197
+>> Elapsed Time: 826041
+g=3198
+>> Elapsed Time: 826553
+g=3199
+>> Elapsed Time: 827048
+g=3200
+>> Elapsed Time: 827549
+g=3201
+>> Elapsed Time: 828050
+g=3202
+>> Elapsed Time: 828554
+g=3203
+>> Elapsed Time: 829056
+g=3204
+>> Elapsed Time: 829557
+g=3205
+>> Elapsed Time: 830059
+g=3206
+>> Elapsed Time: 830557
+g=3207
+>> Elapsed Time: 831055
+g=3208
+>> Elapsed Time: 831550
+g=3209
+>> Elapsed Time: 832047
+g=3210
+>> Elapsed Time: 832542
+g=3211
+>> Elapsed Time: 833038
+g=3212
+>> Elapsed Time: 833534
+g=3213
+>> Elapsed Time: 834032
+g=3214
+>> Elapsed Time: 834529
+g=3215
+>> Elapsed Time: 835025
+g=3216
+>> Elapsed Time: 835520
+g=3217
+>> Elapsed Time: 836016
+g=3218
+>> Elapsed Time: 836517
+g=3219
+>> Elapsed Time: 837021
+g=3220
+>> Elapsed Time: 837524
+g=3221
+>> Elapsed Time: 838026
+g=3222
+>> Elapsed Time: 838526
+g=3223
+>> Elapsed Time: 839049
+g=3224
+>> Elapsed Time: 839571
+g=3225
+>> Elapsed Time: 840072
+g=3226
+>> Elapsed Time: 840570
+g=3227
+>> Elapsed Time: 841070
+g=3228
+>> Elapsed Time: 841577
+g=3229
+>> Elapsed Time: 842081
+g=3230
+>> Elapsed Time: 842578
+g=3231
+>> Elapsed Time: 843076
+g=3232
+>> Elapsed Time: 843573
+g=3233
+>> Elapsed Time: 844073
+g=3234
+>> Elapsed Time: 844574
+g=3235
+>> Elapsed Time: 845077
+g=3236
+>> Elapsed Time: 845581
+g=3237
+>> Elapsed Time: 846083
+g=3238
+>> Elapsed Time: 846585
+g=3239
+>> Elapsed Time: 847089
+g=3240
+>> Elapsed Time: 847595
+g=3241
+>> Elapsed Time: 848097
+g=3242
+>> Elapsed Time: 848595
+g=3243
+>> Elapsed Time: 849094
+g=3244
+>> Elapsed Time: 849594
+g=3245
+>> Elapsed Time: 850098
+g=3246
+>> Elapsed Time: 850613
+g=3247
+>> Elapsed Time: 851115
+g=3248
+>> Elapsed Time: 851622
+g=3249
+>> Elapsed Time: 852125
+g=3250
+>> Elapsed Time: 852628
+g=3251
+>> Elapsed Time: 853131
+g=3252
+>> Elapsed Time: 853635
+g=3253
+>> Elapsed Time: 854139
+g=3254
+>> Elapsed Time: 854642
+g=3255
+>> Elapsed Time: 855146
+g=3256
+>> Elapsed Time: 855650
+g=3257
+>> Elapsed Time: 856155
+g=3258
+>> Elapsed Time: 856659
+g=3259
+>> Elapsed Time: 857164
+g=3260
+>> Elapsed Time: 857677
+g=3261
+>> Elapsed Time: 858207
+g=3262
+>> Elapsed Time: 858710
+g=3263
+>> Elapsed Time: 859220
+g=3264
+>> Elapsed Time: 859741
+g=3265
+>> Elapsed Time: 860252
+g=3266
+>> Elapsed Time: 860758
+g=3267
+>> Elapsed Time: 861264
+g=3268
+>> Elapsed Time: 861782
+g=3269
+>> Elapsed Time: 862306
+g=3270
+>> Elapsed Time: 862813
+g=3271
+>> Elapsed Time: 863321
+g=3272
+>> Elapsed Time: 863829
+g=3273
+>> Elapsed Time: 864336
+g=3274
+>> Elapsed Time: 864844
+g=3275
+>> Elapsed Time: 865354
+g=3276
+>> Elapsed Time: 865863
+g=3277
+>> Elapsed Time: 866376
+g=3278
+>> Elapsed Time: 866888
+g=3279
+>> Elapsed Time: 867403
+g=3280
+>> Elapsed Time: 867912
+g=3281
+>> Elapsed Time: 868437
+g=3282
+>> Elapsed Time: 868966
+g=3283
+>> Elapsed Time: 869495
+g=3284
+>> Elapsed Time: 870016
+g=3285
+>> Elapsed Time: 870531
+g=3286
+>> Elapsed Time: 871052
+g=3287
+>> Elapsed Time: 871565
+g=3288
+>> Elapsed Time: 872077
+g=3289
+>> Elapsed Time: 872608
+g=3290
+>> Elapsed Time: 873127
+g=3291
+>> Elapsed Time: 873658
+g=3292
+>> Elapsed Time: 874172
+g=3293
+>> Elapsed Time: 874683
+g=3294
+>> Elapsed Time: 875197
+g=3295
+>> Elapsed Time: 875726
+g=3296
+>> Elapsed Time: 876251
+g=3297
+>> Elapsed Time: 876783
+g=3298
+>> Elapsed Time: 877312
+g=3299
+>> Elapsed Time: 877845
+g=3300
+>> Elapsed Time: 878373
+g=3301
+>> Elapsed Time: 878908
+g=3302
+>> Elapsed Time: 879430
+g=3303
+>> Elapsed Time: 879948
+g=3304
+>> Elapsed Time: 880465
+g=3305
+>> Elapsed Time: 880995
+g=3306
+>> Elapsed Time: 881520
+g=3307
+>> Elapsed Time: 882032
+g=3308
+>> Elapsed Time: 882543
+g=3309
+>> Elapsed Time: 883055
+g=3310
+>> Elapsed Time: 883567
+g=3311
+>> Elapsed Time: 884095
+g=3312
+>> Elapsed Time: 884629
+g=3313
+>> Elapsed Time: 885165
+g=3314
+>> Elapsed Time: 885698
+g=3315
+>> Elapsed Time: 886233
+g=3316
+>> Elapsed Time: 886757
+g=3317
+>> Elapsed Time: 887278
+g=3318
+>> Elapsed Time: 887792
+g=3319
+>> Elapsed Time: 888308
+g=3320
+>> Elapsed Time: 888821
+g=3321
+>> Elapsed Time: 889341
+g=3322
+>> Elapsed Time: 889861
+g=3323
+>> Elapsed Time: 890381
+g=3324
+>> Elapsed Time: 890898
+g=3325
+>> Elapsed Time: 891412
+g=3326
+>> Elapsed Time: 891930
+g=3327
+>> Elapsed Time: 892457
+g=3328
+>> Elapsed Time: 892978
+g=3329
+>> Elapsed Time: 893498
+g=3330
+>> Elapsed Time: 894020
+g=3331
+>> Elapsed Time: 894552
+g=3332
+>> Elapsed Time: 895090
+g=3333
+>> Elapsed Time: 895629
+g=3334
+>> Elapsed Time: 896145
+g=3335
+>> Elapsed Time: 896674
+g=3336
+>> Elapsed Time: 897205
+g=3337
+>> Elapsed Time: 897729
+g=3338
+>> Elapsed Time: 898255
+g=3339
+>> Elapsed Time: 898787
+g=3340
+>> Elapsed Time: 899300
+g=3341
+>> Elapsed Time: 899813
+g=3342
+>> Elapsed Time: 900330
+g=3343
+>> Elapsed Time: 900862
+g=3344
+>> Elapsed Time: 901381
+g=3345
+>> Elapsed Time: 901906
+g=3346
+>> Elapsed Time: 902429
+g=3347
+>> Elapsed Time: 902955
+g=3348
+>> Elapsed Time: 903480
+g=3349
+>> Elapsed Time: 903999
+g=3350
+>> Elapsed Time: 904515
+g=3351
+>> Elapsed Time: 905032
+g=3352
+>> Elapsed Time: 905550
+g=3353
+>> Elapsed Time: 906066
+g=3354
+>> Elapsed Time: 906581
+g=3355
+>> Elapsed Time: 907096
+g=3356
+>> Elapsed Time: 907615
+g=3357
+>> Elapsed Time: 908130
+g=3358
+>> Elapsed Time: 908646
+g=3359
+>> Elapsed Time: 909268
+g=3360
+>> Elapsed Time: 909881
+g=3361
+>> Elapsed Time: 910455
+g=3362
+>> Elapsed Time: 911029
+g=3363
+>> Elapsed Time: 911561
+g=3364
+>> Elapsed Time: 912081
+g=3365
+>> Elapsed Time: 912604
+g=3366
+>> Elapsed Time: 913126
+g=3367
+>> Elapsed Time: 913643
+g=3368
+>> Elapsed Time: 914163
+g=3369
+>> Elapsed Time: 914709
+g=3370
+>> Elapsed Time: 915267
+g=3371
+>> Elapsed Time: 915815
+g=3372
+>> Elapsed Time: 916352
+g=3373
+>> Elapsed Time: 916953
+g=3374
+>> Elapsed Time: 917699
+g=3375
+>> Elapsed Time: 918353
+g=3376
+>> Elapsed Time: 918945
+g=3377
+>> Elapsed Time: 919471
+g=3378
+>> Elapsed Time: 920062
+g=3379
+>> Elapsed Time: 920647
+g=3380
+>> Elapsed Time: 921257
+g=3381
+>> Elapsed Time: 921815
+g=3382
+>> Elapsed Time: 922353
+g=3383
+>> Elapsed Time: 922907
+g=3384
+>> Elapsed Time: 923453
+g=3385
+>> Elapsed Time: 924001
+g=3386
+>> Elapsed Time: 924557
+g=3387
+>> Elapsed Time: 925136
+g=3388
+>> Elapsed Time: 925681
+g=3389
+>> Elapsed Time: 926277
+g=3390
+>> Elapsed Time: 926911
+g=3391
+>> Elapsed Time: 927515
+g=3392
+>> Elapsed Time: 928091
+g=3393
+>> Elapsed Time: 928634
+g=3394
+>> Elapsed Time: 929173
+g=3395
+>> Elapsed Time: 929813
+g=3396
+>> Elapsed Time: 930441
+g=3397
+>> Elapsed Time: 931000
+g=3398
+>> Elapsed Time: 931556
+g=3399
+>> Elapsed Time: 932107
+g=3400
+>> Elapsed Time: 932654
+g=3401
+>> Elapsed Time: 933184
+g=3402
+>> Elapsed Time: 933713
+g=3403
+>> Elapsed Time: 934251
+g=3404
+>> Elapsed Time: 934799
+g=3405
+>> Elapsed Time: 935354
+g=3406
+>> Elapsed Time: 935886
+g=3407
+>> Elapsed Time: 936414
+g=3408
+>> Elapsed Time: 936984
+g=3409
+>> Elapsed Time: 937620
+g=3410
+>> Elapsed Time: 938174
+g=3411
+>> Elapsed Time: 938713
+g=3412
+>> Elapsed Time: 939265
+g=3413
+>> Elapsed Time: 939828
+g=3414
+>> Elapsed Time: 940368
+g=3415
+>> Elapsed Time: 940919
+g=3416
+>> Elapsed Time: 941462
+g=3417
+>> Elapsed Time: 942001
+g=3418
+>> Elapsed Time: 942543
+g=3419
+>> Elapsed Time: 943079
+g=3420
+>> Elapsed Time: 943618
+g=3421
+>> Elapsed Time: 944160
+g=3422
+>> Elapsed Time: 944696
+g=3423
+>> Elapsed Time: 945237
+g=3424
+>> Elapsed Time: 945782
+g=3425
+>> Elapsed Time: 946317
+g=3426
+>> Elapsed Time: 946866
+g=3427
+>> Elapsed Time: 947404
+g=3428
+>> Elapsed Time: 947936
+g=3429
+>> Elapsed Time: 948477
+g=3430
+>> Elapsed Time: 949021
+g=3431
+>> Elapsed Time: 949564
+g=3432
+>> Elapsed Time: 950103
+g=3433
+>> Elapsed Time: 950650
+g=3434
+>> Elapsed Time: 951192
+g=3435
+>> Elapsed Time: 951787
+g=3436
+>> Elapsed Time: 952498
+g=3437
+>> Elapsed Time: 953086
+g=3438
+>> Elapsed Time: 953630
+g=3439
+>> Elapsed Time: 954165
+g=3440
+>> Elapsed Time: 954702
+g=3441
+>> Elapsed Time: 955253
+g=3442
+>> Elapsed Time: 955790
+g=3443
+>> Elapsed Time: 956322
+g=3444
+>> Elapsed Time: 956863
+g=3445
+>> Elapsed Time: 957405
+g=3446
+>> Elapsed Time: 957962
+g=3447
+>> Elapsed Time: 958501
+g=3448
+>> Elapsed Time: 959049
+g=3449
+>> Elapsed Time: 959610
+g=3450
+>> Elapsed Time: 960174
+g=3451
+>> Elapsed Time: 960730
+g=3452
+>> Elapsed Time: 961291
+g=3453
+>> Elapsed Time: 961846
+g=3454
+>> Elapsed Time: 962396
+g=3455
+>> Elapsed Time: 962967
