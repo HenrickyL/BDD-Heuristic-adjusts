@@ -1,15 +1,9 @@
 package pacote;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.Scanner;
-
-
 
 /* Implementation of the algorithms that performs backward planning, using regression.
  * The method proposed by [Fourmann, 2000] and the method proposed  by "[Ritanen, 2008]" */
-
-
 
 public class GUI {
 	
@@ -36,8 +30,7 @@ public class GUI {
 		
 		GUI.runtime = Runtime.getRuntime();
 		initmemory = runtime.totalMemory() - runtime.freeMemory();
-		int t;
-		
+
 //		if (args.length != 3) {
 //            System.err.println("Usage: java GUI <type> <problem> <test>");
 //            System.exit(1);
@@ -187,12 +180,12 @@ public class GUI {
 	}
 
 	
-	static void test(E_Types typeTest, E_Problem problem, int test) {
+	static void test(E_Types typeTest, E_Problem problem, int testNumber) {
 		String filePath = problem == E_Problem.rovers ? "rovers/" : "logistics/";
 		
 		String fileName = problem == E_Problem.logistics?
-				"LOGISTICS-" + test + "-0-GROUNDED.txt" :
-				"rovers-0" + test + "-GROUNDED.txt";
+				"LOGISTICS-" + testNumber + "-0-GROUNDED.txt" :
+				"rovers-0" + testNumber + "-GROUNDED.txt";
 		
 		String type = "propplan"; //"ritanen" or "propplan"
 		

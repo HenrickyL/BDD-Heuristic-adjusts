@@ -2,9 +2,7 @@ package pacote;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Vector;
-import java.util.AbstractMap.SimpleEntry;
 
 import net.sf.javabdd.BDD;
 
