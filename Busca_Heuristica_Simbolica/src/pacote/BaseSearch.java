@@ -1,30 +1,58 @@
 package pacote;
 
+import java.io.IOException;
 import java.util.Vector;
 
 import net.sf.javabdd.BDD;
 import net.sf.javabdd.BDDFactory;
 
 
-public class AbstractSearch {
-	Vector<Action> actionSet;		
-	BDD goal;
-	BDD initialState;
-	BDD constraints;
-	int numProp;
-	Vector<BDD> BDDHValues = new Vector<BDD>();
+public abstract class BaseSearch {
+	protected Vector<Action> actionSet;		
+	protected BDD goal;
+	protected BDD initialState;
+	protected BDD constraints;
+	protected int numProp;
+	protected Vector<BDD> BDDHValues = new Vector<BDD>();
 	private boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
 
 	/* Constructor */
-	public AbstractSearch(ModelReader model) {
+	public BaseSearch(ModelReader model) {
 		this.actionSet = model.getActionSet();
 		this.initialState = model.getInitialStateBDD();
 		this.goal = model.getGoalSpec();		
 		this.constraints = model.getConstraints();
 		this.numProp = model.getPropNum();
 	}
+
+
+	public void ExaustiveSearch() {
+		planForward();
+	}
+
+	public void HeuristicSearch(TimeManager verify) throws IOException{
+		verify.setMaxTime(1000*60*1);
+		System.out.println("Start Backward...");
+		if(heuristicPlanBackward(verify) == true) {
+			System.out.println("End Backward.");
+			verify.resetStartTime();
+			verify.setMaxTime(-1);//3h - 10800000
+			System.out.println("Start Forward...");
+			heuristicPlanForward(verify);
+			System.out.println("End Forward.");
+		}
+	}
+
+	protected abstract boolean heuristicPlanBackward(TimeManager verify) throws IOException;
+	protected abstract boolean heuristicPlanForward(TimeManager verify) throws IOException;
+
+
+
+	/* ---------------------------------------------- */ 
 	
-	public boolean planForward(){
+	// Forward search from the initial state, towards a goal state.
+	// For exaustive execution
+	protected boolean planForward(){
 		System.out.println("initial: " + initialState);
 		System.out.println("goal: " + goal);
 		BDD reached = initialState.id(); //accumulates the reached set of states.
@@ -53,8 +81,6 @@ public class AbstractSearch {
 			i++;
 		}
 		
-		
-		
 		System.out.println("The problem is unsolvable.");
 		
 		return false;
@@ -63,7 +89,7 @@ public class AbstractSearch {
 
 		
 	/* Deterministic Progression of a formula by a set of actions */
-	public BDD progression(BDD formula){
+	protected BDD progression(BDD formula){
 		BDD reg = null;	
 		BDD teste = null;
 		for (Action a : actionSet) {
@@ -77,9 +103,12 @@ public class AbstractSearch {
 		}
 		return reg;
 	}
+
+	/* Deterministic Progression of a formula by a set of actions */
+	
 	
 	/* Propplan progression based on action: Qbf based computation */
-	public BDD progressionQbf(BDD Y, Action a) {
+	private BDD progressionQbf(BDD Y, Action a) {
 		BDD reg;
 		reg = Y.and(a.getPrecondition()); //(Y ^ effect(a))
 		
