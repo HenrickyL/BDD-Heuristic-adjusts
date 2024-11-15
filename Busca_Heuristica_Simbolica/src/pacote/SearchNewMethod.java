@@ -7,7 +7,14 @@ public class SearchNewMethod extends BaseSearch {
 
     public SearchNewMethod(ModelReader model) {
 		super(model);
+		System.out.println("Instance SearchNewMethod");
 	}
+
+    public SearchNewMethod() {
+		super();
+		System.out.println("Instance SearchNewMethod");
+	}
+
 
     @Override
     protected boolean heuristicPlanBackward(TimeManager verify) throws IOException {

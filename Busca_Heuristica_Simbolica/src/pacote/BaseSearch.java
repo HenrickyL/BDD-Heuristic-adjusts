@@ -18,6 +18,13 @@ public abstract class BaseSearch {
 
 	/* Constructor */
 	public BaseSearch(ModelReader model) {
+		SetModel(model);
+	}
+
+	public BaseSearch() {
+	}
+
+	public void SetModel(ModelReader model){
 		this.actionSet = model.getActionSet();
 		this.initialState = model.getInitialStateBDD();
 		this.goal = model.getGoalSpec();		
@@ -25,9 +32,8 @@ public abstract class BaseSearch {
 		this.numProp = model.getPropNum();
 	}
 
-
-	public void ExaustiveSearch() {
-		planForward();
+	public void ExaustiveSearch(TimeManager verify) {
+		planForward(verify);
 	}
 
 	public void HeuristicSearch(TimeManager verify) throws IOException{
@@ -52,7 +58,7 @@ public abstract class BaseSearch {
 	
 	// Forward search from the initial state, towards a goal state.
 	// For exaustive execution
-	protected boolean planForward(){
+	protected boolean planForward(TimeManager verify){
 		System.out.println("initial: " + initialState);
 		System.out.println("goal: " + goal);
 		BDD reached = initialState.id(); //accumulates the reached set of states.
@@ -71,13 +77,17 @@ public abstract class BaseSearch {
 			
 			aux.free();
 
-			Z = progression(Z); 
+			Z = progression(Z, verify); 
 			Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
 			reached = reached.or(Z); //Union with the new reachable states
 			reached = reached.and(constraints);
 //			if(i < 4){
 //				System.out.println(i + "\n" + reached);
 //			}
+			verify.PrintElapsedTime();
+			if(verify != null && verify.onTime()) {
+				return true;
+			}
 			i++;
 		}
 		
@@ -89,7 +99,7 @@ public abstract class BaseSearch {
 
 		
 	/* Deterministic Progression of a formula by a set of actions */
-	protected BDD progression(BDD formula){
+	protected BDD progression(BDD formula, TimeManager verify){
 		BDD reg = null;	
 		BDD teste = null;
 		for (Action a : actionSet) {
@@ -99,7 +109,11 @@ public abstract class BaseSearch {
 				reg = teste;
 			}else{
 				reg.orWith(teste);
-			}	
+			}
+			
+			if(verify != null && verify.onTime()) {
+				return reg;
+			}
 		}
 		return reg;
 	}

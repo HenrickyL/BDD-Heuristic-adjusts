@@ -208,7 +208,7 @@ public class GUI {
 				System.setOut(out);
 //				System.setErr(out);
 				long start = System.currentTimeMillis();
-				TimeManager verify = new TimeManager(start, initmemory, runtime);
+				TimeManager verify = new TimeManager(initmemory, runtime);
 				verify.setMaxTime(10800000);
 			    s.planForward(verify);
 			    long end = System.currentTimeMillis();
@@ -228,7 +228,7 @@ public class GUI {
 				System.setOut(out2);
 //				System.setErr(out2);
 				long start = System.currentTimeMillis();
-			    r.heuristcSearch(model,new TimeManager(start, initmemory, runtime));
+			    r.heuristcSearch(model,new TimeManager(initmemory, runtime));
 			    long end = System.currentTimeMillis();
 			    System.out.println("Tempo gasto: " + (end - start));
 				

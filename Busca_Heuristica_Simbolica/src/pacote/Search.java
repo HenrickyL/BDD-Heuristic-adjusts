@@ -21,6 +21,10 @@ public class Search{
 
 	/* Constructor */
 	public Search(ModelReader model) {
+		SetModel(model);
+	}
+
+	public void SetModel(ModelReader model){
 		this.actionSet = model.getActionSet();
 		this.initialState = model.getInitialStateBDD();
 		this.goal = model.getGoalSpec();		

@@ -11,6 +11,13 @@ public class SearchOldMethod extends BaseSearch {
 
     public SearchOldMethod(ModelReader model) {
 		super(model);
+		System.out.println("Instance SearchOldMethod");
+	}
+
+	public SearchOldMethod() {
+		super();
+		System.out.println("Instance SearchOldMethod");
+
 	}
 
     @Override
@@ -89,7 +96,7 @@ public class SearchOldMethod extends BaseSearch {
 
 			/*chamar a progressão só para o BDD retornado pela função minHValue*/
 			teste = minHvalue(BDDHValues, Z);
-			Z = progression(teste); //Z = progression(teste);
+			Z = progression(teste, verify); //Z = progression(teste);
 						
 			Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
 			reached = reached.or(Z); //Union with the new reachable states
