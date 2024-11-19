@@ -2,14 +2,9 @@ package pacote;
 
 class TimeManager {
 	private long startTime;
-	private long initmemory;
-	private Runtime runtime;
 	private long last = 0;
 	private static long maxTime = 1800000;//30min - 1800000
-	TimeManager(long _initmemory, Runtime _runtime){
-		initmemory = _initmemory;
-		runtime = _runtime;
-	}
+	
 	
 	void resetStartTime() {
 		startTime = System.currentTimeMillis();

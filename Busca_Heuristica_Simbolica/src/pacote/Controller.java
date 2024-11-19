@@ -2,53 +2,67 @@ package pacote;
 
 import java.io.PrintStream;
 
-import pacote.DTO.ControllerOptions;
-import pacote.Enums.ProblemTypeEnum;
-import pacote.Enums.SearchTypeEnum;
-
 
 public class Controller {
-	static PrintStream originalOut = System.out;
-	static PrintStream originalErr = System.err;
-
-	static Runtime runtime;
-	static long initmemory;
 
     private int nodenum = 50000000;
     private int cachesize =  5000000;
 	
     public void Run(ControllerOptions options){
+        Setup(options);
 
-		Controller.runtime = Runtime.getRuntime();
-        initmemory = runtime.totalMemory() - runtime.freeMemory();
+        
+    }
 
-        try{
+    public void RunByArgs(String[] args, Runtime runtime, long initmemory) {
+        if (args.length != 3) {
+           System.err.println("Usage: java GUI <type> <problem> <test>");
+           System.exit(1);
+        }
+
+        ControllerOptions options = new ControllerOptions(
+            ProblemTypeEnum.valueOf(args[0]),
+            SearchTypeEnum.valueOf(args[1]),
+            Integer.parseInt(args[2]),  
+            runtime,
+            initmemory
+        );
+
+        try {
             Setup(options);
+        } catch (IllegalArgumentException e) {
+            System.err.println("Invalid arguments.");
+            System.exit(1);
+        }
+    }
+
+
+    private void Setup(ControllerOptions options)  {
+        try{
+            BaseSearch marisaSearch = new SearchOldMethod();
+            runSearchMethod(marisaSearch, options);
+    
+            BaseSearch henrickySearch = new SearchNewMethod();
+            runSearchMethod(henrickySearch, options);
         }catch(Exception e){
             System.out.println("Error:" + e);
 			System.setOut(GUI.originalOut);
 			System.setErr(GUI.originalErr);
 			// Imprima a mensagem de conclusão
 			System.out.println("Execução terminou [Error].");
+        }finally {
+            System.gc();
         }
     }
 
 
-    private void Setup(ControllerOptions options)  throws Exception{
-        
-        int testNumber = 2;
+    private void runSearchMethod(BaseSearch search, ControllerOptions options)  throws Exception {
+        SearchTypeEnum typeTest= options.getSearch(); 
+        ProblemTypeEnum problem = options.getProblem();
+        int testNumber = options.getTestNumber();
+        Runtime runtime = options.getRuntime();
+        long initmemory = options.getInitMemory();
 
-
-        BaseSearch marisaSearch = new SearchOldMethod();
-        runSearchMethod(marisaSearch, options.search, options.problem, testNumber);
-        
-
-        BaseSearch henrickySearch = new SearchNewMethod();
-        runSearchMethod(henrickySearch, options.search, options.problem, testNumber);
-    }
-
-
-    private void runSearchMethod(BaseSearch search, SearchTypeEnum typeTest, ProblemTypeEnum problem, int testNumber)  throws Exception {
         String filePath = problem == ProblemTypeEnum.rovers ? "rovers/" : "logistics/";
 		
 		String fileName = problem == ProblemTypeEnum.logistics?
@@ -63,7 +77,7 @@ public class Controller {
         model.fileReader(filePath+fileName, type, nodenum, cachesize);
 		search.SetModel(model);
         System.out.println(fileName.substring(fileName.lastIndexOf("/") + 1,fileName.lastIndexOf(".")));
-        TimeManager verify = new TimeManager( initmemory, runtime);
+        TimeManager verify = new TimeManager();
         
     
         if(typeTest == SearchTypeEnum.exaustive) {

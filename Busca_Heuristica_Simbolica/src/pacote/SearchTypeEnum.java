@@ -1,4 +1,4 @@
-package pacote.Enums;
+package pacote;
 
 public enum SearchTypeEnum {
     exaustive, heuristic
