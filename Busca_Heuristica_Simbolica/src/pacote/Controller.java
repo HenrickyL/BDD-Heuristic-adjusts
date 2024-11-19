@@ -2,24 +2,28 @@ package pacote;
 
 import java.io.PrintStream;
 
+import pacote.DTO.ControllerOptions;
+import pacote.Enums.ProblemTypeEnum;
+import pacote.Enums.SearchTypeEnum;
+
+
 public class Controller {
 	static PrintStream originalOut = System.out;
 	static PrintStream originalErr = System.err;
-	enum E_Problem{rovers, logistics}
-	enum E_Types{exaustive, heuristic}
+
 	static Runtime runtime;
 	static long initmemory;
 
     private int nodenum = 50000000;
     private int cachesize =  5000000;
 	
-    public void Run(){
+    public void Run(ControllerOptions options){
 
 		Controller.runtime = Runtime.getRuntime();
         initmemory = runtime.totalMemory() - runtime.freeMemory();
 
         try{
-            Setup();
+            Setup(options);
         }catch(Exception e){
             System.out.println("Error:" + e);
 			System.setOut(GUI.originalOut);
@@ -30,25 +34,24 @@ public class Controller {
     }
 
 
-    private void Setup()  throws Exception{
-        E_Types type = E_Types.heuristic;
-        E_Problem problem = E_Problem.rovers;
+    private void Setup(ControllerOptions options)  throws Exception{
+        
         int testNumber = 2;
 
 
         BaseSearch marisaSearch = new SearchOldMethod();
-        runSearchMethod(marisaSearch, type, problem, testNumber);
+        runSearchMethod(marisaSearch, options.search, options.problem, testNumber);
         
 
         BaseSearch henrickySearch = new SearchNewMethod();
-        runSearchMethod(henrickySearch, type, problem, testNumber);
+        runSearchMethod(henrickySearch, options.search, options.problem, testNumber);
     }
 
 
-    private void runSearchMethod(BaseSearch search, E_Types typeTest, E_Problem problem, int testNumber)  throws Exception {
-        String filePath = problem == E_Problem.rovers ? "rovers/" : "logistics/";
+    private void runSearchMethod(BaseSearch search, SearchTypeEnum typeTest, ProblemTypeEnum problem, int testNumber)  throws Exception {
+        String filePath = problem == ProblemTypeEnum.rovers ? "rovers/" : "logistics/";
 		
-		String fileName = problem == E_Problem.logistics?
+		String fileName = problem == ProblemTypeEnum.logistics?
 				"LOGISTICS-" + testNumber + "-0-GROUNDED.txt" :
 				"rovers-0" + testNumber + "-GROUNDED.txt";
 		
@@ -63,7 +66,7 @@ public class Controller {
         TimeManager verify = new TimeManager( initmemory, runtime);
         
     
-        if(typeTest == E_Types.exaustive) {
+        if(typeTest == SearchTypeEnum.exaustive) {
             System.out.println("Exaustive search");
             System.out.println("\n" + "Performing search...");
             
