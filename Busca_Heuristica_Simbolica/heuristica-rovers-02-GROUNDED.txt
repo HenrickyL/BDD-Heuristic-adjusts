@@ -35,5 +35,5 @@ Progressive search
 13
 The problem is solvable.
 End Forward.
->> Elapsed Time: 31
-Used memory is bytes: 1362443240
+>> Elapsed Time: 10
+Used memory is bytes: 1362257784

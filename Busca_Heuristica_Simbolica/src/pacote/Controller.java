@@ -63,7 +63,7 @@ public class Controller {
         Runtime runtime = options.getRuntime();
         long initmemory = options.getInitMemory();
 
-        String filePath = problem == ProblemTypeEnum.rovers ? "rovers/" : "logistics/";
+        String filePath = "Problems/" + (problem == ProblemTypeEnum.rovers ? "rovers/" : "logistics/");
 		
 		String fileName = problem == ProblemTypeEnum.logistics?
 				"LOGISTICS-" + testNumber + "-0-GROUNDED.txt" :
