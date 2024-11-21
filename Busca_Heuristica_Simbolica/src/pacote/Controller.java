@@ -79,37 +79,32 @@ public class Controller {
         System.out.println(fileName.substring(fileName.lastIndexOf("/") + 1,fileName.lastIndexOf(".")));
         TimeManager verify = new TimeManager();
         
-    
+        PrintStream out;
         if(typeTest == SearchTypeEnum.exaustive) {
             System.out.println("Exaustive search");
             System.out.println("\n" + "Performing search...");
-            
-            PrintStream out = new PrintStream("exaustiva-"+fileName);
+            out = new PrintStream("exaustiva-"+fileName);
             System.setOut(out);
-//				System.setErr(out);
+
             verify.setMaxTime(10800000);
             verify.resetStartTime();
             search.ExaustiveSearch(verify);
             verify.PrintElapsedTime();
-            long memory = runtime.totalMemory() - runtime.freeMemory();
-            System.out.println("Used memory is bytes: " + (memory - initmemory));
-            
-            out.close();
         }else{
             System.out.println("Heuristic search");
             System.out.println("Performing search...");
-            PrintStream out2 = new PrintStream("heuristica-"+fileName);
-            System.setOut(out2);
+            out = new PrintStream("heuristica-"+fileName);
+            System.setOut(out);
             
             verify.resetStartTime();
             search.HeuristicSearch(verify);
             verify.PrintElapsedTime();
-            
-            runtime.gc();
-            long memory = runtime.totalMemory() - runtime.freeMemory();
-            System.out.println("Used memory is bytes: " + (memory - initmemory));
-            out2.close();
         }
+
+        runtime.gc();
+        long memory = runtime.totalMemory() - runtime.freeMemory();
+        System.out.println("Used memory is bytes: " + (memory - initmemory));
+        out.close();
         
         System.setOut(GUI.originalOut);
         System.setErr(GUI.originalErr);
