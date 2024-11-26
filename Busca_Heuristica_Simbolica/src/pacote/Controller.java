@@ -68,6 +68,9 @@ public class Controller {
             case rovers:
                 fileName = "rovers-0" + testNumber + "-GROUNDED.txt";
                 break;
+            case block_word:
+                fileName = "BLOCK-WORD-" + testNumber + "-GROUNDED.txt";
+                break;
             default:
                 throw new AssertionError("Unknown problem type: " + problem);
         }
@@ -83,6 +86,9 @@ public class Controller {
                 break;
             case rovers:
                 path +="rovers/";
+                break;
+            case block_word:
+                path +="block-word/";
                 break;
             default:
                 throw new AssertionError("Unknown problem type: " + problem);

@@ -1,5 +1,5 @@
 package pacote;
 
 public enum ProblemTypeEnum {
-    rovers, logistics
+    rovers, logistics, block_word
 }
