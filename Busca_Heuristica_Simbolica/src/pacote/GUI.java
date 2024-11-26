@@ -24,7 +24,7 @@ public class GUI {
 	
 		ControllerOptions test = new ControllerOptions(
 				ProblemTypeEnum.rovers, 
-				SearchTypeEnum.heuristic, 
+				SearchTypeEnum.exaustive, 
 				2,  
 				runtime,
 				initmemory

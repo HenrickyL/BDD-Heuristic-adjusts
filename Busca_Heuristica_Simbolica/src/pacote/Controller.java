@@ -56,18 +56,48 @@ public class Controller {
     }
 
 
-    private void runSearchMethod(BaseSearch search, ControllerOptions options)  throws Exception {
-        SearchTypeEnum typeTest= options.getSearch(); 
+    private String GetFileNameProblem(ControllerOptions options) {
         ProblemTypeEnum problem = options.getProblem();
         int testNumber = options.getTestNumber();
+
+        String fileName;
+        switch (problem) {
+            case logistics:
+                fileName = "LOGISTICS-" + testNumber + "-0-GROUNDED.txt";
+                break;
+            case rovers:
+                fileName = "rovers-0" + testNumber + "-GROUNDED.txt";
+                break;
+            default:
+                throw new AssertionError("Unknown problem type: " + problem);
+        }
+        return fileName;
+    }
+
+    private String GetPath(ControllerOptions options) {
+        ProblemTypeEnum problem = options.getProblem();
+        String path = "Problems/";
+        switch (problem) {
+            case logistics:
+                path +="logistics/";
+                break;
+            case rovers:
+                path +="rovers/";
+                break;
+            default:
+                throw new AssertionError("Unknown problem type: " + problem);
+        }
+        return path;
+    }
+
+
+    private void runSearchMethod(BaseSearch search, ControllerOptions options)  throws Exception {
+        SearchTypeEnum typeTest= options.getSearch(); 
         Runtime runtime = options.getRuntime();
         long initmemory = options.getInitMemory();
 
-        String filePath = "Problems/" + (problem == ProblemTypeEnum.rovers ? "rovers/" : "logistics/");
-		
-		String fileName = problem == ProblemTypeEnum.logistics?
-				"LOGISTICS-" + testNumber + "-0-GROUNDED.txt" :
-				"rovers-0" + testNumber + "-GROUNDED.txt";
+        String filePath = GetPath(options);
+		String fileName = GetFileNameProblem(options);
 		
 		String type = "propplan"; //"ritanen" or "propplan"
 
