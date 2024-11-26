@@ -1,0 +1,29 @@
+<predicates>
+on_a_b, on_b_a, ontable_a, ontable_b, clear_a, clear_b, handempty, holding_a
+<\predicates>
+<constraints>
+on_a_b, ontable_b, clear_a, handempty
+<\constraints>
+<initial>
+on_a_b, ontable_b, clear_a, handempty, ~holding_a, ~on_b_a
+<\initial>
+<goal>
+on_b_a, ontable_a, clear_b
+<\goal>
+<actionsSet>
+<action>
+<name>unstack_a_b<\name>
+<pre>on_a_b, clear_a, handempty<\pre>
+<pos>holding_a, clear_b, ~on_a_b, ~handempty<\pos>
+<\action>
+<action>
+<name>putdown_a<\name>
+<pre>holding_a<\pre>
+<pos>ontable_a, clear_a, handempty, ~holding_a<\pos>
+<\action>
+<action>
+<name>stack_b_a<\name>
+<pre>holding_a, clear_a<\pre>
+<pos>on_b_a, clear_b, handempty, ~holding_a, ~clear_a<\pos>
+<\action>
+<\actionsSet>

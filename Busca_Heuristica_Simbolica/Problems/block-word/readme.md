@@ -1,31 +1,38 @@
 ### Domain do Mundo dos Blocos
 
-**Predicados:**
-- `ON(x, y)`: O bloco `x` está sobre o bloco ou mesa `y`.
-- `CLEAR(x)`: O topo do bloco ou mesa `x` está livre.
-- `HOLDING(x)`: O robô está segurando o bloco `x`.
-- `ARMEMPTY`: O robô não está segurando nenhum bloco.
 
-**Ações:**
-1. **PICKUP(x)**  
-   Pré-condições: `CLEAR(x)`, `ON(x, y)`, `ARMEMPTY`  
-   Efeitos Positivos: `HOLDING(x)`, `CLEAR(y)`  
-   Efeitos Negativos: `ON(x, y)`, `ARMEMPTY`
+### **Predicados**
+- **on_x_y**: O bloco `x` está sobre o bloco ou mesa `y`.
+- **ontable_x**: O bloco `x` está diretamente sobre a mesa.
+- **clear_x**: O topo do bloco ou mesa `x` está livre.
+- **handempty**: O robô não está segurando nenhum bloco.
+- **holding_x**: O robô está segurando o bloco `x`.
 
-2. **PUTDOWN(x)**  
-   Pré-condições: `HOLDING(x)`  
-   Efeitos Positivos: `ON(x, mesa)`, `CLEAR(x)`, `ARMEMPTY`  
-   Efeitos Negativos: `HOLDING(x)`
+---
 
-3. **STACK(x, y)**  
-   Pré-condições: `HOLDING(x)`, `CLEAR(y)`  
-   Efeitos Positivos: `ON(x, y)`, `CLEAR(x)`, `ARMEMPTY`  
-   Efeitos Negativos: `HOLDING(x)`, `CLEAR(y)`
+### **Ações**
 
-4. **UNSTACK(x, y)**  
-   Pré-condições: `ON(x, y)`, `CLEAR(x)`, `ARMEMPTY`  
-   Efeitos Positivos: `HOLDING(x)`, `CLEAR(y)`  
-   Efeitos Negativos: `ON(x, y)`, `CLEAR(x)`
+1. **pickup_x**  
+   - **Pré-condições**: `ontable_x`, `clear_x`, `handempty`  
+   - **Efeitos Positivos**: `holding_x`, `~ontable_x`, `~clear_x`, `~handempty`  
+   - **Efeitos Negativos**: `ontable_x`, `clear_x`, `handempty`
+
+2. **putdown_x**  
+   - **Pré-condições**: `holding_x`  
+   - **Efeitos Positivos**: `ontable_x`, `clear_x`, `handempty`, `~holding_x`  
+   - **Efeitos Negativos**: `holding_x`
+
+3. **stack_x_y**  
+   - **Pré-condições**: `holding_x`, `clear_y`  
+   - **Efeitos Positivos**: `on_x_y`, `clear_x`, `handempty`, `~holding_x`, `~clear_y`  
+   - **Efeitos Negativos**: `holding_x`, `clear_y`
+
+4. **unstack_x_y**  
+   - **Pré-condições**: `on_x_y`, `clear_x`, `handempty`  
+   - **Efeitos Positivos**: `holding_x`, `clear_y`, `~on_x_y`, `~handempty`  
+   - **Efeitos Negativos**: `on_x_y`, `handempty`
+
+
 
 ---
 
@@ -56,80 +63,91 @@
 #### Domain
 ```plaintext
 <predicates>
-ON(x, y), CLEAR(x), HOLDING(x), ARMEMPTY
+on_a_b, ontable_a, ontable_b, clear_a, clear_b, handempty, holding_a
 <\predicates>
+
+<constraints>
+ontable_a, ontable_b, clear_a, clear_b, handempty
+<\constraints>
+
 <actionsSet>
 <action>
-<name>PICKUP(x)<\name>
-<pre>CLEAR(x), ON(x, y), ARMEMPTY<\pre>
-<pos>HOLDING(x), CLEAR(y)<\pos>
-<neg>ON(x, y), ARMEMPTY<\neg>
+<name>pickup_a<\name>
+<pre>ontable_a, clear_a, handempty<\pre>
+<pos>holding_a, ~ontable_a, ~clear_a, ~handempty<\pos>
 <\action>
+
 <action>
-<name>PUTDOWN(x)<\name>
-<pre>HOLDING(x)<\pre>
-<pos>ON(x, mesa), CLEAR(x), ARMEMPTY<\pos>
-<neg>HOLDING(x)<\neg>
+<name>stack_a_b<\name>
+<pre>holding_a, clear_b<\pre>
+<pos>on_a_b, clear_a, handempty, ~holding_a, ~clear_b<\pos>
 <\action>
+
 <action>
-<name>STACK(x, y)<\name>
-<pre>HOLDING(x), CLEAR(y)<\pre>
-<pos>ON(x, y), CLEAR(x), ARMEMPTY<\pos>
-<neg>HOLDING(x), CLEAR(y)<\neg>
+<name>putdown_a<\name>
+<pre>holding_a<\pre>
+<pos>ontable_a, clear_a, handempty, ~holding_a<\pos>
 <\action>
-<action>
-<name>UNSTACK(x, y)<\name>
-<pre>ON(x, y), CLEAR(x), ARMEMPTY<\pre>
-<pos>HOLDING(x), CLEAR(y)<\pos>
-<neg>ON(x, y), CLEAR(x)<\neg>
-<\action>
+
 <\actionsSet>
 ```
 
 #### Problema 1: Empilhar Dois Blocos
 ```plaintext
 <predicates>
-ON(A, mesa), ON(B, mesa), CLEAR(A), CLEAR(B), ARMEMPTY
+on_a_b, ontable_b, ontable_a, clear_a, clear_b, handempty, holding_a
 <\predicates>
+
 <constraints>
-ON(A, mesa), ON(B, mesa), ARMEMPTY
+ontable_a, ontable_b, clear_a, clear_b, handempty
 <\constraints>
+
 <initial>
-ON(A, mesa), ON(B, mesa), CLEAR(A), CLEAR(B), ARMEMPTY
+ontable_a, ontable_b, clear_a, clear_b, handempty, ~on_a_b, ~holding_a
 <\initial>
+
 <goal>
-ON(A, B), ON(B, mesa), CLEAR(A)
+on_a_b, ontable_b, clear_a
 <\goal>
+
 ```
 
 #### Problema 2: Trocar a Ordem de Dois Blocos
 ```plaintext
 <predicates>
-ON(A, B), ON(B, mesa), CLEAR(A), ARMEMPTY
+on_a_b, on_b_a, ontable_a, ontable_b, clear_a, clear_b, handempty, holding_a
 <\predicates>
+
 <constraints>
-ON(A, B), ARMEMPTY
+on_a_b, ontable_b, clear_a, handempty
 <\constraints>
+
 <initial>
-ON(A, B), ON(B, mesa), CLEAR(A), ARMEMPTY
+on_a_b, ontable_b, clear_a, handempty, ~holding_a, ~on_b_a
 <\initial>
+
 <goal>
-ON(B, A), ON(A, mesa), CLEAR(B)
+on_b_a, ontable_a, clear_b
 <\goal>
+
 ```
 
 #### Problema 3: Empilhar Três Blocos
 ```plaintext
 <predicates>
-ON(A, mesa), ON(B, mesa), ON(C, mesa), CLEAR(A), CLEAR(B), CLEAR(C), ARMEMPTY
+on_a_b, on_b_c, ontable_a, ontable_b, ontable_c, clear_a, clear_b, clear_c, handempty, holding_a
 <\predicates>
+
 <constraints>
-ON(A, mesa), ARMEMPTY
+ontable_a, ontable_b, ontable_c, clear_a, clear_b, clear_c, handempty
 <\constraints>
+
 <initial>
-ON(A, mesa), ON(B, mesa), ON(C, mesa), CLEAR(A), CLEAR(B), CLEAR(C), ARMEMPTY
+ontable_a, ontable_b, ontable_c, clear_a, clear_b, clear_c, handempty, ~on_a_b, ~on_b_c, ~holding_a
 <\initial>
+
 <goal>
-ON(A, B), ON(B, C), ON(C, mesa), CLEAR(A)
+on_a_b, on_b_c, ontable_c, clear_a
 <\goal>
+
 ```
