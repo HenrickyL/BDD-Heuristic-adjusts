@@ -14,7 +14,6 @@ public abstract class BaseSearch {
 	protected BDD constraints;
 	protected int numProp;
 	protected Vector<BDD> BDDHValues = new Vector<BDD>();
-	private boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
 
 	/* Constructor */
 	public BaseSearch(ModelReader model) {

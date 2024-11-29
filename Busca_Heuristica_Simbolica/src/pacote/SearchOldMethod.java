@@ -133,6 +133,7 @@ public class SearchOldMethod extends BaseSearch {
 		return reg;
 	}
 
+
     public BDD heuristicRegressionQbf(BDD Y, Action a) {
 		BDD reg;
 		reg = Y.and(a.getRelaxEffect()); //(Y ^ effect(a))
