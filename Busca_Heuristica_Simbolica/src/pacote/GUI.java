@@ -23,8 +23,8 @@ public class GUI {
 
 	
 		ControllerOptions test = new ControllerOptions(
-				ProblemTypeEnum.block_word, 
-				SearchTypeEnum.exaustive, 
+				ProblemTypeEnum.rovers, 
+				SearchTypeEnum.heuristic, 
 				1,  
 				runtime,
 				initmemory

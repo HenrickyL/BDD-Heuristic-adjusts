@@ -39,8 +39,8 @@ public class Controller {
 
     private void Setup(ControllerOptions options)  {
         try{
-            BaseSearch marisaSearch = new SearchOldMethod();
-            runSearchMethod(marisaSearch, options);
+            // BaseSearch marisaSearch = new SearchOldMethod();
+            // runSearchMethod(marisaSearch, options);
     
             BaseSearch henrickySearch = new SearchNewMethod();
             runSearchMethod(henrickySearch, options);
