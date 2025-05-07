@@ -39,11 +39,11 @@ public class Controller {
 
     private void Setup(ControllerOptions options)  {
         try{
-            // BaseSearch marisaSearch = new SearchOldMethod();
-            // runSearchMethod(marisaSearch, options);
+             BaseSearch marisaSearch = new SearchOldMethod();
+             runSearchMethod(marisaSearch, options);
     
-            BaseSearch henrickySearch = new SearchNewMethod();
-            runSearchMethod(henrickySearch, options);
+//            BaseSearch henrickySearch = new SearchNewMethod();
+//            runSearchMethod(henrickySearch, options);
         }catch(Exception e){
             System.out.println("Error:" + e);
 			System.setOut(GUI.originalOut);
