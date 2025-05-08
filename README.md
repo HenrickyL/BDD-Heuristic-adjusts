@@ -58,7 +58,7 @@ mvn clean compile
 
 ### 3. Execute a aplicação
 ```bash
-mvn compile exec:java
+mvn exec:java
 ```
 ---
 
