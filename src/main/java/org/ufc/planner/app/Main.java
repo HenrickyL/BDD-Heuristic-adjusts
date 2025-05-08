@@ -12,7 +12,7 @@ public class Main {
         ProblemOptions test = new ProblemOptions(
                 ProblemTypeEnum.rovers,
                 SearchTypeEnum.heuristic,
-                1
+                5
         );
 
         Runtime runtime =  Runtime.getRuntime();
