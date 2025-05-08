@@ -7,6 +7,6 @@ import java.io.IOException;
 
 public interface ISearchAlgorithm {
     void SetModel(ModelReader model);
-    void ExaustiveSearch(TimeManager verify);
+    void ExhaustiveSearch(TimeManager verify);
     void HeuristicSearch(TimeManager verify) throws IOException;
 }

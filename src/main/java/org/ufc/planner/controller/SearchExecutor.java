@@ -1,7 +1,6 @@
 package org.ufc.planner.controller;
 
 import org.ufc.planner.core.BaseSearch;
-import org.ufc.planner.core.SearchNewMethod;
 import org.ufc.planner.core.SearchOldMethod;
 import org.ufc.planner.enums.SearchTypeEnum;
 import org.ufc.planner.infrastructure.ModelReader;
@@ -49,7 +48,7 @@ public class SearchExecutor {
         if (type == SearchTypeEnum.exaustive) {
             timer.setMaxTime(10800000);
             timer.resetStartTime();
-            search.ExaustiveSearch(timer);
+            search.ExhaustiveSearch(timer);
         } else {
             timer.resetStartTime();
             search.HeuristicSearch(timer);

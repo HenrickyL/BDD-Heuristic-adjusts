@@ -35,7 +35,7 @@ public abstract class BaseSearch implements ISearchAlgorithm{
         this.numProp = model.getPropNum();
     }
 
-    public void ExaustiveSearch(TimeManager verify) {
+    public void ExhaustiveSearch(TimeManager verify) {
         planForward(verify);
     }
 
