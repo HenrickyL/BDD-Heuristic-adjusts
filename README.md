@@ -21,8 +21,9 @@ src/main/
 
 ## ⚙️ Requisitos
 
-- Java 17+
+- Java 23+
 - Maven 3+
+- **Recomendado:** IntelliJ IDEA para rodar facilmente com configurações personalizadas de memória.
 
 ---
 
@@ -41,7 +42,7 @@ O projeto utiliza:
 ```
 ---
 
-## 🚀 Como executar
+## 🚀 Como executar (`MVN`)
 
 ### 1. Clone o repositório
 ```bash
@@ -60,6 +61,10 @@ mvn clean compile
 ```bash
 mvn exec:java
 ```
+|💡 Dica: Recomendamos usar o IntelliJ IDEA com uma configuração de execução personalizada, incluindo parâmetros de memória via VM options (ex:-Xmx6g).
+
+| Para mais detalhes sobre esse processo e como testar os limites de memória do projeto, consulte o arquivo [java-memory-consideration.md](doc/java-memory-consideration.md).
+
 ---
 
 ## 🧠 Arquitetura e Conceitos
