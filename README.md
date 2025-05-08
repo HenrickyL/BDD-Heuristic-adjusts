@@ -7,15 +7,15 @@ Este projeto implementa um planejador simbólico para problemas clássicos de pl
 ## 📁 Estrutura do Projeto
 
 ```
-src/main/java/org/ufc/
-└── planner/
-├─── app/                    # Classe principal (Main)
-├─── controller/             # Controladores da execução
-├─── core/                   # Interface + implementações de busca
-├─── domain/                 # Entidades do problema (ações, nós, enums)
-├─── infrastructure/         # Leitura de arquivos e controle de tempo
-├─── problems/               # Casos de teste (logistics, rovers, etc.)
-└─── results/                # Resultados gerados (.txt)
+src/main/
+└── java/org/ufc/planner/
+├───── app/                    # Classe principal (Main)
+├───── controller/             # Controladores da execução
+├───── core/                   # Interface + implementações de busca
+├───── domain/                 # Entidades do problema (ações, nós, enums)
+├───── infrastructure/         # Leitura de arquivos e controle de tempo
+└── resources/
+└───── problems/               # Casos de teste (logistics, rovers, etc.)
 ```
 ---
 
