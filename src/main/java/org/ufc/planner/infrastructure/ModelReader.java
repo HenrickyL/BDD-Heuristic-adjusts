@@ -4,7 +4,6 @@ import com.github.javabdd.BDD;
 import org.ufc.planner.domain.Action;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Hashtable;
