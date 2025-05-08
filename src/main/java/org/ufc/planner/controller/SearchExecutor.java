@@ -1,10 +1,12 @@
 package org.ufc.planner.controller;
 
 import org.ufc.planner.core.BaseSearch;
+import org.ufc.planner.core.SearchNewMethod;
 import org.ufc.planner.core.SearchOldMethod;
 import org.ufc.planner.enums.SearchTypeEnum;
 import org.ufc.planner.infrastructure.ModelReader;
 import org.ufc.planner.infrastructure.TimeManager;
+import org.ufc.planner.middleware.DualPrintStream;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,7 +26,11 @@ public class SearchExecutor {
     }
 
     public void execute(ProblemOptions options) throws Exception {
-        BaseSearch search = new SearchOldMethod();
+        runComparison("old", new SearchOldMethod(), options);
+//        runComparison("new", new SearchNewMethod(), options);
+    }
+
+    private void runComparison(String label, BaseSearch search, ProblemOptions options) throws Exception {
         SearchTypeEnum type = options.getSearch();
 
         String fileName = ProblemFileHelper.getFileName(options.getProblem(), options.getTestNumber());
@@ -34,10 +40,12 @@ public class SearchExecutor {
         model.fileReader(path + fileName, "propplan", nodenum, cachesize);
         search.SetModel(model);
 
-        PrintStream out = prepareOutputFile(type, fileName);
-        System.setOut(out);
+        PrintStream out = prepareOutputFile(type, fileName, label);
+        System.setOut(new DualPrintStream(out, originalOut));
 
+        System.out.println("Running " + label.toUpperCase() + " method on: " + fileName);
         TimeManager timer = new TimeManager();
+
         if (type == SearchTypeEnum.exaustive) {
             timer.setMaxTime(10800000);
             timer.resetStartTime();
@@ -48,22 +56,21 @@ public class SearchExecutor {
         }
 
         timer.PrintElapsedTime();
-
         runtime.gc();
         long usedMemory = runtime.totalMemory() - runtime.freeMemory();
-        System.out.println("Used memory is bytes: " + usedMemory);
+        System.out.println("Used memory (bytes): " + usedMemory);
 
         out.close();
         System.setOut(originalOut);
         System.setErr(originalErr);
-        System.out.println("Execução terminou [OK].");
+        System.out.println("Execução (" + label + ") terminou [OK].");
     }
 
-    private PrintStream prepareOutputFile(SearchTypeEnum type, String fileName) throws FileNotFoundException {
-        File dir = new File("results");
+    private PrintStream prepareOutputFile(SearchTypeEnum type, String fileName, String label) throws FileNotFoundException {
+        File dir = new File("results/" + label);
         if (!dir.exists()) dir.mkdirs();
 
         String prefix = (type == SearchTypeEnum.exaustive) ? "exaustiva-" : "heuristica-";
-        return new PrintStream("results/" + prefix + fileName);
+        return new PrintStream("results/" + label + "/" + prefix + fileName);
     }
 }
