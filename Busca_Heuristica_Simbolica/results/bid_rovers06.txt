@@ -1,8 +1,0 @@
-rovers-06-GROUNDED
-Bidirectional search
-0
-1
-The problem is unsolvable.
-Bidirectional search
-rovers-06-GROUNDED.txt
-Tempo gasto: 5
