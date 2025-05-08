@@ -58,7 +58,7 @@ mvn clean compile
 
 ### 3. Execute a aplicação
 ```bash
-mvn exec:java -Dexec.mainClass="org.ufc.planner.app.Main"
+mvn compile exec:java
 ```
 ---
 
