@@ -1,53 +1,38 @@
-javabdd_repackaged-1.0b2.jar
-
-
-# Eclipse specific files
-/.classpath
-/.project
-/.settings/
-
-# Mac OS X specific files
-.DS_Store
-
-# Windows specific files
-Thumbs.db
-Desktop.ini
-
-# Java specific files
-*.class
-*.jar
-*.war
-*.ear
-
-# Log files
-*.log
-
-# Maven specific files
 target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
-# Gradle specific files
-.gradle/
-build/
-
-# IDE specific files
-.idea/
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
 *.iml
+*.ipr
 
-# Eclipse configuration
-/.metadata/
-/bin/
-/tmp/
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-# Ignore Maven wrapper files
-.mvn/wrapper/maven-wrapper.jar
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# Exclude all build output directories
-*/target/
-*/out/
+### VS Code ###
+.vscode/
 
-# Node specific files (if you have a frontend)
-node_modules/
-
-# Ignore test reports
-/test-output/
-/test-output/*/
+### Mac OS ###
+.DS_Store
