@@ -64,6 +64,9 @@ public class SearchOldMethod extends  BaseSearch{
 //			if(i < 4){
 //				System.out.println(reached);
 //			}
+            //verify and print with exceeds time
+            verify.verifyBreak();
+
             i++;
 
         }
@@ -105,6 +108,10 @@ public class SearchOldMethod extends  BaseSearch{
 //			if(i < 4){
 //				System.out.println(i + "\n" + reached);
 //			}
+
+            //verify and print with exceeds time
+            verify.verifyBreak();
+
             i++; //g(n)
         }
 

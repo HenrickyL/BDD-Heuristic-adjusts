@@ -2,6 +2,7 @@ package org.ufc.planner.controller;
 
 import org.ufc.planner.core.BaseSearch;
 import org.ufc.planner.core.SearchOldMethod;
+import org.ufc.planner.core.SearchOldWithTimerMethod;
 import org.ufc.planner.enums.SearchTypeEnum;
 import org.ufc.planner.infrastructure.ModelReader;
 import org.ufc.planner.infrastructure.TimeManager;
@@ -25,8 +26,8 @@ public class SearchExecutor {
     }
 
     public void execute(ProblemOptions options) throws Exception {
+        runComparison("old+", new SearchOldWithTimerMethod(), options);
         runComparison("old", new SearchOldMethod(), options);
-//        runComparison("new", new SearchNewMethod(), options);
     }
 
     private void runComparison(String label, BaseSearch search, ProblemOptions options) throws Exception {

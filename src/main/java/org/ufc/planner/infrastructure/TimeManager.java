@@ -3,7 +3,7 @@ package org.ufc.planner.infrastructure;
 public class TimeManager {
     private long startTime;
     private long last = 0;
-    private static long maxTime = 1800000;//30min - 1800000
+    private static long maxTime = 2*60*1000; //5MIN //= 1800000;//30min - 1800000
 
 
     public void resetStartTime() {
@@ -14,7 +14,17 @@ public class TimeManager {
    public  void setMaxTime(int value) {
         maxTime = value;
         last =0;
-    }
+   }
+   public boolean verifyBreak(){
+       this.PrintElapsedTime();
+//       this.resetStartTime();
+       if(this.onTime()) {
+           System.out.println(">> Break by MaxLimitTime");
+           return true;
+       }else{
+           return false;
+       }
+   }
 
     public void PrintElapsedTime() {
         long current = System.currentTimeMillis();

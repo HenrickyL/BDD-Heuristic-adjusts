@@ -9,13 +9,14 @@ import org.ufc.planner.infrastructure.TimeManager;
 import java.io.IOException;
 import java.util.Vector;
 
-public class SearchOldMethod extends  BaseSearch{
-    public SearchOldMethod(ModelReader model) {
+public class SearchOldWithTimerMethod extends  BaseSearch{
+    private boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
+    public SearchOldWithTimerMethod(ModelReader model) {
         super(model);
         System.out.println("Instance SearchOldMethod");
     }
 
-    public SearchOldMethod() {
+    public SearchOldWithTimerMethod() {
         super();
         System.out.println("Instance SearchOldMethod");
 
@@ -23,6 +24,7 @@ public class SearchOldMethod extends  BaseSearch{
 
     @Override
     protected boolean heuristicPlanBackward(TimeManager verify) throws IOException {
+        this.onHeuristicPlanBackwardHasIncomplateRegression = false;
         //System.out.println("Performing heuristic search in a relaxed problem");
         System.out.println("initial: " + initialState);
         System.out.println("goal: " + goal);
@@ -51,7 +53,7 @@ public class SearchOldMethod extends  BaseSearch{
 
             aux.free();
             //System.out.println("Z [antes da regression]" + Z);
-            Z = heuristicRegression(Z);
+            Z = heuristicRegression(Z, verify);
             //System.out.println("Z-->" + Z);
             //System.out.println("Z [depois da regression]" + Z);
             Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
@@ -64,8 +66,13 @@ public class SearchOldMethod extends  BaseSearch{
 //			if(i < 4){
 //				System.out.println(reached);
 //			}
-            i++;
 
+            if(onHeuristicPlanBackwardHasIncomplateRegression) {
+                BDDHValues.add(j+1, reached.not());//todos os estados nao alcancados receberao o mesmo valor heuristico - henricky
+                return true;
+            }
+
+            i++;
         }
 
         System.out.println("The problem is unsolvable.");
@@ -105,11 +112,14 @@ public class SearchOldMethod extends  BaseSearch{
 //			if(i < 4){
 //				System.out.println(i + "\n" + reached);
 //			}
+
+            //Break by max time
+            if(verify.verifyBreak()) {
+                return true;
+            }
+
             i++; //g(n)
         }
-
-
-
 
         System.out.println("The problem is unsolvable.");
 
@@ -118,7 +128,7 @@ public class SearchOldMethod extends  BaseSearch{
 
     /* ------------------------------------------------------------------ */
 
-    private BDD heuristicRegression(BDD formula){
+    private BDD heuristicRegression(BDD formula, TimeManager verify){
         BDD reg = null;
         BDD teste = null;
         for (Action a : actionSet) {
@@ -129,6 +139,10 @@ public class SearchOldMethod extends  BaseSearch{
                 reg = teste;
             }else{
                 reg.orWith(teste);
+            }
+            if(verify != null && verify.onTime()) {
+                onHeuristicPlanBackwardHasIncomplateRegression = true;
+                return reg;
             }
         }
         return reg;

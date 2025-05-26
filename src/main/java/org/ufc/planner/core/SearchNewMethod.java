@@ -74,12 +74,11 @@ public class SearchNewMethod extends BaseSearch{
                 return true;
             }
 
+            //Break by max time
+            if(verify.verifyBreak()) {
+                return true;
+            }
 
-            verify.PrintElapsedTime();
-            verify.resetStartTime();
-//			if(verify != null && verify.onTime()) {
-//				return true;
-//			}
             i++;
         }
 
@@ -189,7 +188,7 @@ public class SearchNewMethod extends BaseSearch{
             }
 			/*cada camada tem 30 min para rodar, cada açao contribui com esse tempo,
 			   se uma açao usa 5 min as outras tem apenas 25min para rodar*/
-            if(verify != null &&verify.onTime()) {
+            if(verify != null && verify.onTime()) {
                 onHeuristicPlanBackwardHasIncomplateRegression = true;
                 return reg;
             }
