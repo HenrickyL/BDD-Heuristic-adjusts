@@ -31,7 +31,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
         int j = 0;
         BDD reached = goal.id(); //accumulates the reached set of states.
-        BDDHValues.add(j, goal);
+        heuristicValue.add(j, goal);
 
         BDD Z = reached.id(); // Only new states reached
         BDD aux;
@@ -59,7 +59,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
             Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
             //adicionar o Z na posição i do vetor.
             //System.out.println("Z-->" + Z);
-            BDDHValues.add(j,Z);
+            heuristicValue.add(j,Z);
 
             reached = reached.or(Z); //Union with the new reachable states
             reached = reached.and(constraints);
@@ -68,7 +68,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 //			}
 
             if(onHeuristicPlanBackwardHasIncomplateRegression) {
-                BDDHValues.add(j+1, reached.not());//todos os estados nao alcancados receberao o mesmo valor heuristico - henricky
+                heuristicValue.add(j+1, reached.not());//todos os estados nao alcancados receberao o mesmo valor heuristico - henricky
                 return true;
             }
 
@@ -103,7 +103,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
             aux.free();
 
             /*chamar a progressão só para o BDD retornado pela função minHValue*/
-            teste = minHvalue(BDDHValues, Z);
+            teste = minHvalue(heuristicValue, Z);
             Z = progression(teste, verify); //Z = progression(teste);
 
             Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer

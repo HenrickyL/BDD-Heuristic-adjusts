@@ -17,7 +17,7 @@ public abstract class BaseSearch implements ISearchAlgorithm{
     protected BDD initialState;
     protected BDD constraints;
     protected int numProp;
-    protected Vector<BDD> BDDHValues = new Vector<BDD>();
+    protected Vector<BDD> heuristicValue = new Vector<BDD>();
 
     /* Constructor */
     public BaseSearch(ModelReader model) {

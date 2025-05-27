@@ -36,7 +36,7 @@ public class SearchNewMethod extends BaseSearch{
 
         int j = 0;
         BDD reached = goal.id(); //accumulates the reached set of states.
-        BDDHValues.add(j, goal);
+        heuristicValue.add(j, goal);
 
         BDD Z = reached.id(); // Only new states reached
         BDD aux;
@@ -64,13 +64,13 @@ public class SearchNewMethod extends BaseSearch{
             Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
             //adicionar o Z na posição i do vetor.
             //System.out.println("Z-->" + Z);
-            BDDHValues.add(j,Z);
+            heuristicValue.add(j,Z);
             reached = reached.or(Z); //Union with the new reachable states
             reached = reached.and(constraints);
             // add variavel global - tratar heuristicRegression retorna incompleto
             // -> se n deu certo: BDDHValues.add(j+1, reached.not())
             if(onHeuristicPlanBackwardHasIncomplateRegression) {
-                BDDHValues.add(j+1, reached.not());//todos os estados nao alcancados receberao o mesmo valor heuristico - henricky
+                heuristicValue.add(j+1, reached.not());//todos os estados nao alcancados receberao o mesmo valor heuristico - henricky
                 return true;
             }
 
@@ -91,7 +91,7 @@ public class SearchNewMethod extends BaseSearch{
         System.out.println("A* Forward...");
         BDD initial = initialState.id();;
 
-        Node node = new Node(initial, null, 0+ BDDHValues.size());// cost = 0 + heuristic
+        Node node = new Node(initial, null, 0+ heuristicValue.size());// cost = 0 + heuristic
         PriorityQueue<Node> frontier = new PriorityQueue<>(new NodeComparator());
         Vector<BDD> explored = new Vector<BDD>();
 
@@ -121,7 +121,7 @@ public class SearchNewMethod extends BaseSearch{
                     continue; // acao nao aplicavel ao estado current
                 }
                 //test = test.and(constraints);
-                h = minHvalue2(BDDHValues, childBdd); // if not -1
+                h = minHvalue2(heuristicValue, childBdd); // if not -1
                 System.out.println("h:"+ h+" | "+ a.getName());
 
                 if(h== -1){ continue; }
