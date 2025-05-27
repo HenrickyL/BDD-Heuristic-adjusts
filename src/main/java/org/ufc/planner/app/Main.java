@@ -10,9 +10,9 @@ import java.io.PrintStream;
 public class Main {
     public static void main(String[] args) {
         ProblemOptions test = new ProblemOptions(
-                ProblemTypeEnum.rovers,
+                ProblemTypeEnum.block_word,
                 SearchTypeEnum.heuristic,
-                6
+                1
         );
 
         Runtime runtime =  Runtime.getRuntime();
