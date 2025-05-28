@@ -1,4 +1,4 @@
-package org.ufc.planner.auxiliar;
+package org.ufc.planner.app;
 
 // Testar o uso de memória -Xmx6g -Xms512m
 

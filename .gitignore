@@ -39,3 +39,6 @@ build/
 
 ### results
 /results/
+
+### graphviz
+**/*.dot
