@@ -8,6 +8,6 @@ public class LearningBDD {
 //        BlockWordTest.exampleEncodeState();
 //        BlockWordTest.testGoal();
 //        BlockWordTest.test1();
-        BlockWordTest.test2();
+        BlockWordTest.testProgression();
     }
 }

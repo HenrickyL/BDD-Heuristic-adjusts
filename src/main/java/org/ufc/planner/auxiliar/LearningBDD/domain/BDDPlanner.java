@@ -2,13 +2,11 @@ package org.ufc.planner.auxiliar.LearningBDD.domain;
 
 import com.github.javabdd.BDD;
 import com.github.javabdd.BDDFactory;
-import com.github.javabdd.BDDVarSet;
 
 import java.io.PrintStream;
-import java.io.FileOutputStream;
 import java.util.Set;
 
-public class BDDPlanner {
+public class BDDPlanner implements IPlanner{
     private BDDFactory factory;
     private BDD[] vars;
     private String[] propNames;
@@ -111,34 +109,54 @@ public class BDDPlanner {
         return bddsEffects;
     }
 
+    private BDD encodePrecondition(BDD[] props){
+        BDD actionPreconditions = factory.one();
+        for (BDD precond : props) {
+            actionPreconditions.andWith(precond.id());
+        }
+        return actionPreconditions;
+    }
+
+
     // Progression: ξ(progr(X, a)) = ∃ modified(a) (ξ(X) ∧ ξ(precond(a))) ∧ ξ(effects(a))
-    public BDD progressState(BDD currentState, BDD actionPreconditions,
-                             Set<String> addEffects, Set<String> delEffects) {
+    public BDD progressState(BDD currentState, Action action, boolean isRelaxed) {
         // 1. Verificar pré-condições
+        BDD actionPreconditions = encodePrecondition(action.getPrecondition());
         BDD applicable = currentState.and(actionPreconditions);
         if (applicable.isZero()) {
             applicable.free();
+            actionPreconditions.free();
             return null; // Ação não aplicável
         }
 
         // 2. Existencial do modifica
-        BDD[] bddsEffects = extractBDDFromEffects(addEffects, delEffects);
+        //- Modifica
         BDD filter = applicable;
-        for(BDD var: bddsEffects){
-            filter = existentialQuantification(filter, var);
+        for (BDD addEffect : action.getEffectAddiction()) {
+            filter = existentialQuantification(filter, addEffect);
+        }
+        if (!isRelaxed) {
+            for (BDD delEffect : action.getEffectDelection()) {
+                filter = existentialQuantification(filter, delEffect);
+            }
+        }
+        //- constroi efeitos
+        BDD effects = factory.one();
+        // Sempre aplica efeitos positivos
+        for (BDD addEffect : action.getEffectAddiction()) {
+            effects.andWith(addEffect.id());
+        }
+        if (!isRelaxed) {
+            for (BDD delEffect : action.getEffectDelection()) {
+                effects.andWith(delEffect.not().id());
+            }
         }
 
-        BDD effects = factory.one();
-        for(String key: addEffects) {
-            effects = effects.and(getVar(key));
-        }
-        for(String key: delEffects) {
-            effects = effects.and(getVar(key).not());
-        }
-        // 3. Add Effects
+        // 3. Aplica os efeitos da acao
         BDD newState = filter.and(effects);
 
         // 4. Liberar recursos
+        actionPreconditions.free();
         applicable.free();
         effects.free();
         filter.free();

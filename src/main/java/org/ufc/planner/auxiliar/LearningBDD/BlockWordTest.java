@@ -1,8 +1,10 @@
 package org.ufc.planner.auxiliar.LearningBDD;
 
 import com.github.javabdd.BDD;
+import org.ufc.planner.auxiliar.LearningBDD.domain.Action;
 import org.ufc.planner.auxiliar.LearningBDD.domain.BDDPlanner;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -76,74 +78,8 @@ public class BlockWordTest {
         System.out.println(">> "+title+ ": " + bdd);
         planner.visualizeBDD(bdd, title);
     }
-    public static void test1(){
-        // Todas as proposições do domínio
-        String[] props = {
-                "handempty", "holding_a", "holding_b",
-                "ontable_a", "ontable_b", "on_a_b", "on_b_a",
-                "clear_a", "clear_b"
-        };
 
-        BDDPlanner planner = new BDDPlanner();
-        planner.initializePropositions(props);
-
-        // Estado inicial (como na sua imagem)
-        Set<String> initialStateProps = new HashSet<>(Arrays.asList(
-                "handempty", "ontable_a", "on_b_a", "clear_b"
-        ));
-        BDD initialState = planner.encodeState(initialStateProps);
-
-        print(initialState, "initialState", planner);
-
-        // Estado meta (A sobre B)
-        Set<String> goalProps = new HashSet<>(Arrays.asList(
-                "handempty", "ontable_b", "on_a_b", "clear_a"
-        ));
-        BDD goalState = planner.encodeState(goalProps);
-
-        print(goalState, "goalState", planner);
-
-        // Verificando se o estado inicial é meta
-        System.out.println("É estado meta? " +
-                planner.isGoalState(initialState, goalState));
-
-        /* ACTION */
-
-        // Definindo uma ação (pegar bloco B) Unstack_B_A
-        BDD actionPrecond = planner.getVar("handempty")
-                .and(planner.getVar("on_b_a"))
-                .and(planner.getVar("clear_b"));
-
-        print(actionPrecond, "actionPrecond", planner);
-
-        BDD actionEffects = planner
-                //effect add
-                .getVar("holding_b")
-                .and(planner.getVar("clear_a"))
-                //effect del
-                .and(planner.getVar("handempty").not())
-                .and(planner.getVar("on_b_a").not());
-
-        print(actionEffects, "actionEffects", planner);
-
-        // Aplicando ação
-        BDD newState = planner.applyAction(initialState, actionPrecond, actionEffects);
-
-        if (newState != null) {
-            System.out.println("Novo estado após pegar bloco A:");
-            System.out.println("newState: "+ newState);
-            planner.visualizeBDD(newState, "newState");
-        }
-
-        // Liberando memória
-        initialState.free();
-        goalState.free();
-        actionPrecond.free();
-        actionEffects.free();
-        if (newState != null) newState.free();
-    }
-
-    public static void test2(){
+    public static void testProgression(){
         // Todas as proposições do domínio
         String[] props = {
                 "handempty", "holding_a", "holding_b",
@@ -156,6 +92,7 @@ public class BlockWordTest {
         // Estado inicial (como na sua imagem)
         Set<String> initialStateProps = Set.of("handempty", "ontable_a", "on_b_a", "clear_b");
         BDD initialState = planner.encodeState(initialStateProps);
+        planner.visualizeBDD(initialState, "initialStateProps");
 
         // Estado meta (A sobre B)
         Set<String> goalProps = Set.of("handempty", "ontable_b", "on_a_b", "clear_a");
@@ -163,14 +100,14 @@ public class BlockWordTest {
 
         /* ACTION */
         // Definindo uma ação - Unstack_B_A
-        BDD actionPrecond = planner.getVar("handempty")
-                .and(planner.getVar("on_b_a"))
-                .and(planner.getVar("clear_b"));
+        String[] actionPrecond = {"handempty", "on_b_a",  "clear_b"};
         // definindo efeitos
-        Set<String> add = Set.of("holding_b", "clear_a");
-        Set<String> del = Set.of("handempty", "on_b_a");
+        String[] add = {"holding_b", "clear_a"};
+        String[] del = {"handempty", "on_b_a"};
+        Action action = new Action("unstack_B_A", planner,actionPrecond, add, del);
+
         // Aplicando ação
-        BDD newState = planner.progressState(initialState, actionPrecond,add, del);
+        BDD newState = planner.progressState(initialState, action, false);
 
         if (newState != null) {
             System.out.println("Novo estado após pegar bloco A:");
@@ -180,7 +117,6 @@ public class BlockWordTest {
         // Liberando memória
         initialState.free();
         goalState.free();
-        actionPrecond.free();
 //        actionEffects.free();
         if (newState != null) newState.free();
     }
