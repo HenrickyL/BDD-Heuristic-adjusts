@@ -9,5 +9,6 @@ public class LearningBDD {
 //        BlockWordTest.testGoal();
 //        BlockWordTest.test1();
         BlockWordTest.testProgression();
+//        BlockWordTest.testRegression();
     }
 }

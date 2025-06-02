@@ -4,7 +4,6 @@ import com.github.javabdd.BDD;
 import org.ufc.planner.auxiliar.LearningBDD.domain.Action;
 import org.ufc.planner.auxiliar.LearningBDD.domain.BDDPlanner;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -107,19 +106,50 @@ public class BlockWordTest {
         Action action = new Action("unstack_B_A", planner,actionPrecond, add, del);
 
         // Aplicando ação
-        BDD newState = planner.progressState(initialState, action, false);
+        BDD ProgressedState = planner.progressState(initialState, action, false);
 
-        if (newState != null) {
-            System.out.println("Novo estado após pegar bloco A:");
-            System.out.println("newState: "+ newState);
-            planner.visualizeBDD(newState, "newState");
+        if (ProgressedState != null) {
+            System.out.println("ProgressedState: "+ ProgressedState);
+            planner.visualizeBDD(ProgressedState, "newState");
         }
         // Liberando memória
         initialState.free();
         goalState.free();
 //        actionEffects.free();
-        if (newState != null) newState.free();
+        if (ProgressedState != null) ProgressedState.free();
     }
 
-
+//    public static void testRegression() {
+//        // Todas as proposições do domínio
+//        String[] props = {
+//                "handempty", "holding_a", "holding_b",
+//                "ontable_a", "ontable_b", "on_a_b", "on_b_a",
+//                "clear_a", "clear_b"
+//        };
+//        BDDPlanner planner = new BDDPlanner();
+//        planner.initializePropositions(props);
+//
+//        // Estado atual
+//        Set<String> currentStateProps = Set.of("holding_b","ontable_a", "clear_a", "clear_b");
+//        BDD currentState = planner.encodeState(currentStateProps);
+//        planner.visualizeBDD(currentState, "currentState");
+//
+//        /* ACTION - Stack_B_A */
+//        String[] actionPrecond = {"holding_b", "clear_b"};
+//        String[] add = {"handempty", "on_b_a"};
+//        String[] del = {"holding_b", "clear_a"};
+//        Action stackAction = new Action("Stack_B_A", planner, actionPrecond, add, del);
+//
+//        // Aplicando regressão
+//        BDD regressedState = planner.regressState(currentState, stackAction, false);
+//
+//        if (regressedState != null) {
+//            System.out.println("regressedState: "+ regressedState);
+//            planner.visualizeBDD(regressedState, "regressedState");
+//        }
+//
+//        // Liberando memória
+//        currentState.free();
+//        if (regressedState != null) regressedState.free();
+//    }
 }

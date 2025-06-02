@@ -8,4 +8,5 @@ public interface IPlanner {
     public void initializePropositions(String[] propositions);
     public BDD encodeState(Set<String> trueProps);
     public BDD progressState(BDD currentState, Action action, boolean isRelaxed);
+//    public BDD regressState(BDD targetState, Action action, boolean isRelaxed);
 }

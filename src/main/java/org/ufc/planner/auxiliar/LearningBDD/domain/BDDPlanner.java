@@ -165,6 +165,48 @@ public class BDDPlanner implements IPlanner{
         return newState;
     }
 
+//    // Regression: ξ(regr(X, a)) =  ξ(precond(a)) ∧ ∃ modified(a).( ξ(effects(a)) ∧ ξ(X) )
+//    public BDD regressState(BDD targetState, Action action, boolean isRelaxed) {
+//        // 1. Construir os efeitos da acao
+//        BDD actionEffects = factory.one();
+//        // Efeitos positivos
+//        for (BDD addEffect : action.getEffectAddiction()) {
+//            actionEffects.andWith(addEffect.id());
+//        }
+//        // Efeitos negativos (apenas se não for relaxado)
+//        if (!isRelaxed) {
+//            for (BDD delEffect : action.getEffectDelection()) {
+//                actionEffects.andWith(delEffect.not().id());
+//            }
+//        }
+//        // 2. AND com o estado alvo
+//        BDD temp = targetState.and(actionEffects);
+//        // 3. Quantificação existencial nas variáveis modificadas
+//        BDD regressed = temp.id();
+//        for (BDD addEffect : action.getEffectAddiction()) {
+//            regressed = existentialQuantification(regressed, addEffect);
+//        }
+//        if (!isRelaxed) {
+//            for (BDD delEffect : action.getEffectDelection()) {
+//                regressed = existentialQuantification(regressed, delEffect);
+//            }
+//        }
+//        // 4. Construir pré-condições da ação
+//        BDD preconditions = factory.one();
+//        for (BDD precond : action.getPrecondition()) {
+//            preconditions.andWith(precond.id());
+//        }
+//        // 5. AND com as pré-condições
+//        BDD result = regressed.and(preconditions);
+//        // Liberar recursos
+//        actionEffects.free();
+//        temp.free();
+//        regressed.free();
+//        preconditions.free();
+//
+//        return result;
+//    }
+
     private BDD existentialQuantification(BDD formula, BDD var) {
         // ∃x.φ = φ[x=0] ∨ φ[x=1]
         BDD positive = formula.restrict(var);      // φ[x=1]
