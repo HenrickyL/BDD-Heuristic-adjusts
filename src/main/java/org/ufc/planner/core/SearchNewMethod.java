@@ -89,7 +89,7 @@ public class SearchNewMethod extends BaseSearch{
     @Override
     protected boolean heuristicPlanForward(TimeManager verify) throws IOException {
         System.out.println("A* Forward...");
-        BDD initial = initialState.id();;
+        BDD initial = initialState.id();
 
         Node node = new Node(initial, null, 0+ heuristicValue.size());// cost = 0 + heuristic
         PriorityQueue<Node> frontier = new PriorityQueue<>(new NodeComparator());
@@ -198,7 +198,8 @@ public class SearchNewMethod extends BaseSearch{
 
     private BDD regressionQbf(BDD Y, Action action) {
         BDD reg;
-        reg = Y.and(action.getEffect()); //(Y ^ effect(a))
+//        reg = Y.and(action.getEffect()); //(Y ^ effect(a))
+        reg = Y.and(action.getRelaxEffect()); //(Y ^ effect(a))
 
         if(reg.isZero() == false){
 //			System.out.println("Ação aplicável: " + a.getName());
