@@ -121,7 +121,7 @@ public class BDDPlanner implements IPlanner{
     // Progression: ξ(progr(X, a)) = ∃ modified(a) (ξ(X) ∧ ξ(precond(a))) ∧ ξ(effects(a))
     public BDD progressState(BDD currentState, Action action, boolean isRelaxed) {
         // 1. Verificar pré-condições
-        BDD actionPreconditions = encodePrecondition(action.getPrecondition());
+        BDD actionPreconditions = encodePrecondition(action.getPreconditions());
         BDD applicable = currentState.and(actionPreconditions);
         if (applicable.isZero()) {
             applicable.free();
@@ -132,22 +132,22 @@ public class BDDPlanner implements IPlanner{
         // 2. Existencial do modifica
         //- Modifica
         BDD filter = applicable;
-        for (BDD addEffect : action.getEffectAddiction()) {
+        for (BDD addEffect : action.getAddictionEffects()) {
             filter = existentialQuantification(filter, addEffect);
         }
         if (!isRelaxed) {
-            for (BDD delEffect : action.getEffectDelection()) {
+            for (BDD delEffect : action.getDelectionEffects()) {
                 filter = existentialQuantification(filter, delEffect);
             }
         }
         //- constroi efeitos
         BDD effects = factory.one();
         // Sempre aplica efeitos positivos
-        for (BDD addEffect : action.getEffectAddiction()) {
+        for (BDD addEffect : action.getAddictionEffects()) {
             effects.andWith(addEffect.id());
         }
         if (!isRelaxed) {
-            for (BDD delEffect : action.getEffectDelection()) {
+            for (BDD delEffect : action.getDelectionEffects()) {
                 effects.andWith(delEffect.not().id());
             }
         }
@@ -207,7 +207,12 @@ public class BDDPlanner implements IPlanner{
 //        return result;
 //    }
 
-    private BDD existentialQuantification(BDD formula, BDD var) {
+
+    public BDD getOne(){
+        return factory.one();
+    }
+
+    public static BDD existentialQuantification(BDD formula, BDD var) {
         // ∃x.φ = φ[x=0] ∨ φ[x=1]
         BDD positive = formula.restrict(var);      // φ[x=1]
         BDD negative = formula.restrict(var.not());// φ[x=0]
@@ -216,4 +221,5 @@ public class BDDPlanner implements IPlanner{
         negative.free();
         return result;
     }
+
 }

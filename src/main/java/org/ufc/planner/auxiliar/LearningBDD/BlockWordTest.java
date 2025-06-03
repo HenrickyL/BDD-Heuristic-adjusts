@@ -119,6 +119,46 @@ public class BlockWordTest {
         if (ProgressedState != null) ProgressedState.free();
     }
 
+    public static void testQBFExistencial(){
+        String[] props = {
+                "handempty", "holding_a", "holding_b",
+                "ontable_a", "ontable_b", "on_a_b", "on_b_a",
+                "clear_a", "clear_b"
+        };
+        BDDPlanner planner = new BDDPlanner();
+        planner.initializePropositions(props);
+
+
+        BDD formula = planner.encodeState(Set.of("handempty","ontable_a", "on_b_a", "clear_b"));
+
+        BDD[] atomicsExistencial = { // "handempty", "ontable_a", "on_b_a", "clear_b"
+                planner.getVar("handempty"),
+                planner.getVar("clear_b")
+        };
+
+        // TEST 1 ----------------------------------------
+        BDD var1 = planner.getOne();
+        for(BDD item : atomicsExistencial){
+            var1 = var1.and(item);
+        }
+        BDD res1 = BDDPlanner.existentialQuantification(formula, var1);
+
+        // TEST 2 ----------------------------------------
+        BDD res2 = formula.id();
+        for(BDD item : atomicsExistencial){
+            res2 = BDDPlanner.existentialQuantification(res2, item);
+        }
+
+        System.out.println("formula:\t"+formula);
+        System.out.println("Res1:\t\t"+res1);
+        System.out.println("Res2:\t\t"+res2);
+
+        // DELETE --------------
+        for(BDD item : atomicsExistencial){
+            item.free();
+        }
+    }
+
 //    public static void testRegression() {
 //        // Todas as proposições do domínio
 //        String[] props = {

@@ -8,7 +8,9 @@ public class LearningBDD {
 //        BlockWordTest.exampleEncodeState();
 //        BlockWordTest.testGoal();
 //        BlockWordTest.test1();
-        BlockWordTest.testProgression();
+//        BlockWordTest.testProgression();
 //        BlockWordTest.testRegression();
+
+        BlockWordTest.testQBFExistencial();
     }
 }
