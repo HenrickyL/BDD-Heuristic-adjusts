@@ -1,6 +1,6 @@
 package org.ufc.planner.core;
 
-import org.ufc.planner.domain.Action;
+import org.ufc.planner.domain.ModelAction;
 import org.ufc.planner.infrastructure.ModelReader;
 import org.ufc.planner.infrastructure.TimeManager;
 
@@ -9,10 +9,11 @@ import java.util.Vector;
 
 import com.github.javabdd.BDD;
 import com.github.javabdd.BDDFactory;
+import org.ufc.planner.interfaces.ISearchAlgorithm;
 
 
-public abstract class BaseSearch implements ISearchAlgorithm{
-    protected Vector<Action> actionSet;
+public abstract class BaseSearch implements ISearchAlgorithm {
+    protected Vector<ModelAction> actionSet;
     protected BDD goal;
     protected BDD initialState;
     protected BDD constraints;
@@ -105,7 +106,7 @@ public abstract class BaseSearch implements ISearchAlgorithm{
     protected BDD progression(BDD formula, TimeManager verify){
         BDD reg = null;
         BDD teste = null;
-        for (Action a : actionSet) {
+        for (ModelAction a : actionSet) {
             teste = progressionQbf(formula,a);
             teste = teste.and(constraints);
             if(reg == null){
@@ -125,7 +126,7 @@ public abstract class BaseSearch implements ISearchAlgorithm{
 
 
     /* Propplan progression based on action: Qbf based computation */
-    private BDD progressionQbf(BDD Y, Action a) {
+    private BDD progressionQbf(BDD Y, ModelAction a) {
         BDD reg;
         reg = Y.and(a.getPrecondition()); //(Y ^ effect(a))
 

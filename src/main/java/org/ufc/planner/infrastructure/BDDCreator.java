@@ -3,7 +3,7 @@ package org.ufc.planner.infrastructure;
 import com.github.javabdd.BDD;
 import com.github.javabdd.BDDFactory;
 import com.github.javabdd.JFactory;
-import org.ufc.planner.domain.Action;
+import org.ufc.planner.domain.ModelAction;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -23,7 +23,7 @@ public class BDDCreator {
     //Associates the name of the variable to its position in the BDD VariableSet
     private transient Hashtable<String,Integer> varTable = new Hashtable<String,Integer>();
     private transient Hashtable<Integer,String> varTable2 = new Hashtable<Integer,String>();
-    private Vector<Action> actionsSet = new Vector<Action>();
+    private Vector<ModelAction> actionsSet = new Vector<ModelAction>();
     BDDFactory fac;
 
     public BDDCreator(int nodenum, int cachesize){
@@ -52,7 +52,7 @@ public class BDDCreator {
         return goalBDD;
     }
 
-    public Vector<Action> getActionsSet() {
+    public Vector<ModelAction> getActionsSet() {
         return actionsSet;
     }
 
@@ -287,7 +287,7 @@ public class BDDCreator {
         return returnedBdd;
     }
 
-    public void addAction(Action action){
+    public void addAction(ModelAction action){
         actionsSet.add(action);
     }
 

@@ -9,7 +9,7 @@ import java.util.Hashtable;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-public class Action {
+public class ModelAction {
     private String name;
     private BDD precondition;
     private BDD effect;
@@ -31,7 +31,7 @@ public class Action {
     Hashtable<String,Integer> varTable2;
 
     /*** Constructor ***/
-    public Action(String actionName, String preCond, String eff, BDDCreator cre, String pType){
+    public ModelAction(String actionName, String preCond, String eff, BDDCreator cre, String pType){
         varTable = cre.getVarTable2();
         varTable2 = cre.getVarTable();
 

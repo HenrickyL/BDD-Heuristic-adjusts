@@ -2,7 +2,7 @@ package org.ufc.planner.core;
 
 import com.github.javabdd.BDD;
 import com.github.javabdd.BDDFactory;
-import org.ufc.planner.domain.Action;
+import org.ufc.planner.domain.ModelAction;
 import org.ufc.planner.domain.Node;
 import org.ufc.planner.domain.NodeComparator;
 import org.ufc.planner.infrastructure.ModelReader;
@@ -88,6 +88,12 @@ public class SearchNewMethod extends BaseSearch{
 
     @Override
     protected boolean heuristicPlanForward(TimeManager verify) throws IOException {
+        return AStar(verify);
+    }
+
+
+
+    private boolean AStar(TimeManager verify){
         System.out.println("A* Forward...");
         BDD initial = initialState.id();
 
@@ -115,7 +121,7 @@ public class SearchNewMethod extends BaseSearch{
             aux.free();
             explored.add(current);
 
-            for (Action a : actionSet) {
+            for (ModelAction a : actionSet) {
                 childBdd = progressionQbf(current,a);
                 if(childBdd.toString().equals("")) {
                     continue; // acao nao aplicavel ao estado current
@@ -161,7 +167,7 @@ public class SearchNewMethod extends BaseSearch{
     }
 
     /* Propplan progression based on action: Qbf based computation */
-    public BDD progressionQbf(BDD Y, Action a) {
+    public BDD progressionQbf(BDD Y, ModelAction a) {
         BDD reg;
         reg = Y.and(a.getPrecondition()); //(Y ^ effect(a))
 
@@ -177,7 +183,7 @@ public class SearchNewMethod extends BaseSearch{
     private BDD heuristicRegression(BDD formula, TimeManager verify){
         BDD reg = null;
         BDD test = null;
-        for (Action a : actionSet) {
+        for (ModelAction a : actionSet) {
             //System.out.println(a.getName());
             test = regressionQbf(formula,a);//heuristicRegressionQbf(formula,a) - henricky;
             //teste = teste.and(constraints);
@@ -196,7 +202,7 @@ public class SearchNewMethod extends BaseSearch{
         return reg;
     }
 
-    private BDD regressionQbf(BDD Y, Action action) {
+    private BDD regressionQbf(BDD Y, ModelAction action) {
         BDD reg;
 //        reg = Y.and(action.getEffect()); //(Y ^ effect(a))
         reg = Y.and(action.getRelaxEffect()); //(Y ^ effect(a))
@@ -245,6 +251,31 @@ public class SearchNewMethod extends BaseSearch{
                 return true;
             }
         }
+        return false;
+    }
+
+
+    private boolean GBFS(TimeManager verify){
+        System.out.println("GBFS...");
+        BDD initial = initialState.id();
+        Node node = new Node(initial, null, 0+ heuristicValue.size());// cost = 0 + heuristic
+        PriorityQueue<Node> frontier = new PriorityQueue<>(new NodeComparator());
+        Vector<BDD> explored = new Vector<BDD>();
+
+        BDD aux;
+        BDD current;
+        BDD childBdd;
+
+        Node child;
+        int g=1;
+        int h=0;
+
+        frontier.add(node);
+        while(!frontier.isEmpty()) {
+            node = frontier.poll();
+            current = node.getBDD();
+        }
+
         return false;
     }
 }

@@ -2,7 +2,7 @@ package org.ufc.planner.core;
 
 import com.github.javabdd.BDD;
 import com.github.javabdd.BDDFactory;
-import org.ufc.planner.domain.Action;
+import org.ufc.planner.domain.ModelAction;
 import org.ufc.planner.infrastructure.ModelReader;
 import org.ufc.planner.infrastructure.TimeManager;
 
@@ -128,7 +128,7 @@ public class SearchOldMethod extends  BaseSearch{
     private BDD heuristicRegression(BDD formula){
         BDD reg = null;
         BDD teste = null;
-        for (Action a : actionSet) {
+        for (ModelAction a : actionSet) {
             //System.out.println(a.getName());
             teste = heuristicRegressionQbf(formula,a);
             teste = teste.and(constraints);
@@ -142,7 +142,7 @@ public class SearchOldMethod extends  BaseSearch{
     }
 
 
-    public BDD heuristicRegressionQbf(BDD Y, Action a) {
+    public BDD heuristicRegressionQbf(BDD Y, ModelAction a) {
         BDD reg;
         reg = Y.and(a.getRelaxEffect()); //(Y ^ effect(a))
 

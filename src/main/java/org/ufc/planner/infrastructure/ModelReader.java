@@ -1,7 +1,7 @@
 package org.ufc.planner.infrastructure;
 
 import com.github.javabdd.BDD;
-import org.ufc.planner.domain.Action;
+import org.ufc.planner.domain.ModelAction;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -83,7 +83,7 @@ public class ModelReader {
                             actionPre = line.substring(line.indexOf(">")+1, line.indexOf("\\") - 1);
                             line = in.readLine(); //<pos><\pos>
                             actionEff = line.substring(line.indexOf(">")+1, line.indexOf("\\") - 1);
-                            Action action = new Action(actionName,actionPre,actionEff,cre, type);
+                            ModelAction action = new ModelAction(actionName,actionPre,actionEff,cre, type);
                             cre.addAction(action);
                             line = in.readLine(); //<\action>
                             line = in.readLine(); //<action>
@@ -123,7 +123,7 @@ public class ModelReader {
         return cre.getInitiaStateBDD();
     }
 
-    public Vector<Action> getActionSet(){
+    public Vector<ModelAction> getActionSet(){
         return cre.getActionsSet();
     }
 
