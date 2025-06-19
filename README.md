@@ -65,6 +65,12 @@ mvn exec:java
 
 | Para mais detalhes sobre esse processo e como testar os limites de memória do projeto, consulte o arquivo [java-memory-consideration.md](doc/java-memory-consideration.md).
 
+## Gerar `.jar` pra executar via terminal
+
+1. ` mvn clean package`
+2. gera o arquivo `target/ai-planner-1.0-SNAPSHOT-jar-with-dependencies.jar`
+3. Rode usando: `java -Xmx12g -Xms2g -jar target/ai-planner-1.0-SNAPSHOT-jar-with-dependencies.jar <type> <search> <test>`
+
 ---
 
 ## 🧠 Arquitetura e Conceitos
