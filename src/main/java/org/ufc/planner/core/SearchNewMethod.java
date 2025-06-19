@@ -130,9 +130,9 @@ public class SearchNewMethod extends BaseSearch{
                 h = minHvalue2(heuristicValue, childBdd); // if not -1
                 System.out.println("h:"+ h+" | "+ a.getName());
 
-                if(h== -1){ continue; }
+                if(h == -1){ continue; }
 
-                int f = g+h;
+                int f = g + h;
                 if( !IsThereInExplored(explored, childBdd) ||
                         !ExistInFrontier(frontier, childBdd))
                 {

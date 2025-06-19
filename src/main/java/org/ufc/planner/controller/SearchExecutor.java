@@ -28,8 +28,8 @@ public class SearchExecutor {
 
     public void execute(ProblemOptions options) throws Exception {
         runComparison("old+", new SearchOldWithTimerMethod(), options);
-        runComparison("new", new SearchNewMethod(), options);
-//        runComparison("old", new SearchOldMethod(), options);
+//        runComparison("new", new SearchNewMethod(), options);
+        runComparison("old", new SearchOldMethod(), options);
     }
 
     private void runComparison(String label, BaseSearch search, ProblemOptions options) throws Exception {
