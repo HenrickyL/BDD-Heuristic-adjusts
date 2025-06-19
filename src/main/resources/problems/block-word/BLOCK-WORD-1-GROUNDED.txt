@@ -2,7 +2,6 @@
 on_a_b,on_b_a,ontable_b,ontable_a,clear_a,clear_b,handempty,holding_a,holding_b,
 <\predicates>
 <constraints>
-ontable_a,on_a_b,clear_a,ontable_b,on_b_a,clear_b,handempty,holding_a,holding_b,
 <\constraints>
 <initial>
 on_b_a,ontable_a,clear_b,handempty,~on_a_b,~ontable_b,~clear_a,~holding_a,~holding_b,
