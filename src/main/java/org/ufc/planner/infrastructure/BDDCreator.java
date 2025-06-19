@@ -293,7 +293,12 @@ public class BDDCreator {
 
     /*Creates the constraint bdd */
     public void createConstraintBDD(String line){
-        BDD constr = createExclusiveOrBdd(line);
+        BDD constr;
+        if(line == ""){
+            constr = fac.one();
+        }else{
+            constr = createExclusiveOrBdd(line);
+        }
         if(constraintBDD == null){
             constraintBDD = constr;
         }else{

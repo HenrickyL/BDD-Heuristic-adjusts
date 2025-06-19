@@ -48,7 +48,11 @@ public class ModelReader {
                 if(line.equals("<constraints>")){
                     while(line.equals("<\\constraints>") == false){
                         line = in.readLine(); //<constraints><\constraints>
-                        if(line.equals("<\\constraints>")) break;
+                        if(line.equals("<\\constraints>")) {
+                            if(cre.getConstraintBDD() == null)
+                                cre.createConstraintBDD("");
+                            break;
+                        };
                         constraintsLine = line;
                         cre.createConstraintBDD(constraintsLine);
                     }
