@@ -1,8 +1,10 @@
 package org.ufc.planner.auxiliar.LearningBDD;
 
 import com.github.javabdd.BDD;
+import com.github.javabdd.BDDVarSet;
 import org.ufc.planner.auxiliar.LearningBDD.domain.Action;
 import org.ufc.planner.auxiliar.LearningBDD.domain.BDDPlanner;
+import org.ufc.planner.auxiliar.helper.LogicHelper;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -119,7 +121,7 @@ public class BlockWordTest {
         if (ProgressedState != null) ProgressedState.free();
     }
 
-    public static void testQBFExistencial(){
+    public static void testQBFExistential(){
         String[] props = {
                 "handempty", "holding_a", "holding_b",
                 "ontable_a", "ontable_b", "on_a_b", "on_b_a",
@@ -128,25 +130,24 @@ public class BlockWordTest {
         BDDPlanner planner = new BDDPlanner();
         planner.initializePropositions(props);
 
-
         BDD formula = planner.encodeState(Set.of("handempty","ontable_a", "on_b_a", "clear_b"));
-
-        BDD[] atomicsExistencial = { // "handempty", "ontable_a", "on_b_a", "clear_b"
+        BDD[] atomicsExistential = { // "handempty", "ontable_a", "on_b_a", "clear_b"
                 planner.getVar("handempty"),
-                planner.getVar("clear_b")
+                planner.getVar("clear_b"),
+                planner.getVar("ontable_b").not()
         };
 
         // TEST 1 ----------------------------------------
         BDD var1 = planner.getOne();
-        for(BDD item : atomicsExistencial){
+        for(BDD item : atomicsExistential){
             var1 = var1.and(item);
         }
-        BDD res1 = BDDPlanner.existentialQuantification(formula, var1);
+        BDD res1 = LogicHelper.existentialQuantification(formula, var1);
 
         // TEST 2 ----------------------------------------
         BDD res2 = formula.id();
-        for(BDD item : atomicsExistencial){
-            res2 = BDDPlanner.existentialQuantification(res2, item);
+        for(BDD item : atomicsExistential){
+            res2 = LogicHelper.existentialQuantification(res2, item);
         }
 
         System.out.println("formula:\t"+formula);
@@ -154,9 +155,52 @@ public class BlockWordTest {
         System.out.println("Res2:\t\t"+res2);
 
         // DELETE --------------
-        for(BDD item : atomicsExistencial){
+        for(BDD item : atomicsExistential){
             item.free();
         }
+        res1.free();
+        res2.free();
+    }
+
+    public static void testQBFExistentialWithLibExist(){
+        String[] props = {
+                "handempty", "holding_a", "holding_b",
+                "ontable_a", "ontable_b", "on_a_b", "on_b_a",
+                "clear_a", "clear_b"
+        };
+        BDDPlanner planner = new BDDPlanner();
+        planner.initializePropositions(props);
+
+        BDD formula = planner.encodeState(Set.of("handempty","ontable_a", "on_b_a", "clear_b"));
+        BDD[] atomicsExistential = { // "handempty", "ontable_a", "on_b_a", "clear_b"
+                planner.getVar("handempty"),
+                planner.getVar("clear_b"),
+                planner.getVar("ontable_b").not()
+        };
+
+        // TEST 1 ----------------------------------------
+        BDDVarSet vars = planner.getEmpty();
+        for(BDD item : atomicsExistential){
+            vars.unionWith(item.support());
+        }
+        BDD res1 = formula.exist(vars);
+
+        // TEST 2 ----------------------------------------
+        BDDVarSet vars2 = planner.getEmpty();
+        for(BDD item : atomicsExistential){
+            vars2.unionWith(item.support());
+        }
+        BDD res2 = formula.exist(vars2);
+        System.out.println("formula:\t"+formula);
+        System.out.println("Res1:\t\t"+res1);
+        System.out.println("Res2:\t\t"+res2);
+
+        // DELETE --------------
+        for(BDD item : atomicsExistential){
+            item.free();
+        }
+        res1.free();
+        res2.free();
     }
 
 //    public static void testRegression() {
