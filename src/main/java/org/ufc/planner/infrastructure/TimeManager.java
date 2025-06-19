@@ -3,8 +3,15 @@ package org.ufc.planner.infrastructure;
 public class TimeManager {
     private long startTime;
     private long last = 0;
-    private static long maxTime = 2*60*1000; //5MIN //= 1800000;//30min - 1800000
-    private boolean isDebugg = true;
+    private static long maxTime = 30*60*1000; //5MIN //= 1800000;//30min - 1800000
+    private boolean isDebug = false;
+
+    public TimeManager(){
+        this.isDebug = false;
+    }
+    public TimeManager( boolean isDebug){
+        this.isDebug = isDebug;
+    }
 
     public void resetStartTime() {
         startTime = System.currentTimeMillis();
@@ -16,7 +23,7 @@ public class TimeManager {
         last =0;
    }
    public boolean verifyBreak(){
-        if(isDebugg) return false;
+        if(isDebug) return false;
        this.PrintElapsedTime();
 //       this.resetStartTime();
        if(this.onTime()) {
@@ -33,7 +40,7 @@ public class TimeManager {
         System.out.println(">> Elapsed Time: "+ elapsed);
     }
     public boolean onTime() {
-        if(isDebugg) return false;
+        if(isDebug) return false;
         long current = System.currentTimeMillis();
         long elapsed = current - startTime;
 //		System.out.println(">> Elapsed Time: "+ elapsed);
