@@ -7,16 +7,18 @@ public class ProblemOptions {
     private final ProblemTypeEnum problem;
     private final SearchTypeEnum search;
     private final int testNumber;
-
+    private final int maxTime;
 
     public ProblemOptions(
             ProblemTypeEnum problem,
             SearchTypeEnum search,
-            int testNumber
+            int testNumber,
+            int maxTime
     ) {
         this.problem = problem;
         this.search = search;
         this.testNumber = testNumber;
+        this.maxTime = maxTime;
 
     }
 
@@ -31,4 +33,5 @@ public class ProblemOptions {
     public int getTestNumber() {
         return testNumber;
     }
+    public int getMaxtime(){return  maxTime;}
 }

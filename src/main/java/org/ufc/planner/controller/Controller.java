@@ -30,8 +30,9 @@ public class Controller {
     }
 
     public void RunByArgs(String[] args) {
-        if (args.length != 3) {
-            System.err.println("Usage: java GUI <type> <problem> <test>");
+
+        if (args.length != 4 ) {
+            System.err.println("Usage: java GUI <type> <problem> <test> <maxTime>");
             System.exit(1);
         }
 
@@ -39,7 +40,8 @@ public class Controller {
             ProblemOptions options = new ProblemOptions(
                     ProblemTypeEnum.valueOf(args[0]),
                     SearchTypeEnum.valueOf(args[1]),
-                    Integer.parseInt(args[2])
+                    Integer.parseInt(args[2]),
+                    Integer.parseInt(args[3])
             );
             Run(options);
         } catch (IllegalArgumentException e) {

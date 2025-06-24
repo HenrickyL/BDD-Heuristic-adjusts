@@ -48,12 +48,17 @@ public class SearchExecutor {
         System.out.println("Running " + label.toUpperCase() + " method on: " + fileName);
         TimeManager timer = new TimeManager();
 
+        int maTime = options.getMaxtime();
+        if( maTime != -1){
+            timer.setMaxTime(maTime);
+        }else{
+            timer.setDebugMode(true);
+        }
+
+        timer.resetStartTime();
         if (type == SearchTypeEnum.exaustive) {
-            timer.setMaxTime(10800000);
-            timer.resetStartTime();
             search.ExhaustiveSearch(timer);
         } else {
-            timer.resetStartTime();
             search.HeuristicSearch(timer);
         }
 

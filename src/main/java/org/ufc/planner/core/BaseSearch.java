@@ -41,12 +41,12 @@ public abstract class BaseSearch implements ISearchAlgorithm {
     }
 
     public void HeuristicSearch(TimeManager verify) throws IOException{
-        verify.setMaxTime(1000*60*1);
+//        verify.setMaxTime(1000*60*1);
         System.out.println("Start Backward...");
         if(heuristicPlanBackward(verify) == true) {
             System.out.println("End Backward.");
             verify.resetStartTime();
-            verify.setMaxTime(-1);//3h - 10800000
+//            verify.setMaxTime(-1);//3h - 10800000
             System.out.println("Start Forward...");
             heuristicPlanForward(verify);
             System.out.println("End Forward.");

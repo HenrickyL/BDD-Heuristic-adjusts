@@ -9,10 +9,6 @@ public class TimeManager {
     public TimeManager(){
         this.isDebug = false;
     }
-    public TimeManager( boolean isDebug){
-        this.isDebug = isDebug;
-    }
-
     public void resetStartTime() {
         startTime = System.currentTimeMillis();
         last =0;
@@ -21,6 +17,10 @@ public class TimeManager {
    public  void setMaxTime(int value) {
         maxTime = value;
         last =0;
+   }
+
+   public void setDebugMode(boolean bool){
+        this.isDebug = bool;
    }
    public boolean verifyBreak(){
         if(isDebug) return false;
