@@ -13,7 +13,7 @@ public class Main {
                 ProblemTypeEnum.block_word,
                 SearchTypeEnum.heuristic,
                 1,
-                -1
+                 15*60*1000//-1 // without time
         );
 
         Runtime runtime =  Runtime.getRuntime();

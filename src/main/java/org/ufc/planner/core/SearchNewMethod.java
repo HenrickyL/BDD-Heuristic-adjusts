@@ -8,10 +8,9 @@ import org.ufc.planner.domain.NodeComparator;
 import org.ufc.planner.infrastructure.ModelReader;
 import org.ufc.planner.infrastructure.TimeManager;
 
+import java.util.*;
+import java.util.AbstractMap.SimpleEntry;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.PriorityQueue;
-import java.util.Vector;
 
 public class SearchNewMethod extends BaseSearch{
     private boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
@@ -51,8 +50,8 @@ public class SearchNewMethod extends BaseSearch{
             aux = Z.and(initialState.id());
 
             if (aux.toString().equals("") == false) {
-                System.out.println("END");
-                //System.out.println("The problem is solvable.");
+//                System.out.println("END");
+                System.out.println("The problem is solvable.");
                 return true;
             }
 
@@ -103,16 +102,18 @@ public class SearchNewMethod extends BaseSearch{
 
         BDD aux;
         BDD current;
-        BDD childBdd;
 
-        Node child;
-        int g=1;
+        int g=0;
         int h=0;
+        int f=0;
 
         frontier.add(node);
         while(!frontier.isEmpty()) {
             node = frontier.poll();
             current = node.getBDD();
+            System.out.println(">Dequeue: "+node.getName());
+            String nameCurrent = "s"+g;
+
             aux = current.and(goal.id());
             if (aux.toString().equals("") == false) { //use equal?
                 System.out.println("The problem is solvable.");
@@ -121,36 +122,83 @@ public class SearchNewMethod extends BaseSearch{
             aux.free();
             explored.add(current);
 
-            for (ModelAction a : actionSet) {
-                childBdd = progressionQbf(current,a);
-                if(childBdd.toString().equals("")) {
-                    continue; // acao nao aplicavel ao estado current
-                }
-                //test = test.and(constraints);
-                h = minHvalue2(heuristicValue, childBdd); // if not -1
-                System.out.println("h:"+ h+" | "+ a.getName());
+            SimpleEntry<BDD,Integer> heuristic = getMinHeuristic(heuristicValue, current);
 
-                if(h == -1){ continue; }
+            BDD filterBDD = heuristic.getKey();
+            h = heuristic.getValue();
+            String nameFiltered = "*s"+g+"_h:"+h;
 
-                int f = g + h;
-                if( !IsThereInExplored(explored, childBdd) ||
-                        !ExistInFrontier(frontier, childBdd))
-                {
-                    child = new Node(childBdd, current, f);
-                    frontier.add(child);
-                }else if(ExistInFrontier(frontier, childBdd)) {
-                    Node replaced = new Node(childBdd, current, f);
-                    ReplaceElementInFrontier(frontier, replaced);
-                    //se encontrar um bdd com mesmo valor de f e g
-                    //devo juntar eles
-                    //UpdateFrontier(frontier, teste, f); //pensar melhor
-                }
+            System.out.println(">And Heustistic Vector: "+ nameFiltered + " with h: "+h);
+            if(h == -1){
+                continue;
             }
+            BDD progressedState = progression(filterBDD, verify); //Z = progression(teste);
+            System.out.println(">progressedState: "+progressedState);
+
+            f = g + h;
+            System.out.println(">f= "+g+"+"+h+"="+f);
+
+            if( !IsThereInExplored(explored, progressedState) ||
+                    !ExistInFrontier(frontier, progressedState))
+            {
+                Node newNode = new Node(progressedState, node, f, nameFiltered);
+                frontier.add(newNode);
+//                frontier.add(new Node(progressedState, current, f, nameCurrent));
+                System.out.println(">Add Frontier");
+
+            }else if(ExistInFrontier(frontier, progressedState)) {
+                System.out.println(">Replace Frontier");
+                Node replaced = new Node(progressedState, node, f);
+                ReplaceElementInFrontier(frontier, replaced);
+                //se encontrar um bdd com mesmo valor de f e g
+                //devo juntar eles
+                //UpdateFrontier(frontier, teste, f); //pensar melhor
+            }
+//                    frontier.add(child);
+//            for (ModelAction a : actionSet) {
+//                childBdd = progressionQbf(current,a);
+//                if(childBdd.toString().equals("")) {
+//                    continue; // acao nao aplicavel ao estado current
+//                }
+//                //test = test.and(constraints);
+//                h = minHvalue2(heuristicValue, childBdd); // if not -1
+//                System.out.println("h:"+ h+" | "+ a.getName());
+//
+//                if(h == -1){ continue; }
+//
+//                int f = g + h;
+//                if( !IsThereInExplored(explored, childBdd) ||
+//                        !ExistInFrontier(frontier, childBdd))
+//                {
+//                    child = new Node(childBdd, current, f);
+//                    frontier.add(child);
+//                }else if(ExistInFrontier(frontier, childBdd)) {
+//                    Node replaced = new Node(childBdd, current, f);
+//                    ReplaceElementInFrontier(frontier, replaced);
+//                    //se encontrar um bdd com mesmo valor de f e g
+//                    //devo juntar eles
+//                    //UpdateFrontier(frontier, teste, f); //pensar melhor
+//                }
+//            }
             g++;
             System.out.println("g="+g);
             verify.PrintElapsedTime();
         }
         return false;
+    }
+
+
+    private SimpleEntry<BDD, Integer> getMinHeuristic(Vector<BDD> H, BDD X) {
+        BDD result;
+        for (int i = 0; i < H.size(); i++) {
+            result = X.and(H.get(i));
+            //System.out.println("i: "+i);
+            //H.get(i).printSet();
+            if (!result.isZero()) {
+                return new SimpleEntry<>(result, i);
+            }
+        }
+        return  new SimpleEntry<>(null, -1);
     }
 
     private int minHvalue2(Vector<BDD> H, BDD X) {
