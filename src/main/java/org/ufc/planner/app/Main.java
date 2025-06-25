@@ -12,8 +12,8 @@ public class Main {
         ProblemOptions test = new ProblemOptions(
                 ProblemTypeEnum.block_word,
                 SearchTypeEnum.heuristic,
-                1,
-                 15*60*1000//-1 // without time
+                3,
+                 20*60*1000//-1 // without time
         );
 
         Runtime runtime =  Runtime.getRuntime();
