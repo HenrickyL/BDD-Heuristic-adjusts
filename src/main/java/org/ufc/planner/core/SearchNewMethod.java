@@ -5,11 +5,11 @@ import com.github.javabdd.BDDFactory;
 import org.ufc.planner.domain.ModelAction;
 import org.ufc.planner.domain.Node;
 import org.ufc.planner.domain.NodeComparator;
+import org.ufc.planner.domain.Pair;
 import org.ufc.planner.infrastructure.ModelReader;
 import org.ufc.planner.infrastructure.TimeManager;
 
 import java.util.*;
-import java.util.AbstractMap.SimpleEntry;
 import java.io.IOException;
 
 public class SearchNewMethod extends BaseSearch{
@@ -72,12 +72,10 @@ public class SearchNewMethod extends BaseSearch{
                 heuristicValue.add(j+1, reached.not());//todos os estados nao alcancados receberao o mesmo valor heuristico - henricky
                 return true;
             }
-
             //Break by max time
             if(verify.verifyBreak()) {
                 return true;
             }
-
             i++;
         }
 
@@ -108,6 +106,7 @@ public class SearchNewMethod extends BaseSearch{
         int f=0;
 
         frontier.add(node);
+
         while(!frontier.isEmpty()) {
             node = frontier.poll();
             current = node.getBDD();
@@ -120,85 +119,62 @@ public class SearchNewMethod extends BaseSearch{
                 return true;
             }
             aux.free();
+
             explored.add(current);
 
-            SimpleEntry<BDD,Integer> heuristic = getMinHeuristic(heuristicValue, current);
+            //Queue com os elementos que deram match com o estado atual
+            Queue<Pair> heuristicQueue = getMinHeuristic(heuristicValue, current);
+            System.out.println(">Pairs Heuristic Queue with size: "+heuristicQueue.size());
 
-            BDD filterBDD = heuristic.getKey();
-            h = heuristic.getValue();
-            String nameFiltered = "*s"+g+"_h:"+h;
+            if(heuristicQueue.isEmpty()) continue;;
 
-            System.out.println(">And Heustistic Vector: "+ nameFiltered + " with h: "+h);
-            if(h == -1){
-                continue;
+            //pego o melhor
+            Pair bestHeuristic = heuristicQueue.poll();
+            BDD state = bestHeuristic.getBdd();
+            h = bestHeuristic.getHeuristic();
+            System.out.println(">best heuristic (And Vector): "+ "_" + " with h: "+h);
+
+            BDD progressedState = progression(state, verify); //Z = progression(teste);
+            System.out.println(">Progress Best State");
+//          System.out.println(">progressedState: "+progressedState);
+            addInFrontier(new Pair(progressedState,h), g, node, frontier, explored);
+
+            if(!heuristicQueue.isEmpty()){
+                System.out.println(">Other States of Queue to add("+heuristicQueue.size()+")" );
             }
-            BDD progressedState = progression(filterBDD, verify); //Z = progression(teste);
-            System.out.println(">progressedState: "+progressedState);
-
-            f = g + h;
-            System.out.println(">f= "+g+"+"+h+"="+f);
-
-            if( !IsThereInExplored(explored, progressedState) ||
-                    !ExistInFrontier(frontier, progressedState))
-            {
-                Node newNode = new Node(progressedState, node, f, nameFiltered);
-                frontier.add(newNode);
-//                frontier.add(new Node(progressedState, current, f, nameCurrent));
-                System.out.println(">Add Frontier");
-
-            }else if(ExistInFrontier(frontier, progressedState)) {
-                System.out.println(">Replace Frontier");
-                Node replaced = new Node(progressedState, node, f);
-                ReplaceElementInFrontier(frontier, replaced);
-                //se encontrar um bdd com mesmo valor de f e g
-                //devo juntar eles
-                //UpdateFrontier(frontier, teste, f); //pensar melhor
+            while (!heuristicQueue.isEmpty()){
+                Pair p = heuristicQueue.poll();
+                addInFrontier(p, g, node, frontier, explored);
             }
-//                    frontier.add(child);
-//            for (ModelAction a : actionSet) {
-//                childBdd = progressionQbf(current,a);
-//                if(childBdd.toString().equals("")) {
-//                    continue; // acao nao aplicavel ao estado current
-//                }
-//                //test = test.and(constraints);
-//                h = minHvalue2(heuristicValue, childBdd); // if not -1
-//                System.out.println("h:"+ h+" | "+ a.getName());
-//
-//                if(h == -1){ continue; }
-//
-//                int f = g + h;
-//                if( !IsThereInExplored(explored, childBdd) ||
-//                        !ExistInFrontier(frontier, childBdd))
-//                {
-//                    child = new Node(childBdd, current, f);
-//                    frontier.add(child);
-//                }else if(ExistInFrontier(frontier, childBdd)) {
-//                    Node replaced = new Node(childBdd, current, f);
-//                    ReplaceElementInFrontier(frontier, replaced);
-//                    //se encontrar um bdd com mesmo valor de f e g
-//                    //devo juntar eles
-//                    //UpdateFrontier(frontier, teste, f); //pensar melhor
-//                }
-//            }
             g++;
             System.out.println("g="+g);
-            verify.PrintElapsedTime();
+            //encerra se passar do tempo
+            if(verify.verifyBreak()) {
+                return true;
+            }
         }
         return false;
     }
 
-
-    private SimpleEntry<BDD, Integer> getMinHeuristic(Vector<BDD> H, BDD X) {
-        BDD result;
-        for (int i = 0; i < H.size(); i++) {
-            result = X.and(H.get(i));
-            //System.out.println("i: "+i);
-            //H.get(i).printSet();
-            if (!result.isZero()) {
-                return new SimpleEntry<>(result, i);
-            }
+    private void addInFrontier( Pair pair, int g, Node father, PriorityQueue<Node> frontier, Vector<BDD> explored){
+        BDD state = pair.getBdd();
+        int h = pair.getHeuristic();
+        int f = g+h;
+        if( !isThereInExplored(explored, state) ||
+                !existInFrontier(frontier, state))
+        {
+            Node newNode = new Node(state, father, f);
+            frontier.add(newNode);
+            System.out.println(">Add Frontier:" + newNode.getName());
+        }else if(existInFrontier(frontier, state)) {
+            System.out.println(">Replace Frontier");
+            Node replaced = new Node(state, father, f);
+            ReplaceElementInFrontier(frontier, replaced);
+            //se encontrar um bdd com mesmo valor de f e g
+            //devo juntar eles
+            //UpdateFrontier(frontier, teste, f); //pensar melhor
         }
-        return  new SimpleEntry<>(null, -1);
+        System.out.println(">f= "+g+"+"+h+"="+f);
     }
 
     private int minHvalue2(Vector<BDD> H, BDD X) {
@@ -212,6 +188,25 @@ public class SearchNewMethod extends BaseSearch{
             }
         }
         return -1;
+    }
+
+    private Queue<Pair> getMinHeuristic(Vector<BDD> H, BDD X) {
+        BDD rest = X.id();
+        Queue<Pair> queue = new ArrayDeque<>();
+        for (int i = 0; i < H.size(); i++) {
+            BDD matched = rest.and(H.get(i));
+            if (!matched.isZero()) {
+                queue.add(new Pair(matched, i));
+                rest = rest.and(matched.not());
+                continue;
+            }
+            if (rest.isZero()) {
+                break;
+            }
+            matched.free();
+        }
+        rest.free();
+        return  queue;
     }
 
     /* Propplan progression based on action: Qbf based computation */
@@ -233,7 +228,7 @@ public class SearchNewMethod extends BaseSearch{
         BDD test = null;
         for (ModelAction a : actionSet) {
             //System.out.println(a.getName());
-            test = regressionQbf(formula,a);//heuristicRegressionQbf(formula,a) - henricky;
+            test = heuristicRegressionQbf(formula,a);//heuristicRegressionQbf(formula,a) - henricky;
             //teste = teste.and(constraints);
             if(reg == null){
                 reg = test;
@@ -250,23 +245,20 @@ public class SearchNewMethod extends BaseSearch{
         return reg;
     }
 
-    private BDD regressionQbf(BDD Y, ModelAction action) {
-        BDD reg;
-//        reg = Y.and(action.getEffect()); //(Y ^ effect(a))
-        reg = Y.and(action.getRelaxEffect()); //(Y ^ effect(a))
-
-        if(reg.isZero() == false){
-//			System.out.println("Ação aplicável: " + a.getName());
-            reg = reg.exist(action.getChange()); //qbf computation
-            reg = reg.and(action.getPrecondition()); //precondition(a) ^ E changes(a). test
-            reg = reg.and(constraints);
-        }
-        return  reg;
-    }
-
-    private boolean IsThereInExplored(Vector<BDD> explored, BDD item) {
+    private boolean isThereInExplored(Vector<BDD> explored, BDD item) {
         for(BDD bdd : explored) {
             if(bdd == item) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean existInFrontier(PriorityQueue<Node> frontier, BDD item) {
+        Iterator<Node> iterator = frontier.iterator();
+        while (iterator.hasNext()) {
+            Node current = iterator.next();
+            if (current.getBDD().equals(item)) {
                 return true;
             }
         }
@@ -291,16 +283,7 @@ public class SearchNewMethod extends BaseSearch{
         }
     }
 
-    private boolean ExistInFrontier(PriorityQueue<Node> frontier, BDD item) {
-        Iterator<Node> iterator = frontier.iterator();
-        while (iterator.hasNext()) {
-            Node current = iterator.next();
-            if (current.getBDD().equals(item)) {
-                return true;
-            }
-        }
-        return false;
-    }
+
 
 
     private boolean GBFS(TimeManager verify){
