@@ -1,29 +1,53 @@
 <predicates>
-on_a_b, on_b_a, ontable_a, ontable_b, clear_a, clear_b, handempty, holding_a
+on_a_b,on_b_a,on_c_a,on_c_b,on_a_c,on_b_c,ontable_a,ontable_b,ontable_c,clear_a,clear_b,clear_c,handempty,holding_a,holding_b,holding_c,
 <\predicates>
 <constraints>
-on_a_b, ontable_b, clear_a, handempty
 <\constraints>
 <initial>
-on_a_b, ontable_b, clear_a, handempty, ~holding_a, ~on_b_a
+~on_a_b,~on_b_a,~on_c_a,~on_c_b,~on_a_c,on_b_c,ontable_a,~ontable_b,ontable_c,clear_a,clear_b,~clear_c,handempty,~holding_a,~holding_b,~holding_c,
 <\initial>
 <goal>
-on_b_a, ontable_a, clear_b
+~on_a_b,~on_b_a,on_c_a,~on_c_b,~on_a_c,on_b_c,ontable_a,~ontable_b,~ontable_c,~clear_a,clear_b,~clear_c,handempty,~holding_a,~holding_b,~holding_c,
 <\goal>
 <actionsSet>
 <action>
-<name>unstack_a_b<\name>
-<pre>on_a_b, clear_a, handempty<\pre>
-<pos>holding_a, clear_b, ~on_a_b, ~handempty<\pos>
+    <name>pickup_a<\name>
+    <pre>ontable_a,clear_a,handempty<\pre>
+    <pos>holding_a,~ontable_a,~handempty<\pos>
 <\action>
 <action>
-<name>putdown_a<\name>
-<pre>holding_a<\pre>
-<pos>ontable_a, clear_a, handempty, ~holding_a<\pos>
+    <name>pickup_b<\name>
+    <pre>ontable_b,clear_b,handempty<\pre>
+    <pos>holding_b,~ontable_b,~handempty<\pos>
 <\action>
 <action>
-<name>stack_b_a<\name>
-<pre>holding_a, clear_a<\pre>
-<pos>on_b_a, clear_b, handempty, ~holding_a, ~clear_a<\pos>
+    <name>putdown_a<\name>
+    <pre>holding_a<\pre>
+    <pos>ontable_a,handempty,~holding_a<\pos>
+<\action>
+<action>
+    <name>putdown_b<\name>
+    <pre>holding_b<\pre>
+    <pos>ontable_b,handempty,~holding_b<\pos>
+<\action>
+<action>
+    <name>stack_a_b<\name>
+    <pre>holding_a,clear_b<\pre>
+    <pos>on_a_b,handempty,~holding_a,~clear_b<\pos>
+<\action>
+<action>
+    <name>stack_b_a<\name>
+    <pre>holding_b,clear_a<\pre>
+    <pos>on_b_a,handempty,~holding_b,~clear_a<\pos>
+<\action>
+<action>
+    <name>unstack_a_b<\name>
+    <pre>on_a_b,clear_a,handempty<\pre>
+    <pos>holding_a,clear_b,~on_a_b,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_b_a<\name>
+    <pre>on_b_a,clear_b,handempty<\pre>
+    <pos>holding_b,clear_a,~on_b_a,~handempty<\pos>
 <\action>
 <\actionsSet>

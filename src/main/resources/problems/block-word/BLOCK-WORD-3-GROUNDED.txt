@@ -1,14 +1,13 @@
 <predicates>
-on_a_b, on_b_c, ontable_a, ontable_b, ontable_c, clear_a, clear_b, clear_c, handempty, holding_a
+on_a_b,on_a_c,on_a_d,on_b_a,on_b_c,on_b_d,on_c_a,on_c_b,on_c_d,on_d_a,on_d_b,on_d_c,ontable_a,ontable_b,ontable_c,ontable_d,clear_a,clear_b,clear_c,clear_d,handempty,holding_a,holding_b,holding_c,holding_d,
 <\predicates>
 <constraints>
-ontable_a, ontable_b, ontable_c, clear_a, clear_b, clear_c, handempty
 <\constraints>
 <initial>
-ontable_a, ontable_b, ontable_c, clear_a, clear_b, clear_c, handempty, ~on_a_b, ~on_b_c, ~holding_a
+on_a_b,~on_a_c,~on_a_d,~on_b_a,~on_b_c,~on_b_d,~on_c_a,~on_c_b,~on_c_d,~on_d_a,~on_d_b,on_d_c,~ontable_a,ontable_b,ontable_c,~ontable_d,clear_a,~clear_b,~clear_c,clear_d,handempty,~holding_a,~holding_b,~holding_c,~holding_d,
 <\initial>
 <goal>
-on_a_b, on_b_c, ontable_c, clear_a
+~on_a_b,~on_a_c,~on_a_d,on_b_a,~on_b_c,~on_b_d,~on_c_a,~on_c_b,on_c_d,~on_d_a,~on_d_b,~on_d_c,ontable_a,~ontable_b,~ontable_c,ontable_d,~clear_a,clear_b,clear_c,~clear_d,handempty,~holding_a,~holding_b,~holding_c,~holding_d,
 <\goal>
 <actionsSet>
 <action>
