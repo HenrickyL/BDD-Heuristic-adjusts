@@ -21,6 +21,11 @@ on_a_b,on_b_a,on_c_a,on_c_b,on_a_c,on_b_c,ontable_a,ontable_b,ontable_c,clear_a,
     <pos>holding_b,~ontable_b,~handempty<\pos>
 <\action>
 <action>
+    <name>pickup_c<\name>
+    <pre>ontable_c,clear_c,handempty<\pre>
+    <pos>holding_c,~ontable_c,~handempty<\pos>
+<\action>
+<action>
     <name>putdown_a<\name>
     <pre>holding_a<\pre>
     <pos>ontable_a,handempty,~holding_a<\pos>
@@ -29,6 +34,11 @@ on_a_b,on_b_a,on_c_a,on_c_b,on_a_c,on_b_c,ontable_a,ontable_b,ontable_c,clear_a,
     <name>putdown_b<\name>
     <pre>holding_b<\pre>
     <pos>ontable_b,handempty,~holding_b<\pos>
+<\action>
+<action>
+    <name>putdown_c<\name>
+    <pre>holding_c<\pre>
+    <pos>ontable_c,handempty,~holding_c<\pos>
 <\action>
 <action>
     <name>stack_a_b<\name>
@@ -41,6 +51,26 @@ on_a_b,on_b_a,on_c_a,on_c_b,on_a_c,on_b_c,ontable_a,ontable_b,ontable_c,clear_a,
     <pos>on_b_a,handempty,~holding_b,~clear_a<\pos>
 <\action>
 <action>
+    <name>stack_c_a<\name>
+    <pre>holding_c,clear_a<\pre>
+    <pos>on_c_a,handempty,~holding_c,~clear_a<\pos>
+<\action>
+<action>
+    <name>stack_c_b<\name>
+    <pre>holding_c,clear_b<\pre>
+    <pos>on_c_b,handempty,~holding_c,~clear_b<\pos>
+<\action>
+<action>
+    <name>stack_a_c<\name>
+    <pre>holding_a,clear_c<\pre>
+    <pos>on_a_c,handempty,~holding_a,~clear_c<\pos>
+<\action>
+<action>
+    <name>stack_b_c<\name>
+    <pre>holding_b,clear_c<\pre>
+    <pos>on_b_c,handempty,~holding_b,~clear_c<\pos>
+<\action>
+<action>
     <name>unstack_a_b<\name>
     <pre>on_a_b,clear_a,handempty<\pre>
     <pos>holding_a,clear_b,~on_a_b,~handempty<\pos>
@@ -49,5 +79,25 @@ on_a_b,on_b_a,on_c_a,on_c_b,on_a_c,on_b_c,ontable_a,ontable_b,ontable_c,clear_a,
     <name>unstack_b_a<\name>
     <pre>on_b_a,clear_b,handempty<\pre>
     <pos>holding_b,clear_a,~on_b_a,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_c_b<\name>
+    <pre>on_c_b,clear_c,handempty<\pre>
+    <pos>holding_c,clear_b,~on_c_b,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_c_a<\name>
+    <pre>on_c_a,clear_c,handempty<\pre>
+    <pos>holding_c,clear_a,~on_c_a,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_b_c<\name>
+    <pre>on_b_c,clear_b,handempty<\pre>
+    <pos>holding_b,clear_c,~on_b_c,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_a_c<\name>
+    <pre>on_a_c,clear_a,handempty<\pre>
+    <pos>holding_a,clear_c,~on_a_c,~handempty<\pos>
 <\action>
 <\actionsSet>

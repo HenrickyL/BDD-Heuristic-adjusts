@@ -11,23 +11,163 @@ on_a_b,~on_a_c,~on_a_d,~on_b_a,~on_b_c,~on_b_d,~on_c_a,~on_c_b,~on_c_d,~on_d_a,~
 <\goal>
 <actionsSet>
 <action>
-<name>pickup_a<\name>
-<pre>ontable_a, clear_a, handempty<\pre>
-<pos>holding_a, ~ontable_a, ~clear_a, ~handempty<\pos>
+    <name>pickup_a<\name>
+    <pre>ontable_a,clear_a,handempty<\pre>
+    <pos>holding_a,~ontable_a,~handempty<\pos>
 <\action>
 <action>
-<name>stack_a_b<\name>
-<pre>holding_a, clear_b<\pre>
-<pos>on_a_b, clear_a, handempty, ~holding_a, ~clear_b<\pos>
+    <name>pickup_b<\name>
+    <pre>ontable_b,clear_b,handempty<\pre>
+    <pos>holding_b,~ontable_b,~handempty<\pos>
 <\action>
 <action>
-<name>pickup_b<\name>
-<pre>ontable_b, clear_b, handempty<\pre>
-<pos>holding_b, ~ontable_b, ~clear_b, ~handempty<\pos>
+    <name>pickup_c<\name>
+    <pre>ontable_c,clear_c,handempty<\pre>
+    <pos>holding_c,~ontable_c,~handempty<\pos>
 <\action>
 <action>
-<name>stack_b_c<\name>
-<pre>holding_b, clear_c<\pre>
-<pos>on_b_c, clear_b, handempty, ~holding_b, ~clear_c<\pos>
+    <name>pickup_d<\name>
+    <pre>ontable_d,clear_d,handempty<\pre>
+    <pos>holding_d,~ontable_d,~handempty<\pos>
+<\action>
+<action>
+    <name>putdown_a<\name>
+    <pre>holding_a<\pre>
+    <pos>ontable_a,handempty,~holding_a<\pos>
+<\action>
+<action>
+    <name>putdown_b<\name>
+    <pre>holding_b<\pre>
+    <pos>ontable_b,handempty,~holding_b<\pos>
+<\action>
+<action>
+    <name>putdown_c<\name>
+    <pre>holding_c<\pre>
+    <pos>ontable_c,handempty,~holding_c<\pos>
+<\action>
+<action>
+    <name>putdown_d<\name>
+    <pre>holding_d<\pre>
+    <pos>ontable_d,handempty,~holding_d<\pos>
+<\action>
+<action>
+    <name>stack_a_b<\name>
+    <pre>holding_a,clear_b<\pre>
+    <pos>on_a_b,handempty,~holding_a,~clear_b<\pos>
+<\action>
+<action>
+    <name>stack_a_c<\name>
+    <pre>holding_a,clear_c<\pre>
+    <pos>on_a_c,handempty,~holding_a,~clear_c<\pos>
+<\action>
+<action>
+    <name>stack_a_d<\name>
+    <pre>holding_a,clear_d<\pre>
+    <pos>on_a_d,handempty,~holding_a,~clear_d<\pos>
+<\action>
+<action>
+    <name>stack_b_a<\name>
+    <pre>holding_b,clear_a<\pre>
+    <pos>on_b_a,handempty,~holding_b,~clear_a<\pos>
+<\action>
+<action>
+    <name>stack_b_c<\name>
+    <pre>holding_b,clear_c<\pre>
+    <pos>on_b_c,handempty,~holding_b,~clear_c<\pos>
+<\action>
+<action>
+    <name>stack_b_d<\name>
+    <pre>holding_b,clear_d<\pre>
+    <pos>on_b_d,handempty,~holding_b,~clear_d<\pos>
+<\action>
+<action>
+    <name>stack_c_a<\name>
+    <pre>holding_c,clear_a<\pre>
+    <pos>on_c_a,handempty,~holding_c,~clear_a<\pos>
+<\action>
+<action>
+    <name>stack_c_b<\name>
+    <pre>holding_c,clear_b<\pre>
+    <pos>on_c_b,handempty,~holding_c,~clear_b<\pos>
+<\action>
+<action>
+    <name>stack_c_d<\name>
+    <pre>holding_c,clear_d<\pre>
+    <pos>on_c_d,handempty,~holding_c,~clear_d<\pos>
+<\action>
+<action>
+    <name>stack_d_a<\name>
+    <pre>holding_d,clear_a<\pre>
+    <pos>on_d_a,handempty,~holding_d,~clear_a<\pos>
+<\action>
+<action>
+    <name>stack_d_b<\name>
+    <pre>holding_d,clear_b<\pre>
+    <pos>on_d_b,handempty,~holding_d,~clear_b<\pos>
+<\action>
+<action>
+    <name>stack_d_c<\name>
+    <pre>holding_d,clear_c<\pre>
+    <pos>on_d_c,handempty,~holding_d,~clear_c<\pos>
+<\action>
+<action>
+    <name>unstack_a_b<\name>
+    <pre>on_a_b,clear_a,handempty<\pre>
+    <pos>holding_a,clear_b,~on_a_b,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_a_c<\name>
+    <pre>on_a_c,clear_a,handempty<\pre>
+    <pos>holding_a,clear_c,~on_a_c,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_a_d<\name>
+    <pre>on_a_d,clear_a,handempty<\pre>
+    <pos>holding_a,clear_d,~on_a_d,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_b_a<\name>
+    <pre>on_b_a,clear_b,handempty<\pre>
+    <pos>holding_b,clear_a,~on_b_a,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_b_c<\name>
+    <pre>on_b_c,clear_b,handempty<\pre>
+    <pos>holding_b,clear_c,~on_b_c,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_b_d<\name>
+    <pre>on_b_d,clear_b,handempty<\pre>
+    <pos>holding_b,clear_d,~on_b_d,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_c_a<\name>
+    <pre>on_c_a,clear_c,handempty<\pre>
+    <pos>holding_c,clear_a,~on_c_a,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_c_b<\name>
+    <pre>on_c_b,clear_c,handempty<\pre>
+    <pos>holding_c,clear_b,~on_c_b,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_c_d<\name>
+    <pre>on_c_d,clear_c,handempty<\pre>
+    <pos>holding_c,clear_d,~on_c_d,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_d_a<\name>
+    <pre>on_d_a,clear_d,handempty<\pre>
+    <pos>holding_d,clear_a,~on_d_a,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_d_b<\name>
+    <pre>on_d_b,clear_d,handempty<\pre>
+    <pos>holding_d,clear_b,~on_d_b,~handempty<\pos>
+<\action>
+<action>
+    <name>unstack_d_c<\name>
+    <pre>on_d_c,clear_d,handempty<\pre>
+    <pos>holding_d,clear_c,~on_d_c,~handempty<\pos>
 <\action>
 <\actionsSet>
