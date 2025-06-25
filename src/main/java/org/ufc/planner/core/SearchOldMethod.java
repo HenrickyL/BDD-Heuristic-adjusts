@@ -141,24 +141,6 @@ public class SearchOldMethod extends  BaseSearch{
         return reg;
     }
 
-
-    public BDD heuristicRegressionQbf(BDD Y, ModelAction a) {
-        BDD reg;
-        reg = Y.and(a.getRelaxEffect()); //(Y ^ effect(a))
-
-        if(reg.isZero() == false){
-//		System.out.println("Ação aplicável: " + a.getName());
-//		System.out.println("precondição: " + a.getPrecondition());
-//		System.out.println("efeitos" + a.getEffect());
-            reg = reg.exist(a.getRelaxChange()); //qbf computation
-            reg = reg.and(a.getPrecondition()); //precondition(a) ^ E changes(a). test
-            //System.out.println(reg + "\n");
-            reg = reg.and(constraints);
-
-        }
-        return  reg;
-    }
-
     // FORWARD
 
     public BDD minHvalue(Vector<BDD> H, BDD X) {

@@ -95,7 +95,6 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
             System.out.println(i);
             aux = Z.and(goal.id());
 
-
             if (aux.toString().equals("") == false) {
                 System.out.println("The problem is solvable.");
                 return true;
@@ -149,26 +148,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
     }
 
 
-    public BDD heuristicRegressionQbf(BDD Y, ModelAction a) {
-        BDD reg;
-        reg = Y.and(a.getRelaxEffect()); //(Y ^ effect(a))
-
-        if(reg.isZero() == false){
-//		System.out.println("Ação aplicável: " + a.getName());
-//		System.out.println("precondição: " + a.getPrecondition());
-//		System.out.println("efeitos" + a.getEffect());
-            reg = reg.exist(a.getRelaxChange()); //qbf computation
-            reg = reg.and(a.getPrecondition()); //precondition(a) ^ E changes(a). test
-            //System.out.println(reg + "\n");
-            reg = reg.and(constraints);
-
-        }
-        return  reg;
-    }
-
-    // FORWARD
-
-    public BDD minHvalue(Vector<BDD> H, BDD X) {
+    private BDD minHvalue(Vector<BDD> H, BDD X) {
         BDD result;
         int i = 0;
         while(i < H.size()) {
