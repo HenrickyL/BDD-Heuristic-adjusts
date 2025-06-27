@@ -28,7 +28,8 @@ public class SearchExecutor {
 
     public void execute(ProblemOptions options) throws Exception {
         runComparison("old+", new SearchOldWithTimerMethod(), options);
-        runComparison("new", new SearchNewMethod(), options);
+        runComparison("new-AStar", new SearchNewMethod((g,h)->g+h), options);
+        runComparison("new-GBFS", new SearchNewMethod((g,h)->h), options);
         runComparison("old", new SearchOldMethod(), options);
     }
 
@@ -46,7 +47,7 @@ public class SearchExecutor {
         System.setOut(new DualPrintStream(out, originalOut));
 
         System.out.println("Running " + label.toUpperCase() + " method on: " + fileName);
-        TimeManager timer = new TimeManager();
+        TimeManager timer = new TimeManager(runtime);
 
         int maTime = options.getMaxtime();
         if( maTime != -1){

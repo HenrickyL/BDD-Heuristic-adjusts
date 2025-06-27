@@ -8,17 +8,20 @@ import org.ufc.planner.infrastructure.TimeManager;
 
 import java.util.*;
 import java.io.IOException;
+import java.util.function.BiFunction;
 
 public class SearchNewMethod extends BaseSearch{
     private boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
-
-    public SearchNewMethod(ModelReader model) {
+    private final BiFunction<Integer, Integer, Integer> fFunc;
+    public SearchNewMethod(ModelReader model, BiFunction<Integer, Integer, Integer> fFunc) {
         super(model);
+        this.fFunc = fFunc;
         System.out.println("Instance SearchNewMethod");
     }
 
-    public SearchNewMethod() {
+    public SearchNewMethod(BiFunction<Integer, Integer, Integer> fFunc) {
         super();
+        this.fFunc = fFunc;
         System.out.println("Instance SearchNewMethod");
     }
 
@@ -91,7 +94,7 @@ public class SearchNewMethod extends BaseSearch{
         System.out.println("A* Forward...");
         BDD initial = initialState.id();
 
-        Node node = new Node(initial, null, 0+ heuristicValue.size());// cost = 0 + heuristic
+        Node node = new Node(initial.id(), null, 0+ heuristicValue.size());// cost = 0 + heuristic
 
         FrontierQueue frontier = new FrontierQueue();
         ExploredVector explored = new ExploredVector();
@@ -114,15 +117,13 @@ public class SearchNewMethod extends BaseSearch{
                 return true;
             }
             aux.free();
-
             explored.add(current);
 
             // Heurística: pega todos os pedaços do estado atual que batem com camadas
             Queue<Pair> heuristicQueue = getMinHeuristic(heuristicValue, current);
             System.out.println(">Pairs Heuristic Queue with size: "+heuristicQueue.size());
 
-            if(heuristicQueue.isEmpty()) continue;;
-
+            if(heuristicQueue.isEmpty()) continue;
             //pego o melhor
             Pair bestHeuristic = heuristicQueue.poll();
             BDD state = bestHeuristic.getBdd();
@@ -130,6 +131,10 @@ public class SearchNewMethod extends BaseSearch{
             System.out.println(">best heuristic (And Vector): "+ "_" + " with h: "+h);
 
             BDD progressedState = progression(state, verify); //Z = progression(teste);
+            if(progressedState == null || progressedState.isZero()){
+                System.out.println(">progressedState is null");
+                progressedState = state;
+            }
             System.out.println(">Progress Best State");
             //System.out.println(">progressedState: "+progressedState);
             addInFrontier(progressedState,h, g, node, frontier, explored);
@@ -137,11 +142,12 @@ public class SearchNewMethod extends BaseSearch{
             // Processa os demais estados resultantes da heurística
             if(!heuristicQueue.isEmpty()){
                 System.out.println(">Other States of Queue to add("+heuristicQueue.size()+")" );
+                while (!heuristicQueue.isEmpty()){
+                    Pair p = heuristicQueue.poll();
+                    addInFrontier(p.getBdd(), p.getHeuristic(), g, node, frontier, explored);
+                }
             }
-            while (!heuristicQueue.isEmpty()){
-                Pair p = heuristicQueue.poll();
-                addInFrontier(p.getBdd(), p.getHeuristic(), g, node, frontier, explored);
-            }
+
             g++;
             System.out.println("g="+g);
             //encerra se passar do tempo maximo
@@ -154,8 +160,7 @@ public class SearchNewMethod extends BaseSearch{
 
     private void addInFrontier(BDD progressed, int h, int g, Node parent, FrontierQueue frontier, ExploredVector explored) {
         if (progressed == null || progressed.isZero()) return;
-
-        int f = g + h;
+        int f = this.fFunc.apply(g,h);
 
         if (!explored.contains(progressed) || !frontier.contains(progressed)) {
             Node newNode = new Node(progressed, parent, f);
@@ -186,6 +191,7 @@ public class SearchNewMethod extends BaseSearch{
         Queue<Pair> queue = new ArrayDeque<>();
         for (int i = 0; i < H.size(); i++) {
             BDD matched = rest.and(H.get(i));
+//            matched = matched.and(constraints);
             if (!matched.isZero()) {
                 queue.add(new Pair(matched, i));
                 rest = rest.and(matched.not()); //A-B := A AND ~B
