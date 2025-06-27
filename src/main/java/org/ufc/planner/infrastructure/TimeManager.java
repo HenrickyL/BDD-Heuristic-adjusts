@@ -5,13 +5,16 @@ public class TimeManager {
     private long last = 0;
     private static long maxTime = 30*60*1000; //5MIN //= 1800000;//30min - 1800000
     private boolean isDebug = false;
+    private final Runtime runtime;
 
-    public TimeManager(){
+    public TimeManager(Runtime runtime){
+        this.runtime = runtime;
         this.isDebug = false;
     }
     public void resetStartTime() {
         startTime = System.currentTimeMillis();
         last =0;
+        runtime.gc();
     }
 
    public  void setMaxTime(int value) {
