@@ -115,9 +115,6 @@ public class SearchOldMethod extends  BaseSearch{
             i++; //g(n)
         }
 
-
-
-
         System.out.println("The problem is unsolvable.");
 
         return false;
@@ -151,6 +148,7 @@ public class SearchOldMethod extends  BaseSearch{
             if(result.isZero() == false) {
                 return result;
             }
+            result.free();
             ++i;
         }
         return null;

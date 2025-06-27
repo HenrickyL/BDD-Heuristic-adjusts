@@ -103,8 +103,15 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
             /*chamar a progressão só para o BDD retornado pela função minHValue*/
             teste = minHvalue(heuristicValue, Z);
+            if(teste ==null || teste.isZero()){
+                System.out.println("Error.");
+                teste = Z;
+            }
             Z = progression(teste, verify); //Z = progression(teste);
-
+            if(Z ==null || Z.isZero()){
+                System.out.println("Error.");
+                return false;
+            }
             Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
             reached = reached.or(Z); //Union with the new reachable states
             reached = reached.and(constraints);
@@ -157,6 +164,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
                 return result;
             }
             ++i;
+            result.free();
         }
         return null;
     }
