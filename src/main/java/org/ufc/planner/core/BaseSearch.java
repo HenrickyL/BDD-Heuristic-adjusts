@@ -44,6 +44,7 @@ public abstract class BaseSearch implements ISearchAlgorithm {
 //        verify.setMaxTime(1000*60*1);
         System.out.println("Start Backward...");
         if(heuristicPlanBackward(verify) == true) {
+            verify.PrintElapsedTime();
             System.out.println("End Backward.");
             verify.resetStartTime();
 //            verify.setMaxTime(-1);//3h - 10800000
