@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 public class SearchOldWithTimerMethod extends  BaseSearch{
-    private boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
+    private long maxTotalTime = 30*60*1000;
     public SearchOldWithTimerMethod(ModelReader model) {
         super(model);
         System.out.println("Instance SearchOldMethod");
@@ -24,7 +24,6 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
     @Override
     protected boolean heuristicPlanBackward(TimeManager verify) throws IOException {
-        this.onHeuristicPlanBackwardHasIncomplateRegression = false;
         //System.out.println("Performing heuristic search in a relaxed problem");
         System.out.println("initial: " + initialState);
         System.out.println("goal: " + goal);
@@ -67,11 +66,14 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 //				System.out.println(reached);
 //			}
 
+
             if(onHeuristicPlanBackwardHasIncomplateRegression) {
                 heuristicValue.add(j+1, reached.not());//todos os estados nao alcancados receberao o mesmo valor heuristico - henricky
+                System.out.println("Break regression - heuristic: " +heuristicValue.size());
                 return true;
             }
 
+            verify.PrintElapsedTime();
             i++;
         }
 
@@ -92,7 +94,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
         System.out.println("Progressive search");
 
         while(Z.isZero() == false){
-            System.out.println(i);
+            System.out.println("g="+i);
             aux = Z.and(goal.id());
 
             if (aux.toString().equals("") == false) {
@@ -103,27 +105,15 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
             /*chamar a progressão só para o BDD retornado pela função minHValue*/
             teste = minHvalue(heuristicValue, Z);
-            if(teste ==null || teste.isZero()){
-                System.out.println("Error.");
-                teste = Z;
-            }
             Z = progression(teste, verify); //Z = progression(teste);
-            if(Z ==null || Z.isZero()){
-                System.out.println("Error.");
-                return false;
-            }
             Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
             reached = reached.or(Z); //Union with the new reachable states
             reached = reached.and(constraints);
-//			if(i < 4){
-//				System.out.println(i + "\n" + reached);
-//			}
 
             //Break by max time
-            if(verify.verifyBreak()) {
+            if(CheckToBreak(verify, maxTotalTime)) {
                 return true;
             }
-
             i++; //g(n)
         }
 

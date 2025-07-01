@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 public class SearchOldMethod extends  BaseSearch{
+    private long maxTotalTime = 40*60*1000;
     public SearchOldMethod(ModelReader model) {
         super(model);
         System.out.println("Instance SearchOldMethod");
@@ -26,10 +27,9 @@ public class SearchOldMethod extends  BaseSearch{
         //System.out.println("Performing heuristic search in a relaxed problem");
         System.out.println("initial: " + initialState);
         System.out.println("goal: " + goal);
-
         int j = 0;
         BDD reached = goal.id(); //accumulates the reached set of states.
-        heuristicValue.add(j, goal);
+        heuristicValue.add(j, goal.id());
 
         BDD Z = reached.id(); // Only new states reached
         BDD aux;
@@ -45,32 +45,36 @@ public class SearchOldMethod extends  BaseSearch{
 
             if (aux.toString().equals("") == false) {
                 System.out.println("END");
-                //System.out.println("The problem is solvable.");
                 return true;
             }
-
             aux.free();
+
             //System.out.println("Z [antes da regression]" + Z);
             Z = heuristicRegression(Z);
-            //System.out.println("Z-->" + Z);
+
             //System.out.println("Z [depois da regression]" + Z);
-            Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
+            Z = Z.apply(reached, BDDFactory.diff);
             //adicionar o Z na posição i do vetor.
             //System.out.println("Z-->" + Z);
             heuristicValue.add(j,Z);
 
             reached = reached.or(Z); //Union with the new reachable states
             reached = reached.and(constraints);
-//			if(i < 4){
-//				System.out.println(reached);
-//			}
             //verify and print with exceeds time
-            verify.verifyBreak();
+            if(verify.verifyBreak()) {
+                if(!exceededTime){
+                    exceededTime = true;
+                    long time = verify.getMaxTime();
+                    long rest = maxTotalTime - time;
+                    verify.setMaxTime(rest);
+                }else{
+                    System.out.println(">>> Exceeded Time TOTAL "+maxTotalTime/60/1000+"h.");
+                    return true;
+                }
+            }
 
             i++;
-
         }
-
         System.out.println("The problem is unsolvable.");
         return false;
     }
@@ -114,7 +118,6 @@ public class SearchOldMethod extends  BaseSearch{
 
             i++; //g(n)
         }
-
         System.out.println("The problem is unsolvable.");
 
         return false;

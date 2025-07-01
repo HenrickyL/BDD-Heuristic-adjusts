@@ -11,24 +11,21 @@ import java.io.IOException;
 import java.util.function.BiFunction;
 
 public class SearchNewMethod extends BaseSearch{
-    private boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
-    private final BiFunction<Integer, Integer, Integer> fFunc;
-    public SearchNewMethod(ModelReader model, BiFunction<Integer, Integer, Integer> fFunc) {
+    private long maxTotalTime = 30*60*1000;
+    public SearchNewMethod(ModelReader model) {
         super(model);
-        this.fFunc = fFunc;
         System.out.println("Instance SearchNewMethod");
     }
 
-    public SearchNewMethod(BiFunction<Integer, Integer, Integer> fFunc) {
+    public SearchNewMethod() {
         super();
-        this.fFunc = fFunc;
         System.out.println("Instance SearchNewMethod");
     }
 
 
     @Override
     protected boolean heuristicPlanBackward(TimeManager verify) throws IOException {
-        onHeuristicPlanBackwardHasIncomplateRegression = false;
+
         //System.out.println("Performing heuristic search in a relaxed problem");
         System.out.println("initial: " + initialState);
         System.out.println("goal: " + goal);
@@ -85,16 +82,27 @@ public class SearchNewMethod extends BaseSearch{
 
     @Override
     protected boolean heuristicPlanForward(TimeManager verify) throws IOException {
-        return AStar(verify);
+        boolean AStar = false;
+        boolean GBFS = false;
+        System.out.println("--- A* Forward  f=g+h ----------------------");
+        try{
+            AStar = ForwardMethod((g,h)->g+h,verify);
+        } catch (Exception e) {
+            System.out.println("# A* Error");
+        }
+        verify.resetStartTime();
+        verify.PrintElapsedTime();
+        System.out.println("--- GBFS Forward f=h -----------------------");
+        GBFS = ForwardMethod((g,h)->h,verify);
+        return AStar && GBFS;
     }
 
 
 
-    private boolean AStar(TimeManager verify){
-        System.out.println("A* Forward...");
+    private boolean ForwardMethod(BiFunction<Integer, Integer, Integer> fFunc, TimeManager verify){
         BDD initial = initialState.id();
 
-        Node node = new Node(initial.id(), null, 0+ heuristicValue.size());// cost = 0 + heuristic
+        Node node = new Node(initial.id(), 0+ heuristicValue.size());// cost = 0 + heuristic
 
         FrontierQueue frontier = new FrontierQueue();
         ExploredVector explored = new ExploredVector();
@@ -103,17 +111,20 @@ public class SearchNewMethod extends BaseSearch{
 
         int g=0;
         int h=0;
+        int f=0;
 
         frontier.add(node);
 
         while(!frontier.isEmpty()) {
+            System.out.println("g="+g);
             node = frontier.poll();
             current = node.getBDD();
-            System.out.println(">Dequeue: "+node.getName() + "f: "+node.getFn());
+            System.out.println(">Dequeue: "+node.getName() + "_f: "+node.getFn());
 
             aux = current.and(goal.id());
             if (aux.toString().equals("") == false) { //use equal?
                 System.out.println("The problem is solvable.");
+                clearBdds(frontier, explored);
                 return true;
             }
             aux.free();
@@ -137,38 +148,41 @@ public class SearchNewMethod extends BaseSearch{
             }
             System.out.println(">Progress Best State");
             //System.out.println(">progressedState: "+progressedState);
-            addInFrontier(progressedState,h, g, node, frontier, explored);
+            f = fFunc.apply(g,h);
+            addInFrontier(progressedState,f, node, frontier, explored);
 
             // Processa os demais estados resultantes da heurística
             if(!heuristicQueue.isEmpty()){
                 System.out.println(">Other States of Queue to add("+heuristicQueue.size()+")" );
                 while (!heuristicQueue.isEmpty()){
                     Pair p = heuristicQueue.poll();
-                    addInFrontier(p.getBdd(), p.getHeuristic(), g, node, frontier, explored);
+                    f = fFunc.apply(g,p.getHeuristic());
+                    addInFrontier(p.getBdd(),f, node, frontier, explored);
                 }
             }
 
             g++;
-            System.out.println("g="+g);
             //encerra se passar do tempo maximo
-            if(verify.verifyBreak()) {
+            if(CheckToBreak(verify,maxTotalTime)) {
                 return true;
             }
         }
+        clearBdds(frontier, explored);
         return false;
     }
 
-    private void addInFrontier(BDD progressed, int h, int g, Node parent, FrontierQueue frontier, ExploredVector explored) {
-        if (progressed == null || progressed.isZero()) return;
-        int f = this.fFunc.apply(g,h);
+    private void clearBdds(FrontierQueue frontier, ExploredVector explored){
+        frontier.clear();
+        explored.clear();
+    }
 
+    private void addInFrontier(BDD progressed, int f, Node parent, FrontierQueue frontier, ExploredVector explored) {
+        if (progressed == null || progressed.isZero()) return;
         if (!explored.contains(progressed) || !frontier.contains(progressed)) {
-            Node newNode = new Node(progressed, parent, f);
+            Node newNode = new Node(progressed, f, parent);
             frontier.add(newNode);
             System.out.println(">Add Frontier: "+newNode.getName());
-        } else if (frontier.contains(progressed)) {
-            Node replaced = new Node(progressed, parent, f);
-            frontier.replace(replaced);
+        } else if (frontier.replace(new Node(progressed, f, parent))) {
             System.out.println(">Replace Frontier");
         }
     }

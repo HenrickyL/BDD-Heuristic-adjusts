@@ -39,6 +39,10 @@ public class ExploredVector {
     }
 
     public void clear() {
+        // Libera todos os BDDs armazenados na fila
+        for (BDD bdd : list) {
+            bdd.free();
+        }
         list.clear();
         hashIndex.clear();
     }

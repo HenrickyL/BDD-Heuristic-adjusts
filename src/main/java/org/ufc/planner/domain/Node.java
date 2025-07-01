@@ -8,7 +8,7 @@ public class Node {
     private final int fn; //f(n) = g(n) + h(n)
     private final String name;
 
-    public Node(BDD bdd, Node father, int fCost) {
+    public Node(BDD bdd,int fCost, Node father) {
         this.bdd = bdd;
         this.fn = fCost;
         this.father = father;
@@ -16,7 +16,15 @@ public class Node {
         Node.count++;
     }
 
-    public Node(BDD bdd, Node father, int fCost, String name) {
+    public Node(BDD bdd,int fCost) {
+        this.bdd = bdd;
+        this.fn = fCost;
+        this.father = null;
+        this.name = "s"+count;
+        Node.count++;
+    }
+
+    public Node(BDD bdd,int fCost, Node father, String name) {
         this.bdd = bdd;
         this.fn = fCost;
         this.father = father;

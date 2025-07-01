@@ -38,20 +38,27 @@ public class FrontierQueue {
     }
 
     public boolean replace(Node node) {
+        if (!this.contains(node.getBDD()))
+            return false;
         Iterator<Node> it = queue.iterator();
         while (it.hasNext()) {
             Node current = it.next();
             if (current.getBDD().equals(node.getBDD())) {
-                it.remove();
-                hashIndex.remove(current.getBDD().hashCode());
-                queue.add(node);
-                hashIndex.add(node.getBDD().hashCode());
-                return true;
+                // só substitui se o novo custo for menor
+                if (node.getFValue() < current.getFValue()) {
+                    it.remove();
+                    hashIndex.remove(current.getBDD().hashCode());
+                    queue.add(node);
+                    hashIndex.add(node.getBDD().hashCode());
+                    return true;
+                } else {
+                    // não substitui, mantém o atual
+                    return false;
+                }
             }
         }
         return false;
     }
-
     public boolean isEmpty() {
         return queue.isEmpty();
     }
@@ -61,6 +68,10 @@ public class FrontierQueue {
     }
 
     public void clear() {
+        // Libera todos os BDDs armazenados no explored
+        for (Node node : queue) {
+            node.getBDD().free();
+        }
         queue.clear();
         hashIndex.clear();
     }
