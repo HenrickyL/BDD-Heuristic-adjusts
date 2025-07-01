@@ -19,6 +19,9 @@ public abstract class BaseSearch implements ISearchAlgorithm {
     protected BDD constraints;
     protected int numProp;
     protected Vector<BDD> heuristicValue = new Vector<BDD>();
+    protected  boolean exceededTime = false;
+    protected boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
+    private static float version = 1.1f;
 
     /* Constructor */
     public BaseSearch(ModelReader model) {
@@ -41,8 +44,10 @@ public abstract class BaseSearch implements ISearchAlgorithm {
     }
 
     public void HeuristicSearch(TimeManager verify) throws IOException{
-//        verify.setMaxTime(1000*60*1);
+        System.out.println("[Version] "+version);
         System.out.println("Start Backward...");
+        onHeuristicPlanBackwardHasIncomplateRegression = false;
+        exceededTime= false;
         if(heuristicPlanBackward(verify) == true) {
             verify.PrintElapsedTime();
             System.out.println("End Backward.");
@@ -58,6 +63,17 @@ public abstract class BaseSearch implements ISearchAlgorithm {
     protected abstract boolean heuristicPlanForward(TimeManager verify) throws IOException;
 
 
+    public void clear(){
+        clearHeuristicValues();
+//        initialState.free();
+//        goal.free();
+    }
+
+    private void clearHeuristicValues(){
+        for(BDD bdd :heuristicValue){
+            bdd.free();
+        }
+    }
 
     /* ---------------------------------------------- */
 
@@ -154,5 +170,22 @@ public abstract class BaseSearch implements ISearchAlgorithm {
             reg = reg.and(constraints);
         }
         return  reg;
+    }
+
+    protected boolean CheckToBreak(TimeManager verify, long totalTime){
+        if(verify.verifyBreak()) {
+            if(!exceededTime){
+                exceededTime = true;
+                long time = verify.getMaxTime();
+                long rest = totalTime - time;
+                verify.setMaxTime(rest);
+                System.out.println(">>> Exceeded Time MAX "+time/60/1000+"min [increase "+rest/60/1000+"min] --------");
+            }else{
+                System.out.println(">>> Exceeded Time total MAX "+totalTime/60/1000+"min --------");
+                onHeuristicPlanBackwardHasIncomplateRegression = true;
+                return true;
+            }
+        }
+        return false;
     }
 }
