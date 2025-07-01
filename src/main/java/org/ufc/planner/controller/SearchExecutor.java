@@ -27,10 +27,11 @@ public class SearchExecutor {
     }
 
     public void execute(ProblemOptions options) throws Exception {
-        runComparison("old+", new SearchOldWithTimerMethod(), options);
-        runComparison("new-AStar", new SearchNewMethod((g,h)->g+h), options);
-        runComparison("new-GBFS", new SearchNewMethod((g,h)->h), options);
-        runComparison("old", new SearchOldMethod(), options);
+        switch (options.getSearchMethod()){
+            case NEW -> runComparison("new", new SearchNewMethod(), options);
+            case OLD -> runComparison("old", new SearchOldMethod(), options);
+            case OLD_TIME -> runComparison("old+", new SearchOldWithTimerMethod(), options);
+        }
     }
 
     private void runComparison(String label, BaseSearch search, ProblemOptions options) throws Exception {
@@ -57,12 +58,18 @@ public class SearchExecutor {
         }
 
         timer.resetStartTime();
-        if (type == SearchTypeEnum.exaustive) {
-            search.ExhaustiveSearch(timer);
-        } else {
-            search.HeuristicSearch(timer);
+        try{
+            if (type == SearchTypeEnum.exaustive) {
+                search.ExhaustiveSearch(timer);
+            } else {
+                search.HeuristicSearch(timer);
+            }
+        } catch (Exception e) {
+            System.out.println("# Erro: "+e.toString());
+        } catch (OutOfMemoryError e) {
+            runtime.gc();
+            System.err.println("⚠️ OutOfMemoryError capturado!");
         }
-
         timer.PrintElapsedTime();
         runtime.gc();
         long usedMemory = runtime.totalMemory() - runtime.freeMemory();
@@ -72,6 +79,7 @@ public class SearchExecutor {
         System.setOut(originalOut);
         System.setErr(originalErr);
         System.out.println("Execução (" + label + ") terminou [OK].");
+        search.clear();
     }
 
     private PrintStream prepareOutputFile(SearchTypeEnum type, String fileName, String label) throws FileNotFoundException {

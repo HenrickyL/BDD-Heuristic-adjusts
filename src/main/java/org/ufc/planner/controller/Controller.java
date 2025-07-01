@@ -1,8 +1,10 @@
 package org.ufc.planner.controller;
 
 import org.ufc.planner.enums.ProblemTypeEnum;
+import org.ufc.planner.enums.SearchMethodEnum;
 import org.ufc.planner.enums.SearchTypeEnum;
 import java.io.PrintStream;
+import java.util.Objects;
 
 public class Controller {
     private final PrintStream originalOut;
@@ -30,9 +32,8 @@ public class Controller {
     }
 
     public void RunByArgs(String[] args) {
-
-        if (args.length != 4 ) {
-            System.err.println("Usage: java GUI <type> <problem> <test> <maxTime>");
+        if (args.length != 5 ) {
+            System.err.println("Usage: java GUI <problem> <search:heuristic> <test> <maxTime> <searchMethod>");
             System.exit(1);
         }
 
@@ -41,7 +42,8 @@ public class Controller {
                     ProblemTypeEnum.valueOf(args[0]),
                     SearchTypeEnum.valueOf(args[1]),
                     Integer.parseInt(args[2]),
-                    Integer.parseInt(args[3])
+                    Integer.parseInt(args[3]),
+                    SearchMethodEnum.valueOf(args[4])
             );
             Run(options);
         } catch (IllegalArgumentException e) {
