@@ -1,9 +1,11 @@
 package org.ufc.planner.infrastructure;
 
+import org.ufc.planner.domain.Node;
+
 public class TimeManager {
     private long startTime;
     private long last = 0;
-    private static long maxTime = 30*60*1000; //5MIN //= 1800000;//30min - 1800000
+    private long maxTime = 30*60*1000; //5MIN //= 1800000;//30min - 1800000
     private boolean isDebug = false;
     private final Runtime runtime;
 
@@ -14,12 +16,18 @@ public class TimeManager {
     public void resetStartTime() {
         startTime = System.currentTimeMillis();
         last =0;
+        Node.resetCount();
         runtime.gc();
     }
 
-   public  void setMaxTime(int value) {
-        maxTime = value;
+   public  void setMaxTime(long value) {
+        System.out.println("[SetMaxTime] "+value);
+        this.maxTime = value;
         last =0;
+   }
+
+   public long getMaxTime(){
+        return this.maxTime;
    }
 
    public void setDebugMode(boolean bool){
