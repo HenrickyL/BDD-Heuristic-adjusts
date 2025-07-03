@@ -2,7 +2,7 @@ package org.ufc.planner.domain;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Vector;
+//import java.util.Vector;
 
 /**
  * Conjunto de estados explorados durante a busca.
@@ -48,11 +48,10 @@ public class ExploredVector {
 
 
     public void clear() {
-        // Libera todos os BDDs armazenados na fila
-//        for (Node node : list) {
-//            node.getBDD().free();
-//        }
-//        list.clear();
+//         Libera todos os BDDs armazenados na fila
+        for (Node node : nodeIndex) {
+            node.getBDD().free();
+        }
         nodeIndex.clear();
     }
 
@@ -60,7 +59,6 @@ public class ExploredVector {
         int estimatedNodesPerBDD = (int) Math.ceil(movingAverage);
 //        long bddMemory = (long) list.size() * (estimatedNodesPerBDD * 20L); // 20B por nó
         long hashMemory = (long) nodeIndex.size() * (estimatedNodesPerBDD * 20L);
-        System.out.println();
         return /*bddMemory +*/ hashMemory;
     }
 

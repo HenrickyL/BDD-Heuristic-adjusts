@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class FrontierQueue {
     private final PriorityQueue<Node> queue;
-    private final Set<Node> nodeIndex;
+    private final Set<Integer> index;
 
     /// TODO: Remove this - debug
     // cálculo da média móvel
@@ -20,12 +20,12 @@ public class FrontierQueue {
 
     public FrontierQueue() {
         this.queue = new PriorityQueue<>(new NodeComparator());
-        this.nodeIndex = new HashSet<>();
+        this.index = new HashSet<>();
     }
 
     public boolean add(Node node) {
-        int hash = node.getBDD().hashCode();
-        if (nodeIndex.contains(hash)) return false;
+        int hash = node.hashCode();
+        if (index.contains(hash)) return false;
 
         /// TODO: Remove this - debug
         // Atualiza a média móvel (amostra aleatoriamente para evitar overhead)
@@ -34,39 +34,40 @@ public class FrontierQueue {
         }
 
         queue.add(node);
-        nodeIndex.add(node);
+        index.add(hash);
         return true;
     }
 
     public Node poll() {
         Node node = queue.poll();
         if (node != null) {
-            nodeIndex.remove(node);
+            index.remove(node.hashCode());
         }
         return node;
     }
 
     public boolean contains(Node node) {
-        return nodeIndex.contains(node);
+        return index.contains(node.hashCode());
     }
 
     public boolean replace(Node node) {
-        if (!this.contains(node)) return false;
-
-        Iterator<Node> it = queue.iterator();
-        while (it.hasNext()) {
-            Node current = it.next();
-            if (current.equals(node)) {
-                // só substitui se o novo custo for menor
-                if (node.getFCost() < current.getFCost()) {
-                    it.remove();
-                    nodeIndex.remove(current);
-                    queue.add(node);
-                    nodeIndex.add(node);
-                    return true;
-                } else {
-                    // não substitui, mantém o atual
-                    return false;
+        if(this.contains(node)){
+            Iterator<Node> it = queue.iterator();
+            while (it.hasNext()) {
+                Node current = it.next();
+                int hash = node.hashCode();
+                if (current.equals(node)) {
+                    // só substitui se o novo custo for menor
+                    if (node.getFCost() < current.getFCost()) {
+                        it.remove();
+                        index.remove(hash);
+                        queue.add(node);
+                        index.add(hash);
+                        return true;
+                    } else {
+                        // não substitui, mantém o atual
+                        return false;
+                    }
                 }
             }
         }
@@ -82,14 +83,14 @@ public class FrontierQueue {
             node.getBDD().free();
         }
         queue.clear();
-        nodeIndex.clear();
+        index.clear();
     }
 
     public int getNodeCount() {
         return queue.size();
     }
     public int getIndexCount() {
-        return nodeIndex.size();
+        return index.size();
     }
 
 //    public long getEstimatedMemoryUsageInBytes() {
@@ -98,7 +99,7 @@ public class FrontierQueue {
 
     public String getSizeSummary() {
         return String.format(
-                "[Frontier] {Nodes: %d,Est.Memory: %.2f KB}-{nodeIndex: %d, Est.Memory: %.2f KB}",
+                "[Frontier] Nodes: %d, Est.Memory: %.2f KB | nodeIndex: %d, Est.Memory: %.2f KB",
                 getNodeCount(),
                 getEstimatedQueueMemoryUsageInBytes() / 1024.0,
                 getIndexCount(),
@@ -115,7 +116,7 @@ public class FrontierQueue {
     }
     public long getEstimatedIIndexMemoryUsageInBytes() {
         int estimatedNodesPerBDD = (int) Math.ceil(movingAverage);
-        long estimated = (estimatedNodesPerBDD * 20L + 80);
+        long estimated = Integer.BYTES;
         long indexSize = (long) getIndexCount() * estimated;
         return  indexSize;
     }
