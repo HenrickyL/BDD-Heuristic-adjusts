@@ -128,7 +128,7 @@ public class SearchNewMethod extends BaseSearch{
                 return true;
             }
             aux.free();
-            explored.add(current);
+            explored.add(node);
 
             // Heurística: pega todos os pedaços do estado atual que batem com camadas
             Queue<Pair> heuristicQueue = splitByHeuristic(heuristicValue, current);
@@ -162,6 +162,8 @@ public class SearchNewMethod extends BaseSearch{
             }
 
             g++;
+            System.out.println(frontier.getSizeSummary());
+            System.out.println(explored.getSizeSummary());
             //encerra se passar do tempo maximo
             if(CheckToBreak(verify,maxTotalTime)) {
                 return true;
@@ -178,12 +180,12 @@ public class SearchNewMethod extends BaseSearch{
 
     private void addInFrontier(BDD progressed, int f, Node parent, FrontierQueue frontier, ExploredVector explored) {
         if (progressed == null || progressed.isZero()) return;
-        if (!explored.contains(progressed) || !frontier.contains(progressed)) {
-            Node newNode = new Node(progressed, f, parent);
+        Node newNode = new Node(progressed, f, parent);
+        if (!explored.contains(newNode) || !frontier.contains(newNode)) {
             frontier.add(newNode);
             System.out.println(">Add Frontier: "+newNode.getName());
-        } else if (frontier.replace(new Node(progressed, f, parent))) {
-            System.out.println(">Replace Frontier");
+        } else if (frontier.replace(newNode)) {
+            System.out.println(">Replace Frontier: "+newNode.getName());
         }
     }
 

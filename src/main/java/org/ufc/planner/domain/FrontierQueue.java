@@ -10,46 +10,60 @@ import java.util.*;
  */
 public class FrontierQueue {
     private final PriorityQueue<Node> queue;
-    private final Set<Integer> hashIndex;
+    private final Set<Node> nodeIndex;
+
+    /// TODO: Remove this - debug
+    // cálculo da média móvel
+    private double movingAverage = 0;
+    private int sampleCount = 0;
+    private static final int MAX_SAMPLES = 150; // Número de amostras para a média
+
 
     public FrontierQueue() {
         this.queue = new PriorityQueue<>(new NodeComparator());
-        this.hashIndex = new HashSet<>();
+        this.nodeIndex = new HashSet<>();
     }
 
     public boolean add(Node node) {
         int hash = node.getBDD().hashCode();
-        if (hashIndex.contains(hash)) return false;
+        if (nodeIndex.contains(hash)) return false;
+
+        /// TODO: Remove this - debug
+        // Atualiza a média móvel (amostra aleatoriamente para evitar overhead)
+        if (sampleCount < MAX_SAMPLES || Math.random() < 0.1) {
+            updateMovingAverage(node.getBDD().nodeCount());
+        }
+
         queue.add(node);
-        hashIndex.add(hash);
+        nodeIndex.add(node);
         return true;
     }
 
     public Node poll() {
         Node node = queue.poll();
         if (node != null) {
-            hashIndex.remove(node.getBDD().hashCode());
+            nodeIndex.remove(node.getBDD().hashCode());
         }
         return node;
     }
 
-    public boolean contains(BDD bdd) {
-        return hashIndex.contains(bdd.hashCode());
+    public boolean contains(Node node) {
+        return nodeIndex.contains(node);
     }
 
     public boolean replace(Node node) {
-        if (!this.contains(node.getBDD()))
-            return false;
+        if (!this.contains(node)) return false;
+
         Iterator<Node> it = queue.iterator();
         while (it.hasNext()) {
             Node current = it.next();
-            if (current.getBDD().equals(node.getBDD())) {
+            if (current.equals(node)) {
                 // só substitui se o novo custo for menor
-                if (node.getFValue() < current.getFValue()) {
+                if (node.getFCost() < current.getFCost()) {
                     it.remove();
-                    hashIndex.remove(current.getBDD().hashCode());
+                    nodeIndex.remove(current);
                     queue.add(node);
-                    hashIndex.add(node.getBDD().hashCode());
+                    nodeIndex.add(node);
                     return true;
                 } else {
                     // não substitui, mantém o atual
@@ -63,20 +77,52 @@ public class FrontierQueue {
         return queue.isEmpty();
     }
 
-    public int size() {
-        return queue.size();
-    }
-
     public void clear() {
         // Libera todos os BDDs armazenados no explored
         for (Node node : queue) {
             node.getBDD().free();
         }
         queue.clear();
-        hashIndex.clear();
+        nodeIndex.clear();
     }
 
-    public PriorityQueue<Node> getRawQueue() {
-        return queue;
+    public int getNodeCount() {
+        return queue.size();
     }
+    public int getHashCount() {
+        return nodeIndex.size();
+    }
+
+//    public long getEstimatedMemoryUsageInBytes() {
+//        return (long) getNodeCount() * estimatedNodeSizeBytes() + (long) getHashCount() * Integer.BYTES;
+//    }
+
+    public String getSizeSummary() {
+        return String.format(
+                "[Frontier] Nodes: %d, Hashes: %d, Est. Memory: %.2f KB",
+                getNodeCount(),
+                getHashCount(),
+                getEstimatedMemoryUsageInBytes() / 1024.0
+        );
+    }
+
+
+    public long getEstimatedMemoryUsageInBytes() {
+        int estimatedNodesPerBDD = (int) Math.ceil(movingAverage);
+        long hashSize = (long) getHashCount() * Integer.BYTES;
+        long queueSize = (long) getNodeCount() * (estimatedNodesPerBDD * 20L + 80);
+
+        return  queueSize + hashSize;
+    }
+
+    private void updateMovingAverage(int newNodeSize) {
+        if (sampleCount < MAX_SAMPLES) {
+            movingAverage = (movingAverage * sampleCount + newNodeSize) / (sampleCount + 1);
+            sampleCount++;
+        } else {
+            // Média móvel exponencial
+            movingAverage = movingAverage * 0.9 + newNodeSize * 0.1;
+        }
+    }
+
 }

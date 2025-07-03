@@ -10,40 +10,88 @@ import java.util.Vector;
  * Armazena os BDDs e seus hashes para consulta eficiente.
  */
 public class ExploredVector {
-    private final Vector<BDD> list;
-    private final Set<Integer> hashIndex;
+    private final Vector<Node> list;
+    private final Set<Node> nodeIndex;
+
+    /// TODO: remove this - debug
+    // Estatísticas de uso de memória
+    private double movingAverage = 0;
+    private int sampleCount = 0;
+    private static final int MAX_SAMPLES = 150;
+
+
 
     public ExploredVector() {
         this.list = new Vector<>();
-        this.hashIndex = new HashSet<>();
+        this.nodeIndex = new HashSet<>();
     }
 
-    public boolean add(BDD bdd) {
-        int hash = bdd.hashCode();
-        if (hashIndex.contains(hash)) return false;
-        list.add(bdd);
-        hashIndex.add(hash);
+    public boolean add(Node node) {
+//        int hash = bdd.hashCode();
+        if (nodeIndex.contains(node)) return false;
+
+        /// TODO: remove this - debug
+        // Atualiza a média móvel com o tamanho do BDD
+        if (sampleCount < MAX_SAMPLES || Math.random() < 0.1) {
+            updateMovingAverage(node.getBDD().nodeCount());
+        }
+
+        list.add(node);
+        nodeIndex.add(node);
         return true;
     }
 
-    public boolean contains(BDD bdd) {
-        return hashIndex.contains(bdd.hashCode());
+    public boolean contains(Node node) {
+        return nodeIndex.contains(node);
     }
 
     public int size() {
         return list.size();
     }
 
-    public Vector<BDD> getRawList() {
-        return list;
-    }
 
     public void clear() {
         // Libera todos os BDDs armazenados na fila
-        for (BDD bdd : list) {
-            bdd.free();
+        for (Node node : list) {
+            node.getBDD().free();
         }
         list.clear();
-        hashIndex.clear();
+        nodeIndex.clear();
     }
+
+    public int getBDDCount() {
+        return list.size();
+    }
+
+    public int getHashCount() {
+        return nodeIndex.size();
+    }
+
+    public long getEstimatedMemoryUsageInBytes() {
+        int estimatedNodesPerBDD = (int) Math.ceil(movingAverage);
+        long bddMemory = (long) list.size() * (estimatedNodesPerBDD * 20L); // 20B por nó
+        long hashMemory = (long) nodeIndex.size() * Integer.BYTES;
+        return bddMemory + hashMemory;
+    }
+
+    public String getSizeSummary() {
+        return String.format(
+                "[Explored] BDDs: %d, Hashes: %d, Est. Memory: %.2f KB",
+                list.size(),
+                nodeIndex.size(),
+                getEstimatedMemoryUsageInBytes() / 1024.0
+        );
+    }
+    private void updateMovingAverage(int newNodeSize) {
+        if (sampleCount < MAX_SAMPLES) {
+            movingAverage = (movingAverage * sampleCount + newNodeSize) / (sampleCount + 1);
+            sampleCount++;
+        } else {
+            movingAverage = movingAverage * 0.9 + newNodeSize * 0.1;
+        }
+    }
+
+//    public String getSizeSummary() {
+//        return "[Explored] BDDs: " + getBDDCount() + ", Hashes: " + getHashCount();
+//    }
 }

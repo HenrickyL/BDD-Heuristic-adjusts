@@ -2,7 +2,7 @@ package org.ufc.planner.domain;
 
 import com.github.javabdd.BDD;
 
-public class Node {
+public class Node{
     private final BDD bdd;
     private final Node father;
     private final int fn; //f(n) = g(n) + h(n)
@@ -31,6 +31,24 @@ public class Node {
         this.name = name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Node other = (Node) o;
+        BDD A = this.getBDD();
+        BDD B = other.getBDD();
+        return A.equals(B) && this.getFn() == other.getFn();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getBDD().hashCode();
+        result = 31 * result + getFn(); // 31 é uma constante comum no hashCode
+        return result;
+    }
+
     public static int count =0;
     public static void resetCount(){Node.count = 0;}
 
@@ -44,7 +62,7 @@ public class Node {
     public int getFn(){
         return this.fn;
     }
-    public int getFValue() {
+    public int getFCost() {
         return this.fn;
     }
     public String getName(){return this.name;}

@@ -13,8 +13,8 @@ public class Main {
 //        ProblemOptions test = new ProblemOptions(
 //                ProblemTypeEnum.rovers,
 //                SearchTypeEnum.heuristic,
-//                6,
-//                 5*1000,//10*60*1000,//-1 // without time
+//                5,
+//                 5*60*1000,//-1 // without time
 //                SearchMethodEnum.NEW
 //        );
 
