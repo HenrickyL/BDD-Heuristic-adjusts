@@ -21,7 +21,7 @@ public abstract class BaseSearch implements ISearchAlgorithm {
     protected Vector<BDD> heuristicValue = new Vector<BDD>();
     protected  boolean exceededTime = false;
     protected boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
-    private static float version = 1.1f;
+    private static float version = 1.2f;
 
     /* Constructor */
     public BaseSearch(ModelReader model) {

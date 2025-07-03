@@ -131,7 +131,7 @@ public class SearchNewMethod extends BaseSearch{
             explored.add(current);
 
             // Heurística: pega todos os pedaços do estado atual que batem com camadas
-            Queue<Pair> heuristicQueue = getMinHeuristic(heuristicValue, current);
+            Queue<Pair> heuristicQueue = splitByHeuristic(heuristicValue, current);
             System.out.println(">Pairs Heuristic Queue with size: "+heuristicQueue.size());
 
             if(heuristicQueue.isEmpty()) continue;
@@ -200,21 +200,21 @@ public class SearchNewMethod extends BaseSearch{
         return -1;
     }
 
-    private Queue<Pair> getMinHeuristic(Vector<BDD> H, BDD X) {
-        BDD rest = X.id();
+    private Queue<Pair> splitByHeuristic(Vector<BDD> heuristicLayers, BDD state) {
+        BDD rest = state.id(); //copia
         Queue<Pair> queue = new ArrayDeque<>();
-        for (int i = 0; i < H.size(); i++) {
-            BDD matched = rest.and(H.get(i));
-//            matched = matched.and(constraints);
+        for (int h = 0; h < heuristicLayers.size(); h++) {
+            BDD matched = rest.and(heuristicLayers.get(h));
             if (!matched.isZero()) {
-                queue.add(new Pair(matched, i));
-                rest = rest.and(matched.not()); //A-B := A AND ~B
-                continue;
+                queue.add(new Pair(matched.id(), h));
+                BDD neg = matched.not(); // A - B := A ∧ ¬B
+                BDD updated = rest.and(neg);
+                rest.free(); neg.free(); // libera antigos
+                rest = updated;
+            }else{
+                matched.free(); //libera
             }
-            if (rest.isZero()) {
-                break;
-            }
-            matched.free();
+            if (rest.isZero()) break;
         }
         rest.free();
         return  queue;
