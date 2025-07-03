@@ -1,6 +1,5 @@
 package org.ufc.planner.domain;
 
-import com.github.javabdd.BDD;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
@@ -10,7 +9,7 @@ import java.util.Vector;
  * Armazena os BDDs e seus hashes para consulta eficiente.
  */
 public class ExploredVector {
-    private final Vector<Node> list;
+//    private final Vector<Node> list;
     private final Set<Node> nodeIndex;
 
     /// TODO: remove this - debug
@@ -22,21 +21,19 @@ public class ExploredVector {
 
 
     public ExploredVector() {
-        this.list = new Vector<>();
+//        this.list = new Vector<>();
         this.nodeIndex = new HashSet<>();
     }
 
     public boolean add(Node node) {
 //        int hash = bdd.hashCode();
         if (nodeIndex.contains(node)) return false;
-
         /// TODO: remove this - debug
         // Atualiza a média móvel com o tamanho do BDD
         if (sampleCount < MAX_SAMPLES || Math.random() < 0.1) {
             updateMovingAverage(node.getBDD().nodeCount());
         }
-
-        list.add(node);
+//        list.add(node);
         nodeIndex.add(node);
         return true;
     }
@@ -45,39 +42,32 @@ public class ExploredVector {
         return nodeIndex.contains(node);
     }
 
-    public int size() {
-        return list.size();
-    }
+//    public int size() {
+//        return list.size();
+//    }
 
 
     public void clear() {
         // Libera todos os BDDs armazenados na fila
-        for (Node node : list) {
-            node.getBDD().free();
-        }
-        list.clear();
+//        for (Node node : list) {
+//            node.getBDD().free();
+//        }
+//        list.clear();
         nodeIndex.clear();
-    }
-
-    public int getBDDCount() {
-        return list.size();
-    }
-
-    public int getHashCount() {
-        return nodeIndex.size();
     }
 
     public long getEstimatedMemoryUsageInBytes() {
         int estimatedNodesPerBDD = (int) Math.ceil(movingAverage);
-        long bddMemory = (long) list.size() * (estimatedNodesPerBDD * 20L); // 20B por nó
-        long hashMemory = (long) nodeIndex.size() * Integer.BYTES;
-        return bddMemory + hashMemory;
+//        long bddMemory = (long) list.size() * (estimatedNodesPerBDD * 20L); // 20B por nó
+        long hashMemory = (long) nodeIndex.size() * (estimatedNodesPerBDD * 20L);
+        System.out.println();
+        return /*bddMemory +*/ hashMemory;
     }
 
     public String getSizeSummary() {
         return String.format(
-                "[Explored] BDDs: %d, Hashes: %d, Est. Memory: %.2f KB",
-                list.size(),
+                "[Explored] Nodes: %d, Est. Memory: %.2f KB",
+//                list.size(),
                 nodeIndex.size(),
                 getEstimatedMemoryUsageInBytes() / 1024.0
         );

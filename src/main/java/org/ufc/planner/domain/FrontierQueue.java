@@ -1,7 +1,6 @@
 package org.ufc.planner.domain;
 
 
-import com.github.javabdd.BDD;
 import java.util.*;
 /**
  * Estrutura de apoio para a busca A* com BDDs.
@@ -42,7 +41,7 @@ public class FrontierQueue {
     public Node poll() {
         Node node = queue.poll();
         if (node != null) {
-            nodeIndex.remove(node.getBDD().hashCode());
+            nodeIndex.remove(node);
         }
         return node;
     }
@@ -89,7 +88,7 @@ public class FrontierQueue {
     public int getNodeCount() {
         return queue.size();
     }
-    public int getHashCount() {
+    public int getIndexCount() {
         return nodeIndex.size();
     }
 
@@ -99,20 +98,26 @@ public class FrontierQueue {
 
     public String getSizeSummary() {
         return String.format(
-                "[Frontier] Nodes: %d, Hashes: %d, Est. Memory: %.2f KB",
+                "[Frontier] {Nodes: %d,Est.Memory: %.2f KB}-{nodeIndex: %d, Est.Memory: %.2f KB}",
                 getNodeCount(),
-                getHashCount(),
-                getEstimatedMemoryUsageInBytes() / 1024.0
+                getEstimatedQueueMemoryUsageInBytes() / 1024.0,
+                getIndexCount(),
+                getEstimatedIIndexMemoryUsageInBytes() / 1024.0
         );
     }
 
 
-    public long getEstimatedMemoryUsageInBytes() {
+    public long getEstimatedQueueMemoryUsageInBytes() {
         int estimatedNodesPerBDD = (int) Math.ceil(movingAverage);
-        long hashSize = (long) getHashCount() * Integer.BYTES;
-        long queueSize = (long) getNodeCount() * (estimatedNodesPerBDD * 20L + 80);
-
-        return  queueSize + hashSize;
+        long estimated = (estimatedNodesPerBDD * 20L + 80);
+        long queueSize = (long) getNodeCount() * estimated;
+        return  queueSize;
+    }
+    public long getEstimatedIIndexMemoryUsageInBytes() {
+        int estimatedNodesPerBDD = (int) Math.ceil(movingAverage);
+        long estimated = (estimatedNodesPerBDD * 20L + 80);
+        long indexSize = (long) getIndexCount() * estimated;
+        return  indexSize;
     }
 
     private void updateMovingAverage(int newNodeSize) {
