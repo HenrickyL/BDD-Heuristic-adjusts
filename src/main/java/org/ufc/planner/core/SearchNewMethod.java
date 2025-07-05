@@ -11,12 +11,14 @@ import java.io.IOException;
 import java.util.function.BiFunction;
 
 public class SearchNewMethod extends BaseSearch{
+    private final BDDPool bddPool = new BDDPool();
     private long maxTotalTime = 30*60*1000;
+
+
     public SearchNewMethod(ModelReader model) {
         super(model);
         System.out.println("Instance SearchNewMethod");
     }
-
     public SearchNewMethod() {
         super();
         System.out.println("Instance SearchNewMethod");
@@ -100,7 +102,7 @@ public class SearchNewMethod extends BaseSearch{
 
 
     private boolean ForwardMethod(BiFunction<Integer, Integer, Integer> fFunc, TimeManager verify){
-        BDD initial = initialState.id();
+        BDD initial = registerBDD(initialState.id());
 
         Node node = new Node(initial.id(), 0+ heuristicValue.size());// cost = 0 + heuristic
 
@@ -124,10 +126,11 @@ public class SearchNewMethod extends BaseSearch{
             aux = current.and(goal.id());
             if (aux.toString().equals("") == false) { //use equal?
                 System.out.println("The problem is solvable.");
-                clearBdds(frontier, explored);
+                clearBdds();
                 return true;
             }
-            aux.free();
+//            aux.free();
+            releaseBDD(aux);
             explored.add(node);
 
             // Heurística: pega todos os pedaços do estado atual que batem com camadas
@@ -142,10 +145,7 @@ public class SearchNewMethod extends BaseSearch{
             System.out.println(">best heuristic (And Vector): "+ "_" + " with h: "+h);
 
             BDD progressedState = progression(state, verify); //Z = progression(teste);
-            if(progressedState == null || progressedState.isZero()){
-                System.out.println(">progressedState is null");
-                progressedState = state;
-            }
+
             System.out.println(">Progress Best State");
             //System.out.println(">progressedState: "+progressedState);
             f = fFunc.apply(g,h);
@@ -169,17 +169,17 @@ public class SearchNewMethod extends BaseSearch{
                 return true;
             }
         }
-        clearBdds(frontier, explored);
+        clearBdds();
         return false;
     }
 
-    private void clearBdds(FrontierQueue frontier, ExploredVector explored){
-        frontier.clear();
-        explored.clear();
+    private void clearBdds(){
+        bddPool.clear();
     }
 
     private void addInFrontier(BDD progressed, int f, Node parent, FrontierQueue frontier, ExploredVector explored) {
         if (progressed == null || progressed.isZero()) return;
+        progressed = registerBDD(progressed);
         Node newNode = new Node(progressed, f, parent);
         if (!explored.contains(newNode) || !frontier.contains(newNode)) {
             frontier.add(newNode);
@@ -208,17 +208,18 @@ public class SearchNewMethod extends BaseSearch{
         for (int h = 0; h < heuristicLayers.size(); h++) {
             BDD matched = rest.and(heuristicLayers.get(h));
             if (!matched.isZero()) {
-                queue.add(new Pair(matched.id(), h));
+                BDD registered = registerBDD(matched);
+                queue.add(new Pair(registered, h));
                 BDD neg = matched.not(); // A - B := A ∧ ¬B
                 BDD updated = rest.and(neg);
                 rest.free(); neg.free(); // libera antigos
                 rest = updated;
             }else{
-                matched.free(); //libera
+                releaseBDD( matched); //libera
             }
             if (rest.isZero()) break;
         }
-        rest.free();
+        releaseBDD(rest);
         return  queue;
     }
 
@@ -243,4 +244,14 @@ public class SearchNewMethod extends BaseSearch{
         }
         return reg;
     }
+
+    private BDD registerBDD(BDD bdd) {
+        return bddPool.register(bdd.id());
+    }
+
+    // Substituir chamadas de free() por:
+    private void releaseBDD(BDD bdd) {
+        bddPool.release(bdd);
+    }
+
 }

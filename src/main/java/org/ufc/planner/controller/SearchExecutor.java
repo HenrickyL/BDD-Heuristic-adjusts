@@ -65,7 +65,7 @@ public class SearchExecutor {
                 search.HeuristicSearch(timer);
             }
         } catch (Exception e) {
-            System.out.println("# Erro: "+e.toString());
+            System.out.println("⚠️ Erro: "+e.toString());
         } catch (OutOfMemoryError e) {
             runtime.gc();
             System.err.println("⚠️ OutOfMemoryError capturado!");

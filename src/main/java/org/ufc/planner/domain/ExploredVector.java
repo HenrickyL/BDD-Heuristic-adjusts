@@ -46,15 +46,6 @@ public class ExploredVector {
 //        return list.size();
 //    }
 
-
-    public void clear() {
-//         Libera todos os BDDs armazenados na fila
-        for (Node node : nodeIndex) {
-            node.getBDD().free();
-        }
-        nodeIndex.clear();
-    }
-
     public long getEstimatedMemoryUsageInBytes() {
         int estimatedNodesPerBDD = (int) Math.ceil(movingAverage);
 //        long bddMemory = (long) list.size() * (estimatedNodesPerBDD * 20L); // 20B por nó

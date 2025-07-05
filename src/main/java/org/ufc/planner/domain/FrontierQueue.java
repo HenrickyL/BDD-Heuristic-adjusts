@@ -77,14 +77,7 @@ public class FrontierQueue {
         return queue.isEmpty();
     }
 
-    public void clear() {
-        // Libera todos os BDDs armazenados no explored
-        for (Node node : queue) {
-            node.getBDD().free();
-        }
-        queue.clear();
-        index.clear();
-    }
+
 
     public int getNodeCount() {
         return queue.size();
