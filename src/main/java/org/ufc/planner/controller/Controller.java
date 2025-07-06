@@ -3,23 +3,25 @@ package org.ufc.planner.controller;
 import org.ufc.planner.enums.ProblemTypeEnum;
 import org.ufc.planner.enums.SearchMethodEnum;
 import org.ufc.planner.enums.SearchTypeEnum;
+import org.ufc.planner.infrastructure.MemoryMetricTracker;
+
 import java.io.PrintStream;
 import java.util.Objects;
 
 public class Controller {
     private final PrintStream originalOut;
     private final PrintStream originalErr;
-    private final Runtime runtime;
+    private MemoryMetricTracker memoryTracker;
 
-    public Controller(Runtime runtime, PrintStream originalOut, PrintStream originalErr){
-        this.runtime = runtime;
+    public Controller(MemoryMetricTracker memoryTracker, PrintStream originalOut, PrintStream originalErr){
+        this.memoryTracker = memoryTracker;
         this.originalOut = originalOut;
         this.originalErr = originalErr;
     }
 
     public void Run(ProblemOptions options){
         try {
-            SearchExecutor executor = new SearchExecutor(runtime, originalOut, originalErr);
+            SearchExecutor executor = new SearchExecutor(memoryTracker, originalOut, originalErr);
             executor.execute(options);
         } catch (Exception e) {
             System.out.println("Error: " + e);
@@ -32,8 +34,8 @@ public class Controller {
     }
 
     public void RunByArgs(String[] args) {
-        if (args.length != 5 ) {
-            System.err.println("Usage: java GUI <problem> <search:heuristic> <test> <maxTime> <searchMethod>");
+        if (args.length != 6 ) {
+            System.err.println("Usage: java GUI <problem> <search:heuristic> <test> <backwardTime> <forwardTime> <searchMethod>");
             System.exit(1);
         }
 
@@ -43,7 +45,8 @@ public class Controller {
                     SearchTypeEnum.valueOf(args[1]),
                     Integer.parseInt(args[2]),
                     Integer.parseInt(args[3]),
-                    SearchMethodEnum.valueOf(args[4])
+                    Integer.parseInt(args[4]),
+                    SearchMethodEnum.valueOf(args[5])
             );
             Run(options);
         } catch (IllegalArgumentException e) {

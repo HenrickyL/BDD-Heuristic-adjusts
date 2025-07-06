@@ -3,28 +3,21 @@ package org.ufc.planner.core;
 import com.github.javabdd.BDD;
 import com.github.javabdd.BDDFactory;
 import org.ufc.planner.domain.*;
-import org.ufc.planner.infrastructure.ModelReader;
-import org.ufc.planner.infrastructure.TimeManager;
+import org.ufc.planner.infrastructure.MetricManager;
 
 import java.util.*;
 import java.io.IOException;
 import java.util.function.BiFunction;
 
 public class SearchNewMethod extends BaseSearch{
-    private long maxTotalTime = 30*60*1000;
-    public SearchNewMethod(ModelReader model) {
-        super(model);
-        System.out.println("Instance SearchNewMethod");
-    }
-
+    private Node result;
     public SearchNewMethod() {
         super();
         System.out.println("Instance SearchNewMethod");
     }
 
-
     @Override
-    protected boolean heuristicPlanBackward(TimeManager verify) throws IOException {
+    protected boolean heuristicPlanBackward(MetricManager verify) throws IOException {
 
         //System.out.println("Performing heuristic search in a relaxed problem");
         System.out.println("initial: " + initialState);
@@ -81,25 +74,32 @@ public class SearchNewMethod extends BaseSearch{
     }
 
     @Override
-    protected boolean heuristicPlanForward(TimeManager verify) throws IOException {
+    protected boolean heuristicPlanForward(MetricManager metric) throws IOException {
         boolean AStar = false;
         boolean GBFS = false;
         System.out.println("--- A* Forward  f=g+h ----------------------");
         try{
-            AStar = ForwardMethod((g,h)->g+h,verify);
+            AStar = ForwardMethod((g,h)->g+h,metric);
+        }catch (OutOfMemoryError e) {
+            metric.clear();
+            System.out.println("⚠️ OutOfMemoryError catch!\n"+e.toString());
         } catch (Exception e) {
-            System.out.println("# A* Error");
+            System.out.println("🛑 A* Error\n"+e.toString());
         }
-        verify.resetStartTime();
-        verify.PrintElapsedTime();
+        metric.printSummary();
+        System.out.println("Node Created: " + Node.nodeCount());
+        Node.resetCount();
+        metric.reset();
         System.out.println("--- GBFS Forward f=h -----------------------");
-        GBFS = ForwardMethod((g,h)->h,verify);
+        GBFS = ForwardMethod((g,h)->h,metric);
+        metric.printSummary();
+        System.out.println("Node Created: " + Node.nodeCount());
         return AStar && GBFS;
     }
 
 
 
-    private boolean ForwardMethod(BiFunction<Integer, Integer, Integer> fFunc, TimeManager verify){
+    private boolean ForwardMethod(BiFunction<Integer, Integer, Integer> fFunc, MetricManager metric){
         BDD initial = initialState.id();
 
         Node node = new Node(initial.id(), 0+ heuristicValue.size());// cost = 0 + heuristic
@@ -124,6 +124,7 @@ public class SearchNewMethod extends BaseSearch{
             aux = current.and(goal.id());
             if (aux.toString().equals("") == false) { //use equal?
                 System.out.println("The problem is solvable.");
+                result=node;
                 clearBdds(frontier, explored);
                 return true;
             }
@@ -141,7 +142,7 @@ public class SearchNewMethod extends BaseSearch{
             h = bestHeuristic.getHeuristic();
             System.out.println(">best heuristic (And Vector): "+ "_" + " with h: "+h);
 
-            BDD progressedState = progression(state, verify); //Z = progression(teste);
+            BDD progressedState = progression(state, metric); //Z = progression(teste);
             if(progressedState == null || progressedState.isZero()){
                 System.out.println(">progressedState is null");
                 progressedState = state;
@@ -165,7 +166,7 @@ public class SearchNewMethod extends BaseSearch{
             System.out.println(frontier.getSizeSummary());
             System.out.println(explored.getSizeSummary());
             //encerra se passar do tempo maximo
-            if(CheckToBreak(verify,maxTotalTime)) {
+            if(metric.verifyBreak()) {
                 return true;
             }
         }
@@ -222,7 +223,7 @@ public class SearchNewMethod extends BaseSearch{
         return  queue;
     }
 
-    private BDD heuristicRegression(BDD formula, TimeManager verify){
+    private BDD heuristicRegression(BDD formula, MetricManager verify){
         BDD reg = null;
         BDD test = null;
         for (ModelAction a : actionSet) {
@@ -242,5 +243,9 @@ public class SearchNewMethod extends BaseSearch{
             }
         }
         return reg;
+    }
+
+    public Node result(){
+        return result;
     }
 }

@@ -8,20 +8,24 @@ public class ProblemOptions {
     private final ProblemTypeEnum problem;
     private final SearchTypeEnum search;
     private final int testNumber;
-    private final int maxTime;
+    private final long backwardTime;
+    private final long forwardTime;
+
     private final SearchMethodEnum searchMethod;
 
     public ProblemOptions(
             ProblemTypeEnum problem,
             SearchTypeEnum search,
             int testNumber,
-            int maxTime,
+            long backwardTime,
+            long forwardTime,
             SearchMethodEnum searchMethod
     ) {
         this.problem = problem;
         this.search = search;
         this.testNumber = testNumber;
-        this.maxTime = maxTime;
+        this.backwardTime = backwardTime;
+        this.forwardTime = forwardTime;
         this.searchMethod = searchMethod;
     }
 
@@ -36,7 +40,8 @@ public class ProblemOptions {
     public int getTestNumber() {
         return testNumber;
     }
-    public int getMaxtime(){return  maxTime;}
+    public long getForwardTime(){return  forwardTime;}
+    public long getBackwardTime(){return backwardTime;}
     public SearchMethodEnum getSearchMethod(){return  searchMethod;}
 
 }

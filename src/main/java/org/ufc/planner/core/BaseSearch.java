@@ -2,7 +2,7 @@ package org.ufc.planner.core;
 
 import org.ufc.planner.domain.ModelAction;
 import org.ufc.planner.infrastructure.ModelReader;
-import org.ufc.planner.infrastructure.TimeManager;
+import org.ufc.planner.infrastructure.MetricManager;
 
 import java.io.IOException;
 import java.util.Vector;
@@ -19,17 +19,8 @@ public abstract class BaseSearch implements ISearchAlgorithm {
     protected BDD constraints;
     protected int numProp;
     protected Vector<BDD> heuristicValue = new Vector<BDD>();
-    protected  boolean exceededTime = false;
     protected boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
-    private static float version = 1.2f;
-
-    /* Constructor */
-    public BaseSearch(ModelReader model) {
-        SetModel(model);
-    }
-
-    public BaseSearch() {
-    }
+    private static String version = "1.2.1";
 
     public void SetModel(ModelReader model){
         this.actionSet = model.getActionSet();
@@ -39,28 +30,29 @@ public abstract class BaseSearch implements ISearchAlgorithm {
         this.numProp = model.getPropNum();
     }
 
-    public void ExhaustiveSearch(TimeManager verify) {
-        planForward(verify);
+    public void ExhaustiveSearch(MetricManager metric) {
+        planForward(metric);
     }
 
-    public void HeuristicSearch(TimeManager verify) throws IOException{
+    public void HeuristicSearch(MetricManager metric, long backwardTime, long forwardTime) throws IOException{
         System.out.println("[Version] "+version);
         System.out.println("Start Backward...");
         onHeuristicPlanBackwardHasIncomplateRegression = false;
-        exceededTime= false;
-        if(heuristicPlanBackward(verify) == true) {
-            verify.PrintElapsedTime();
+        metric.setMaxTime(backwardTime);
+        metric.reset();
+        if(heuristicPlanBackward(metric)) {
+            metric.printSummary();
             System.out.println("End Backward.");
-            verify.resetStartTime();
-//            verify.setMaxTime(-1);//3h - 10800000
+            metric.setMaxTime(forwardTime);
+            metric.reset();
             System.out.println("Start Forward...");
-            heuristicPlanForward(verify);
+                heuristicPlanForward(metric);
             System.out.println("End Forward.");
         }
     }
 
-    protected abstract boolean heuristicPlanBackward(TimeManager verify) throws IOException;
-    protected abstract boolean heuristicPlanForward(TimeManager verify) throws IOException;
+    protected abstract boolean heuristicPlanBackward(MetricManager verify) throws IOException;
+    protected abstract boolean heuristicPlanForward(MetricManager verify) throws IOException;
 
 
     public void clear(){
@@ -79,7 +71,7 @@ public abstract class BaseSearch implements ISearchAlgorithm {
 
     // Forward search from the initial state, towards a goal state.
     // For exaustive execution
-    protected boolean planForward(TimeManager verify){
+    protected boolean planForward(MetricManager metric){
         System.out.println("initial: " + initialState);
         System.out.println("goal: " + goal);
         BDD reached = initialState.id(); //accumulates the reached set of states.
@@ -98,15 +90,15 @@ public abstract class BaseSearch implements ISearchAlgorithm {
 
             aux.free();
 
-            Z = progression(Z, verify);
+            Z = progression(Z, metric);
             Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
             reached = reached.or(Z); //Union with the new reachable states
             reached = reached.and(constraints);
 //			if(i < 4){
 //				System.out.println(i + "\n" + reached);
 //			}
-            verify.PrintElapsedTime();
-            if(verify != null && verify.onTime()) {
+            metric.printElapsedTime();
+            if(metric.onTime()) {
                 return true;
             }
             i++;
@@ -120,7 +112,7 @@ public abstract class BaseSearch implements ISearchAlgorithm {
 
 
     /* Deterministic Progression of a formula by a set of actions */
-    protected BDD progression(BDD formula, TimeManager verify){
+    protected BDD progression(BDD formula, MetricManager verify){
         BDD reg = null;
         BDD teste = null;
         for (ModelAction a : actionSet) {
@@ -170,22 +162,5 @@ public abstract class BaseSearch implements ISearchAlgorithm {
             reg = reg.and(constraints);
         }
         return  reg;
-    }
-
-    protected boolean CheckToBreak(TimeManager verify, long totalTime){
-        if(verify.verifyBreak()) {
-            if(!exceededTime){
-                exceededTime = true;
-                long time = verify.getMaxTime();
-                long rest = totalTime - time;
-                verify.setMaxTime(rest);
-                System.out.println(">>> Exceeded Time MAX "+time/60/1000+"min [increase "+rest/60/1000+"min] --------");
-            }else{
-                System.out.println(">>> Exceeded Time total MAX "+totalTime/60/1000+"min --------");
-                onHeuristicPlanBackwardHasIncomplateRegression = true;
-                return true;
-            }
-        }
-        return false;
     }
 }

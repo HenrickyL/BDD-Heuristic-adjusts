@@ -4,18 +4,14 @@ import com.github.javabdd.BDD;
 import com.github.javabdd.BDDFactory;
 import org.ufc.planner.domain.ModelAction;
 import org.ufc.planner.infrastructure.ModelReader;
-import org.ufc.planner.infrastructure.TimeManager;
+import org.ufc.planner.infrastructure.MetricManager;
 
 import java.io.IOException;
 import java.util.Vector;
 
 public class SearchOldMethod extends  BaseSearch{
     private long maxTotalTime = 40*60*1000;
-    public SearchOldMethod(ModelReader model) {
-        super(model);
-        System.out.println("Instance SearchOldMethod");
-    }
-
+    private boolean exceededTime = false;
     public SearchOldMethod() {
         super();
         System.out.println("Instance SearchOldMethod");
@@ -23,7 +19,7 @@ public class SearchOldMethod extends  BaseSearch{
     }
 
     @Override
-    protected boolean heuristicPlanBackward(TimeManager verify) throws IOException {
+    protected boolean heuristicPlanBackward(MetricManager verify) throws IOException {
         //System.out.println("Performing heuristic search in a relaxed problem");
         System.out.println("initial: " + initialState);
         System.out.println("goal: " + goal);
@@ -68,7 +64,6 @@ public class SearchOldMethod extends  BaseSearch{
                     long rest = maxTotalTime - time;
                     verify.setMaxTime(rest);
                 }else{
-                    System.out.println(">>> Exceeded Time TOTAL "+maxTotalTime/60/1000+"h.");
                     return true;
                 }
             }
@@ -80,7 +75,7 @@ public class SearchOldMethod extends  BaseSearch{
     }
 
     @Override
-    protected boolean heuristicPlanForward(TimeManager verify) throws IOException {
+    protected boolean heuristicPlanForward(MetricManager verify) throws IOException {
         //	System.out.println("initial: " + initialState);
         //	System.out.println("goal: " + goal);
         BDD reached = initialState.id(); //accumulates the reached set of states.

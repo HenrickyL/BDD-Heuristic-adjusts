@@ -51,6 +51,7 @@ public class Node{
 
     public static int count =0;
     public static void resetCount(){Node.count = 0;}
+    public static int nodeCount(){ return Node.count; }
 
     //getter
     public Node getFather() {

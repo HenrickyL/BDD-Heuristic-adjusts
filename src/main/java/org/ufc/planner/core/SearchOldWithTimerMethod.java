@@ -4,15 +4,13 @@ import com.github.javabdd.BDD;
 import com.github.javabdd.BDDFactory;
 import org.ufc.planner.domain.ModelAction;
 import org.ufc.planner.infrastructure.ModelReader;
-import org.ufc.planner.infrastructure.TimeManager;
+import org.ufc.planner.infrastructure.MetricManager;
 
 import java.io.IOException;
 import java.util.Vector;
 
 public class SearchOldWithTimerMethod extends  BaseSearch{
-    private long maxTotalTime = 30*60*1000;
     public SearchOldWithTimerMethod(ModelReader model) {
-        super(model);
         System.out.println("Instance SearchOldMethod");
     }
 
@@ -23,7 +21,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
     }
 
     @Override
-    protected boolean heuristicPlanBackward(TimeManager verify) throws IOException {
+    protected boolean heuristicPlanBackward(MetricManager verify) throws IOException {
         //System.out.println("Performing heuristic search in a relaxed problem");
         System.out.println("initial: " + initialState);
         System.out.println("goal: " + goal);
@@ -73,7 +71,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
                 return true;
             }
 
-            verify.PrintElapsedTime();
+            verify.printElapsedTime();
             i++;
         }
 
@@ -82,7 +80,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
     }
 
     @Override
-    protected boolean heuristicPlanForward(TimeManager verify) throws IOException {
+    protected boolean heuristicPlanForward(MetricManager metric) throws IOException {
         //	System.out.println("initial: " + initialState);
         //	System.out.println("goal: " + goal);
         BDD reached = initialState.id(); //accumulates the reached set of states.
@@ -105,13 +103,13 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
             /*chamar a progressão só para o BDD retornado pela função minHValue*/
             teste = minHvalue(heuristicValue, Z);
-            Z = progression(teste, verify); //Z = progression(teste);
+            Z = progression(teste, metric); //Z = progression(teste);
             Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
             reached = reached.or(Z); //Union with the new reachable states
             reached = reached.and(constraints);
 
             //Break by max time
-            if(CheckToBreak(verify, maxTotalTime)) {
+            if(metric.verifyBreak()) {
                 return true;
             }
             i++; //g(n)
@@ -124,7 +122,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
     /* ------------------------------------------------------------------ */
 
-    private BDD heuristicRegression(BDD formula, TimeManager verify){
+    private BDD heuristicRegression(BDD formula, MetricManager verify){
         BDD reg = null;
         BDD teste = null;
         for (ModelAction a : actionSet) {
