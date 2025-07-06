@@ -33,7 +33,7 @@ public class MemoryMetricTracker implements IMetricTracker {
     @Override
     public void printElapsed() {
         double mb = elapsed() / (1024.0 * 1024.0);
-        System.out.printf("-💾 [MEMORY] Elapsed: %.2f MB%n", mb);
+        System.out.printf("-💾 [MEMORY] Elapsed: %.3f MB%n", mb);
     }
 
     @Override

@@ -11,21 +11,21 @@ import java.io.PrintStream;
 
 public class Main {
     public static void main(String[] args) {
-        ProblemOptions test = new ProblemOptions(
-                ProblemTypeEnum.rovers,
-                SearchTypeEnum.heuristic,
-                5,
-                 10*1000,//-1 //
-                5*1000,
-                SearchMethodEnum.NEW
-        );
+//        ProblemOptions test = new ProblemOptions(
+//                ProblemTypeEnum.block_word,
+//                SearchTypeEnum.heuristic,
+//                3,
+//                 10*1000,//-1 //
+//                5*1000,
+//                SearchMethodEnum.OLD
+//        );
 
         MemoryMetricTracker memoryTracker = new MemoryMetricTracker(Runtime.getRuntime());
         PrintStream originalOut = System.out;
         PrintStream originalErr = System.err;
 
         Controller controller = new Controller(memoryTracker, originalOut, originalErr);
-//        controller.RunByArgs(args);
-        controller.Run(test);
+        controller.RunByArgs(args);
+//        controller.Run(test);
     }
 }

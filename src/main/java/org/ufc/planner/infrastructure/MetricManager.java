@@ -47,7 +47,7 @@ public class MetricManager {
         if (timeTracker.isDebug()) return false;
         printElapsedTime();
         if (onTime()) {
-            System.out.println("-🛑 [BREAK] exceeded max time - "+ getMaxTime() + " ms" );
+            System.out.println("-🛑 [BREAK] exceeded max time - "+ getMaxTime() + " ms");
             return true;
         }
         return false;

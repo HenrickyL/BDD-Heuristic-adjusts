@@ -20,64 +20,6 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
     }
 
-    @Override
-    protected boolean heuristicPlanBackward(MetricManager verify) throws IOException {
-        //System.out.println("Performing heuristic search in a relaxed problem");
-        System.out.println("initial: " + initialState);
-        System.out.println("goal: " + goal);
-
-        int j = 0;
-        BDD reached = goal.id(); //accumulates the reached set of states.
-        heuristicValue.add(j, goal);
-
-        BDD Z = reached.id(); // Only new states reached
-        BDD aux;
-        int i = 1;
-        System.out.println("Heuristic computation");
-
-        while(Z.isZero() == false){
-            //System.out.println(BDDHValues);
-            j++; //index do vetor de BDDs com valor heurístico
-            System.out.println(i);
-
-            aux = Z.and(initialState.id());
-
-            if (aux.toString().equals("") == false) {
-                System.out.println("END");
-                //System.out.println("The problem is solvable.");
-                return true;
-            }
-
-            aux.free();
-            //System.out.println("Z [antes da regression]" + Z);
-            Z = heuristicRegression(Z, verify);
-            //System.out.println("Z-->" + Z);
-            //System.out.println("Z [depois da regression]" + Z);
-            Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
-            //adicionar o Z na posição i do vetor.
-            //System.out.println("Z-->" + Z);
-            heuristicValue.add(j,Z);
-
-            reached = reached.or(Z); //Union with the new reachable states
-            reached = reached.and(constraints);
-//			if(i < 4){
-//				System.out.println(reached);
-//			}
-
-
-            if(onHeuristicPlanBackwardHasIncomplateRegression) {
-                heuristicValue.add(j+1, reached.not());//todos os estados nao alcancados receberao o mesmo valor heuristico - henricky
-                System.out.println("Break regression - heuristic: " +heuristicValue.size());
-                return true;
-            }
-
-            verify.printElapsedTime();
-            i++;
-        }
-
-        System.out.println("The problem is unsolvable.");
-        return false;
-    }
 
     @Override
     protected boolean heuristicPlanForward(MetricManager metric) throws IOException {
@@ -122,28 +64,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
     /* ------------------------------------------------------------------ */
 
-    private BDD heuristicRegression(BDD formula, MetricManager verify){
-        BDD reg = null;
-        BDD teste = null;
-        for (ModelAction a : actionSet) {
-            //System.out.println(a.getName());
-            teste = heuristicRegressionQbf(formula,a);
-            teste = teste.and(constraints);
-            if(reg == null){
-                reg = teste;
-            }else{
-                reg.orWith(teste);
-            }
-            if(verify != null && verify.onTime()) {
-                onHeuristicPlanBackwardHasIncomplateRegression = true;
-                return reg;
-            }
-        }
-        return reg;
-    }
-
-
-    private BDD minHvalue(Vector<BDD> H, BDD X) {
+        private BDD minHvalue(Vector<BDD> H, BDD X) {
         BDD result;
         int i = 0;
         while(i < H.size()) {

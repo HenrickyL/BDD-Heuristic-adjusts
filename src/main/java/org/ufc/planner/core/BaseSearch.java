@@ -37,6 +37,8 @@ public abstract class BaseSearch implements ISearchAlgorithm {
     public void HeuristicSearch(MetricManager metric, long backwardTime, long forwardTime) throws IOException{
         System.out.println("[Version] "+version);
         System.out.println("Start Backward...");
+        System.out.println("> Backward max time: "+backwardTime);
+        System.out.println("> Forward max time: "+forwardTime);
         onHeuristicPlanBackwardHasIncomplateRegression = false;
         metric.setMaxTime(backwardTime);
         metric.reset();
@@ -51,8 +53,50 @@ public abstract class BaseSearch implements ISearchAlgorithm {
         }
     }
 
-    protected abstract boolean heuristicPlanBackward(MetricManager verify) throws IOException;
     protected abstract boolean heuristicPlanForward(MetricManager verify) throws IOException;
+    protected boolean heuristicPlanBackward(MetricManager verify) throws IOException{
+        System.out.println("initial: " + initialState);
+        System.out.println("goal: " + goal);
+
+        int layer = 0; // índice padronizado
+        BDD reached = goal.id(); // estados já alcançados
+        heuristicValue.add(layer, goal);
+
+        BDD Z = reached.id(); // estados novos
+        BDD aux;
+
+        System.out.println("Heuristic computation (backward):");
+
+        while (!Z.isZero()) {
+            System.out.printf("Layer %d: H=%d\n", layer, heuristicValue.size());
+
+            aux = Z.and(initialState.id());
+            if (!aux.isZero()) {
+                aux.free();
+                System.out.println("✅The problem is solvable by backward search.");
+                return true;
+            }
+            aux.free();
+
+            Z = heuristicRegressionWithBreakTime(Z, verify); // computa camada seguinte
+            Z = Z.apply(reached, BDDFactory.diff); // remove os já alcançados
+
+            reached = reached.or(Z).and(constraints);
+            layer++;
+
+            heuristicValue.add(layer, Z);
+
+            if (onHeuristicPlanBackwardHasIncomplateRegression) {
+                heuristicValue.add(layer + 1, reached.not()); // marca os inalcançáveis
+                return true;
+            }
+
+            verify.printElapsedTime();
+        }
+
+        System.out.println("# The problem is unsolvable (backward).");
+        return false;
+    }
 
 
     public void clear(){
@@ -112,7 +156,7 @@ public abstract class BaseSearch implements ISearchAlgorithm {
 
 
     /* Deterministic Progression of a formula by a set of actions */
-    protected BDD progression(BDD formula, MetricManager verify){
+    protected BDD progression(BDD formula, MetricManager metric){
         BDD reg = null;
         BDD teste = null;
         for (ModelAction a : actionSet) {
@@ -123,8 +167,8 @@ public abstract class BaseSearch implements ISearchAlgorithm {
             }else{
                 reg.orWith(teste);
             }
-
-            if(verify != null && verify.onTime()) {
+            if(metric.onTime()) {
+                System.out.println("-🛑[BREAK Intern] exceeded max time - "+ metric.getMaxTime() + " ms");
                 return reg;
             }
         }
@@ -135,7 +179,7 @@ public abstract class BaseSearch implements ISearchAlgorithm {
 
 
     /* Propplan progression based on action: Qbf based computation */
-    private BDD progressionQbf(BDD Y, ModelAction a) {
+    protected BDD progressionQbf(BDD Y, ModelAction a) {
         BDD reg;
         reg = Y.and(a.getPrecondition()); //(Y ^ effect(a))
 
@@ -162,5 +206,26 @@ public abstract class BaseSearch implements ISearchAlgorithm {
             reg = reg.and(constraints);
         }
         return  reg;
+    }
+
+    protected BDD heuristicRegressionWithBreakTime(BDD formula, MetricManager metric){
+        BDD reg = null;
+        BDD teste = null;
+        for (ModelAction a : actionSet) {
+            //System.out.println(a.getName());
+            teste = heuristicRegressionQbf(formula,a);
+            teste = teste.and(constraints);
+            if(reg == null){
+                reg = teste;
+            }else{
+                reg.orWith(teste);
+            }
+            if(metric.onTime()) {
+                onHeuristicPlanBackwardHasIncomplateRegression = true;
+                System.out.println("-🛑[BREAK Intern] exceeded max time - "+ metric.getMaxTime() + " ms");
+                return reg;
+            }
+        }
+        return reg;
     }
 }

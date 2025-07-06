@@ -17,63 +17,6 @@ public class SearchNewMethod extends BaseSearch{
     }
 
     @Override
-    protected boolean heuristicPlanBackward(MetricManager verify) throws IOException {
-
-        //System.out.println("Performing heuristic search in a relaxed problem");
-        System.out.println("initial: " + initialState);
-        System.out.println("goal: " + goal);
-
-        int j = 0;
-        BDD reached = goal.id(); //accumulates the reached set of states.
-        heuristicValue.add(j, goal);
-
-        BDD Z = reached.id(); // Only new states reached
-        BDD aux;
-        int i = 1;
-        System.out.println("Heuristic computation");
-
-        while(Z.isZero() == false){
-            //System.out.println(BDDHValues);
-            j++; //index do vetor de BDDs com valor heurístico
-            System.out.println(i);
-
-            aux = Z.and(initialState.id());
-
-            if (aux.toString().equals("") == false) {
-//                System.out.println("END");
-                System.out.println("The problem is solvable.");
-                return true;
-            }
-
-            aux.free();
-            //System.out.println("Z [antes da regression]" + Z);
-            Z = heuristicRegression(Z, verify);
-            //System.out.println("Z-->" + Z);
-            //System.out.println("Z [depois da regression]" + Z);
-            Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
-            //adicionar o Z na posição i do vetor.
-            //System.out.println("Z-->" + Z);
-            heuristicValue.add(j,Z);
-            reached = reached.or(Z); //Union with the new reachable states
-            reached = reached.and(constraints);
-            // add variavel global - tratar heuristicRegression retorna incompleto
-            // -> se n deu certo: BDDHValues.add(j+1, reached.not())
-            if(onHeuristicPlanBackwardHasIncomplateRegression) {
-                heuristicValue.add(j+1, reached.not());//todos os estados nao alcancados receberao o mesmo valor heuristico - henricky
-                return true;
-            }
-            //Break by max time
-            if(verify.verifyBreak()) {
-                return true;
-            }
-            i++;
-        }
-
-        System.out.println("The problem is unsolvable.");
-        return false;
-    }
-
-    @Override
     protected boolean heuristicPlanForward(MetricManager metric) throws IOException {
         boolean AStar = false;
         boolean GBFS = false;
@@ -123,7 +66,7 @@ public class SearchNewMethod extends BaseSearch{
 
             aux = current.and(goal.id());
             if (aux.toString().equals("") == false) { //use equal?
-                System.out.println("The problem is solvable.");
+                System.out.println("✅ The problem is solvable forward.");
                 result=node;
                 clearBdds(frontier, explored);
                 return true;
@@ -190,19 +133,6 @@ public class SearchNewMethod extends BaseSearch{
         }
     }
 
-    private int minHvalue2(Vector<BDD> H, BDD X) {
-        BDD result;
-        for (int i = 0; i < H.size(); i++) {
-            result = X.and(H.get(i));
-            //System.out.println("i: "+i);
-            //H.get(i).printSet();
-            if (!result.isZero()) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     private Queue<Pair> splitByHeuristic(Vector<BDD> heuristicLayers, BDD state) {
         BDD rest = state.id(); //copia
         Queue<Pair> queue = new ArrayDeque<>();
@@ -223,29 +153,9 @@ public class SearchNewMethod extends BaseSearch{
         return  queue;
     }
 
-    private BDD heuristicRegression(BDD formula, MetricManager verify){
-        BDD reg = null;
-        BDD test = null;
-        for (ModelAction a : actionSet) {
-            //System.out.println(a.getName());
-            test = heuristicRegressionQbf(formula,a);//heuristicRegressionQbf(formula,a) - henricky;
-            //teste = teste.and(constraints);
-            if(reg == null){
-                reg = test;
-            }else{
-                reg.orWith(test);
-            }
-			/*cada camada tem 30 min para rodar, cada açao contribui com esse tempo,
-			   se uma açao usa 5 min as outras tem apenas 25min para rodar*/
-            if(verify != null && verify.onTime()) {
-                onHeuristicPlanBackwardHasIncomplateRegression = true;
-                return reg;
-            }
-        }
-        return reg;
-    }
-
     public Node result(){
         return result;
     }
+
+
 }

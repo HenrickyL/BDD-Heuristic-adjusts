@@ -40,7 +40,7 @@ public class SearchOldMethod extends  BaseSearch{
             aux = Z.and(initialState.id());
 
             if (aux.toString().equals("") == false) {
-                System.out.println("END");
+                System.out.println("✅The problem is solvable by backward search.");
                 return true;
             }
             aux.free();
@@ -70,7 +70,7 @@ public class SearchOldMethod extends  BaseSearch{
 
             i++;
         }
-        System.out.println("The problem is unsolvable.");
+        System.out.println("# The problem is unsolvable.");
         return false;
     }
 
@@ -137,6 +137,21 @@ public class SearchOldMethod extends  BaseSearch{
     }
 
     // FORWARD
+    @Override
+    protected BDD progression(BDD formula, MetricManager metric){
+        BDD reg = null;
+        BDD teste = null;
+        for (ModelAction a : actionSet) {
+            teste = progressionQbf(formula,a);
+            teste = teste.and(constraints);
+            if(reg == null){
+                reg = teste;
+            }else{
+                reg.orWith(teste);
+            }
+        }
+        return reg;
+    }
 
     public BDD minHvalue(Vector<BDD> H, BDD X) {
         BDD result;
