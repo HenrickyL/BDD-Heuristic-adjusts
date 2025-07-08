@@ -15,11 +15,11 @@ public class MetricManager {
         this.memoryTracker = memoryTracker;
     }
 
-    public void start() {
-        timeTracker.start();
-        memoryTracker.start();
-        Node.resetCount(); // reinicia contador de nós
-    }
+//    public void start() {
+//        timeTracker.start();
+//        memoryTracker.start();
+//        Node.resetCount(); // reinicia contador de nós
+//    }
 
     public void resetStartTime() {
         timeTracker.reset();
@@ -27,6 +27,8 @@ public class MetricManager {
     public void reset(){
         resetStartTime();
         memoryTracker.reset();
+        Node.resetCount();
+//        System.out.println("[Metric]reset");
     }
 
     public void printElapsedTime() {

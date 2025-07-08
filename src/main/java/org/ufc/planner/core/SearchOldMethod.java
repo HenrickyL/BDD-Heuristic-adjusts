@@ -19,7 +19,7 @@ public class SearchOldMethod extends  BaseSearch{
     }
 
     @Override
-    protected boolean heuristicPlanBackward(MetricManager verify) throws IOException {
+    protected boolean heuristicPlanBackward(MetricManager metric) throws IOException {
         //System.out.println("Performing heuristic search in a relaxed problem");
         System.out.println("initial: " + initialState);
         System.out.println("goal: " + goal);
@@ -41,6 +41,7 @@ public class SearchOldMethod extends  BaseSearch{
 
             if (aux.toString().equals("") == false) {
                 System.out.println("✅The problem is solvable by backward search.");
+                printSummary(metric);
                 return true;
             }
             aux.free();
@@ -56,14 +57,15 @@ public class SearchOldMethod extends  BaseSearch{
 
             reached = reached.or(Z); //Union with the new reachable states
             reached = reached.and(constraints);
-            //verify and print with exceeds time
-            if(verify.verifyBreak()) {
+            //metric and print with exceeds time
+            if(metric.verifyBreak()) {
                 if(!exceededTime){
                     exceededTime = true;
-                    long time = verify.getMaxTime();
+                    long time = metric.getMaxTime();
                     long rest = maxTotalTime - time;
-                    verify.setMaxTime(rest);
+                    metric.setMaxTime(rest);
                 }else{
+                    printSummary(metric);
                     return true;
                 }
             }
@@ -71,11 +73,12 @@ public class SearchOldMethod extends  BaseSearch{
             i++;
         }
         System.out.println("# The problem is unsolvable.");
+        printSummary(metric);
         return false;
     }
 
     @Override
-    protected boolean heuristicPlanForward(MetricManager verify) throws IOException {
+    protected boolean heuristicPlanForward(MetricManager metric) throws IOException {
         //	System.out.println("initial: " + initialState);
         //	System.out.println("goal: " + goal);
         BDD reached = initialState.id(); //accumulates the reached set of states.
@@ -93,13 +96,14 @@ public class SearchOldMethod extends  BaseSearch{
 
             if (aux.toString().equals("") == false) {
                 System.out.println("The problem is solvable.");
+                printSummary(metric);
                 return true;
             }
             aux.free();
 
             /*chamar a progressão só para o BDD retornado pela função minHValue*/
             teste = minHvalue(heuristicValue, Z);
-            Z = progression(teste, verify); //Z = progression(teste);
+            Z = progression(teste, metric); //Z = progression(teste);
 
             Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
             reached = reached.or(Z); //Union with the new reachable states
@@ -108,13 +112,13 @@ public class SearchOldMethod extends  BaseSearch{
 //				System.out.println(i + "\n" + reached);
 //			}
 
-            //verify and print with exceeds time
-            verify.verifyBreak();
+            //metric and print with exceeds time
+            metric.verifyBreak();
 
             i++; //g(n)
         }
         System.out.println("The problem is unsolvable.");
-
+        printSummary(metric);
         return false;
     }
 

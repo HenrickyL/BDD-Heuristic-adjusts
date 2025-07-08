@@ -66,18 +66,20 @@ public class SearchExecutor {
             } else {
                 search.HeuristicSearch(metric, bwTime, fwTime);
             }
+            System.out.println("Execução (" + label + ") terminou [OK].");
+            memoryTracker.clear();
+            metric.printSummary();
         }catch (OutOfMemoryError e) {
             memoryTracker.clear();
             System.out.println("⚠️ OutOfMemoryError catch!\n"+e);
         }
         catch (Exception e) {
+            System.out.println("Execução (" + label + ") terminou [Error].");
             System.out.println("🛑 Erro: "+e);
         }
-
         out.close();
         System.setOut(originalOut);
         System.setErr(originalErr);
-        System.out.println("Execução (" + label + ") terminou [OK].");
         search.clear();
     }
 

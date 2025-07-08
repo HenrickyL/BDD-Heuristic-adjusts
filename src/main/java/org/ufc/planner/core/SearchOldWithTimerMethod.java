@@ -39,6 +39,7 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
             if (aux.toString().equals("") == false) {
                 System.out.println("The problem is solvable.");
+                printSummary(metric);
                 return true;
             }
             aux.free();
@@ -52,13 +53,14 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
             //Break by max time
             if(metric.verifyBreak()) {
+                printSummary(metric);
                 return true;
             }
             i++; //g(n)
         }
 
         System.out.println("The problem is unsolvable.");
-
+        printSummary(metric);
         return false;
     }
 

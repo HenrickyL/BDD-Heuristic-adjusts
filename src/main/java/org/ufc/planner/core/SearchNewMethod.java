@@ -1,7 +1,6 @@
 package org.ufc.planner.core;
 
 import com.github.javabdd.BDD;
-import com.github.javabdd.BDDFactory;
 import org.ufc.planner.domain.*;
 import org.ufc.planner.infrastructure.MetricManager;
 
@@ -29,14 +28,12 @@ public class SearchNewMethod extends BaseSearch{
         } catch (Exception e) {
             System.out.println("🛑 A* Error\n"+e.toString());
         }
-        metric.printSummary();
-        System.out.println("Node Created: " + Node.nodeCount());
-        Node.resetCount();
-        metric.reset();
+        System.out.println("--- END ----------------------");
+//        metric.printSummary();
+        printSummary(metric);
         System.out.println("--- GBFS Forward f=h -----------------------");
         GBFS = ForwardMethod((g,h)->h,metric);
-        metric.printSummary();
-        System.out.println("Node Created: " + Node.nodeCount());
+//        System.out.println("Node Created: " + Node.nodeCount());
         return AStar && GBFS;
     }
 
@@ -68,6 +65,7 @@ public class SearchNewMethod extends BaseSearch{
             if (aux.toString().equals("") == false) { //use equal?
                 System.out.println("✅ The problem is solvable forward.");
                 result=node;
+                printSummary(metric);
                 clearBdds(frontier, explored);
                 return true;
             }
@@ -110,14 +108,17 @@ public class SearchNewMethod extends BaseSearch{
             System.out.println(explored.getSizeSummary());
             //encerra se passar do tempo maximo
             if(metric.verifyBreak()) {
+                printSummary(metric);
                 return true;
             }
         }
+        printSummary(metric);
         clearBdds(frontier, explored);
         return false;
     }
 
     private void clearBdds(FrontierQueue frontier, ExploredVector explored){
+        System.out.println("Clear frontier & explored");
         frontier.clear();
         explored.clear();
     }

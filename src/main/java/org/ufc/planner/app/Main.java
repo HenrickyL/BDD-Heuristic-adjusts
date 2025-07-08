@@ -15,9 +15,9 @@ public class Main {
 //                ProblemTypeEnum.block_word,
 //                SearchTypeEnum.heuristic,
 //                3,
-//                 10*1000,//-1 //
+//                10*1000,//-1 //
 //                5*1000,
-//                SearchMethodEnum.OLD
+//                SearchMethodEnum.NEW
 //        );
 
         MemoryMetricTracker memoryTracker = new MemoryMetricTracker(Runtime.getRuntime());

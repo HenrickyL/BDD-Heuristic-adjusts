@@ -15,18 +15,20 @@ public class MemoryMetricTracker implements IMetricTracker {
 
     @Override
     public void start() {
-        System.gc();
+        runtime.gc();
         startMemory = usedMemory();
     }
 
     @Override
     public void reset() {
+        try {
+            Thread.sleep(100); // permite tempo para o GC rodar
+        } catch (InterruptedException ignored) {}
         start();
     }
 
     @Override
     public long elapsed() {
-        System.gc();
         return usedMemory() - startMemory;
     }
 

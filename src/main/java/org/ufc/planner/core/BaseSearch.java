@@ -1,6 +1,7 @@
 package org.ufc.planner.core;
 
 import org.ufc.planner.domain.ModelAction;
+import org.ufc.planner.domain.Node;
 import org.ufc.planner.infrastructure.ModelReader;
 import org.ufc.planner.infrastructure.MetricManager;
 
@@ -20,7 +21,7 @@ public abstract class BaseSearch implements ISearchAlgorithm {
     protected int numProp;
     protected Vector<BDD> heuristicValue = new Vector<BDD>();
     protected boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
-    private static String version = "1.2.1";
+    private static String version = "1.2.2";
 
     public void SetModel(ModelReader model){
         this.actionSet = model.getActionSet();
@@ -43,10 +44,9 @@ public abstract class BaseSearch implements ISearchAlgorithm {
         metric.setMaxTime(backwardTime);
         metric.reset();
         if(heuristicPlanBackward(metric)) {
-            metric.printSummary();
             System.out.println("End Backward.");
             metric.setMaxTime(forwardTime);
-            metric.reset();
+            printSummary(metric);
             System.out.println("Start Forward...");
                 heuristicPlanForward(metric);
             System.out.println("End Forward.");
@@ -54,7 +54,7 @@ public abstract class BaseSearch implements ISearchAlgorithm {
     }
 
     protected abstract boolean heuristicPlanForward(MetricManager verify) throws IOException;
-    protected boolean heuristicPlanBackward(MetricManager verify) throws IOException{
+    protected boolean heuristicPlanBackward(MetricManager metric) throws IOException{
         System.out.println("initial: " + initialState);
         System.out.println("goal: " + goal);
 
@@ -74,11 +74,12 @@ public abstract class BaseSearch implements ISearchAlgorithm {
             if (!aux.isZero()) {
                 aux.free();
                 System.out.println("✅The problem is solvable by backward search.");
+                printSummary(metric);
                 return true;
             }
             aux.free();
 
-            Z = heuristicRegressionWithBreakTime(Z, verify); // computa camada seguinte
+            Z = heuristicRegressionWithBreakTime(Z, metric); // computa camada seguinte
             Z = Z.apply(reached, BDDFactory.diff); // remove os já alcançados
 
             reached = reached.or(Z).and(constraints);
@@ -88,13 +89,15 @@ public abstract class BaseSearch implements ISearchAlgorithm {
 
             if (onHeuristicPlanBackwardHasIncomplateRegression) {
                 heuristicValue.add(layer + 1, reached.not()); // marca os inalcançáveis
+                printSummary(metric);
                 return true;
             }
 
-            verify.printElapsedTime();
+            metric.printElapsedTime();
         }
 
         System.out.println("# The problem is unsolvable (backward).");
+        printSummary(metric);
         return false;
     }
 
@@ -109,6 +112,16 @@ public abstract class BaseSearch implements ISearchAlgorithm {
         for(BDD bdd :heuristicValue){
             bdd.free();
         }
+    }
+
+    protected void printSummary(MetricManager metric){
+        System.out.println("[Search Summary] -----------------");
+        metric.printSummary();
+        if(this instanceof SearchNewMethod){
+            System.out.println("Node Created: " + Node.nodeCount());
+        }
+        metric.reset();
+        System.out.println("----------------------------------");
     }
 
     /* ---------------------------------------------- */
