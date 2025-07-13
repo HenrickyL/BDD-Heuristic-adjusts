@@ -29,11 +29,13 @@ public class SearchExecutor {
     }
 
     public void execute(ProblemOptions options) throws Exception {
-        switch (options.getSearchMethod()){
-            case NEW -> runComparison("new", new SearchNewMethod(), options);
-            case OLD -> runComparison("old", new SearchOldMethod(), options);
-            case OLD_TIME -> runComparison("old+", new SearchOldWithTimerMethod(), options);
-        }
+//        switch (options.getSearchMethod()){
+//            case NEW -> runComparison("new", new SearchNewMethod(), options);
+//            case OLD -> runComparison("old", new SearchOldMethod(), options);
+//            case OLD_TIME -> runComparison("old+", new SearchOldWithTimerMethod(), options);
+//        }
+        runComparison("new", new SearchNewMethod(), options);
+
     }
 
     private void runComparison(String label, BaseSearch search, ProblemOptions options) throws Exception {

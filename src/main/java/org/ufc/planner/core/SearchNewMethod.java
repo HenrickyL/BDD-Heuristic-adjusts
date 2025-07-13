@@ -15,28 +15,33 @@ public class SearchNewMethod extends BaseSearch{
         System.out.println("Instance SearchNewMethod");
     }
 
-    @Override
-    protected boolean heuristicPlanForward(MetricManager metric) throws IOException {
-        boolean AStar = false;
-        boolean GBFS = false;
-        System.out.println("--- A* Forward  f=g+h ----------------------");
-        try{
-            AStar = ForwardMethod((g,h)->g+h,metric);
-        }catch (OutOfMemoryError e) {
-            metric.clear();
-            System.out.println("⚠️ OutOfMemoryError catch!\n"+e.toString());
-        } catch (Exception e) {
-            System.out.println("🛑 A* Error\n"+e.toString());
-        }
-        System.out.println("--- END ----------------------");
-//        metric.printSummary();
-        printSummary(metric);
-        System.out.println("--- GBFS Forward f=h -----------------------");
-        GBFS = ForwardMethod((g,h)->h,metric);
-//        System.out.println("Node Created: " + Node.nodeCount());
-        return AStar && GBFS;
-    }
+//    @Override
+//    protected boolean heuristicPlanForward(MetricManager metric) throws IOException {
+//        boolean AStar = false;
+//        boolean GBFS = false;
+//        System.out.println("--- A* Forward  f=g+h ----------------------");
+//        try{
+//            AStar = ForwardMethod((g,h)->g+h,metric);
+//        }catch (OutOfMemoryError e) {
+//            metric.clear();
+//            System.out.println("⚠️ OutOfMemoryError catch!\n"+e.toString());
+//        } catch (Exception e) {
+//            System.out.println("🛑 A* Error\n"+e.toString());
+//        }
+//        System.out.println("--- END ----------------------");
+////        metric.printSummary();
+//        printSummary(metric);
+//        System.out.println("--- GBFS Forward f=h -----------------------");
+//        GBFS = ForwardMethod((g,h)->h,metric);
+////        System.out.println("Node Created: " + Node.nodeCount());
+//        return AStar && GBFS;
+//    }
 
+@Override
+protected boolean heuristicPlanForward(MetricManager metric) throws IOException {
+    System.out.println("--- GBFS Forward f=h -----------------------");
+    return ForwardMethod((g,h)->h,metric);
+}
 
 
     private boolean ForwardMethod(BiFunction<Integer, Integer, Integer> fFunc, MetricManager metric){

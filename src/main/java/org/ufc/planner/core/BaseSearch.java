@@ -21,7 +21,7 @@ public abstract class BaseSearch implements ISearchAlgorithm {
     protected int numProp;
     protected Vector<BDD> heuristicValue = new Vector<BDD>();
     protected boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
-    private static String version = "1.2.2";
+    private static String version = "1.2.3";
 
     public void SetModel(ModelReader model){
         this.actionSet = model.getActionSet();
