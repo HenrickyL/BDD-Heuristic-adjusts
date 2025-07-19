@@ -6,6 +6,7 @@ public class MemoryMetricTracker implements IMetricTracker {
     private final Runtime runtime;
     private final long initialTotalMemory;
     private long startMemory;
+    private static final int time = 300;
 
     public MemoryMetricTracker(Runtime runtime) {
         this.runtime = runtime;
@@ -15,14 +16,14 @@ public class MemoryMetricTracker implements IMetricTracker {
 
     @Override
     public void start() {
-        runtime.gc();
         startMemory = usedMemory();
     }
 
     @Override
     public void reset() {
+        runtime.gc();
         try {
-            Thread.sleep(100); // permite tempo para o GC rodar
+            Thread.sleep(time); // permite tempo para o GC rodar
         } catch (InterruptedException ignored) {}
         start();
     }
@@ -34,8 +35,25 @@ public class MemoryMetricTracker implements IMetricTracker {
 
     @Override
     public void printElapsed() {
+        // 1. Diferença desde o startMemory SEM GC - mostra alocação bruta
         double mb = elapsed() / (1024.0 * 1024.0);
-        System.out.printf("-💾 [MEMORY] Elapsed: %.3f MB%n", mb);
+        System.out.printf("-💾 [MEMORY] Allocated since start (may include garbage): %.3f MB%n", mb);
+    }
+
+    public void printActualUsage() {
+        // 2. Uso atual COM GC - mostra memória realmente em uso
+        runtime.gc();
+        try { Thread.sleep(200); } catch (InterruptedException ignored) {}
+        double mb = usedMemory() / (1024.0 * 1024.0);
+        System.out.printf("-💾 [MEMORY] Actual used memory: %.3f MB%n", mb);
+    }
+
+    public void printTotalGrowth() {
+        // 3. Total alocado desde início da JVM COM GC (espera mais para coleta completa)
+        runtime.gc();
+        try { Thread.sleep(200); } catch (InterruptedException ignored) {}
+        double mb = deltaToInitial() / (1024.0 * 1024.0);
+        System.out.printf("-💾 [MEMORY] JVM heap growth since start: %.3f MB%n", mb);
     }
 
     @Override
@@ -44,14 +62,9 @@ public class MemoryMetricTracker implements IMetricTracker {
         return false;
     }
 
-    /** Memória usada atualmente sem forçar GC */
-    public long currentUsed() {
-        return usedMemory();
-    }
-
     /** Diferença entre o uso atual e o total inicial da JVM */
     public long deltaToInitial() {
-        return usedMemory() - initialTotalMemory;
+        return usedMemory() - (initialTotalMemory - runtime.freeMemory());
     }
 
     /** Retorna memória usada: total - livre */

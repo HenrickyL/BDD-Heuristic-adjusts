@@ -2,31 +2,39 @@ package org.ufc.planner.domain;
 
 import com.github.javabdd.BDD;
 
+import java.util.function.BiFunction;
+
 public class Node{
+    private static BiFunction<Integer, Integer, Integer> fn = (g,h)->g+h;
+
     private final BDD bdd;
     private final Node father;
-    private final int fn; //f(n) = g(n) + h(n)
+    private final int g;
+    private final int h;
     private final String name;
 
-    public Node(BDD bdd,int fCost, Node father) {
+    public Node(BDD bdd,int g, int h, Node father) {
         this.bdd = bdd;
-        this.fn = fCost;
+        this.g = g;
+        this.h = h;
         this.father = father;
         this.name = "s"+count;
         Node.count++;
     }
 
-    public Node(BDD bdd,int fCost) {
+    public Node(BDD bdd,int g, int h) {
         this.bdd = bdd;
-        this.fn = fCost;
+        this.g = g;
+        this.h = h;
         this.father = null;
         this.name = "s"+count;
         Node.count++;
     }
 
-    public Node(BDD bdd,int fCost, Node father, String name) {
+    public Node(BDD bdd,int g, int h, Node father, String name) {
         this.bdd = bdd;
-        this.fn = fCost;
+        this.g = g;
+        this.h = h;
         this.father = father;
         this.name = name;
     }
@@ -60,11 +68,15 @@ public class Node{
     public BDD getBDD() {
         return bdd;
     }
+    public int getG(){return this.g;}
+    public int getH(){return this.h;}
     public int getFn(){
-        return this.fn;
-    }
-    public int getFCost() {
-        return this.fn;
+        return Node.fn.apply(g,h);
     }
     public String getName(){return this.name;}
+
+    //static
+    public static void setFn(BiFunction<Integer, Integer, Integer> fn){
+        Node.fn = fn;
+    }
 }

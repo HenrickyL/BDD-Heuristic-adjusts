@@ -29,13 +29,28 @@ public class SearchExecutor {
     }
 
     public void execute(ProblemOptions options) throws Exception {
-//        switch (options.getSearchMethod()){
-//            case NEW -> runComparison("new", new SearchNewMethod(), options);
-//            case OLD -> runComparison("old", new SearchOldMethod(), options);
-//            case OLD_TIME -> runComparison("old+", new SearchOldWithTimerMethod(), options);
-//        }
-        runComparison("new", new SearchNewMethod(), options);
-
+        BaseSearch searchMethod;
+        String name;
+        switch (options.getSearchMethod()){
+            case ASTAR -> {
+                name = "AStar";
+                searchMethod=  new SearchNewMethod(name,(g,h)->g+h);
+            }
+            case GBFS -> {
+                name = "GBFS";
+                searchMethod=  new SearchNewMethod(name,((g,h)->h));
+            }
+            case OLD -> {
+                name = "OLD";
+                searchMethod=new SearchOldMethod();
+            }
+            case OLD_TIME -> {
+                name = "OLD_TIME";
+                searchMethod =new SearchOldWithTimerMethod();
+            }
+            default -> throw new RuntimeException("Invalid search method");
+        }
+        runComparison(name,searchMethod, options);
     }
 
     private void runComparison(String label, BaseSearch search, ProblemOptions options) throws Exception {
@@ -64,13 +79,13 @@ public class SearchExecutor {
         metric.reset();
         try{
             if (type == SearchTypeEnum.exaustive) {
+                metric.setMaxTime(fwTime);
                 search.ExhaustiveSearch(metric);
             } else {
                 search.HeuristicSearch(metric, bwTime, fwTime);
             }
             System.out.println("Execução (" + label + ") terminou [OK].");
             memoryTracker.clear();
-            metric.printSummary();
         }catch (OutOfMemoryError e) {
             memoryTracker.clear();
             System.out.println("⚠️ OutOfMemoryError catch!\n"+e);

@@ -37,6 +37,8 @@ public class MetricManager {
 
     public void printElapsedMemory() {
         memoryTracker.printElapsed();
+        memoryTracker.printActualUsage();
+        memoryTracker.printTotalGrowth();
     }
 
     public void printSummary(){

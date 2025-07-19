@@ -21,7 +21,7 @@ public abstract class BaseSearch implements ISearchAlgorithm {
     protected int numProp;
     protected Vector<BDD> heuristicValue = new Vector<BDD>();
     protected boolean onHeuristicPlanBackwardHasIncomplateRegression = false;
-    private static String version = "1.2.3";
+    private static String version = "1.2.4";
 
     public void SetModel(ModelReader model){
         this.actionSet = model.getActionSet();
@@ -46,7 +46,6 @@ public abstract class BaseSearch implements ISearchAlgorithm {
         if(heuristicPlanBackward(metric)) {
             System.out.println("End Backward.");
             metric.setMaxTime(forwardTime);
-            printSummary(metric);
             System.out.println("Start Forward...");
                 heuristicPlanForward(metric);
             System.out.println("End Forward.");
