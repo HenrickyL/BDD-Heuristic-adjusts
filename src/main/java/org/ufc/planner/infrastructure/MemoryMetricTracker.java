@@ -6,7 +6,7 @@ public class MemoryMetricTracker implements IMetricTracker {
     private final Runtime runtime;
     private final long initialTotalMemory;
     private long startMemory;
-    private static final int time = 300;
+    private static final int time = 500;
 
     public MemoryMetricTracker(Runtime runtime) {
         this.runtime = runtime;
@@ -43,7 +43,7 @@ public class MemoryMetricTracker implements IMetricTracker {
     public void printActualUsage() {
         // 2. Uso atual COM GC - mostra memória realmente em uso
         runtime.gc();
-        try { Thread.sleep(200); } catch (InterruptedException ignored) {}
+        try { Thread.sleep(time); } catch (InterruptedException ignored) {}
         double mb = usedMemory() / (1024.0 * 1024.0);
         System.out.printf("-💾 [MEMORY] Actual used memory: %.3f MB%n", mb);
     }
@@ -51,7 +51,7 @@ public class MemoryMetricTracker implements IMetricTracker {
     public void printTotalGrowth() {
         // 3. Total alocado desde início da JVM COM GC (espera mais para coleta completa)
         runtime.gc();
-        try { Thread.sleep(200); } catch (InterruptedException ignored) {}
+        try { Thread.sleep(time); } catch (InterruptedException ignored) {}
         double mb = deltaToInitial() / (1024.0 * 1024.0);
         System.out.printf("-💾 [MEMORY] JVM heap growth since start: %.3f MB%n", mb);
     }
