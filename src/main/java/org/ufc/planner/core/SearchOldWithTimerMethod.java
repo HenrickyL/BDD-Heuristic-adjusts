@@ -4,15 +4,13 @@ import com.github.javabdd.BDD;
 import com.github.javabdd.BDDFactory;
 import org.ufc.planner.domain.ModelAction;
 import org.ufc.planner.infrastructure.ModelReader;
-import org.ufc.planner.infrastructure.TimeManager;
+import org.ufc.planner.infrastructure.MetricManager;
 
 import java.io.IOException;
 import java.util.Vector;
 
 public class SearchOldWithTimerMethod extends  BaseSearch{
-    private long maxTotalTime = 30*60*1000;
     public SearchOldWithTimerMethod(ModelReader model) {
-        super(model);
         System.out.println("Instance SearchOldMethod");
     }
 
@@ -22,67 +20,9 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
     }
 
-    @Override
-    protected boolean heuristicPlanBackward(TimeManager verify) throws IOException {
-        //System.out.println("Performing heuristic search in a relaxed problem");
-        System.out.println("initial: " + initialState);
-        System.out.println("goal: " + goal);
-
-        int j = 0;
-        BDD reached = goal.id(); //accumulates the reached set of states.
-        heuristicValue.add(j, goal);
-
-        BDD Z = reached.id(); // Only new states reached
-        BDD aux;
-        int i = 1;
-        System.out.println("Heuristic computation");
-
-        while(Z.isZero() == false){
-            //System.out.println(BDDHValues);
-            j++; //index do vetor de BDDs com valor heurístico
-            System.out.println(i);
-
-            aux = Z.and(initialState.id());
-
-            if (aux.toString().equals("") == false) {
-                System.out.println("END");
-                //System.out.println("The problem is solvable.");
-                return true;
-            }
-
-            aux.free();
-            //System.out.println("Z [antes da regression]" + Z);
-            Z = heuristicRegression(Z, verify);
-            //System.out.println("Z-->" + Z);
-            //System.out.println("Z [depois da regression]" + Z);
-            Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
-            //adicionar o Z na posição i do vetor.
-            //System.out.println("Z-->" + Z);
-            heuristicValue.add(j,Z);
-
-            reached = reached.or(Z); //Union with the new reachable states
-            reached = reached.and(constraints);
-//			if(i < 4){
-//				System.out.println(reached);
-//			}
-
-
-            if(onHeuristicPlanBackwardHasIncomplateRegression) {
-                heuristicValue.add(j+1, reached.not());//todos os estados nao alcancados receberao o mesmo valor heuristico - henricky
-                System.out.println("Break regression - heuristic: " +heuristicValue.size());
-                return true;
-            }
-
-            verify.PrintElapsedTime();
-            i++;
-        }
-
-        System.out.println("The problem is unsolvable.");
-        return false;
-    }
 
     @Override
-    protected boolean heuristicPlanForward(TimeManager verify) throws IOException {
+    protected boolean heuristicPlanForward(MetricManager metric) throws IOException {
         //	System.out.println("initial: " + initialState);
         //	System.out.println("goal: " + goal);
         BDD reached = initialState.id(); //accumulates the reached set of states.
@@ -99,53 +39,34 @@ public class SearchOldWithTimerMethod extends  BaseSearch{
 
             if (aux.toString().equals("") == false) {
                 System.out.println("The problem is solvable.");
+                printSummary(metric);
                 return true;
             }
             aux.free();
 
             /*chamar a progressão só para o BDD retornado pela função minHValue*/
             teste = minHvalue(heuristicValue, Z);
-            Z = progression(teste, verify); //Z = progression(teste);
+            Z = progression(teste, metric); //Z = progression(teste);
             Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
             reached = reached.or(Z); //Union with the new reachable states
             reached = reached.and(constraints);
 
             //Break by max time
-            if(CheckToBreak(verify, maxTotalTime)) {
+            if(metric.verifyBreak()) {
+                printSummary(metric);
                 return true;
             }
             i++; //g(n)
         }
 
         System.out.println("The problem is unsolvable.");
-
+        printSummary(metric);
         return false;
     }
 
     /* ------------------------------------------------------------------ */
 
-    private BDD heuristicRegression(BDD formula, TimeManager verify){
-        BDD reg = null;
-        BDD teste = null;
-        for (ModelAction a : actionSet) {
-            //System.out.println(a.getName());
-            teste = heuristicRegressionQbf(formula,a);
-            teste = teste.and(constraints);
-            if(reg == null){
-                reg = teste;
-            }else{
-                reg.orWith(teste);
-            }
-            if(verify != null && verify.onTime()) {
-                onHeuristicPlanBackwardHasIncomplateRegression = true;
-                return reg;
-            }
-        }
-        return reg;
-    }
-
-
-    private BDD minHvalue(Vector<BDD> H, BDD X) {
+        private BDD minHvalue(Vector<BDD> H, BDD X) {
         BDD result;
         int i = 0;
         while(i < H.size()) {

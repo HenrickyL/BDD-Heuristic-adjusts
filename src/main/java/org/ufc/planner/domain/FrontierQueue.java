@@ -58,7 +58,7 @@ public class FrontierQueue {
                 int hash = node.hashCode();
                 if (current.equals(node)) {
                     // só substitui se o novo custo for menor
-                    if (node.getFCost() < current.getFCost()) {
+                    if (node.getFn() < current.getFn()) {
                         it.remove();
                         index.remove(hash);
                         queue.add(node);

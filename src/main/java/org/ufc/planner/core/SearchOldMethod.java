@@ -4,18 +4,14 @@ import com.github.javabdd.BDD;
 import com.github.javabdd.BDDFactory;
 import org.ufc.planner.domain.ModelAction;
 import org.ufc.planner.infrastructure.ModelReader;
-import org.ufc.planner.infrastructure.TimeManager;
+import org.ufc.planner.infrastructure.MetricManager;
 
 import java.io.IOException;
 import java.util.Vector;
 
 public class SearchOldMethod extends  BaseSearch{
     private long maxTotalTime = 40*60*1000;
-    public SearchOldMethod(ModelReader model) {
-        super(model);
-        System.out.println("Instance SearchOldMethod");
-    }
-
+    private boolean exceededTime = false;
     public SearchOldMethod() {
         super();
         System.out.println("Instance SearchOldMethod");
@@ -23,7 +19,7 @@ public class SearchOldMethod extends  BaseSearch{
     }
 
     @Override
-    protected boolean heuristicPlanBackward(TimeManager verify) throws IOException {
+    protected boolean heuristicPlanBackward(MetricManager metric) throws IOException {
         //System.out.println("Performing heuristic search in a relaxed problem");
         System.out.println("initial: " + initialState);
         System.out.println("goal: " + goal);
@@ -44,7 +40,8 @@ public class SearchOldMethod extends  BaseSearch{
             aux = Z.and(initialState.id());
 
             if (aux.toString().equals("") == false) {
-                System.out.println("END");
+                System.out.println("✅The problem is solvable by backward search.");
+                printSummary(metric);
                 return true;
             }
             aux.free();
@@ -60,27 +57,28 @@ public class SearchOldMethod extends  BaseSearch{
 
             reached = reached.or(Z); //Union with the new reachable states
             reached = reached.and(constraints);
-            //verify and print with exceeds time
-            if(verify.verifyBreak()) {
+            //metric and print with exceeds time
+            if(metric.verifyBreak()) {
                 if(!exceededTime){
                     exceededTime = true;
-                    long time = verify.getMaxTime();
+                    long time = metric.getMaxTime();
                     long rest = maxTotalTime - time;
-                    verify.setMaxTime(rest);
+                    metric.setMaxTime(rest);
                 }else{
-                    System.out.println(">>> Exceeded Time TOTAL "+maxTotalTime/60/1000+"h.");
+                    printSummary(metric);
                     return true;
                 }
             }
 
             i++;
         }
-        System.out.println("The problem is unsolvable.");
+        System.out.println("# The problem is unsolvable.");
+        printSummary(metric);
         return false;
     }
 
     @Override
-    protected boolean heuristicPlanForward(TimeManager verify) throws IOException {
+    protected boolean heuristicPlanForward(MetricManager metric) throws IOException {
         //	System.out.println("initial: " + initialState);
         //	System.out.println("goal: " + goal);
         BDD reached = initialState.id(); //accumulates the reached set of states.
@@ -98,13 +96,14 @@ public class SearchOldMethod extends  BaseSearch{
 
             if (aux.toString().equals("") == false) {
                 System.out.println("The problem is solvable.");
+                printSummary(metric);
                 return true;
             }
             aux.free();
 
             /*chamar a progressão só para o BDD retornado pela função minHValue*/
             teste = minHvalue(heuristicValue, Z);
-            Z = progression(teste, verify); //Z = progression(teste);
+            Z = progression(teste, metric); //Z = progression(teste);
 
             Z = Z.apply(reached, BDDFactory.diff); // The new reachable states in this layer
             reached = reached.or(Z); //Union with the new reachable states
@@ -113,13 +112,13 @@ public class SearchOldMethod extends  BaseSearch{
 //				System.out.println(i + "\n" + reached);
 //			}
 
-            //verify and print with exceeds time
-            verify.verifyBreak();
+            //metric and print with exceeds time
+            metric.verifyBreak();
 
             i++; //g(n)
         }
         System.out.println("The problem is unsolvable.");
-
+        printSummary(metric);
         return false;
     }
 
@@ -142,6 +141,21 @@ public class SearchOldMethod extends  BaseSearch{
     }
 
     // FORWARD
+    @Override
+    protected BDD progression(BDD formula, MetricManager metric){
+        BDD reg = null;
+        BDD teste = null;
+        for (ModelAction a : actionSet) {
+            teste = progressionQbf(formula,a);
+            teste = teste.and(constraints);
+            if(reg == null){
+                reg = teste;
+            }else{
+                reg.orWith(teste);
+            }
+        }
+        return reg;
+    }
 
     public BDD minHvalue(Vector<BDD> H, BDD X) {
         BDD result;

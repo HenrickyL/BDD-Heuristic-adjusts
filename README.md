@@ -34,9 +34,9 @@ O projeto utiliza:
 ```xml
 <dependencies>
     <dependency>
-        <groupId>net.sf.javabdd</groupId>
-        <artifactId>javabdd</artifactId>
-        <version>1.0b2</version>
+        <groupId>com.github.com-github-javabdd</groupId>
+        <artifactId>com.github.javabdd</artifactId>
+        <version>9.0.0</version>
     </dependency>
 </dependencies>
 ```
@@ -51,7 +51,7 @@ cd AI-Planner-BDD
 ```
 
 ### 2. Compile o projeto e baixe as dependências
-Certifique-se de ter o Java JDK 17+ e Maven 3+ instalados.
+Certifique-se de ter o Java JDK 21+ e Maven 3+ instalados.
 ```bash
 mvn clean compile
 ```
@@ -69,7 +69,7 @@ mvn exec:java
 
 1. ` mvn clean package`
 2. gera o arquivo `target/ai-planner-1.0-SNAPSHOT-jar-with-dependencies.jar`
-3. Rode usando: `java -Xmx12g -Xms2g -jar target/ai-planner-1.0-SNAPSHOT-jar-with-dependencies.jar <type> <search> <test>`
+3. Rode usando: `java -Xmx12g -Xms2g -jar target/ai-planner-1.0-SNAPSHOT-jar-with-dependencies.jar  <domínio> <search_tipe> <instância> <tempo_back> <tempo_forward> <método>`
 
 ---
 
@@ -95,12 +95,14 @@ Os Diagramas de Decisão Binária (BDDs) são estruturas compactas que represent
 Os arquivos `.txt` contendo os domínios (rovers, logistics, block-world) devem estar em:
 
 ```
-src/main/java/org/ufc/planner/problems/
+src/main/resources/problems/
 ```
+[Domínios](src/main/resources/problems/)
 
 E seguir o formato usado pelo `ModelReader`.
 
 ---
+
 
 ## 📝 Licença
 

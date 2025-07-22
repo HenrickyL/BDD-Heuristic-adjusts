@@ -4,6 +4,6 @@ import java.util.Comparator;
 
 public class NodeComparator implements Comparator<Node> {
     public int compare(Node b1, Node b2) {
-        return Integer.compare(b1.getFCost(), b2.getFCost());
+        return Integer.compare(b1.getFn(), b2.getFn());
     }
 }
